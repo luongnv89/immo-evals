@@ -16,6 +16,9 @@ OUT = ROOT / "reports"
 DATA = ROOT / "data" / "reports.json"
 SITEMAP = ROOT / "sitemap.xml"
 SITE_BASE = "https://luongnv.com/immo-evals"
+REPORT_MAILTO_CTA_RE = re.compile(
+    r'<a href="mailto:contact\.nguyen\.fr@gmail\.com\?subject=Demande%20d%27%C3%A9valuation%20bien-evaluator"([^>]*)>Essayer</a>'
+)
 
 # Prefer these job IDs (newest production-style template reports).
 PREFERRED_IDS = [
@@ -50,6 +53,16 @@ def parse_report_meta(index_html: Path) -> dict | None:
             if depth == 0:
                 return json.loads(text[start : i + 1])
     return None
+
+
+def normalize_report_html(path: Path) -> None:
+    """Keep copied report CTAs aligned with the public site's URL dialog flow."""
+    text = path.read_text(encoding="utf-8")
+    updated = REPORT_MAILTO_CTA_RE.sub(
+        r'<a href="#essayer" data-mailto-cta\1>Essayer</a>', text
+    )
+    if updated != text:
+        path.write_text(updated, encoding="utf-8")
 
 
 def is_bien_evaluator_done(job_dir: Path) -> bool:
@@ -114,6 +127,7 @@ def main() -> None:
 
         dest = OUT / f"{slug}.html"
         shutil.copy2(job_dir / "index.html", dest)
+        normalize_report_html(dest)
         verdict = (meta.get("verdict") or {}).get("label", "")
         tone = (meta.get("verdict") or {}).get("tone", "neutral")
         kpi = meta.get("kpi") or {}
