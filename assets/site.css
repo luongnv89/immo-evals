@@ -222,9 +222,21 @@ summary:focus-visible {
 .nav-toggle__bars::before { position: absolute; top: -6px; left: 0; }
 .nav-toggle__bars::after { position: absolute; top: 6px; left: 0; }
 /* Animate into an X when open */
+.nav-toggle[aria-expanded="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 0 0 4px rgba(10, 10, 10, 0.08);
+}
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before,
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after { background: var(--paper); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(6px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::after { transform: translateY(-6px) rotate(-45deg); }
+
+.nav-close {
+  display: none;
+}
 
 /* —— Buttons (report pill style) —— */
 .btn {
@@ -869,6 +881,16 @@ summary:focus-visible {
   .site-nav[data-open] {
     display: flex;
   }
+  .site-nav[data-open]::before {
+    content: "Menu ouvert";
+    display: block;
+    padding: 0 0.5rem 0.35rem;
+    color: var(--mute);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
   .site-nav > a:not(.btn) {
     padding: 0.65rem 0.5rem;
     font-size: 1rem;
@@ -882,6 +904,26 @@ summary:focus-visible {
     height: 2.6rem;
     margin-top: 0.4rem;
     font-size: 0.85rem;
+  }
+  .nav-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.6rem;
+    margin-top: 0.25rem;
+    border: 1px solid var(--line2);
+    border-radius: 999px;
+    background: var(--sand);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .nav-close:hover,
+  .nav-close:focus-visible {
+    background: var(--ink);
+    color: var(--paper);
   }
 }
 

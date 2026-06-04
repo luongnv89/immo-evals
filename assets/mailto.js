@@ -208,10 +208,12 @@
 (function () {
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("site-nav");
+  const closeButtons = document.querySelectorAll("[data-nav-close]");
   if (!toggle || !nav) return;
 
   function setOpen(open) {
     toggle.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("nav-menu-open", open);
     if (open) {
       nav.setAttribute("data-open", "");
       toggle.setAttribute("aria-label", "Fermer le menu");
@@ -223,6 +225,13 @@
 
   toggle.addEventListener("click", function () {
     setOpen(toggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  closeButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      setOpen(false);
+      toggle.focus();
+    });
   });
 
   // Close after choosing a destination.
