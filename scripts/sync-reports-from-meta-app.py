@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 META_REPORTS = ROOT.parent / "meta-app" / "reports"
 OUT = ROOT / "reports"
 DATA = ROOT / "data" / "reports.json"
+SITEMAP = ROOT / "sitemap.xml"
+SITE_BASE = "https://luongnv.com/immo-evals"
 
 # Prefer these job IDs (newest production-style template reports).
 PREFERRED_IDS = [
@@ -137,6 +139,30 @@ def main() -> None:
     DATA.parent.mkdir(parents=True, exist_ok=True)
     DATA.write_text(json.dumps(catalog, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"wrote {DATA} ({len(catalog)} reports)")
+
+    write_sitemap(catalog)
+
+
+def write_sitemap(catalog: list[dict]) -> None:
+    """Regenerate sitemap.xml from the synced report list (absolute URLs)."""
+    urls = [
+        (f"{SITE_BASE}/", "monthly", "1.0"),
+        (f"{SITE_BASE}/catalog.html", "weekly", "0.8"),
+    ]
+    for entry in catalog:
+        urls.append((f"{SITE_BASE}/{entry['href']}", "monthly", "0.6"))
+
+    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for loc, changefreq, priority in urls:
+        lines.append("  <url>")
+        lines.append(f"    <loc>{loc}</loc>")
+        lines.append(f"    <changefreq>{changefreq}</changefreq>")
+        lines.append(f"    <priority>{priority}</priority>")
+        lines.append("  </url>")
+    lines.append("</urlset>")
+    SITEMAP.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"wrote {SITEMAP} ({len(urls)} urls)")
 
 
 if __name__ == "__main__":
