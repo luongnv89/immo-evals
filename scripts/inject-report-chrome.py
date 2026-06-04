@@ -22,14 +22,14 @@ CHROME_STATIC = """<link rel="stylesheet" href="../assets/site.css">
 """
 
 CHROME_TEMPLATE = """<link rel="stylesheet" href="../assets/site.css">
-<div class="immo-evals-bar no-print" role="navigation" aria-label="immo-evals">
+<nav class="immo-evals-bar no-print" role="navigation" aria-label="immo-evals">
   <div class="immo-evals-bar__inner">
-    <a href="../index.html">← Accueil</a>
+    <a href="../index.html">← immo-evals</a>
     <a href="../catalog.html">Catalogue</a>
     <a href="#" data-mailto-cta>Essayer le service</a>
-    <span class="immo-evals-bar__note">Rapport réel · bien-evaluator</span>
+    <span class="immo-evals-bar__note">Rapport réel</span>
   </div>
-</div>
+</nav>
 <script src="../assets/mailto.js" defer></script>
 """
 

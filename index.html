@@ -1,66 +1,70 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>bien-evaluator — Rapports acheteur immobilier (échantillons)</title>
-  <meta name="description" content="Évaluez une annonce immobilière française en quelques minutes : prix au m², risques, coût total, angle de négociation. Découvrez des rapports exemples générés par bien-evaluator.">
+  <title>Bien Evaluator — Rapports acheteur immobilier</title>
+  <meta name="description" content="Évaluez une annonce immobilière française : prix au m², risques, coût total, angle de négociation. Rapports exemples bien-evaluator.">
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header no-print">
     <div class="site-header__inner">
       <a class="brand" href="index.html">
-        <span class="brand__mark" aria-hidden="true">BE</span>
-        <span>bien-evaluator</span>
+        <span class="brand__mark serif-opsz" aria-hidden="true">B</span>
+        <span class="brand__text">
+          <span class="brand__title">Bien Evaluator</span>
+          <span class="brand__sub">immo-evals</span>
+        </span>
       </a>
       <nav class="site-nav" aria-label="Navigation principale">
         <a href="index.html" aria-current="page">Accueil</a>
-        <a href="catalog.html">Rapports exemples</a>
+        <a href="catalog.html">Rapports</a>
         <a class="btn btn--primary" href="#" data-mailto-cta>Essayer le service</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div>
-        <p class="eyebrow">Évaluation acheteur · France</p>
-        <h1>Savoir si le prix d'une annonce est défendable — avant de visiter</h1>
-        <p class="hero__lead">
-          Vous trouvez un bien sur LeBonCoin, SeLoger ou PAP, mais le doute reste :
-          est-ce cher ? quels risques ? combien ça coûte vraiment avec les frais ?
-          <strong>bien-evaluator</strong> produit un rapport acheteur en français,
-          avec verdict prix, commune, matrice de risques et piste de négociation.
-        </p>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="catalog.html">Voir les rapports exemples</a>
-          <a class="btn btn--ghost" href="#" data-mailto-cta>Demander une évaluation</a>
-        </div>
-        <div class="trust-bar">
-          <span><strong>3</strong> rapports démo publiés</span>
-          <span><strong>DVF &amp; sources</strong> citées dans chaque rapport</span>
-          <span><strong>FR</strong> — pas un conseil professionnel</span>
+    <section class="hero shell">
+      <div class="hero-panel">
+        <div class="hero-panel__body">
+          <p class="eyebrow">Rapport d'évaluation · France</p>
+          <h1>Savoir si le prix d'une annonce est défendable — avant de visiter</h1>
+          <p class="hero__lead">
+            Vous trouvez un bien sur LeBonCoin, SeLoger ou Bien'ici, mais le doute reste :
+            est-ce cher ? quels risques ? combien ça coûte vraiment avec les frais ?
+            <strong>Bien Evaluator</strong> produit un rapport acheteur en français —
+            verdict prix, commune, matrice de risques et piste de négociation.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="catalog.html">Voir les rapports</a>
+            <a class="btn btn--ghost" href="#" data-mailto-cta>Demander une évaluation</a>
+          </div>
+          <div class="trust-bar">
+            <span><strong>3</strong> rapports réels publiés</span>
+            <span><strong>DVF</strong> et sources citées</span>
+            <span>Pas un conseil professionnel</span>
+          </div>
         </div>
       </div>
-      <aside class="hero-card" aria-labelledby="hero-card-title">
-        <h2 id="hero-card-title">Ce que vous recevez</h2>
+      <aside class="hero-panel hero-card" aria-labelledby="hero-card-title">
+        <h2 id="hero-card-title">Ce que contient le rapport</h2>
         <ul>
           <li>Verdict rapide et positionnement prix (€/m² vs marché)</li>
           <li>Qualité de commune (transports, cadre de vie, projets)</li>
           <li>Matrice de risques et questions à poser au vendeur</li>
           <li>Coût total d'acquisition et angle de négociation</li>
-          <li>Diagrammes Mermaid à partir des données réelles</li>
+          <li>Graphiques Chart.js à partir des données réelles</li>
         </ul>
       </aside>
     </section>
 
-    <section class="section section--alt" id="probleme">
+    <section class="section section--alt shell" id="probleme">
       <h2>Vous n'êtes pas seul face à l'annonce</h2>
       <p class="section__intro">
-        Le vendeur connaît son script. Vous, vous devez décider avec des chiffres
-        épars, des photos flatteuses et peu de recul sur le quartier. Une mauvaise
-        décision coûte des mois de stress et des dizaines de milliers d'euros.
+        Le vendeur connaît son script. Vous devez décider avec des chiffres épars,
+        des photos flatteuses et peu de recul sur le quartier.
       </p>
       <div class="grid-3">
         <article class="card">
@@ -76,16 +80,16 @@
         <article class="card">
           <span class="card__tag">Problème</span>
           <h3>Budget réel flou</h3>
-          <p>Entre notaire, charges et travaux, le « prix affiché » n'est pas ce que vous payez.</p>
+          <p>Entre notaire, charges et travaux, le prix affiché n'est pas ce que vous payez.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="solution">
+    <section class="section shell" id="solution">
       <h2>Un guide structuré, pas une brochure commerciale</h2>
       <p class="section__intro">
-        bien-evaluator lit l'annonce (URL obligatoire), croise données marché et commune,
-        et rend un rapport HTML partageable — honnête, sourcé, orienté décision acheteur.
+        Le service lit l'annonce (URL obligatoire), croise données marché et commune,
+        et rend un rapport HTML — honnête, sourcé, orienté décision acheteur.
       </p>
       <div class="grid-3">
         <article class="card">
@@ -106,7 +110,7 @@
       </div>
     </section>
 
-    <section class="section section--alt" id="comment">
+    <section class="section section--alt shell" id="comment">
       <h2>Comment ça marche</h2>
       <p class="section__intro">Trois étapes côté utilisateur — le moteur fait le reste en arrière-plan.</p>
       <div class="steps">
@@ -116,86 +120,87 @@
         </article>
         <article class="step">
           <h3>Analyse automatisée</h3>
-          <p>Récupération annonce, recherche DVF/commune/risques, génération du rapport en français.</p>
+          <p>Récupération annonce, recherche DVF/commune/risques, génération du rapport.</p>
         </article>
         <article class="step">
           <h3>Lisez le rapport</h3>
-          <p>HTML statique avec verdict, graphiques et recommandations — comme les exemples du catalogue.</p>
+          <p>Même format que les exemples du catalogue : verdict, graphiques, sections repliables.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="exemples">
+    <section class="section shell" id="exemples">
       <h2>Rapports réels publiés ici</h2>
       <p class="section__intro">
-        Ces échantillons sont les fichiers HTML finaux produits par le worker
-        <strong>bien-evaluator</strong> dans
+        Livrables HTML finaux depuis
         <a href="https://github.com/luongnv89/meta-app">meta-app</a>
-        (<code>reports/</code>) — annonces Bien'ici à Versailles, juin 2026.
+        <code>reports/</code> — annonces Bien'ici à Versailles, juin 2026.
       </p>
       <div class="grid-3">
         <article class="card">
-          <span class="verdict-pill verdict-pill--ok">Prix en ligne avec le marché</span>
-          <h3>Versailles — Clagny Glatigny</h3>
+          <span class="verdict-pill verdict-pill--good">Prix en ligne avec le marché</span>
+          <h3>Clagny Glatigny</h3>
           <p class="card__meta">230 000 € · 30 m² · 7 667 €/m²</p>
           <p>2 pièces au calme ; prix aligné sur la médiane, vigilance DPE et charges.</p>
           <a class="btn btn--ghost" href="reports/versailles-clagny-2-pieces.html">Lire le rapport</a>
         </article>
         <article class="card">
-          <span class="verdict-pill">Légèrement au-dessus du marché</span>
-          <h3>Versailles — Chantiers (2 pièces)</h3>
+          <span class="verdict-pill verdict-pill--warn">Légèrement au-dessus du marché</span>
+          <h3>Chantiers — 2 pièces</h3>
           <p class="card__meta">230 000 € · 30 m² · 7 181 €/m²</p>
           <p>~10,5 % au-dessus de la médiane DVF ; bien à négocier (DPE E, charges).</p>
           <a class="btn btn--ghost" href="reports/versailles-chantiers-2-pieces.html">Lire le rapport</a>
         </article>
         <article class="card">
-          <span class="verdict-pill">Trop cher sans forte négociation</span>
-          <h3>Versailles — Chantiers (studio)</h3>
-          <p class="card__meta">175 000 € · 21 m² · vendu loué</p>
-          <p>RDC sur cour, travaux, DPE E ; comparables DVF plus bas que le prix affiché.</p>
+          <span class="verdict-pill verdict-pill--bad">Trop cher sans forte négociation</span>
+          <h3>Chantiers — studio 21 m²</h3>
+          <p class="card__meta">175 000 € · vendu loué</p>
+          <p>RDC sur cour, travaux, DPE E ; comparables DVF en dessous du prix affiché.</p>
           <a class="btn btn--ghost" href="reports/versailles-chantiers-studio-21m2.html">Lire le rapport</a>
         </article>
       </div>
-      <p style="margin-top:1.5rem">
-        <a class="btn btn--primary" href="catalog.html">Voir tout le catalogue</a>
+      <p style="margin-top:1.25rem">
+        <a class="btn btn--primary" href="catalog.html">Catalogue complet</a>
       </p>
     </section>
 
-    <section class="section section--alt faq" id="faq">
+    <section class="section section--alt faq shell" id="faq">
       <h2>Questions fréquentes</h2>
       <details>
         <summary>Est-ce un conseil juridique ou financier ?</summary>
-        <p>Non. Les rapports sont des aides à la décision basées sur des sources publiques et l'annonce ; faites valider par un professionnel si besoin.</p>
+        <p>Non. Aide à la décision basée sur des sources publiques et l'annonce ; faites valider par un professionnel si besoin.</p>
       </details>
       <details>
         <summary>Quels sites d'annonces sont supportés ?</summary>
         <p>LeBonCoin, SeLoger, PAP, Bien'ici et plateformes similaires — via l'URL de l'annonce.</p>
       </details>
       <details>
-        <summary>Les exemples sur ce site sont-ils des vraies annonces ?</summary>
-        <p>Oui : ce sont des rapports générés par le service à partir d'URLs Bien'ici réelles (Versailles). Ils sont copiés tels quels depuis les livrables <code>meta-app/reports/</code>.</p>
+        <summary>Les exemples sont-ils de vraies annonces ?</summary>
+        <p>Oui : rapports générés à partir d'URLs Bien'ici réelles, copiés depuis <code>meta-app/reports/</code>.</p>
       </details>
       <details>
-        <summary>Comment demander une évaluation pour mon annonce ?</summary>
-        <p>Cliquez sur « Essayer le service » : votre client mail s'ouvre avec un modèle — ajoutez l'URL de l'annonce et envoyez.</p>
+        <summary>Comment demander une évaluation ?</summary>
+        <p>Cliquez sur « Essayer le service » : votre client mail s'ouvre — collez l'URL de l'annonce et envoyez.</p>
       </details>
     </section>
 
-    <section class="cta-band" id="essayer">
-      <h2>Prêt à tester sur votre annonce ?</h2>
-      <p>
-        Envoyez-nous l'URL de l'annonce qui vous intéresse. Nous vous répondrons par e-mail
-        pour lancer une évaluation bien-evaluator.
-      </p>
-      <a class="btn btn--primary" href="#" data-mailto-cta>Envoyer l'URL de mon annonce</a>
+    <section class="shell" id="essayer">
+      <div class="cta-band">
+        <h2>Prêt à tester sur votre annonce ?</h2>
+        <p>
+          Envoyez l'URL de l'annonce qui vous intéresse. Nous vous répondrons par e-mail
+          pour lancer une évaluation.
+        </p>
+        <a class="btn btn--primary" href="#" data-mailto-cta>Envoyer l'URL de mon annonce</a>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer shell">
     <p>
-      immo-evals — vitrine des rapports <strong>bien-evaluator</strong>.
-      Propulsé par <a href="https://github.com/luongnv89/meta-app">Skill Server / meta-app</a>.
-      Ce site est statique et hébergé sur GitHub Pages.
+      <strong>Bien Evaluator</strong>
+      · vitrine immo-evals ·
+      <a href="https://github.com/luongnv89/meta-app">meta-app</a>
     </p>
   </footer>
   <script src="assets/mailto.js"></script>

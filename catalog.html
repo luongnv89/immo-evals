@@ -1,94 +1,99 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catalogue — rapports bien-evaluator (meta-app)</title>
-  <meta name="description" content="Rapports acheteur réels générés par bien-evaluator : Versailles, analyse prix DVF, risques, coûts.">
+  <title>Catalogue — Bien Evaluator</title>
+  <meta name="description" content="Rapports acheteur réels : Versailles, analyse prix DVF, risques, coûts.">
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header no-print">
     <div class="site-header__inner">
       <a class="brand" href="index.html">
-        <span class="brand__mark" aria-hidden="true">BE</span>
-        <span>bien-evaluator</span>
+        <span class="brand__mark serif-opsz" aria-hidden="true">B</span>
+        <span class="brand__text">
+          <span class="brand__title">Bien Evaluator</span>
+          <span class="brand__sub">immo-evals</span>
+        </span>
       </a>
       <nav class="site-nav" aria-label="Navigation principale">
         <a href="index.html">Accueil</a>
-        <a href="catalog.html" aria-current="page">Rapports exemples</a>
+        <a href="catalog.html" aria-current="page">Rapports</a>
         <a class="btn btn--primary" href="#" data-mailto-cta>Essayer le service</a>
       </nav>
     </div>
   </header>
 
-  <div class="page-head">
-    <h1>Catalogue des rapports</h1>
-    <p class="section__intro" style="margin:0">
-      Rapports HTML servis par le worker après exécution du skill
-      <strong>bien-evaluator</strong> sur une URL d'annonce. Source :
-      <code>meta-app/reports/&lt;job-id&gt;/index.html</code>.
+  <div class="page-head shell">
+    <p class="eyebrow" style="margin-bottom:0.75rem">Catalogue</p>
+    <h1>Rapports publiés</h1>
+    <p class="section__intro">
+      HTML servi par le worker après exécution du skill sur une URL d'annonce.
+      Source : <code>meta-app/reports/&lt;job-id&gt;/index.html</code>.
     </p>
   </div>
 
-  <div class="catalog-grid">
+  <div class="catalog-grid shell">
     <a class="catalog-card" href="reports/versailles-clagny-2-pieces.html">
       <div class="catalog-card__body">
         <span class="card__tag">Bien'ici · 2026-06-04</span>
-        <span class="verdict-pill verdict-pill--ok">Prix en ligne avec le marché</span>
+        <span class="verdict-pill verdict-pill--good">Prix en ligne avec le marché</span>
         <h2>Appartement 2 pièces — Clagny Glatigny</h2>
         <p>
-          230 000 € · 30 m² · 7 667 €/m². Prix aligné sur la médiane communale ;
-          quartier bien desservi (Rive Droite). Vigilance : Carrez, charges, DPE D.
+          230 000 € · 30 m² · 7 667 €/m². Prix aligné sur la médiane ;
+          gare Rive Droite à 7 min. Vigilance : Carrez, charges, DPE D.
         </p>
         <p class="card__meta">Job <code>116ada96…</code></p>
       </div>
       <div class="catalog-card__footer">
-        <span class="btn btn--ghost">Ouvrir le rapport complet →</span>
+        <span class="btn btn--ghost">Ouvrir le rapport →</span>
       </div>
     </a>
 
     <a class="catalog-card" href="reports/versailles-chantiers-2-pieces.html">
       <div class="catalog-card__body">
         <span class="card__tag">Bien'ici · 2026-06-04</span>
-        <span class="verdict-pill">Légèrement au-dessus du marché</span>
+        <span class="verdict-pill verdict-pill--warn">Légèrement au-dessus du marché</span>
         <h2>Appartement 2 pièces — Chantiers</h2>
         <p>
-          230 000 € · 30 m² · 7 181 €/m² net vendeur (~+10,5 % vs médiane DVF).
-          Atouts : exposition sud-est, cour privée. DPE E, charges à clarifier — à négocier.
+          230 000 € · 7 181 €/m² net (~+10,5 % vs médiane DVF).
+          Sud-est, cour privée ; DPE E — à négocier.
         </p>
         <p class="card__meta">Job <code>16f2fe2d…</code></p>
       </div>
       <div class="catalog-card__footer">
-        <span class="btn btn--ghost">Ouvrir le rapport complet →</span>
+        <span class="btn btn--ghost">Ouvrir le rapport →</span>
       </div>
     </a>
 
     <a class="catalog-card" href="reports/versailles-chantiers-studio-21m2.html">
       <div class="catalog-card__body">
         <span class="card__tag">Bien'ici · 2026-06-03</span>
-        <span class="verdict-pill">Trop cher sans forte négociation</span>
-        <h2>Studio 21 m² — Chantiers (vendu loué)</h2>
+        <span class="verdict-pill verdict-pill--bad">Trop cher sans forte négociation</span>
+        <h2>Studio 21 m² — Chantiers</h2>
         <p>
-          175 000 € HAI · 8 333 €/m². Emplacement gare excellent, mais RDC sur cour,
-          travaux, DPE E. DVF Chantiers plutôt 6 000–7 000 €/m².
+          175 000 € HAI · vendu loué. Emplacement gare excellent ;
+          RDC sur cour, travaux, DPE E. DVF plutôt 6–7 k€/m².
         </p>
         <p class="card__meta">Job <code>d28a3bb6…</code></p>
       </div>
       <div class="catalog-card__footer">
-        <span class="btn btn--ghost">Ouvrir le rapport complet →</span>
+        <span class="btn btn--ghost">Ouvrir le rapport →</span>
       </div>
     </a>
   </div>
 
-  <section class="cta-band" style="margin:0 auto 3rem; max-width:1100px">
-    <h2>Votre annonce n'est pas dans la liste ?</h2>
-    <p>Envoyez l'URL de l'annonce LeBonCoin, SeLoger, PAP ou Bien'ici — nous vous contactons par e-mail.</p>
-    <a class="btn btn--primary" href="#" data-mailto-cta>Envoyer l'URL de mon annonce</a>
+  <section class="shell" style="padding-bottom:3rem">
+    <div class="cta-band">
+      <h2>Votre annonce n'est pas listée ?</h2>
+      <p>Envoyez l'URL LeBonCoin, SeLoger, PAP ou Bien'ici — réponse par e-mail.</p>
+      <a class="btn btn--primary" href="#" data-mailto-cta>Envoyer l'URL de mon annonce</a>
+    </div>
   </section>
 
-  <footer class="site-footer">
-    <p><a href="index.html">← Retour à l'accueil</a> · Synchronisé depuis <code>meta-app/reports/</code></p>
+  <footer class="site-footer shell">
+    <p><a href="index.html">← Accueil</a> · synchronisé depuis <code>meta-app/reports/</code></p>
   </footer>
   <script src="assets/mailto.js"></script>
 </body>
