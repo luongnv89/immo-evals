@@ -126,32 +126,34 @@
     </section>
 
     <section class="section" id="exemples">
-      <h2>Rapports exemples (échantillons réels de démo)</h2>
+      <h2>Rapports réels publiés ici</h2>
       <p class="section__intro">
-        Trois profils acheteur différents : premier achat à Lyon, maison en périphérie de Toulouse,
-        studio locatif à Bordeaux. Cliquez pour lire le rapport complet.
+        Ces échantillons sont les fichiers HTML finaux produits par le worker
+        <strong>bien-evaluator</strong> dans
+        <a href="https://github.com/luongnv89/meta-app">meta-app</a>
+        (<code>reports/</code>) — annonces Bien'ici à Versailles, juin 2026.
       </p>
       <div class="grid-3">
         <article class="card">
-          <span class="verdict-pill verdict-pill--ok">Prix correct à légèrement élevé</span>
-          <h3>Lyon — Croix-Rousse T3</h3>
-          <p class="card__meta">~345 000 € · ~70 m² · premier achat</p>
-          <p>Verdict prix cohérent ; budget total &gt; 350 k€ avec frais de notaire.</p>
-          <a class="btn btn--ghost" href="reports/01-appartement-lyon-croix-rousse.html">Lire le rapport</a>
+          <span class="verdict-pill verdict-pill--ok">Prix en ligne avec le marché</span>
+          <h3>Versailles — Clagny Glatigny</h3>
+          <p class="card__meta">230 000 € · 30 m² · 7 667 €/m²</p>
+          <p>2 pièces au calme ; prix aligné sur la médiane, vigilance DPE et charges.</p>
+          <a class="btn btn--ghost" href="reports/versailles-clagny-2-pieces.html">Lire le rapport</a>
         </article>
         <article class="card">
-          <span class="verdict-pill">Prix élevé</span>
-          <h3>Toulouse — maison périphérie ouest</h3>
-          <p class="card__meta">~450 000 € · famille · jardin</p>
-          <p>Au-dessus du cœur de marché local ; défendable seulement si état et secteur premium.</p>
-          <a class="btn btn--ghost" href="reports/02-maison-toulouse-perimetre.html">Lire le rapport</a>
+          <span class="verdict-pill">Légèrement au-dessus du marché</span>
+          <h3>Versailles — Chantiers (2 pièces)</h3>
+          <p class="card__meta">230 000 € · 30 m² · 7 181 €/m²</p>
+          <p>~10,5 % au-dessus de la médiane DVF ; bien à négocier (DPE E, charges).</p>
+          <a class="btn btn--ghost" href="reports/versailles-chantiers-2-pieces.html">Lire le rapport</a>
         </article>
         <article class="card">
-          <span class="verdict-pill">Prix trop ambitieux</span>
-          <h3>Bordeaux — studio Victoire</h3>
-          <p class="card__meta">Investissement locatif · ~22 m²</p>
-          <p>+40 % vs médiane DVF quartier ; intéressant seulement avec baisse de prix.</p>
-          <a class="btn btn--ghost" href="reports/03-studio-bordeaux-victoire.html">Lire le rapport</a>
+          <span class="verdict-pill">Trop cher sans forte négociation</span>
+          <h3>Versailles — Chantiers (studio)</h3>
+          <p class="card__meta">175 000 € · 21 m² · vendu loué</p>
+          <p>RDC sur cour, travaux, DPE E ; comparables DVF plus bas que le prix affiché.</p>
+          <a class="btn btn--ghost" href="reports/versailles-chantiers-studio-21m2.html">Lire le rapport</a>
         </article>
       </div>
       <p style="margin-top:1.5rem">
@@ -171,7 +173,7 @@
       </details>
       <details>
         <summary>Les exemples sur ce site sont-ils des vraies annonces ?</summary>
-        <p>Ce sont des rapports de démonstration issus de profils structurés (golden tests). Ils illustrent le format et la profondeur d'analyse.</p>
+        <p>Oui : ce sont des rapports générés par le service à partir d'URLs Bien'ici réelles (Versailles). Ils sont copiés tels quels depuis les livrables <code>meta-app/reports/</code>.</p>
       </details>
       <details>
         <summary>Comment demander une évaluation pour mon annonce ?</summary>

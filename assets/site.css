@@ -531,3 +531,43 @@ body.report-view .site-top .sample-note {
 body.report-view .report {
   max-width: 48rem;
 }
+
+/* —— Template reports (meta-app production HTML) —— */
+.immo-evals-bar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: rgba(248, 250, 252, 0.97);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font);
+  font-size: 0.88rem;
+}
+
+.immo-evals-bar__inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.25rem;
+}
+
+.immo-evals-bar a {
+  color: var(--accent-dark);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.immo-evals-bar__note {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-left: auto;
+}
+
+@media (max-width: 640px) {
+  .immo-evals-bar__note {
+    margin-left: 0;
+    width: 100%;
+  }
+}

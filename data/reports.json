@@ -1,0 +1,47 @@
+[
+  {
+    "id": "versailles-clagny-2-pieces",
+    "jobId": "116ada96b9be431d9f966c75135b17a6",
+    "title": "Appartement 2 pièces — Versailles (Clagny Glatigny)",
+    "date": "2026-06-04",
+    "url": "https://www.bienici.com/annonce/vente/versailles/appartement/2pieces/hektor-LESTOITSVERSAILLAIS2022-122",
+    "verdict": "Prix en ligne avec le marché",
+    "tone": "good",
+    "summary": "Ce 2 pièces de 30 m² au calme à Versailles Clagny est proposé à 230 000 € (7 667 €/m²), un prix aligné sur la médiane communale. Le quartier est bien desservi (gare Rive Droite à 7 min à pied) et bénéficie d'un cadre de vie remarquable. Points de vigilance : absence de mention de la surface Carrez, charges de copropriété non communiquées et DPE D.",
+    "price": "230 000 €",
+    "pricem2": "7 667 €/m²",
+    "surface": "30 m²",
+    "type": "2 pièces · 1 chambre",
+    "href": "reports/versailles-clagny-2-pieces.html"
+  },
+  {
+    "id": "versailles-chantiers-2-pieces",
+    "jobId": "16f2fe2da0eb429ab308ba037af39d54",
+    "title": "Appartement 2 pièces — Versailles (Chantiers)",
+    "date": "2026-06-04",
+    "url": "https://www.bienici.com/annonce/vente/versailles/appartement/2pieces/century-21-202_3270_2574",
+    "verdict": "Légèrement au-dessus du marché",
+    "tone": "warn",
+    "summary": "Ce 2 pièces de 30 m² au quartier Chantiers est proposé à 230 000 € (7 181 €/m² net vendeur), soit ~10,5% au-dessus de la médiane DVF versaillaise (6 500 €/m²). L'exposition sud-est et la cour privée sont des atouts, mais le DPE E avec chauffage électrique, l'absence de mention de la surface Carrez et les charges de copropriété probablement sous-estimées appellent à la vigilance. Un bien à négocier.",
+    "price": "230 000 €",
+    "pricem2": "7 181 €/m²",
+    "surface": "30 m²",
+    "type": "2 pièces · 1 chambre",
+    "href": "reports/versailles-chantiers-2-pieces.html"
+  },
+  {
+    "id": "versailles-chantiers-studio-21m2",
+    "jobId": "d28a3bb6b20248f4bc75232f59945489",
+    "title": "Achat appartement 1 pièce 21 m² — 78000 Versailles (Chantiers)",
+    "date": "2026-06-03",
+    "url": "https://www.bienici.com/annonce/vente/versailles/appartement/1piece/immo-facile-49577343?q=%2Frecherche%2Fachat%2Fversailles-78000%2Fappartement%3Fprix-max%3D300000%26camera%3D16_2.1299589_48.7996178_40_0",
+    "verdict": "Trop cher sans forte négociation",
+    "tone": "bad",
+    "summary": "Studio très bien placé près de Versailles-Chantiers, vendu loué 765 € charges comprises, mais affiché à un niveau premium alors que le bien cumule rez-de-chaussée sur cour, travaux à prévoir et DPE E. Les comparables DVF Chantiers soutiennent plutôt une valeur autour de 6 000–7 000 €/m² qu’un prix HAI à 8 333 €/m².",
+    "price": "175 000 €",
+    "pricem2": "8 333 €/m²",
+    "surface": "21 m²",
+    "type": "Studio · 1 pièce · vendu loué",
+    "href": "reports/versailles-chantiers-studio-21m2.html"
+  }
+]

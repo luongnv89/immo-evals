@@ -18,15 +18,17 @@ Buttons open the visitor’s mail client with a pre-filled message to `contact.n
 
 ## Update sample reports
 
-Golden reports are copied from [meta-app](https://github.com/luongnv89/meta-app) `tests/golden/bien-evaluator/*/index.html`:
+Pull completed **bien-evaluator** jobs from [meta-app](https://github.com/luongnv89/meta-app) `reports/` (status `done`, HTML template with embedded JSON):
 
 ```bash
-cp ../meta-app/tests/golden/bien-evaluator/01-appartement-lyon-croix-rousse/index.html reports/01-appartement-lyon-croix-rousse.html
-# … repeat for other samples …
+# from immo-evals repo root, with meta-app cloned alongside:
+python3 scripts/sync-reports-from-meta-app.py
 python3 scripts/inject-report-chrome.py
-git add reports && git commit -m "chore: refresh sample reports"
+git add reports data/reports.json && git commit -m "chore: refresh reports from meta-app"
 git push
 ```
+
+Edit `PREFERRED_IDS` in `scripts/sync-reports-from-meta-app.py` to choose which job folders to publish.
 
 GitHub Actions redeploys Pages on every push to `main`.
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catalogue — rapports exemples bien-evaluator</title>
-  <meta name="description" content="Parcourez les rapports acheteur exemples : Lyon, Toulouse, Bordeaux. Rapports HTML complets générés par bien-evaluator.">
+  <title>Catalogue — rapports bien-evaluator (meta-app)</title>
+  <meta name="description" content="Rapports acheteur réels générés par bien-evaluator : Versailles, analyse prix DVF, risques, coûts.">
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -23,57 +23,57 @@
   </header>
 
   <div class="page-head">
-    <h1>Catalogue des rapports exemples</h1>
+    <h1>Catalogue des rapports</h1>
     <p class="section__intro" style="margin:0">
-      Chaque carte ouvre le rapport HTML complet tel qu'il est servi par le service
-      (verdict, prix, risques, graphiques Mermaid). Ces échantillons proviennent de
-      jeux de test golden — profils acheteur réalistes, URLs illustratives.
+      Rapports HTML servis par le worker après exécution du skill
+      <strong>bien-evaluator</strong> sur une URL d'annonce. Source :
+      <code>meta-app/reports/&lt;job-id&gt;/index.html</code>.
     </p>
   </div>
 
   <div class="catalog-grid">
-    <a class="catalog-card" href="reports/01-appartement-lyon-croix-rousse.html">
+    <a class="catalog-card" href="reports/versailles-clagny-2-pieces.html">
       <div class="catalog-card__body">
-        <span class="card__tag">Appartement · Lyon 4e</span>
-        <span class="verdict-pill verdict-pill--ok">Prix correct à légèrement élevé</span>
-        <h2>Appartement T3 — Croix-Rousse</h2>
+        <span class="card__tag">Bien'ici · 2026-06-04</span>
+        <span class="verdict-pill verdict-pill--ok">Prix en ligne avec le marché</span>
+        <h2>Appartement 2 pièces — Clagny Glatigny</h2>
         <p>
-          Premier achat, budget ~350 k€. ~345 000 € pour ~70 m² (4 929 €/m²).
-          Verdict : cohérent mais budget total &gt; 350 k€ avec frais.
+          230 000 € · 30 m² · 7 667 €/m². Prix aligné sur la médiane communale ;
+          quartier bien desservi (Rive Droite). Vigilance : Carrez, charges, DPE D.
         </p>
-        <p class="card__meta">Contexte : immeuble canut, 3e sans ascenseur, DPE D</p>
+        <p class="card__meta">Job <code>116ada96…</code></p>
       </div>
       <div class="catalog-card__footer">
         <span class="btn btn--ghost">Ouvrir le rapport complet →</span>
       </div>
     </a>
 
-    <a class="catalog-card" href="reports/02-maison-toulouse-perimetre.html">
+    <a class="catalog-card" href="reports/versailles-chantiers-2-pieces.html">
       <div class="catalog-card__body">
-        <span class="card__tag">Maison · Toulouse ouest</span>
-        <span class="verdict-pill">Prix élevé</span>
-        <h2>Maison familiale — périphérie ouest</h2>
+        <span class="card__tag">Bien'ici · 2026-06-04</span>
+        <span class="verdict-pill">Légèrement au-dessus du marché</span>
+        <h2>Appartement 2 pièces — Chantiers</h2>
         <p>
-          Famille, jardin, budget ~450 k€. ~4 050 €/m², au-dessus du marché
-          Tournefeuille / Colomiers sauf secteur premium sans travaux.
+          230 000 € · 30 m² · 7 181 €/m² net vendeur (~+10,5 % vs médiane DVF).
+          Atouts : exposition sud-est, cour privée. DPE E, charges à clarifier — à négocier.
         </p>
-        <p class="card__meta">Contexte : ~110 m² + terrain, risques inondation à vérifier</p>
+        <p class="card__meta">Job <code>16f2fe2d…</code></p>
       </div>
       <div class="catalog-card__footer">
         <span class="btn btn--ghost">Ouvrir le rapport complet →</span>
       </div>
     </a>
 
-    <a class="catalog-card" href="reports/03-studio-bordeaux-victoire.html">
+    <a class="catalog-card" href="reports/versailles-chantiers-studio-21m2.html">
       <div class="catalog-card__body">
-        <span class="card__tag">Studio · Bordeaux Victoire</span>
-        <span class="verdict-pill">Prix trop ambitieux</span>
-        <h2>Studio investissement locatif</h2>
+        <span class="card__tag">Bien'ici · 2026-06-03</span>
+        <span class="verdict-pill">Trop cher sans forte négociation</span>
+        <h2>Studio 21 m² — Chantiers (vendu loué)</h2>
         <p>
-          ~6 100 €/m² vs ~4 343 €/m² médiane DVF Victoire. Deal intéressant
-          seulement avec baisse de prix et loyer optimisé.
+          175 000 € HAI · 8 333 €/m². Emplacement gare excellent, mais RDC sur cour,
+          travaux, DPE E. DVF Chantiers plutôt 6 000–7 000 €/m².
         </p>
-        <p class="card__meta">Contexte : ~22 m², DPE E, demande étudiante</p>
+        <p class="card__meta">Job <code>d28a3bb6…</code></p>
       </div>
       <div class="catalog-card__footer">
         <span class="btn btn--ghost">Ouvrir le rapport complet →</span>
@@ -88,7 +88,7 @@
   </section>
 
   <footer class="site-footer">
-    <p><a href="index.html">← Retour à l'accueil</a> · Rapports générés par bien-evaluator (meta-app)</p>
+    <p><a href="index.html">← Retour à l'accueil</a> · Synchronisé depuis <code>meta-app/reports/</code></p>
   </footer>
   <script src="assets/mailto.js"></script>
 </body>
