@@ -1,5 +1,20 @@
 [
   {
+    "id": "chelles-foch-maison-5-pieces",
+    "jobId": "3201113558",
+    "title": "Pavillon 5 pièces — Chelles (Centre-ville / Foch)",
+    "date": "2026-06-04",
+    "url": "https://www.leboncoin.fr/ad/ventes_immobilieres/3201113558",
+    "verdict": "Au prix, légèrement sous le marché communal",
+    "tone": "good",
+    "summary": "Pavillon des années 1970 à 5 min de la gare de Chelles, proposé à 282 000 € FAI (270 000 € net vendeur), soit ~2 944 €/m² FAI — sous la médiane des maisons de la commune (-4,5 %) et nettement sous le prix du quartier gare/centre. Emplacement et transports excellents (RER E, Gare de l'Est en ~13 min). Réserves : « travaux à prévoir » non chiffrés, DPE E (horizon 2034), et un écart d'année de construction (annonce 1970 vs registre DPE ADEME 1945 / « avant 1948 ») qui conditionne l'obligation de CREP plomb.",
+    "price": "282 000 €",
+    "pricem2": "2 944 €/m²",
+    "surface": "95,78 m²",
+    "type": "5 pièces · 3-4 chambres · terrain 177 m²",
+    "href": "reports/chelles-foch-maison-5-pieces.html"
+  },
+  {
     "id": "versailles-clagny-2-pieces",
     "jobId": "116ada96b9be431d9f966c75135b17a6",
     "title": "Appartement 2 pièces — Versailles (Clagny-Glatigny)",
