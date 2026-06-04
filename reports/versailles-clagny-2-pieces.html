@@ -145,21 +145,13 @@ tailwind.config = {
 
 <body class="report-view bg-cream font-sans text-body">
 <link rel="stylesheet" href="../assets/site.css">
-<nav class="immo-evals-bar no-print" role="navigation" aria-label="immo-evals">
-  <div class="immo-evals-bar__inner">
-    <a href="../index.html">← immo-evals</a>
-    <a href="../catalog.html">Catalogue</a>
-    <a href="#" data-mailto-cta>Essayer le service</a>
-    <span class="immo-evals-bar__note">Rapport réel</span>
-  </div>
-</nav>
 <script src="../assets/mailto.js" defer></script>
 
 
 <!-- ───────── top bar ───────── -->
 <header class="no-print sticky top-0 z-50 backdrop-blur-md bg-cream/85 border-b border-line">
   <div class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3 group">
+    <a href="../index.html" class="flex items-center gap-3 group">
       <span class="w-8 h-8 grid place-items-center shrink-0" aria-hidden="true">
         <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
           <path d="M32 8 L54 26 L54 54 L10 54 L10 26 Z" fill="none" stroke="#0A0A0A" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
@@ -172,6 +164,9 @@ tailwind.config = {
       </span>
     </a>
     <div class="flex items-center gap-1.5">
+      <a href="../index.html" class="h-9 px-3.5 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition hidden sm:inline-flex items-center">Accueil</a>
+      <a href="../catalog.html" class="h-9 px-3 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition inline-flex items-center">Rapports</a>
+      <a href="mailto:contact.nguyen.fr@gmail.com?subject=Demande%20d%27%C3%A9valuation%20bien-evaluator" class="h-9 px-3 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition inline-flex items-center">Essayer</a>
       <button id="btnExpand" class="h-9 px-3.5 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition inline-flex items-center gap-1.5">＋ <span class="hidden sm:inline">Déplier</span></button>
       <button id="btnCollapse" class="h-9 px-3.5 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition inline-flex items-center gap-1.5">− <span class="hidden sm:inline">Replier</span></button>
       <button onclick="window.print()" class="h-9 px-3.5 rounded-full bg-ink text-paper text-xs font-semibold hover:bg-leafdeep transition inline-flex items-center gap-1.5">⤓ <span class="hidden sm:inline">PDF</span></button>
