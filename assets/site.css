@@ -148,6 +148,10 @@ summary:focus-visible {
   color: var(--ink);
 }
 
+.brand__dot {
+  color: var(--leaf);
+}
+
 .brand__sub {
   font-size: 0.625rem;
   font-weight: 600;
