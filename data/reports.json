@@ -2,16 +2,16 @@
   {
     "id": "versailles-clagny-2-pieces",
     "jobId": "116ada96b9be431d9f966c75135b17a6",
-    "title": "Appartement 2 pièces — Versailles (Clagny Glatigny)",
+    "title": "Appartement 2 pièces — Versailles (Clagny-Glatigny)",
     "date": "2026-06-04",
     "url": "https://www.bienici.com/annonce/vente/versailles/appartement/2pieces/hektor-LESTOITSVERSAILLAIS2022-122",
-    "verdict": "Prix en ligne avec le marché",
-    "tone": "good",
-    "summary": "Ce 2 pièces de 30 m² au calme à Versailles Clagny est proposé à 230 000 € (7 667 €/m²), un prix aligné sur la médiane communale. Le quartier est bien desservi (gare Rive Droite à 7 min à pied) et bénéficie d'un cadre de vie remarquable. Points de vigilance : absence de mention de la surface Carrez, charges de copropriété non communiquées et DPE D.",
+    "verdict": "Au prix du marché de quartier",
+    "tone": "warn",
+    "summary": "Charmant 2 pièces 'esprit petite maison' à Clagny-Glatigny, proche gare Rive Droite. À 7 866 €/m² (sur la surface Carrez réelle de 29,24 m²), le prix est conforme aux ventes DVF récentes de petits 2P du quartier, mais cher au regard de la médiane communale. Le rez-de-chaussée et l'exposition Est justifient de viser le bas de la fourchette. Vigilance : charges de copropriété non communiquées.",
     "price": "230 000 €",
-    "pricem2": "7 667 €/m²",
-    "surface": "30 m²",
-    "type": "2 pièces · 1 chambre",
+    "pricem2": "7 866 €/m²",
+    "surface": "29,24 m²",
+    "type": "2 pièces · 1 chambre · RDC",
     "href": "reports/versailles-clagny-2-pieces.html"
   },
   {
