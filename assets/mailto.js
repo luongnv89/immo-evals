@@ -208,7 +208,6 @@
 (function () {
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("site-nav");
-  const closeButtons = document.querySelectorAll("[data-nav-close]");
   if (!toggle || !nav) return;
 
   function setOpen(open) {
@@ -227,12 +226,6 @@
     setOpen(toggle.getAttribute("aria-expanded") !== "true");
   });
 
-  closeButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      setOpen(false);
-      toggle.focus();
-    });
-  });
 
   // Close after choosing a destination.
   nav.querySelectorAll("a").forEach(function (link) {
