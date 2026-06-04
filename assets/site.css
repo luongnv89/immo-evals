@@ -1177,6 +1177,17 @@ body.report-view .site-top .sample-note {
   color: var(--leafdeep);
   font-weight: 800;
 }
+.lp-request-card__notice {
+  margin: 0.75rem 0 0;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--warn);
+  border-radius: 0.85rem;
+  background: var(--warnsoft);
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
 
 /* hero visual: stacked report preview */
 .lp-hero__visual {

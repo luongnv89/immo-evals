@@ -58,7 +58,7 @@
     '<div class="url-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="url-modal-title">',
     '  <button type="button" class="url-modal__close" data-close aria-label="Fermer">&times;</button>',
     '  <h2 class="url-modal__title" id="url-modal-title">Évaluer mon annonce</h2>',
-    '  <p class="url-modal__lede">Collez le lien de l’annonce. On vous répondra par email (adresse d’envoi utilisée pour la réponse).</p>',
+    '  <p class="url-modal__lede">Collez le lien de l’annonce. Gratuit pendant la période de test, puis service payant. On vous répondra par email (adresse d’envoi utilisée pour la réponse).</p>',
     '  <form class="url-modal__form" novalidate>',
     '    <div class="url-modal__field">',
     '      <label for="url-modal-url">URL de l’annonce</label>',
