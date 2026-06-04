@@ -1006,6 +1006,54 @@ body.report-view .site-top .sample-note {
   gap: 0.75rem;
   margin-top: 1.9rem;
 }
+.lp-url-form {
+  max-width: 34rem;
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+.lp-url-form__label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.55rem;
+}
+.lp-url-form__row {
+  display: flex;
+  gap: 0.55rem;
+  align-items: stretch;
+}
+.lp-url-form input {
+  flex: 1;
+  min-width: 0;
+  height: 2.7rem;
+  padding: 0 0.9rem;
+  border: 1px solid var(--line2);
+  border-radius: 999px;
+  font: inherit;
+  color: var(--ink);
+  background: var(--paper);
+}
+.lp-url-form input:focus {
+  outline: 2px solid var(--leaf);
+  outline-offset: 2px;
+}
+.lp-url-form input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+.lp-url-form__help,
+.lp-url-form__error {
+  margin: 0.55rem 0 0;
+  font-size: 0.78rem;
+}
+.lp-url-form__help { color: var(--mute); }
+.lp-url-form__error { color: var(--danger); }
+.lp-url-form__error[hidden] { display: none; }
+
 .lp-chips {
   display: flex;
   flex-wrap: wrap;
@@ -1384,6 +1432,8 @@ body.report-view .site-top .sample-note {
 @media (max-width: 560px) {
   .lp-feat__grid, .lp-proof__grid { grid-template-columns: 1fr; }
   .lp-flow__item { max-width: none; }
+  .lp-url-form__row { flex-direction: column; }
+  .lp-url-form .btn { width: 100%; height: 2.7rem; }
 }
 
 /* ============ URL-CAPTURE MODAL ============ */
