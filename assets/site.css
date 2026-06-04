@@ -97,6 +97,7 @@ summary:focus-visible {
 }
 
 .site-header__inner {
+  position: relative;
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 1.25rem;
@@ -179,6 +180,38 @@ summary:focus-visible {
 .site-nav > a:not(.btn)[aria-current="page"] {
   color: var(--ink);
 }
+
+/* Burger toggle — hidden on desktop, shown on mobile via media query */
+.nav-toggle {
+  display: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--line2);
+  border-radius: 0.6rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  content: "";
+  display: block;
+  width: 1.1rem;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-toggle__bars { position: relative; }
+.nav-toggle__bars::before { position: absolute; top: -6px; left: 0; }
+.nav-toggle__bars::after { position: absolute; top: 6px; left: 0; }
+/* Animate into an X when open */
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after { transform: translateY(-6px) rotate(-45deg); }
 
 /* —— Buttons (report pill style) —— */
 .btn {
@@ -793,38 +826,41 @@ summary:focus-visible {
     width: 100%;
   }
 
-  /* Header: stop nav from overflowing / overlapping the logo on phones */
-  .site-header__inner {
-    height: auto;
-    min-height: 3.5rem;
-    padding: 0.5rem 1rem;
-    gap: 0.5rem 0.75rem;
-    flex-wrap: wrap;
-  }
-  .brand__sub {
-    display: none; /* keep the lockup to one line beside the mark */
+  /* Mobile header: collapse nav behind a burger button */
+  .nav-toggle {
+    display: inline-flex;
   }
   .site-nav {
-    gap: 0.25rem 0.75rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.75rem 1rem 1rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+    /* hidden by default; revealed when [data-open] is set */
+    display: none;
+  }
+  .site-nav[data-open] {
+    display: flex;
   }
   .site-nav > a:not(.btn) {
-    font-size: 0.8rem;
+    padding: 0.65rem 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
+  .site-nav > a:not(.btn):hover,
+  .site-nav > a:not(.btn)[aria-current="page"] {
+    background: var(--cream);
   }
   .site-nav .btn {
-    padding: 0 0.7rem;
-    font-size: 0.72rem;
-  }
-}
-
-@media (max-width: 380px) {
-  /* Very narrow: let brand + nav stack cleanly instead of cramming one row */
-  .site-header__inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .site-nav {
-    width: 100%;
-    justify-content: space-between;
+    height: 2.6rem;
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
   }
 }
 
