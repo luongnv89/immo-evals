@@ -45,7 +45,8 @@
   // --- Modal construction ---------------------------------------------------
 
   const ctas = document.querySelectorAll("[data-mailto-cta]");
-  if (!ctas.length) return;
+  const inlineForms = document.querySelectorAll("[data-inline-url-form]");
+  if (!ctas.length && !inlineForms.length) return;
 
   let lastFocused = null;
 
@@ -87,6 +88,40 @@
     errorEl.setAttribute("hidden", "");
     input.removeAttribute("aria-invalid");
   }
+
+  function validateListingUrl(input, errorEl) {
+    const url = input.value.trim();
+    if (!url) {
+      showError(input, errorEl, "Indiquez l’URL de l’annonce.");
+      return null;
+    }
+    if (!isValidUrl(url)) {
+      showError(input, errorEl, "Ce lien n’est pas une URL valide (https://…).");
+      return null;
+    }
+    clearError(input, errorEl);
+    return url;
+  }
+
+  inlineForms.forEach(function (formEl) {
+    const input = formEl.querySelector('input[name="url"]');
+    const errorEl = formEl.querySelector('[role="alert"]');
+    if (!input || !errorEl) return;
+
+    input.addEventListener("input", function () {
+      clearError(input, errorEl);
+    });
+
+    formEl.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const url = validateListingUrl(input, errorEl);
+      if (!url) {
+        input.focus();
+        return;
+      }
+      window.location.href = mailtoHref(url);
+    });
+  });
 
   function openModal() {
     lastFocused = document.activeElement;
@@ -153,22 +188,11 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    const url = urlInput.value.trim();
-    let ok = true;
-
-    if (!url) {
-      showError(urlInput, urlError, "Indiquez l’URL de l’annonce.");
-      ok = false;
-    } else if (!isValidUrl(url)) {
-      showError(urlInput, urlError, "Ce lien n’est pas une URL valide (https://…).");
-      ok = false;
-    } else {
-      clearError(urlInput, urlError);
-    }
+    const url = validateListingUrl(urlInput, urlError);
 
     // On failure the composer does not open and the form keeps the input so
     // the visitor can correct it. Focus the field in error.
-    if (!ok) {
+    if (!url) {
       urlInput.focus();
       return;
     }
