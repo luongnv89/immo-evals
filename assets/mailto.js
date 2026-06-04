@@ -1,14 +1,14 @@
 /**
  * CTA flow: clicking "Essayer le service" (and equivalent CTAs) opens an
- * in-page form to capture the listing URL and the visitor's email. Both are
- * validated on the front end; only when both pass does the mail composer open,
- * pre-filled so the visitor just clicks Send.
+ * in-page form to capture the listing URL. On submit we open a mailto: link
+ * pre-filled with the URL in the body. The visitor's actual sender email (From:)
+ * is used to reply with the result — no email field in the dialog.
  */
 (function () {
   const EMAIL = "contact.nguyen.fr@gmail.com";
   const SUBJECT = "Demande d'évaluation bien-evaluator";
 
-  function mailtoBody(listingUrl, visitorEmail) {
+  function mailtoBody(listingUrl) {
     return [
       "Bonjour,",
       "",
@@ -17,18 +17,16 @@
       "URL de l'annonce qui m'intéresse :",
       listingUrl,
       "",
-      "Mon email : " + visitorEmail,
-      "",
       "Merci,",
     ].join("\n");
   }
 
-  function mailtoHref(listingUrl, visitorEmail) {
+  function mailtoHref(listingUrl) {
     // Build the query manually: URLSearchParams encodes spaces as "+", which
     // mail clients render literally in a mailto: body (RFC 6068). encodeURIComponent
     // uses %20 so the subject and body read cleanly.
     const subject = encodeURIComponent(SUBJECT);
-    const body = encodeURIComponent(mailtoBody(listingUrl, visitorEmail));
+    const body = encodeURIComponent(mailtoBody(listingUrl));
     return "mailto:" + EMAIL + "?subject=" + subject + "&body=" + body;
   }
 
@@ -42,12 +40,6 @@
       return false;
     }
     return parsed.protocol === "http:" || parsed.protocol === "https:";
-  }
-
-  // Pragmatic email check: a single @ with non-empty local part and a dotted domain.
-  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  function isValidEmail(value) {
-    return EMAIL_RE.test(value);
   }
 
   // --- Modal construction ---------------------------------------------------
@@ -65,19 +57,13 @@
     '<div class="url-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="url-modal-title">',
     '  <button type="button" class="url-modal__close" data-close aria-label="Fermer">&times;</button>',
     '  <h2 class="url-modal__title" id="url-modal-title">Évaluer mon annonce</h2>',
-    '  <p class="url-modal__lede">Collez le lien de l’annonce et votre email. On vous répond avec le rapport.</p>',
+    '  <p class="url-modal__lede">Collez le lien de l’annonce. On vous répondra par email (adresse d’envoi utilisée pour la réponse).</p>',
     '  <form class="url-modal__form" novalidate>',
     '    <div class="url-modal__field">',
     '      <label for="url-modal-url">URL de l’annonce</label>',
     '      <input type="url" id="url-modal-url" name="url" inputmode="url" autocomplete="url"',
     '             placeholder="https://www.leboncoin.fr/..." aria-describedby="url-modal-url-error" />',
     '      <p class="url-modal__error" id="url-modal-url-error" role="alert" hidden></p>',
-    "    </div>",
-    '    <div class="url-modal__field">',
-    '      <label for="url-modal-email">Votre email</label>',
-    '      <input type="email" id="url-modal-email" name="email" inputmode="email" autocomplete="email"',
-    '             placeholder="vous@exemple.fr" aria-describedby="url-modal-email-error" />',
-    '      <p class="url-modal__error" id="url-modal-email-error" role="alert" hidden></p>',
     "    </div>",
     '    <button type="submit" class="btn btn--primary btn--lg url-modal__submit">Ouvrir l’email pré-rempli</button>',
     "  </form>",
@@ -88,9 +74,7 @@
   const dialog = overlay.querySelector(".url-modal__dialog");
   const form = overlay.querySelector(".url-modal__form");
   const urlInput = overlay.querySelector("#url-modal-url");
-  const emailInput = overlay.querySelector("#url-modal-email");
   const urlError = overlay.querySelector("#url-modal-url-error");
-  const emailError = overlay.querySelector("#url-modal-email-error");
 
   function showError(input, errorEl, message) {
     errorEl.textContent = message;
@@ -166,14 +150,10 @@
   urlInput.addEventListener("input", function () {
     clearError(urlInput, urlError);
   });
-  emailInput.addEventListener("input", function () {
-    clearError(emailInput, emailError);
-  });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     const url = urlInput.value.trim();
-    const email = emailInput.value.trim();
     let ok = true;
 
     if (!url) {
@@ -186,25 +166,14 @@
       clearError(urlInput, urlError);
     }
 
-    if (!email) {
-      showError(emailInput, emailError, "Indiquez votre email.");
-      ok = false;
-    } else if (!isValidEmail(email)) {
-      showError(emailInput, emailError, "Cette adresse email n’est pas valide.");
-      ok = false;
-    } else {
-      clearError(emailInput, emailError);
-    }
-
     // On failure the composer does not open and the form keeps the input so
-    // the visitor can correct it. Focus the first field in error.
+    // the visitor can correct it. Focus the field in error.
     if (!ok) {
-      if (urlInput.hasAttribute("aria-invalid")) urlInput.focus();
-      else emailInput.focus();
+      urlInput.focus();
       return;
     }
 
-    window.location.href = mailtoHref(url, email);
+    window.location.href = mailtoHref(url);
     // The mail client opens in a separate app; close the modal so the visitor
     // returns to a clean page rather than a stale open form.
     closeModal();
