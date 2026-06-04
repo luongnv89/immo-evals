@@ -76,47 +76,38 @@
     <section class="lp-hero">
       <div class="lp-hero__inner shell">
         <div class="lp-hero__copy">
-          <span class="lp-pill"><span class="lp-pill__dot"></span> Annonces FR · LeBonCoin · SeLoger · PAP · Bien'ici</span>
+          <span class="lp-pill"><span class="lp-pill__dot"></span> Analyse d'annonce immobilière</span>
           <h1 class="lp-hero__title">
             C'est cher,<br>ou c'est une <span class="lp-hl">bonne affaire</span>&nbsp;?
           </h1>
           <p class="lp-hero__lead">
-            Collez le lien de l'annonce. On vous rend un rapport acheteur :
-            verdict prix, risques, coût réel.
+            Collez une annonce. Recevez un verdict clair sur le prix, les risques et le coût réel.
           </p>
-          <ul class="lp-hero__trust" aria-label="Informations de confiance">
-            <li>LeBonCoin, SeLoger, PAP, Bien'ici et plateformes similaires</li>
-            <li>Aide à la décision, pas un conseil juridique ou financier</li>
-          </ul>
-          <div class="lp-request-card">
-            <div class="lp-request-card__head">
-              <div>
-                <span class="lp-request-card__kicker">Test gratuit</span>
-                <p class="lp-request-card__title">Gratuit pendant la période de test, puis service payant</p>
-              </div>
-              <a class="btn btn--ghost" href="reports/chelles-foch-maison-5-pieces.html">Voir un exemple</a>
-            </div>
+
+          <!-- Design decision: one calm action block replaces repeated platform/proof messaging. -->
+          <div class="lp-request-card" aria-labelledby="hero-form-title">
             <form class="lp-url-form" data-inline-url-form novalidate>
-              <label class="lp-url-form__label" for="hero-listing-url">Collez l'URL de l'annonce</label>
+              <div class="lp-url-form__header">
+                <label class="lp-url-form__label" id="hero-form-title" for="hero-listing-url">Votre annonce</label>
+                <a class="btn btn--ghost" href="reports/chelles-foch-maison-5-pieces.html">Voir un exemple</a>
+              </div>
               <div class="lp-url-form__row">
                 <input id="hero-listing-url" name="url" type="url" inputmode="url" autocomplete="url" placeholder="https://www.leboncoin.fr/..." aria-describedby="hero-listing-url-help hero-listing-url-error">
                 <button class="btn btn--primary" type="submit">Préparer l'email</button>
               </div>
-              <p class="lp-url-form__help" id="hero-listing-url-help">L'étape suivante ouvre un email pré-rempli. Votre adresse d'envoi servira à recevoir le rapport.</p>
+              <p class="lp-url-form__help" id="hero-listing-url-help">On ouvre un email pré-rempli. Votre adresse servira à recevoir le rapport.</p>
               <p class="lp-url-form__error" id="hero-listing-url-error" role="alert" hidden></p>
             </form>
-            <div class="lp-request-card__proof" aria-label="Garanties du service">
-              <span><strong>Gratuit en bêta</strong></span>
-              <span>Réponse sous 24h</span>
-              <span>Rapport en français</span>
-              <span>Données DVF citées</span>
-              <span>Pas un conseil professionnel</span>
-            </div>
-            <p class="lp-request-card__notice">Offre de test temporaire : l'évaluation est gratuite aujourd'hui et deviendra payante après la période de test.</p>
+            <ul class="lp-hero__assurance" aria-label="Garanties du service">
+              <li>Gratuit en bêta</li>
+              <li>Réponse sous 24h</li>
+              <li>Données DVF citées</li>
+            </ul>
+            <p class="lp-request-card__notice">La version bêta est gratuite. Le service deviendra payant après la période de test.</p>
           </div>
         </div>
 
-        <!-- Visual: mini report preview -->
+        <!-- Visual: keep the original stacked report preview, now with less competing copy on the left. -->
         <div class="lp-hero__visual" aria-hidden="true">
           <div class="lp-card3 lp-card3--back"></div>
           <div class="lp-card3 lp-card3--mid"></div>
@@ -128,7 +119,7 @@
             <div class="lp-preview__price">
               <span class="lp-preview__big">7 866</span><span class="lp-preview__unit">€/m²</span>
             </div>
-            <!-- gauge: where this listing sits vs market -->
+            <!-- Gauge: where this listing sits vs market. -->
             <div class="lp-gauge">
               <div class="lp-gauge__track">
                 <span class="lp-gauge__zone lp-gauge__zone--good"></span>
