@@ -1324,6 +1324,46 @@ body.report-view .site-top .sample-note {
   margin: 0 0 0.6rem;
 }
 .lp-cta p { color: rgba(255,255,255,0.78); margin: 0 0 1.8rem; font-size: 1.05rem; }
+.lp-cta__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.lp-cta__note {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+}
+
+/* ---------- HERO CTA NOTE ---------- */
+.lp-hero__cta-note {
+  font-size: 0.78rem;
+  color: var(--mute);
+  margin-top: 0.35rem;
+  margin-left: 0.05rem;
+}
+
+/* ---------- BADGE ---------- */
+.lp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--leafdeep);
+  background: var(--leafsoft);
+  border: 1px solid #d6f0df;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+}
+.lp-cta__note .lp-badge {
+  color: rgba(255,255,255,0.95);
+  background: rgba(22,163,74,0.3);
+  border-color: rgba(22,163,74,0.5);
+}
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 880px) {
