@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>immo·evals — Rapports acheteur immobilier</title>
-  <meta name="description" content="Évaluez une annonce immobilière française : prix au m², risques, coût total, angle de négociation. Rapports exemples bien-evaluator.">
+  <meta name="description" content="Collez le lien d'une annonce immobilière française. Recevez un rapport acheteur : verdict prix au m², risques, coût total, angle de négociation.">
   <link rel="icon" href="assets/logo/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/logo/logo-icon.svg">
   <link rel="stylesheet" href="assets/site.css">
@@ -33,172 +33,204 @@
   </header>
 
   <main>
-    <section class="hero shell">
-      <div class="hero-panel">
-        <div class="hero-panel__body">
-          <p class="eyebrow">Rapport d'évaluation · France</p>
-          <h1>Savoir si le prix d'une annonce est défendable — avant de visiter</h1>
-          <p class="hero__lead">
-            Vous trouvez un bien sur LeBonCoin, SeLoger ou Bien'ici, mais le doute reste :
-            est-ce cher ? quels risques ? combien ça coûte vraiment avec les frais ?
-            <strong>Bien Evaluator</strong> produit un rapport acheteur en français —
-            verdict prix, commune, matrice de risques et piste de négociation.
+    <!-- ============ HERO ============ -->
+    <section class="lp-hero">
+      <div class="lp-hero__inner shell">
+        <div class="lp-hero__copy">
+          <span class="lp-pill"><span class="lp-pill__dot"></span> Annonces FR · LeBonCoin · SeLoger · PAP · Bien'ici</span>
+          <h1 class="lp-hero__title">
+            C'est cher,<br>ou c'est une <span class="lp-hl">bonne affaire</span>&nbsp;?
+          </h1>
+          <p class="lp-hero__lead">
+            Collez le lien de l'annonce. On vous rend un rapport acheteur :
+            verdict prix, risques, coût réel.
           </p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="catalog.html">Voir les rapports</a>
-            <a class="btn btn--ghost" href="#" data-mailto-cta>Demander une évaluation</a>
+          <div class="lp-hero__actions">
+            <a class="btn btn--primary btn--lg" href="#" data-mailto-cta>Évaluer mon annonce</a>
+            <a class="btn btn--ghost btn--lg" href="catalog.html">Voir un exemple</a>
           </div>
-          <div class="trust-bar">
-            <span><strong>3</strong> rapports réels publiés</span>
-            <span><strong>DVF</strong> et sources citées</span>
-            <span>Pas un conseil professionnel</span>
+          <div class="lp-chips">
+            <span class="lp-chip">Données DVF citées</span>
+            <span class="lp-chip">Rapport en français</span>
+            <span class="lp-chip lp-chip--mute">Pas un conseil professionnel</span>
+          </div>
+        </div>
+
+        <!-- Visual: mini report preview -->
+        <div class="lp-hero__visual" aria-hidden="true">
+          <div class="lp-card3 lp-card3--back"></div>
+          <div class="lp-card3 lp-card3--mid"></div>
+          <div class="lp-preview">
+            <div class="lp-preview__top">
+              <span class="lp-preview__addr">Versailles · Clagny</span>
+              <span class="verdict-pill verdict-pill--good">Prix marché</span>
+            </div>
+            <div class="lp-preview__price">
+              <span class="lp-preview__big">7 667</span><span class="lp-preview__unit">€/m²</span>
+            </div>
+            <!-- gauge: where this listing sits vs market -->
+            <div class="lp-gauge">
+              <div class="lp-gauge__track">
+                <span class="lp-gauge__zone lp-gauge__zone--good"></span>
+                <span class="lp-gauge__zone lp-gauge__zone--warn"></span>
+                <span class="lp-gauge__zone lp-gauge__zone--bad"></span>
+                <span class="lp-gauge__marker" style="left:46%"></span>
+              </div>
+              <div class="lp-gauge__labels">
+                <span>Sous le marché</span><span>Médiane</span><span>Au-dessus</span>
+              </div>
+            </div>
+            <ul class="lp-preview__rows">
+              <li><span>Écart médiane DVF</span><b class="t-good">+0,4 %</b></li>
+              <li><span>Coût total estimé</span><b>248 200 €</b></li>
+              <li><span>Risques majeurs</span><b>2 à vérifier</b></li>
+            </ul>
           </div>
         </div>
       </div>
-      <aside class="hero-panel hero-card" aria-labelledby="hero-card-title">
-        <h2 id="hero-card-title">Ce que contient le rapport</h2>
-        <ul>
-          <li>Verdict rapide et positionnement prix (€/m² vs marché)</li>
-          <li>Qualité de commune (transports, cadre de vie, projets)</li>
-          <li>Matrice de risques et questions à poser au vendeur</li>
-          <li>Coût total d'acquisition et angle de négociation</li>
-          <li>Graphiques Chart.js à partir des données réelles</li>
-        </ul>
-      </aside>
     </section>
 
-    <section class="section section--alt shell" id="probleme">
-      <h2>Vous n'êtes pas seul face à l'annonce</h2>
-      <p class="section__intro">
-        Le vendeur connaît son script. Vous devez décider avec des chiffres épars,
-        des photos flatteuses et peu de recul sur le quartier.
-      </p>
-      <div class="grid-3">
-        <article class="card">
-          <span class="card__tag">Problème</span>
-          <h3>Prix opaque</h3>
-          <p>Difficile de savoir si 4 900 €/m² est normal pour ce quartier précis, pas pour toute la ville.</p>
+    <!-- ============ HOW (3 steps, visual) ============ -->
+    <section class="lp-steps shell" id="comment">
+      <ol class="lp-flow">
+        <li class="lp-flow__item">
+          <span class="lp-flow__num">1</span>
+          <div class="lp-flow__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+          </div>
+          <h3>Collez l'URL</h3>
+          <p>Le lien de l'annonce qui vous intéresse.</p>
+        </li>
+        <li class="lp-flow__sep" aria-hidden="true">→</li>
+        <li class="lp-flow__item">
+          <span class="lp-flow__num">2</span>
+          <div class="lp-flow__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <h3>On analyse</h3>
+          <p>Marché, commune et risques, croisés.</p>
+        </li>
+        <li class="lp-flow__sep" aria-hidden="true">→</li>
+        <li class="lp-flow__item">
+          <span class="lp-flow__num">3</span>
+          <div class="lp-flow__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+          </div>
+          <h3>Vous décidez</h3>
+          <p>Un rapport clair, sourcé, orienté acheteur.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ WHAT YOU GET (visual grid) ============ -->
+    <section class="lp-feat shell" id="rapport">
+      <h2 class="lp-h2">Tout le rapport, en un coup d'œil</h2>
+      <div class="lp-feat__grid">
+        <article class="lp-feat__cell">
+          <span class="lp-feat__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </span>
+          <h3>Verdict prix</h3>
+          <p>€/m² vs médiane DVF, écart chiffré.</p>
         </article>
-        <article class="card">
-          <span class="card__tag">Problème</span>
-          <h3>Risques cachés</h3>
-          <p>Inondation, copropriété, DPE, travaux : tout n'apparaît pas dans le titre de l'annonce.</p>
+        <article class="lp-feat__cell">
+          <span class="lp-feat__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><rect x="6" y="10" width="3" height="8"/><rect x="11" y="6" width="3" height="12"/><rect x="16" y="13" width="3" height="5"/></svg>
+          </span>
+          <h3>Graphiques réels</h3>
+          <p>Comparables et tendances visualisés.</p>
         </article>
-        <article class="card">
-          <span class="card__tag">Problème</span>
-          <h3>Budget réel flou</h3>
-          <p>Entre notaire, charges et travaux, le prix affiché n'est pas ce que vous payez.</p>
+        <article class="lp-feat__cell">
+          <span class="lp-feat__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </span>
+          <h3>Matrice de risques</h3>
+          <p>Inondation, DPE, copro, travaux.</p>
+        </article>
+        <article class="lp-feat__cell">
+          <span class="lp-feat__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+          </span>
+          <h3>Coût total</h3>
+          <p>Notaire, charges, travaux inclus.</p>
+        </article>
+        <article class="lp-feat__cell">
+          <span class="lp-feat__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </span>
+          <h3>Angle de négo</h3>
+          <p>Leviers concrets et questions clés.</p>
+        </article>
+        <article class="lp-feat__cell">
+          <span class="lp-feat__ic" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+          </span>
+          <h3>Sources citées</h3>
+          <p>Limites assumées, rien d'inventé.</p>
         </article>
       </div>
     </section>
 
-    <section class="section shell" id="solution">
-      <h2>Un guide structuré, pas une brochure commerciale</h2>
-      <p class="section__intro">
-        Le service lit l'annonce (URL obligatoire), croise données marché et commune,
-        et rend un rapport HTML — honnête, sourcé, orienté décision acheteur.
-      </p>
-      <div class="grid-3">
-        <article class="card">
-          <span class="card__tag">Bénéfice</span>
-          <h3>Verdict prix en tête</h3>
-          <p>Comparaison €/m² vs médiane DVF et estimations marché, avec écart chiffré.</p>
-        </article>
-        <article class="card">
-          <span class="card__tag">Bénéfice</span>
-          <h3>Décision informée</h3>
-          <p>Checklist de visite, coût total, et levier concret pour négocier.</p>
-        </article>
-        <article class="card">
-          <span class="card__tag">Bénéfice</span>
-          <h3>Transparence</h3>
-          <p>Limites et sources indiquées ; les données manquantes ne sont pas inventées.</p>
-        </article>
+    <!-- ============ REAL REPORTS (the proof) ============ -->
+    <section class="lp-proof shell" id="exemples">
+      <div class="lp-proof__head">
+        <h2 class="lp-h2">Des rapports réels, pas une démo</h2>
+        <a class="btn btn--ghost" href="catalog.html">Catalogue complet →</a>
       </div>
-    </section>
-
-    <section class="section section--alt shell" id="comment">
-      <h2>Comment ça marche</h2>
-      <p class="section__intro">Trois étapes côté utilisateur — le moteur fait le reste en arrière-plan.</p>
-      <div class="steps">
-        <article class="step">
-          <h3>Envoyez l'URL</h3>
-          <p>LeBonCoin, SeLoger, PAP, Bien'ici… Collez le lien de l'annonce qui vous intéresse.</p>
-        </article>
-        <article class="step">
-          <h3>Analyse automatisée</h3>
-          <p>Récupération annonce, recherche DVF/commune/risques, génération du rapport.</p>
-        </article>
-        <article class="step">
-          <h3>Lisez le rapport</h3>
-          <p>Même format que les exemples du catalogue : verdict, graphiques, sections repliables.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section shell" id="exemples">
-      <h2>Rapports réels publiés ici</h2>
-      <p class="section__intro">
-        Livrables HTML finaux depuis
-        <a href="https://github.com/luongnv89/meta-app">meta-app</a>
-        <code>reports/</code> — annonces Bien'ici à Versailles, juin 2026.
-      </p>
-      <div class="grid-3">
-        <article class="card">
-          <span class="verdict-pill verdict-pill--good">Prix en ligne avec le marché</span>
+      <div class="lp-proof__grid">
+        <a class="lp-rep" href="reports/versailles-clagny-2-pieces.html">
+          <span class="verdict-pill verdict-pill--good">Prix marché</span>
           <h3>Clagny Glatigny</h3>
-          <p class="card__meta">230 000 € · 30 m² · 7 667 €/m²</p>
-          <p>2 pièces au calme ; prix aligné sur la médiane, vigilance DPE et charges.</p>
-          <a class="btn btn--ghost" href="reports/versailles-clagny-2-pieces.html">Lire le rapport</a>
-        </article>
-        <article class="card">
-          <span class="verdict-pill verdict-pill--warn">Légèrement au-dessus du marché</span>
+          <p class="lp-rep__meta">230 000 € · 30 m² · <b>7 667 €/m²</b></p>
+          <p class="lp-rep__note">2 pièces au calme, aligné sur la médiane.</p>
+          <span class="lp-rep__link">Lire le rapport →</span>
+        </a>
+        <a class="lp-rep" href="reports/versailles-chantiers-2-pieces.html">
+          <span class="verdict-pill verdict-pill--warn">Au-dessus marché</span>
           <h3>Chantiers — 2 pièces</h3>
-          <p class="card__meta">230 000 € · 30 m² · 7 181 €/m²</p>
-          <p>~10,5 % au-dessus de la médiane DVF ; bien à négocier (DPE E, charges).</p>
-          <a class="btn btn--ghost" href="reports/versailles-chantiers-2-pieces.html">Lire le rapport</a>
-        </article>
-        <article class="card">
-          <span class="verdict-pill verdict-pill--bad">Trop cher sans forte négociation</span>
+          <p class="lp-rep__meta">230 000 € · 30 m² · <b>7 181 €/m²</b></p>
+          <p class="lp-rep__note">~10,5 % au-dessus de la médiane DVF.</p>
+          <span class="lp-rep__link">Lire le rapport →</span>
+        </a>
+        <a class="lp-rep" href="reports/versailles-chantiers-studio-21m2.html">
+          <span class="verdict-pill verdict-pill--bad">Trop cher</span>
           <h3>Chantiers — studio 21 m²</h3>
-          <p class="card__meta">175 000 € · vendu loué</p>
-          <p>RDC sur cour, travaux, DPE E ; comparables DVF en dessous du prix affiché.</p>
-          <a class="btn btn--ghost" href="reports/versailles-chantiers-studio-21m2.html">Lire le rapport</a>
-        </article>
+          <p class="lp-rep__meta">175 000 € · <b>vendu loué</b></p>
+          <p class="lp-rep__note">RDC sur cour, travaux, comparables en dessous.</p>
+          <span class="lp-rep__link">Lire le rapport →</span>
+        </a>
       </div>
-      <p style="margin-top:1.25rem">
-        <a class="btn btn--primary" href="catalog.html">Catalogue complet</a>
-      </p>
     </section>
 
-    <section class="section section--alt faq shell" id="faq">
-      <h2>Questions fréquentes</h2>
-      <details>
-        <summary>Est-ce un conseil juridique ou financier ?</summary>
-        <p>Non. Aide à la décision basée sur des sources publiques et l'annonce ; faites valider par un professionnel si besoin.</p>
-      </details>
-      <details>
-        <summary>Quels sites d'annonces sont supportés ?</summary>
-        <p>LeBonCoin, SeLoger, PAP, Bien'ici et plateformes similaires — via l'URL de l'annonce.</p>
-      </details>
-      <details>
-        <summary>Les exemples sont-ils de vraies annonces ?</summary>
-        <p>Oui : rapports générés à partir d'URLs Bien'ici réelles, copiés depuis <code>meta-app/reports/</code>.</p>
-      </details>
-      <details>
-        <summary>Comment demander une évaluation ?</summary>
-        <p>Cliquez sur « Essayer le service » : votre client mail s'ouvre — collez l'URL de l'annonce et envoyez.</p>
-      </details>
+    <!-- ============ FAQ (compact) ============ -->
+    <section class="lp-faq shell" id="faq">
+      <h2 class="lp-h2">Questions fréquentes</h2>
+      <div class="lp-faq__grid">
+        <details>
+          <summary>Est-ce un conseil juridique ou financier ?</summary>
+          <p>Non. Une aide à la décision basée sur des sources publiques et l'annonce. Faites valider par un professionnel si besoin.</p>
+        </details>
+        <details>
+          <summary>Quels sites sont supportés ?</summary>
+          <p>LeBonCoin, SeLoger, PAP, Bien'ici et plateformes similaires — via l'URL de l'annonce.</p>
+        </details>
+        <details>
+          <summary>Les exemples sont-ils de vraies annonces ?</summary>
+          <p>Oui : rapports générés à partir d'URLs Bien'ici réelles à Versailles.</p>
+        </details>
+        <details>
+          <summary>Comment lancer une évaluation ?</summary>
+          <p>Cliquez « Évaluer mon annonce » : votre client mail s'ouvre, collez l'URL et envoyez.</p>
+        </details>
+      </div>
     </section>
 
+    <!-- ============ FINAL CTA ============ -->
     <section class="shell" id="essayer">
-      <div class="cta-band">
-        <h2>Prêt à tester sur votre annonce ?</h2>
-        <p>
-          Envoyez l'URL de l'annonce qui vous intéresse. Nous vous répondrons par e-mail
-          pour lancer une évaluation.
-        </p>
-        <a class="btn btn--primary" href="#" data-mailto-cta>Envoyer l'URL de mon annonce</a>
+      <div class="lp-cta">
+        <h2>Une annonce en tête&nbsp;?</h2>
+        <p>Envoyez-nous le lien. On vous répond avec le rapport.</p>
+        <a class="btn btn--primary btn--lg" href="#" data-mailto-cta>Envoyer l'URL de mon annonce</a>
       </div>
     </section>
   </main>
