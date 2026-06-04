@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none" role="img" aria-label="immo·evals app icon">
+  <!-- Rounded square plate -->
+  <rect width="512" height="512" rx="112" fill="#faf9f6"/>
+  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="#e7e5df" stroke-width="2"/>
+  <!-- Mark centered: 64-unit mark scaled x4.5 = 288, centered at (112,112) -->
+  <g transform="translate(112 112) scale(4.5)">
+    <path d="M32 8 L54 26 L54 54 L10 54 L10 26 Z" fill="none" stroke="#0a0a0a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M22 37 L29 44 L43 30" fill="none" stroke="#16a34a" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

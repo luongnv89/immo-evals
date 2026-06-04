@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="72" viewBox="0 0 320 72" fill="none" role="img" aria-label="immo·evals">
+  <!-- Mark, scaled 64->56 and centered vertically (translate x=8 y=8) -->
+  <g transform="translate(8 8) scale(0.875)">
+    <path d="M32 8 L54 26 L54 54 L10 54 L10 26 Z" fill="none" stroke="#0a0a0a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M22 37 L29 44 L43 30" fill="none" stroke="#16a34a" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="78" y="46" font-family="'Inter Tight', system-ui, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5">
+    <tspan fill="#0a0a0a">immo</tspan><tspan fill="#16a34a">·</tspan><tspan fill="#0a0a0a">evals</tspan>
+  </text>
+</svg>

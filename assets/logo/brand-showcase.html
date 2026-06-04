@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>immo·evals — Brand Identity</title>
+<link rel="icon" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0a; --paper:#fff; --cream:#faf9f6; --sand:#f3f1ea;
+    --line:#e7e5df; --line2:#d8d5cc; --mute:#6b7280; --body:#1f2937;
+    --leaf:#16a34a; --leafdeep:#15803d; --leafsoft:#f0fdf4;
+    --radius:1rem; --max:64rem;
+    --font-sans:"Inter Tight",system-ui,sans-serif;
+    --font-serif:Fraunces,Georgia,serif;
+    --font-mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font-sans);color:var(--body);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
+  h1,h2,h3{color:var(--ink);font-weight:700;letter-spacing:-0.02em;line-height:1.15}
+  .eyebrow{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--leafdeep);font-weight:500}
+  section{padding:4.5rem 0;border-bottom:1px solid var(--line)}
+
+  /* hero */
+  .hero{background:var(--paper);text-align:center;padding:5.5rem 0 5rem}
+  .hero .mark{width:96px;height:96px;margin:0 auto 1.5rem;display:block}
+  .hero h1{font-size:clamp(2.4rem,6vw,3.6rem)}
+  .hero h1 .dot{color:var(--leaf)}
+  .hero .tag{font-family:var(--font-serif);font-size:1.25rem;color:var(--mute);margin-top:.75rem;font-style:italic}
+  .hero .sub{margin-top:1.25rem;max-width:34rem;margin-inline:auto;color:var(--body)}
+  .flag{font-size:1.1rem}
+
+  /* concept */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .concept-art{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:3rem;display:flex;justify-content:center}
+  .concept-art svg{width:180px;height:180px}
+  h2{font-size:1.9rem;margin:.5rem 0 1rem}
+  .concept p{margin-bottom:1rem}
+  .concept strong{color:var(--ink)}
+
+  /* variants */
+  .vgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:2rem}
+  .card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--paper)}
+  .card .stage{display:flex;align-items:center;justify-content:center;padding:2.5rem;min-height:140px}
+  .card .stage.dark{background:var(--ink)}
+  .card .stage.cream{background:var(--cream)}
+  .card .meta{display:flex;justify-content:space-between;padding:.75rem 1rem;border-top:1px solid var(--line);font-size:.8rem}
+  .card .meta b{color:var(--ink);font-weight:600}
+  .card .meta span{font-family:var(--font-mono);color:var(--mute)}
+  .card img{max-width:100%;max-height:80px}
+
+  /* palette */
+  .pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-top:2rem}
+  .sw{border:1px solid var(--line);border-radius:.75rem;overflow:hidden;background:var(--paper)}
+  .sw .chip{height:80px}
+  .sw .lbl{padding:.6rem .75rem;font-size:.78rem}
+  .sw .lbl b{display:block;color:var(--ink);font-weight:600}
+  .sw .lbl code{font-family:var(--font-mono);color:var(--mute);font-size:.72rem}
+
+  /* type */
+  .typ{display:grid;gap:1.5rem;margin-top:2rem}
+  .typ-row{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem 1.75rem}
+  .typ-row .role{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+  .sample-sans{font-family:var(--font-sans);font-size:2rem;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+  .sample-serif{font-family:var(--font-serif);font-size:1.6rem;color:var(--ink);font-style:italic}
+  .sample-mono{font-family:var(--font-mono);font-size:1.1rem;color:var(--ink)}
+
+  /* dev ref */
+  pre{background:var(--ink);color:#e5e7eb;border-radius:var(--radius);padding:1.5rem;overflow:auto;font-family:var(--font-mono);font-size:.82rem;line-height:1.7;margin-top:1.5rem}
+  pre .c{color:#9ca3af}
+  pre .g{color:#4ade80}
+
+  footer{padding:3rem 0;text-align:center;color:var(--mute);font-size:.85rem;border-bottom:none}
+  footer a{color:var(--leafdeep)}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}.vgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="mark" src="logo-mark.svg" alt="immo·evals mark">
+    <p class="eyebrow">Brand Identity</p>
+    <h1>immo<span class="dot">·</span>evals</h1>
+    <p class="tag">Paste a listing. Get the real story.</p>
+    <p class="sub">An in-depth analysis service for property buyers in France <span class="flag">🇫🇷</span> — drop a LeBonCoin, SeLoger, PAP or Bien'ici link and receive a verified, in-depth report on price, location and risks.</p>
+  </div>
+</header>
+
+<section class="concept">
+  <div class="wrap grid2">
+    <div class="concept-art">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="mark concept">
+        <path d="M32 8 L54 26 L54 54 L10 54 L10 26 Z" fill="none" stroke="#0a0a0a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+        <path d="M22 37 L29 44 L43 30" fill="none" stroke="#16a34a" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div>
+      <p class="eyebrow">The Concept</p>
+      <h2>A home, verified.</h2>
+      <p>The mark is a <strong>house silhouette</strong> holding a <strong>green checkmark</strong> — the product in one glyph: a property listing, independently checked and approved before you commit.</p>
+      <p>The <strong>ink outline</strong> keeps it editorial and trustworthy; the <strong>leaf-green check</strong> is the single accent, the same green used across every report verdict. The two shapes stay visually distinct so the mark still reads as "house + verified" down to a 16px favicon.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Logo System</p>
+    <h2>Seven variants, one geometry</h2>
+    <div class="vgrid">
+      <div class="card"><div class="stage cream"><img src="logo-full.svg" alt="full logo"></div><div class="meta"><b>Full lockup</b><span>logo-full.svg</span></div></div>
+      <div class="card"><div class="stage dark"><img src="logo-white.svg" alt="white logo"></div><div class="meta"><b>White (on dark)</b><span>logo-white.svg</span></div></div>
+      <div class="card"><div class="stage cream"><img src="logo-wordmark.svg" alt="wordmark"></div><div class="meta"><b>Wordmark</b><span>logo-wordmark.svg</span></div></div>
+      <div class="card"><div class="stage cream"><img src="logo-black.svg" alt="black logo"></div><div class="meta"><b>Black (mono)</b><span>logo-black.svg</span></div></div>
+      <div class="card"><div class="stage cream"><img src="logo-mark.svg" alt="mark" style="max-height:64px"></div><div class="meta"><b>Mark</b><span>logo-mark.svg</span></div></div>
+      <div class="card"><div class="stage cream"><img src="logo-icon.svg" alt="app icon" style="max-height:96px;border-radius:18px"></div><div class="meta"><b>App icon</b><span>logo-icon.svg</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Color</p>
+    <h2>Palette</h2>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#0a0a0a"></div><div class="lbl"><b>Ink</b><code>#0A0A0A</code></div></div>
+      <div class="sw"><div class="chip" style="background:#16a34a"></div><div class="lbl"><b>Leaf</b><code>#16A34A</code></div></div>
+      <div class="sw"><div class="chip" style="background:#15803d"></div><div class="lbl"><b>Leaf deep</b><code>#15803D</code></div></div>
+      <div class="sw"><div class="chip" style="background:#f0fdf4"></div><div class="lbl"><b>Leaf soft</b><code>#F0FDF4</code></div></div>
+      <div class="sw"><div class="chip" style="background:#faf9f6"></div><div class="lbl"><b>Cream</b><code>#FAF9F6</code></div></div>
+      <div class="sw"><div class="chip" style="background:#f3f1ea"></div><div class="lbl"><b>Sand</b><code>#F3F1EA</code></div></div>
+      <div class="sw"><div class="chip" style="background:#1f2937"></div><div class="lbl"><b>Body</b><code>#1F2937</code></div></div>
+      <div class="sw"><div class="chip" style="background:#e7e5df"></div><div class="lbl"><b>Line</b><code>#E7E5DF</code></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Typography</p>
+    <h2>Type</h2>
+    <div class="typ">
+      <div class="typ-row"><div class="role">Inter Tight Bold · Wordmark & headings</div><div class="sample-sans">immo·evals — verified property reports</div></div>
+      <div class="typ-row"><div class="role">Fraunces Italic · Editorial taglines</div><div class="sample-serif">Paste a listing. Get the real story.</div></div>
+      <div class="typ-row"><div class="role">JetBrains Mono · Labels, data, code</div><div class="sample-mono">PRICE · LOCATION · RISK → /10</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">For developers</p>
+    <h2>Quick reference</h2>
+    <pre><span class="c">/* Tailwind theme tokens */</span>
+colors: {
+  ink:   <span class="g">'#0a0a0a'</span>,
+  leaf:  { DEFAULT: <span class="g">'#16a34a'</span>, deep: <span class="g">'#15803d'</span>, soft: <span class="g">'#f0fdf4'</span> },
+  cream: <span class="g">'#faf9f6'</span>,
+  sand:  <span class="g">'#f3f1ea'</span>,
+  line:  <span class="g">'#e7e5df'</span>,
+}
+fontFamily: {
+  sans:  [<span class="g">'Inter Tight'</span>, <span class="g">'system-ui'</span>, <span class="g">'sans-serif'</span>],
+  serif: [<span class="g">'Fraunces'</span>, <span class="g">'Georgia'</span>, <span class="g">'serif'</span>],
+  mono:  [<span class="g">'JetBrains Mono'</span>, <span class="g">'ui-monospace'</span>, <span class="g">'monospace'</span>],
+}
+
+<span class="c">&lt;!-- Favicon --&gt;</span>
+&lt;link rel=<span class="g">"icon"</span> href=<span class="g">"assets/logo/favicon.svg"</span>&gt;</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong style="color:var(--ink)">immo·evals</strong> — buyer reports for property listings in France.</p>
+    <p style="margin-top:.4rem">Brand assets in <code style="font-family:var(--font-mono)">/assets/logo/</code> · Built for <a href="https://github.com/luongnv89/meta-app">bien-evaluator</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
