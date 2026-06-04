@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>bien-evaluator report</title>
+  <style>
+    :root {
+      --fg: #1a1a1a;
+      --muted: #5a5a5a;
+      --bg: #ffffff;
+      --accent: #1d4ed8;
+      --border: #e2e2e2;
+      --code-bg: #f5f5f5;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      color: var(--fg);
+      background: var(--bg);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .report {
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    header.report-header {
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+    }
+    header.report-header h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.5rem;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+    .meta code { font-size: 0.85em; }
+    main.report-body h1,
+    main.report-body h2,
+    main.report-body h3 {
+      line-height: 1.25;
+      margin-top: 1.75rem;
+    }
+    main.report-body h1 { font-size: 1.4rem; }
+    main.report-body h2 { font-size: 1.2rem; }
+    main.report-body h3 { font-size: 1.05rem; }
+    main.report-body p,
+    main.report-body ul,
+    main.report-body ol { margin: 0.75rem 0; }
+    main.report-body a { color: var(--accent); }
+    main.report-body code {
+      background: var(--code-bg);
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    main.report-body pre {
+      background: var(--code-bg);
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    main.report-body pre code { background: none; padding: 0; }
+    main.report-body blockquote {
+      border-left: 3px solid var(--border);
+      margin: 1rem 0;
+      padding: 0.25rem 1rem;
+      color: var(--muted);
+    }
+    main.report-body table { border-collapse: collapse; width: 100%; }
+    main.report-body th,
+    main.report-body td {
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.6rem;
+      text-align: left;
+    }
+    main.report-body img { max-width: 100%; height: auto; }
+    section.feedback {
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+    section.feedback h2 { font-size: 1.15rem; margin: 0 0 0.5rem; }
+    section.feedback .feedback-intro { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
+    section.feedback fieldset.feedback-rating { border: none; padding: 0; margin: 0 0 1rem; }
+    section.feedback fieldset.feedback-rating legend { font-weight: 600; margin-bottom: 0.5rem; }
+    section.feedback label { display: block; margin: 0.35rem 0; }
+    section.feedback textarea {
+      width: 100%;
+      max-width: 100%;
+      font: inherit;
+      padding: 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    section.feedback button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font: inherit;
+      cursor: pointer;
+    }
+    footer.report-footer {
+      border-top: 1px solid var(--border);
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body class="report-view">
+<link rel="stylesheet" href="../assets/site.css">
+<header class="site-top" role="banner">
+  <div class="site-top__inner">
+    <a href="../index.html">← Accueil</a>
+    <a href="../catalog.html">Catalogue</a>
+    <a href="#" data-mailto-cta>Essayer le service</a>
+    <span class="sample-note">Rapport exemple · démo</span>
+  </div>
+</header>
+<script src="../assets/mailto.js" defer></script>
+
+  <div class="report">
+    <header class="report-header">
+      <h1>bien-evaluator</h1>
+      <p class="meta">Report for job <code>03-studio-bordeaux-victoire</code> &middot; generated 2026-06-02</p>
+    </header>
+    <main class="report-body">
+<h1>Rapport acheteur — Studio investissement locatif, Bordeaux Victoire</h1>
+<p><strong>Date d'analyse :</strong> 2026-06-02<br />
+<strong>Statut de l'annonce :</strong> aucune page d'annonce live n'a été fetchée. L'URL fournie est illustrative.<br />
+<strong>Base de travail :</strong> profil structuré fourni par l'utilisateur uniquement.<br />
+<strong>Bien analysé :</strong> studio d'environ 22 m², 2e étage, immeuble ancien avec ascenseur, DPE E / GES E, charges copropriété ~70 €/mois, prix demandé ~135 000 € soit ~6 100 €/m², vente par agence.</p>
+<p>&gt; <strong>Disclaimer données</strong> — Cette analyse ne remplace pas une estimation notariale, un audit DPE, un état des risques ERP à l'adresse exacte, ni l'examen des documents de copropriété. Sans adresse précise ni page live, les risques sont évalués au niveau Bordeaux / quartier Victoire-Capucins et doivent être confirmés à la visite et par les diagnostics.</p>
+<hr />
+<h2>Verdict rapide</h2>
+<p><strong>Verdict : prix trop ambitieux pour un studio d'investissement, sauf état exceptionnel, très bonne adresse exacte et loyer légalement optimisé.</strong> Le quartier Victoire est excellent pour la demande étudiante, mais le prix demandé autour de <strong>6 100 €/m²</strong> ressort environ <strong>+40 % au-dessus de la médiane DVF quartier Victoire publiée par Kazba (4 343 €/m², 208 ventes)</strong> et <strong>+25 % au-dessus de l'estimation appartement Qoridor Victoire (4 863 €/m²)</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Indicateur</th>
+<th style="text-align: right;">Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prix vs médiane DVF Victoire</td>
+<td style="text-align: right;"><strong>Cher : +40,5 %</strong></td>
+</tr>
+<tr>
+<td>Qualité locative du quartier</td>
+<td style="text-align: right;"><strong>Forte</strong> — central, étudiant, tram, commerces</td>
+</tr>
+<tr>
+<td>Rentabilité brute probable</td>
+<td style="text-align: right;"><strong>~4,1 %</strong> au loyer médian observé ; jusqu'à ~5,2 % brut seulement si plafond haut meublé atteint</td>
+</tr>
+<tr>
+<td>Risque principal</td>
+<td style="text-align: right;"><strong>Prix + DPE E + copro ancien avec ascenseur</strong></td>
+</tr>
+<tr>
+<td>Recommandation</td>
+<td style="text-align: right;"><strong>À visiter uniquement avec objectif de négociation fort</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Angle acheteur :</strong> demander les documents, tester le loyer légal à l'adresse exacte, chiffrer DPE/copro, puis viser une négociation vers <strong>118 000–125 000 €</strong> selon état réel.</p>
+<h3>Vue d'ensemble — logique de décision</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-440244a3dc2a0b27" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="flowchart" style="max-width: 421.469px; background-color: white;" viewBox="0 0 421.46875 1525.90625" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mmd-440244a3dc2a0b27{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-440244a3dc2a0b27 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-440244a3dc2a0b27 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-440244a3dc2a0b27 .error-icon{fill:#552222;}#mmd-440244a3dc2a0b27 .error-text{fill:#552222;stroke:#552222;}#mmd-440244a3dc2a0b27 .edge-thickness-normal{stroke-width:1px;}#mmd-440244a3dc2a0b27 .edge-thickness-thick{stroke-width:3.5px;}#mmd-440244a3dc2a0b27 .edge-pattern-solid{stroke-dasharray:0;}#mmd-440244a3dc2a0b27 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-440244a3dc2a0b27 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-440244a3dc2a0b27 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-440244a3dc2a0b27 .marker{fill:#333333;stroke:#333333;}#mmd-440244a3dc2a0b27 .marker.cross{stroke:#333333;}#mmd-440244a3dc2a0b27 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-440244a3dc2a0b27 p{margin:0;}#mmd-440244a3dc2a0b27 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mmd-440244a3dc2a0b27 .cluster-label text{fill:#333;}#mmd-440244a3dc2a0b27 .cluster-label span{color:#333;}#mmd-440244a3dc2a0b27 .cluster-label span p{background-color:transparent;}#mmd-440244a3dc2a0b27 .label text,#mmd-440244a3dc2a0b27 span{fill:#333;color:#333;}#mmd-440244a3dc2a0b27 .node rect,#mmd-440244a3dc2a0b27 .node circle,#mmd-440244a3dc2a0b27 .node ellipse,#mmd-440244a3dc2a0b27 .node polygon,#mmd-440244a3dc2a0b27 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mmd-440244a3dc2a0b27 .rough-node .label text,#mmd-440244a3dc2a0b27 .node .label text,#mmd-440244a3dc2a0b27 .image-shape .label,#mmd-440244a3dc2a0b27 .icon-shape .label{text-anchor:middle;}#mmd-440244a3dc2a0b27 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmd-440244a3dc2a0b27 .rough-node .label,#mmd-440244a3dc2a0b27 .node .label,#mmd-440244a3dc2a0b27 .image-shape .label,#mmd-440244a3dc2a0b27 .icon-shape .label{text-align:center;}#mmd-440244a3dc2a0b27 .node.clickable{cursor:pointer;}#mmd-440244a3dc2a0b27 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mmd-440244a3dc2a0b27 .arrowheadPath{fill:#333333;}#mmd-440244a3dc2a0b27 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mmd-440244a3dc2a0b27 .flowchart-link{stroke:#333333;fill:none;}#mmd-440244a3dc2a0b27 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mmd-440244a3dc2a0b27 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mmd-440244a3dc2a0b27 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mmd-440244a3dc2a0b27 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mmd-440244a3dc2a0b27 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mmd-440244a3dc2a0b27 .cluster text{fill:#333;}#mmd-440244a3dc2a0b27 .cluster span{color:#333;}#mmd-440244a3dc2a0b27 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mmd-440244a3dc2a0b27 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mmd-440244a3dc2a0b27 rect.text{fill:none;stroke-width:0;}#mmd-440244a3dc2a0b27 .icon-shape,#mmd-440244a3dc2a0b27 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mmd-440244a3dc2a0b27 .icon-shape p,#mmd-440244a3dc2a0b27 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mmd-440244a3dc2a0b27 .icon-shape rect,#mmd-440244a3dc2a0b27 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mmd-440244a3dc2a0b27 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmd-440244a3dc2a0b27 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmd-440244a3dc2a0b27 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mmd-440244a3dc2a0b27_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-440244a3dc2a0b27_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-440244a3dc2a0b27_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-440244a3dc2a0b27_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-440244a3dc2a0b27_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-440244a3dc2a0b27_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><g class="root"><g class="clusters"/><g class="edgePaths"><path d="M215.426,62L215.426,66.167C215.426,70.333,215.426,78.667,215.426,86.333C215.426,94,215.426,101,215.426,104.5L215.426,108" id="L_A_B_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_B_0" data-points="W3sieCI6MjE1LjQyNTc4MTI1LCJ5Ijo2Mn0seyJ4IjoyMTUuNDI1NzgxMjUsInkiOjg3fSx7IngiOjIxNS40MjU3ODEyNSwieSI6MTEyfV0=" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/><path d="M215.426,276.094L215.426,282.26C215.426,288.427,215.426,300.76,215.426,312.427C215.426,324.094,215.426,335.094,215.426,340.594L215.426,346.094" id="L_B_C_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_C_0" data-points="W3sieCI6MjE1LjQyNTc4MTI1LCJ5IjoyNzYuMDkzNzV9LHsieCI6MjE1LjQyNTc4MTI1LCJ5IjozMTMuMDkzNzV9LHsieCI6MjE1LjQyNTc4MTI1LCJ5IjozNTAuMDkzNzV9XQ==" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/><path d="M215.426,404.094L215.426,408.26C215.426,412.427,215.426,420.76,215.426,428.427C215.426,436.094,215.426,443.094,215.426,446.594L215.426,450.094" id="L_C_D_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C_D_0" data-points="W3sieCI6MjE1LjQyNTc4MTI1LCJ5Ijo0MDQuMDkzNzV9LHsieCI6MjE1LjQyNTc4MTI1LCJ5Ijo0MjkuMDkzNzV9LHsieCI6MjE1LjQyNTc4MTI1LCJ5Ijo0NTQuMDkzNzV9XQ==" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/><path d="M215.426,642.5L215.426,648.667C215.426,654.833,215.426,667.167,215.426,678.833C215.426,690.5,215.426,701.5,215.426,707L215.426,712.5" id="L_D_E_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_E_0" data-points="W3sieCI6MjE1LjQyNTc4MTI1LCJ5Ijo2NDIuNX0seyJ4IjoyMTUuNDI1NzgxMjUsInkiOjY3OS41fSx7IngiOjIxNS40MjU3ODEyNSwieSI6NzE2LjV9XQ==" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/><path d="M215.426,770.5L215.426,774.667C215.426,778.833,215.426,787.167,215.426,794.833C215.426,802.5,215.426,809.5,215.426,813L215.426,816.5" id="L_E_F_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E_F_0" data-points="W3sieCI6MjE1LjQyNTc4MTI1LCJ5Ijo3NzAuNX0seyJ4IjoyMTUuNDI1NzgxMjUsInkiOjc5NS41fSx7IngiOjIxNS40MjU3ODEyNSwieSI6ODIwLjV9XQ==" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/><path d="M215.426,933.594L215.426,939.76C215.426,945.927,215.426,958.26,215.426,969.927C215.426,981.594,215.426,992.594,215.426,998.094L215.426,1003.594" id="L_F_G_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_F_G_0" data-points="W3sieCI6MjE1LjQyNTc4MTI1LCJ5Ijo5MzMuNTkzNzV9LHsieCI6MjE1LjQyNTc4MTI1LCJ5Ijo5NzAuNTkzNzV9LHsieCI6MjE1LjQyNTc4MTI1LCJ5IjoxMDA3LjU5Mzc1fV0=" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/><path d="M215.426,1061.594L215.426,1065.76C215.426,1069.927,215.426,1078.26,215.426,1085.927C215.426,1093.594,215.426,1100.594,215.426,1104.094L215.426,1107.594" id="L_G_H_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_G_H_0" data-points="W3sieCI6MjE1LjQyNTc4MTI1LCJ5IjoxMDYxLjU5Mzc1fSx7IngiOjIxNS40MjU3ODEyNSwieSI6MTA4Ni41OTM3NX0seyJ4IjoyMTUuNDI1NzgxMjUsInkiOjExMTEuNTkzNzV9XQ==" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/><path d="M215.426,1165.594L215.426,1169.76C215.426,1173.927,215.426,1182.26,215.426,1189.927C215.426,1197.594,215.426,1204.594,215.426,1208.094L215.426,1211.594" id="L_H_I_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_H_I_0" data-points="W3sieCI6MjE1LjQyNTc4MTI1LCJ5IjoxMTY1LjU5Mzc1fSx7IngiOjIxNS40MjU3ODEyNSwieSI6MTE5MC41OTM3NX0seyJ4IjoyMTUuNDI1NzgxMjUsInkiOjEyMTUuNTkzNzV9XQ==" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/><path d="M180.562,1331.043L168.469,1345.02C156.375,1358.997,132.187,1386.952,120.094,1408.429C108,1429.906,108,1444.906,108,1452.406L108,1459.906" id="L_I_J_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_I_J_0" data-points="W3sieCI6MTgwLjU2MjQ1OTQ3ODA1MDk1LCJ5IjoxMzMxLjA0MjkyODIyODA1MDl9LHsieCI6MTA4LCJ5IjoxNDE0LjkwNjI1fSx7IngiOjEwOCwieSI6MTQ2My45MDYyNX1d" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/><path d="M250.289,1331.043L262.383,1345.02C274.477,1358.997,298.664,1386.952,310.758,1408.429C322.852,1429.906,322.852,1444.906,322.852,1452.406L322.852,1459.906" id="L_I_K_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_I_K_0" data-points="W3sieCI6MjUwLjI4OTEwMzAyMTk0OTA1LCJ5IjoxMzMxLjA0MjkyODIyODA1MDl9LHsieCI6MzIyLjg1MTU2MjUsInkiOjE0MTQuOTA2MjV9LHsieCI6MzIyLjg1MTU2MjUsInkiOjE0NjMuOTA2MjV9XQ==" marker-end="url(#mmd-440244a3dc2a0b27_flowchart-v2-pointEnd)"/></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_B_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(215.42578125, 313.09375)"><g class="label" data-id="L_B_C_0" transform="translate(-77.109375, -12)"><foreignObject width="154.21875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>6100 vs 4343 EUR/m2</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_D_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(215.42578125, 679.5)"><g class="label" data-id="L_D_E_0" transform="translate(-60.8203125, -12)"><foreignObject width="121.640625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>Victoire etudiant</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E_F_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(215.42578125, 970.59375)"><g class="label" data-id="L_F_G_0" transform="translate(-49.4765625, -12)"><foreignObject width="98.953125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>DPE E + copro</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_G_H_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_H_I_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(108, 1414.90625)"><g class="label" data-id="L_I_J_0" transform="translate(-100, -24)"><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="edgeLabel"><p>PV copro propres + loyer legal</p></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(322.8515625, 1414.90625)"><g class="label" data-id="L_I_K_0" transform="translate(-57.859375, -12)"><foreignObject width="115.71875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>travaux ou bruit</p></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-A-0" transform="translate(215.42578125, 35)"><rect class="basic label-container" style="" x="-125.8125" y="-27" width="251.625" height="54"/><g class="label" style="" transform="translate(-95.8125, -12)"><rect/><foreignObject width="191.625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Prix demande: 135000 EUR</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B-1" transform="translate(215.42578125, 194.046875)"><polygon points="82.046875,0 164.09375,-82.046875 82.046875,-164.09375 0,-82.046875" class="label-container" transform="translate(-81.546875, 82.046875)"/><g class="label" style="" transform="translate(-55.046875, -12)"><rect/><foreignObject width="110.09375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Prix vs marche?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C-3" transform="translate(215.42578125, 377.09375)"><rect class="basic label-container" style="fill:#f44336 !important" x="-75.625" y="-27" width="151.25" height="54"/><g class="label" style="color:#fff !important" transform="translate(-45.625, -12)"><rect/><foreignObject width="91.25" height="24"><div style="color: rgb(255, 255, 255) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#fff !important" class="nodeLabel"><p>Cher +40 pct</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D-5" transform="translate(215.42578125, 548.296875)"><polygon points="94.203125,0 188.40625,-94.203125 94.203125,-188.40625 0,-94.203125" class="label-container" transform="translate(-93.703125, 94.203125)"/><g class="label" style="" transform="translate(-67.203125, -12)"><rect/><foreignObject width="134.40625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Demande locative?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-E-7" transform="translate(215.42578125, 743.5)"><rect class="basic label-container" style="fill:#4CAF50 !important" x="-83.609375" y="-27" width="167.21875" height="54"/><g class="label" style="color:#fff !important" transform="translate(-53.609375, -12)"><rect/><foreignObject width="107.21875" height="24"><div style="color: rgb(255, 255, 255) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#fff !important" class="nodeLabel"><p>Demande forte</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F-9" transform="translate(215.42578125, 877.046875)"><polygon points="56.546875,0 113.09375,-56.546875 56.546875,-113.09375 0,-56.546875" class="label-container" transform="translate(-56.046875, 56.546875)"/><g class="label" style="" transform="translate(-29.546875, -12)"><rect/><foreignObject width="59.09375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Risques?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-G-11" transform="translate(215.42578125, 1034.59375)"><rect class="basic label-container" style="fill:#FF9800 !important" x="-82.6953125" y="-27" width="165.390625" height="54"/><g class="label" style="color:#111 !important" transform="translate(-52.6953125, -12)"><rect/><foreignObject width="105.390625" height="24"><div style="color: rgb(17, 17, 17) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#111 !important" class="nodeLabel"><p>Vigilance forte</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-H-13" transform="translate(215.42578125, 1138.59375)"><rect class="basic label-container" style="fill:#2196F3 !important" x="-100.0859375" y="-27" width="200.171875" height="54"/><g class="label" style="color:#fff !important" transform="translate(-70.0859375, -12)"><rect/><foreignObject width="140.171875" height="24"><div style="color: rgb(255, 255, 255) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#fff !important" class="nodeLabel"><p>Negocier 118k-125k</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-I-15" transform="translate(215.42578125, 1290.75)"><polygon points="75.15625,0 150.3125,-75.15625 75.15625,-150.3125 0,-75.15625" class="label-container" transform="translate(-74.65625, 75.15625)"/><g class="label" style="" transform="translate(-48.15625, -12)"><rect/><foreignObject width="96.3125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>OK si preuves</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-J-17" transform="translate(108, 1490.90625)"><rect class="basic label-container" style="" x="-74.234375" y="-27" width="148.46875" height="54"/><g class="label" style="" transform="translate(-44.234375, -12)"><rect/><foreignObject width="88.46875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>A considerer</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-K-19" transform="translate(322.8515625, 1490.90625)"><rect class="basic label-container" style="" x="-90.6171875" y="-27" width="181.234375" height="54"/><g class="label" style="" transform="translate(-60.6171875, -12)"><rect/><foreignObject width="121.234375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Passer ou baisser</p></span></div></foreignObject></g></g></g></g></g></svg></figure>
+<hr />
+<h2>1. Fiche technique du bien analysé</h2>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th style="text-align: right;">Valeur issue du profil</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td style="text-align: right;">Studio / 1 pièce, investissement locatif</td>
+</tr>
+<tr>
+<td>Commune / secteur</td>
+<td style="text-align: right;">Bordeaux 33000, quartier Victoire</td>
+</tr>
+<tr>
+<td>Surface</td>
+<td style="text-align: right;">~22 m²</td>
+</tr>
+<tr>
+<td>Étage</td>
+<td style="text-align: right;">2e étage</td>
+</tr>
+<tr>
+<td>Immeuble</td>
+<td style="text-align: right;">Ancien, avec ascenseur</td>
+</tr>
+<tr>
+<td>DPE / GES</td>
+<td style="text-align: right;">E / E</td>
+</tr>
+<tr>
+<td>Charges copropriété</td>
+<td style="text-align: right;">~70 €/mois, soit ~840 €/an</td>
+</tr>
+<tr>
+<td>Prix demandé</td>
+<td style="text-align: right;">~135 000 €</td>
+</tr>
+<tr>
+<td>Prix demandé au m²</td>
+<td style="text-align: right;">~6 100 €/m²</td>
+</tr>
+<tr>
+<td>Vendeur</td>
+<td style="text-align: right;">Agence</td>
+</tr>
+<tr>
+<td>Page annonce live</td>
+<td style="text-align: right;"><strong>Non consultée</strong></td>
+</tr>
+</tbody>
+</table>
+<h3>Observations immédiates</h3>
+<ul>
+<li><strong>Ascenseur dans l'ancien :</strong> bon point commercial pour la relocation et la revente, mais aussi risque de charges / travaux d'ascenseur dans la copropriété.</li>
+<li><strong>DPE E :</strong> encore louable aujourd'hui, mais interdiction de mise en location des logements E prévue à partir de <strong>2034</strong> selon le calendrier Climat &amp; Résilience ; il faut donc anticiper un plan de travaux.</li>
+<li><strong>22 m² :</strong> format très liquide en quartier étudiant, mais chaque euro de charge ou taxe pèse fortement sur la rentabilité nette.</li>
+<li><strong>Absence de page live / photos :</strong> impossible de valider luminosité, état réel, exposition au bruit, cuisine/SDB, surface Carrez, diagnostics, ou présence de défauts.</li>
+</ul>
+<hr />
+<h2>2. Analyse du prix</h2>
+<h3>Sources marché utilisées</h3>
+<table>
+<thead>
+<tr>
+<th>Référence</th>
+<th style="text-align: right;">Valeur</th>
+<th>Périmètre</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ce bien</td>
+<td style="text-align: right;"><strong>~6 100 €/m²</strong></td>
+<td>Studio 22 m²</td>
+<td>Profil utilisateur</td>
+</tr>
+<tr>
+<td>Médiane DVF Victoire</td>
+<td style="text-align: right;"><strong>4 343 €/m²</strong></td>
+<td>Appartements, quartier Victoire, 208 ventes</td>
+<td>Kazba, données DVF 2025</td>
+</tr>
+<tr>
+<td>Fourchette DVF Victoire</td>
+<td style="text-align: right;"><strong>3 051–5 759 €/m²</strong></td>
+<td>Appartements, quartier Victoire</td>
+<td>Kazba</td>
+</tr>
+<tr>
+<td>Estimation Qoridor Victoire appartement</td>
+<td style="text-align: right;"><strong>4 863 €/m²</strong></td>
+<td>Appartements, quartier Victoire, avril 2026</td>
+<td>Qoridor</td>
+</tr>
+<tr>
+<td>SAFTI Capucins-Victoire</td>
+<td style="text-align: right;"><strong>4 560 €/m²</strong></td>
+<td>Prix moyen quartier, mai 2026</td>
+<td>SAFTI / Bien-estimer</td>
+</tr>
+<tr>
+<td>PAP Bordeaux appartement</td>
+<td style="text-align: right;"><strong>4 371 €/m²</strong></td>
+<td>Appartements Bordeaux, juin 2025</td>
+<td>PAP, DVF + annonces</td>
+</tr>
+<tr>
+<td>MeilleursAgents Bordeaux appartement</td>
+<td style="text-align: right;"><strong>4 466 €/m²</strong></td>
+<td>Appartements Bordeaux, mars 2026</td>
+<td>MeilleursAgents</td>
+</tr>
+<tr>
+<td>Qoridor Bordeaux appartement</td>
+<td style="text-align: right;"><strong>4 344 €/m²</strong></td>
+<td>Appartements Bordeaux, mai 2026, DVF 24 mois</td>
+<td>Qoridor</td>
+</tr>
+</tbody>
+</table>
+<h3>Écart chiffré</h3>
+<ul>
+<li>Vs <strong>médiane DVF Victoire Kazba 4 343 €/m²</strong> : 6 100 / 4 343 - 1 = <strong>+40,5 %</strong>.</li>
+<li>Vs <strong>Qoridor Victoire appartement 4 863 €/m²</strong> : <strong>+25,4 %</strong>.</li>
+<li>Vs <strong>SAFTI Capucins-Victoire 4 560 €/m²</strong> : <strong>+33,8 %</strong>.</li>
+<li>Le prix demandé dépasse même la <strong>borne haute DVF Kazba Victoire 5 759 €/m²</strong> d'environ <strong>+5,9 %</strong>.</li>
+</ul>
+<h3>Positionnement prix</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-660c6ef8704f6c0b" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 700px; background-color: white;" viewBox="0 0 700 500" role="graphics-document document" aria-roledescription="xychart"><style>#mmd-660c6ef8704f6c0b{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-660c6ef8704f6c0b .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-660c6ef8704f6c0b .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-660c6ef8704f6c0b .error-icon{fill:#552222;}#mmd-660c6ef8704f6c0b .error-text{fill:#552222;stroke:#552222;}#mmd-660c6ef8704f6c0b .edge-thickness-normal{stroke-width:1px;}#mmd-660c6ef8704f6c0b .edge-thickness-thick{stroke-width:3.5px;}#mmd-660c6ef8704f6c0b .edge-pattern-solid{stroke-dasharray:0;}#mmd-660c6ef8704f6c0b .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-660c6ef8704f6c0b .edge-pattern-dashed{stroke-dasharray:3;}#mmd-660c6ef8704f6c0b .edge-pattern-dotted{stroke-dasharray:2;}#mmd-660c6ef8704f6c0b .marker{fill:#333333;stroke:#333333;}#mmd-660c6ef8704f6c0b .marker.cross{stroke:#333333;}#mmd-660c6ef8704f6c0b svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-660c6ef8704f6c0b p{margin:0;}#mmd-660c6ef8704f6c0b :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g class="main"><rect width="700" height="500" class="background" fill="white"/><g class="chart-title"><text x="0" y="0" fill="#131300" font-size="20" dominant-baseline="middle" text-anchor="middle" transform="translate(350, 21.5) rotate(0)">Prix au m2 — Studio Victoire</text></g><g class="plot"><g class="bar-plot-0"><rect x="77.32500190734864" y="76.1076923076923" width="74.1" height="390.89230769230767" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="213.98125143051146" y="186.39323076923074" width="74.1" height="280.60676923076926" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="350.6375009536743" y="153.75323076923075" width="74.1" height="313.24676923076925" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="487.29375047683715" y="172.77230769230766" width="74.1" height="294.22769230769234" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="623.95" y="184.63569230769232" width="74.1" height="282.36430769230765" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/></g></g><g class="bottom-axis"><g class="axis-line"><path d="M 75.37500190734863,468 L 700,468" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(114.37500190734863, 479) rotate(0)">Ce bien</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(251.03125143051147, 479) rotate(0)">Kazba DVF</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(387.6875009536743, 479) rotate(0)">Qoridor</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(524.3437504768372, 479) rotate(0)">SAFTI</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(661, 479) rotate(0)">PAP Bdx</text></g><g class="ticks"><path d="M 114.37500190734863,469 L 114.37500190734863,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 251.03125143051147,469 L 251.03125143051147,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 387.6875009536743,469 L 387.6875009536743,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 524.3437504768372,469 L 524.3437504768372,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 661,469 L 661,474" fill="none" stroke="#131300" stroke-width="2"/></g></g><g class="left-axis"><g class="axisl-line"><path d="M 74.37500190734863,43 L 74.37500190734863,467" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 51) rotate(0)">6500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 82.38461538461536) rotate(0)">6000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 113.76923076923077) rotate(0)">5500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 145.15384615384613) rotate(0)">5000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 176.53846153846155) rotate(0)">4500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 207.9230769230769) rotate(0)">4000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 239.30769230769232) rotate(0)">3500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 270.6923076923077) rotate(0)">3000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 302.0769230769231) rotate(0)">2500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 333.46153846153845) rotate(0)">2000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 364.8461538461538) rotate(0)">1500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 396.2307692307692) rotate(0)">1000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 427.61538461538464) rotate(0)">500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 459) rotate(0)">0</text></g><g class="ticks"><path d="M 73.37500190734863,51 L 68.37500190734863,51" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,82.38461538461536 L 68.37500190734863,82.38461538461536" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,113.76923076923077 L 68.37500190734863,113.76923076923077" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,145.15384615384613 L 68.37500190734863,145.15384615384613" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,176.53846153846155 L 68.37500190734863,176.53846153846155" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,207.9230769230769 L 68.37500190734863,207.9230769230769" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,239.30769230769232 L 68.37500190734863,239.30769230769232" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,270.6923076923077 L 68.37500190734863,270.6923076923077" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,302.0769230769231 L 68.37500190734863,302.0769230769231" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,333.46153846153845 L 68.37500190734863,333.46153846153845" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,364.8461538461538 L 68.37500190734863,364.8461538461538" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,396.2307692307692 L 68.37500190734863,396.2307692307692" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,427.61538461538464 L 68.37500190734863,427.61538461538464" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,459 L 68.37500190734863,459" fill="none" stroke="#131300" stroke-width="2"/></g><g class="title"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(5, 255) rotate(270)">EUR / m2</text></g></g></g><g class="mermaid-tmp-group"/></svg></figure>
+<h3>Tendance du marché bordelais</h3>
+<p>SeLoger indique que le marché bordelais a surtout corrigé / stagné depuis 2020 : les appartements passent d'environ <strong>4 452 €/m² en 2020</strong> à <strong>4 440 €/m² en 2026</strong>, soit <strong>-0,3 % sur 6 ans</strong>. Le contexte n'est donc pas un marché euphorique justifiant facilement une prime très élevée.</p>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-04d733ae56fb994e" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 700px; background-color: white;" viewBox="0 0 700 500" role="graphics-document document" aria-roledescription="xychart"><style>#mmd-04d733ae56fb994e{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-04d733ae56fb994e .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-04d733ae56fb994e .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-04d733ae56fb994e .error-icon{fill:#552222;}#mmd-04d733ae56fb994e .error-text{fill:#552222;stroke:#552222;}#mmd-04d733ae56fb994e .edge-thickness-normal{stroke-width:1px;}#mmd-04d733ae56fb994e .edge-thickness-thick{stroke-width:3.5px;}#mmd-04d733ae56fb994e .edge-pattern-solid{stroke-dasharray:0;}#mmd-04d733ae56fb994e .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-04d733ae56fb994e .edge-pattern-dashed{stroke-dasharray:3;}#mmd-04d733ae56fb994e .edge-pattern-dotted{stroke-dasharray:2;}#mmd-04d733ae56fb994e .marker{fill:#333333;stroke:#333333;}#mmd-04d733ae56fb994e .marker.cross{stroke:#333333;}#mmd-04d733ae56fb994e svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-04d733ae56fb994e p{margin:0;}#mmd-04d733ae56fb994e :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g class="main"><rect width="700" height="500" class="background" fill="white"/><g class="chart-title"><text x="0" y="0" fill="#131300" font-size="20" dominant-baseline="middle" text-anchor="middle" transform="translate(350, 21.55078125) rotate(0)">Appartements Bordeaux — tendance SeLoger</text></g><g class="plot"><g class="line-plot-0"><path d="M90.063,252.331L685.313,268.647" fill="none" stroke="#ECECFF" stroke-width="2"/></g></g><g class="bottom-axis"><g class="axis-line"><path d="M 75.37500190734863,468 L 700,468" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(90.06250190734863, 479) rotate(0)">2020</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(685.3125, 479) rotate(0)">2026</text></g><g class="ticks"><path d="M 90.06250190734863,469 L 90.06250190734863,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 685.3125,469 L 685.3125,474" fill="none" stroke="#131300" stroke-width="2"/></g></g><g class="left-axis"><g class="axisl-line"><path d="M 74.37500190734863,43.1015625 L 74.37500190734863,467" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 51.1015625) rotate(0)">4600</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 78.29479166666667) rotate(0)">4580</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 105.48802083333332) rotate(0)">4560</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 132.68124999999998) rotate(0)">4540</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 159.87447916666667) rotate(0)">4520</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 187.06770833333337) rotate(0)">4500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 214.2609375) rotate(0)">4480</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 241.45416666666668) rotate(0)">4460</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 268.6473958333333) rotate(0)">4440</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 295.840625) rotate(0)">4420</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 323.03385416666674) rotate(0)">4400</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 350.2270833333334) rotate(0)">4380</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 377.4203125) rotate(0)">4360</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 404.61354166666666) rotate(0)">4340</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 431.80677083333336) rotate(0)">4320</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 459) rotate(0)">4300</text></g><g class="ticks"><path d="M 73.37500190734863,51.1015625 L 68.37500190734863,51.1015625" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,78.29479166666667 L 68.37500190734863,78.29479166666667" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,105.48802083333332 L 68.37500190734863,105.48802083333332" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,132.68124999999998 L 68.37500190734863,132.68124999999998" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,159.87447916666667 L 68.37500190734863,159.87447916666667" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,187.06770833333337 L 68.37500190734863,187.06770833333337" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,214.2609375 L 68.37500190734863,214.2609375" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,241.45416666666668 L 68.37500190734863,241.45416666666668" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,268.6473958333333 L 68.37500190734863,268.6473958333333" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,295.840625 L 68.37500190734863,295.840625" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,323.03385416666674 L 68.37500190734863,323.03385416666674" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,350.2270833333334 L 68.37500190734863,350.2270833333334" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,377.4203125 L 68.37500190734863,377.4203125" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,404.61354166666666 L 68.37500190734863,404.61354166666666" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,431.80677083333336 L 68.37500190734863,431.80677083333336" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,459 L 68.37500190734863,459" fill="none" stroke="#131300" stroke-width="2"/></g><g class="title"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(5, 255.05078125) rotate(270)">EUR / m2</text></g></g></g><g class="mermaid-tmp-group"/></svg></figure>
+<h3>Verdict prix</h3>
+<p><strong>Le prix est élevé à très élevé.</strong> Un studio bien placé peut se vendre avec une prime au m², surtout en hypercentre et en petite surface. Mais ici, le niveau de <strong>6 100 €/m²</strong> demande une justification forte : rénovation récente, calme, très bonne copropriété, aucun gros travaux, agencement parfait, DPE améliorable, adresse réellement premium.</p>
+<p><strong>Fourchette de valeur prudente avant visite :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Hypothèse</th>
+<th style="text-align: right;">Prix/m²</th>
+<th style="text-align: right;">Valeur pour 22 m²</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Marché DVF quartier</td>
+<td style="text-align: right;">4 343 €/m²</td>
+<td style="text-align: right;">~95 500 €</td>
+</tr>
+<tr>
+<td>Prime studio / très bon emplacement</td>
+<td style="text-align: right;">5 000–5 500 €/m²</td>
+<td style="text-align: right;">~110 000–121 000 €</td>
+</tr>
+<tr>
+<td>Haut de fourchette acceptable si état excellent</td>
+<td style="text-align: right;">5 700 €/m²</td>
+<td style="text-align: right;">~125 400 €</td>
+</tr>
+<tr>
+<td>Prix demandé</td>
+<td style="text-align: right;">6 100 €/m²</td>
+<td style="text-align: right;">~135 000 €</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusion prix :</strong> à 135 000 €, le vendeur fait payer une prime de rareté/localisation. Pour un investisseur, cette prime écrase la rentabilité. La zone de discussion rationnelle est plutôt <strong>118 000–125 000 €</strong> avant prise en compte de travaux énergétiques.</p>
+<hr />
+<h2>3. Angle rentabilité locative étudiante</h2>
+<h3>Demande locative</h3>
+<p>Victoire est un quartier central, vivant et étudiant. La Ville de Bordeaux indique plus de <strong>100 000 étudiants inscrits à la rentrée 2024</strong> dans la métropole / ville universitaire au sens large. L'INSEE donne <strong>265 328 habitants à Bordeaux en 2022</strong>, avec une part élevée des 15–29 ans (<strong>~29,8 %</strong>). Le quartier Capucins-Victoire est décrit comme vivant, populaire et marqué par l'animation universitaire, avec environ <strong>21 410 habitants</strong> selon Bien-dans-ma-ville.</p>
+<p><strong>Point fort :</strong> la demande pour un studio est structurellement bonne.<br />
+<strong>Point faible :</strong> la demande ne suffit pas si le prix d'achat est trop haut et si le loyer est plafonné.</p>
+<h3>Loyers réalistes / plafonds</h3>
+<ul>
+<li>Kazba publie pour les appartements Victoire un <strong>loyer médian de 21,12 €/m²/mois</strong>, soit pour 22 m² : <strong>~465 €/mois hors charges</strong>.</li>
+<li>Bordeaux applique l'<strong>encadrement des loyers</strong> depuis le 15 juillet 2022. La Ville de Bordeaux et Bordeaux Métropole rappellent que les nouveaux baux et renouvellements doivent respecter un loyer de référence majoré.</li>
+<li>L'arrêté préfectoral du <strong>20/06/2025</strong> donne, pour les <strong>appartements meublés 1 pièce avant 1946</strong>, un loyer de référence majoré allant selon zone de <strong>21,8 à 26,4 €/m²/mois</strong>. Sans adresse exacte, la zone est à confirmer via le simulateur officiel / carte.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Hypothèse loyer</th>
+<th style="text-align: right;">€/m²/mois</th>
+<th style="text-align: right;">Loyer mensuel HC pour 22 m²</th>
+<th style="text-align: right;">Revenu annuel HC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loyer médian Kazba Victoire</td>
+<td style="text-align: right;">21,12</td>
+<td style="text-align: right;">~465 €</td>
+<td style="text-align: right;">~5 576 €</td>
+</tr>
+<tr>
+<td>Plafond meublé ancien zone basse</td>
+<td style="text-align: right;">21,80</td>
+<td style="text-align: right;">~480 €</td>
+<td style="text-align: right;">~5 755 €</td>
+</tr>
+<tr>
+<td>Plafond meublé ancien zone haute</td>
+<td style="text-align: right;">26,40</td>
+<td style="text-align: right;">~581 €</td>
+<td style="text-align: right;">~6 970 €</td>
+</tr>
+</tbody>
+</table>
+<h3>Rendement brut et net simplifié</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-97b2dc6202f2a4c0" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 700px; background-color: white;" viewBox="0 0 700 500" role="graphics-document document" aria-roledescription="xychart"><style>#mmd-97b2dc6202f2a4c0{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-97b2dc6202f2a4c0 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-97b2dc6202f2a4c0 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-97b2dc6202f2a4c0 .error-icon{fill:#552222;}#mmd-97b2dc6202f2a4c0 .error-text{fill:#552222;stroke:#552222;}#mmd-97b2dc6202f2a4c0 .edge-thickness-normal{stroke-width:1px;}#mmd-97b2dc6202f2a4c0 .edge-thickness-thick{stroke-width:3.5px;}#mmd-97b2dc6202f2a4c0 .edge-pattern-solid{stroke-dasharray:0;}#mmd-97b2dc6202f2a4c0 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-97b2dc6202f2a4c0 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-97b2dc6202f2a4c0 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-97b2dc6202f2a4c0 .marker{fill:#333333;stroke:#333333;}#mmd-97b2dc6202f2a4c0 .marker.cross{stroke:#333333;}#mmd-97b2dc6202f2a4c0 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-97b2dc6202f2a4c0 p{margin:0;}#mmd-97b2dc6202f2a4c0 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g class="main"><rect width="700" height="500" class="background" fill="white"/><g class="chart-title"><text x="0" y="0" fill="#131300" font-size="20" dominant-baseline="middle" text-anchor="middle" transform="translate(350, 21.55078125) rotate(0)">Rendement brut selon loyer</text></g><g class="plot"><g class="bar-plot-0"><rect x="69.02812690734864" y="178.22990885416664" width="121.6" height="288.77009114583336" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="322.1140634536743" y="169.39210937500002" width="121.6" height="297.607890625" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="575.2" y="108.20734375" width="121.6" height="358.79265625" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/></g></g><g class="bottom-axis"><g class="axis-line"><path d="M 65.82812690734863,468 L 700,468" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(129.82812690734863, 479) rotate(0)">Median</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(382.9140634536743, 479) rotate(0)">Plafond bas</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(636, 479) rotate(0)">Plafond haut</text></g><g class="ticks"><path d="M 129.82812690734863,469 L 129.82812690734863,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 382.9140634536743,469 L 382.9140634536743,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 636,469 L 636,474" fill="none" stroke="#131300" stroke-width="2"/></g></g><g class="left-axis"><g class="axisl-line"><path d="M 64.82812690734863,43.1015625 L 64.82812690734863,467" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 51.1015625) rotate(0)">6</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 85.09309895833334) rotate(0)">5.5</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 119.08463541666666) rotate(0)">5</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 153.076171875) rotate(0)">4.5</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 187.06770833333337) rotate(0)">4</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 221.05924479166663) rotate(0)">3.5</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 255.05078125) rotate(0)">3</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 289.04231770833326) rotate(0)">2.5</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 323.03385416666674) rotate(0)">2</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 357.025390625) rotate(0)">1.5</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 391.0169270833333) rotate(0)">1</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 425.0084635416667) rotate(0)">0.5</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(53.82812690734863, 459) rotate(0)">0</text></g><g class="ticks"><path d="M 63.82812690734863,51.1015625 L 58.82812690734863,51.1015625" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,85.09309895833334 L 58.82812690734863,85.09309895833334" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,119.08463541666666 L 58.82812690734863,119.08463541666666" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,153.076171875 L 58.82812690734863,153.076171875" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,187.06770833333337 L 58.82812690734863,187.06770833333337" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,221.05924479166663 L 58.82812690734863,221.05924479166663" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,255.05078125 L 58.82812690734863,255.05078125" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,289.04231770833326 L 58.82812690734863,289.04231770833326" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,323.03385416666674 L 58.82812690734863,323.03385416666674" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,357.025390625 L 58.82812690734863,357.025390625" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,391.0169270833333 L 58.82812690734863,391.0169270833333" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,425.0084635416667 L 58.82812690734863,425.0084635416667" fill="none" stroke="#131300" stroke-width="2"/><path d="M 63.82812690734863,459 L 58.82812690734863,459" fill="none" stroke="#131300" stroke-width="2"/></g><g class="title"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(5, 255.05078125) rotate(270)">Rendement brut pct</text></g></g></g><g class="mermaid-tmp-group"/></svg></figure>
+<table>
+<thead>
+<tr>
+<th>Scénario</th>
+<th style="text-align: right;">Calcul</th>
+<th style="text-align: right;">Rendement brut sur 135 000 €</th>
+<th style="text-align: right;">Rendement brut sur coût achat ~145 800 €</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loyer médian 465 €/mois</td>
+<td style="text-align: right;">5 576 €/an</td>
+<td style="text-align: right;"><strong>4,13 %</strong></td>
+<td style="text-align: right;"><strong>3,83 %</strong></td>
+</tr>
+<tr>
+<td>Plafond bas 480 €/mois</td>
+<td style="text-align: right;">5 755 €/an</td>
+<td style="text-align: right;"><strong>4,26 %</strong></td>
+<td style="text-align: right;"><strong>3,95 %</strong></td>
+</tr>
+<tr>
+<td>Plafond haut 581 €/mois</td>
+<td style="text-align: right;">6 970 €/an</td>
+<td style="text-align: right;"><strong>5,16 %</strong></td>
+<td style="text-align: right;"><strong>4,78 %</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Hypothèse nette prudente au loyer médian : 5 576 € de loyers - 840 € charges copro - 600 € taxe foncière estimative - 100 € PNO - 280 € vacance/impayés légers = <strong>~3 756 €/an</strong>, soit <strong>~2,6 % net sur coût total avec frais et petit mobilier/travaux</strong>. Même au plafond haut, la rentabilité nette reste sensible aux charges et travaux.</p>
+<p><strong>Verdict rentabilité :</strong> correct pour un placement patrimonial central, faible pour un investissement de rendement. Le deal devient intéressant seulement si le prix baisse, si le studio est louable meublé au haut de plafond légal, et si la copropriété est saine.</p>
+<hr />
+<h2>4. Commune et quartier — qualité pour un investisseur</h2>
+<h3>Profil Bordeaux / Victoire</h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Évaluation</th>
+<th>Données recherchées</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Population</td>
+<td>Forte ville centre</td>
+<td>INSEE : 265 328 habitants en 2022 ; croissance depuis 2011</td>
+</tr>
+<tr>
+<td>Profil étudiant</td>
+<td>Excellent</td>
+<td>Ville de Bordeaux : plus de 100 000 étudiants à la rentrée 2024 ; 15–29 ans ~29,8 % INSEE</td>
+</tr>
+<tr>
+<td>Transports</td>
+<td>Excellent</td>
+<td>Station Victoire sur tram B ; réseau TBM tram + bus ; hypercentre accessible</td>
+</tr>
+<tr>
+<td>Commerces</td>
+<td>Excellent</td>
+<td>Victoire / Capucins : commerces, cafés, marché des Capucins, vie de quartier</td>
+</tr>
+<tr>
+<td>Nuisances</td>
+<td>À surveiller</td>
+<td>Quartier vivant : bruit nocturne, bars, flux tram/route, étudiants</td>
+</tr>
+<tr>
+<td>Liquidité revente</td>
+<td>Bonne</td>
+<td>Petite surface centrale, typologie recherchée</td>
+</tr>
+</tbody>
+</table>
+<h3>Radar qualité de vie investisseur</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-f1874e5e4686f8f6" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 500px; background-color: white;" viewBox="0 0 500 500" role="graphics-document document" aria-roledescription="quadrantChart"><style>#mmd-f1874e5e4686f8f6{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-f1874e5e4686f8f6 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-f1874e5e4686f8f6 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-f1874e5e4686f8f6 .error-icon{fill:#552222;}#mmd-f1874e5e4686f8f6 .error-text{fill:#552222;stroke:#552222;}#mmd-f1874e5e4686f8f6 .edge-thickness-normal{stroke-width:1px;}#mmd-f1874e5e4686f8f6 .edge-thickness-thick{stroke-width:3.5px;}#mmd-f1874e5e4686f8f6 .edge-pattern-solid{stroke-dasharray:0;}#mmd-f1874e5e4686f8f6 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-f1874e5e4686f8f6 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-f1874e5e4686f8f6 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-f1874e5e4686f8f6 .marker{fill:#333333;stroke:#333333;}#mmd-f1874e5e4686f8f6 .marker.cross{stroke:#333333;}#mmd-f1874e5e4686f8f6 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-f1874e5e4686f8f6 p{margin:0;}#mmd-f1874e5e4686f8f6 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g class="main"><g class="quadrants"><g class="quadrant"><rect x="263" y="45" width="232" height="212" fill="#ECECFF"/><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 50) rotate(0)">Ideal locatif</text></g><g class="quadrant"><rect x="31" y="45" width="232" height="212" fill="#f1f1ff"/><text x="0" y="0" fill="#0e0e00" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 50) rotate(0)">Demande forte</text></g><g class="quadrant"><rect x="31" y="257" width="232" height="212" fill="#f6f6ff"/><text x="0" y="0" fill="#090900" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 262) rotate(0)">Faible attrait</text></g><g class="quadrant"><rect x="263" y="257" width="232" height="212" fill="#fbfbff"/><text x="0" y="0" fill="#040400" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 262) rotate(0)">Accessible</text></g></g><g class="border"><line x1="30" y1="45" x2="496" y2="45" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="495" y1="46" x2="495" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="30" y1="469" x2="496" y2="469" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="31" y1="46" x2="31" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="263" y1="46" x2="263" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 1;"/><line x1="32" y1="257" x2="494" y2="257" style="stroke: rgb(199, 199, 241); stroke-width: 1;"/></g><g class="data-points"><g class="data-point"><circle cx="457.88000000000005" cy="95.88" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(457.88000000000005, 100.88) rotate(0)">Victoire</text></g></g><g class="labels"><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 479) rotate(0)">Faible accessibilite</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 479) rotate(0)">Forte accessibilite</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(5, 363) rotate(-90)">Peu de demande</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(5, 151) rotate(-90)">Forte demande</text></g></g><g class="title"><text x="0" y="0" fill="#131300" font-size="20" dominant-baseline="hanging" text-anchor="middle" transform="translate(250, 10) rotate(0)">Qualite investissement — Bordeaux Victoire</text></g></g></svg></figure>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-0f8f7e746a83404a" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 661.75 450" style="max-width: 661.75px; background-color: white;" role="graphics-document document" aria-roledescription="pie"><style>#mmd-0f8f7e746a83404a{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-0f8f7e746a83404a .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-0f8f7e746a83404a .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-0f8f7e746a83404a .error-icon{fill:#552222;}#mmd-0f8f7e746a83404a .error-text{fill:#552222;stroke:#552222;}#mmd-0f8f7e746a83404a .edge-thickness-normal{stroke-width:1px;}#mmd-0f8f7e746a83404a .edge-thickness-thick{stroke-width:3.5px;}#mmd-0f8f7e746a83404a .edge-pattern-solid{stroke-dasharray:0;}#mmd-0f8f7e746a83404a .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-0f8f7e746a83404a .edge-pattern-dashed{stroke-dasharray:3;}#mmd-0f8f7e746a83404a .edge-pattern-dotted{stroke-dasharray:2;}#mmd-0f8f7e746a83404a .marker{fill:#333333;stroke:#333333;}#mmd-0f8f7e746a83404a .marker.cross{stroke:#333333;}#mmd-0f8f7e746a83404a svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-0f8f7e746a83404a p{margin:0;}#mmd-0f8f7e746a83404a .pieCircle{stroke:black;stroke-width:2px;opacity:0.7;}#mmd-0f8f7e746a83404a .pieOuterCircle{stroke:black;stroke-width:2px;fill:none;}#mmd-0f8f7e746a83404a .pieTitleText{text-anchor:middle;font-size:25px;fill:black;font-family:"trebuchet ms",verdana,arial,sans-serif;}#mmd-0f8f7e746a83404a .slice{font-family:"trebuchet ms",verdana,arial,sans-serif;fill:#333;font-size:17px;}#mmd-0f8f7e746a83404a .legend text{fill:black;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:17px;}#mmd-0f8f7e746a83404a :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g transform="translate(225,225)"><circle cx="0" cy="0" r="186" class="pieOuterCircle"/><path d="M0,-185A185,185,0,0,1,175.945,57.168L0,0Z" fill="#ECECFF" class="pieCircle"/><path d="M175.945,57.168A185,185,0,0,1,-57.168,175.945L0,0Z" fill="#ffffde" class="pieCircle"/><path d="M-57.168,175.945A185,185,0,0,1,-185,0L0,0Z" fill="hsl(80, 100%, 56.2745098039%)" class="pieCircle"/><path d="M-185,0A185,185,0,0,1,-108.74,-149.668L0,0Z" fill="hsl(240, 100%, 86.2745098039%)" class="pieCircle"/><path d="M-108.74,-149.668A185,185,0,0,1,0,-185L0,0Z" fill="hsl(60, 100%, 63.5294117647%)" class="pieCircle"/><text transform="translate(112.25110796952396,-81.55520375558064)" class="slice" style="text-anchor: middle;">30%</text><text transform="translate(62.99118183886206,123.62715523113606)" class="slice" style="text-anchor: middle;">25%</text><text transform="translate(-112.25110796952394,81.55520375558066)" class="slice" style="text-anchor: middle;">20%</text><text transform="translate(-123.62715523113604,-62.991181838862104)" class="slice" style="text-anchor: middle;">15%</text><text transform="translate(-42.87610796952397,-131.95909163595255)" class="slice" style="text-anchor: middle;">10%</text><text x="0" y="-200" class="pieTitleText">"Profil quartier — score investisseur"</text><g class="legend" transform="translate(216,-55)"><rect width="18" height="18" style="fill: rgb(236, 236, 255); stroke: rgb(236, 236, 255);"/><text x="22" y="14">Demande etudiante</text></g><g class="legend" transform="translate(216,-33)"><rect width="18" height="18" style="fill: rgb(255, 255, 222); stroke: rgb(255, 255, 222);"/><text x="22" y="14">Transports</text></g><g class="legend" transform="translate(216,-11)"><rect width="18" height="18" style="fill: rgb(181, 255, 32); stroke: rgb(181, 255, 32);"/><text x="22" y="14">Commerces</text></g><g class="legend" transform="translate(216,11)"><rect width="18" height="18" style="fill: rgb(185, 185, 255); stroke: rgb(185, 185, 255);"/><text x="22" y="14">Liquidite</text></g><g class="legend" transform="translate(216,33)"><rect width="18" height="18" style="fill: rgb(255, 255, 69); stroke: rgb(255, 255, 69);"/><text x="22" y="14">Calme</text></g></g></svg></figure>
+<h3>Lecture acheteur</h3>
+<ul>
+<li><strong>Très bon bassin de locataires :</strong> étudiants, jeunes actifs, mobilité, colocation proche, centre-ville.</li>
+<li><strong>Très bonne accessibilité :</strong> tram B, commerces, vie centrale. Cela réduit le risque de vacance locative.</li>
+<li><strong>Risque d'usage :</strong> studio en quartier festif = turnover, bruit, usure plus rapide, copro potentiellement exposée aux locations de courte durée / conflits d'usage.</li>
+<li><strong>Revente :</strong> la liquidité devrait rester bonne si le prix d'achat est cohérent. Acheter trop cher limite la marge de sécurité.</li>
+</ul>
+<hr />
+<h2>5. Risques et points d'attention</h2>
+<h3>Matrice des risques</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-57bf33ff18698bd4" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 500px; background-color: white;" viewBox="0 0 500 500" role="graphics-document document" aria-roledescription="quadrantChart"><style>#mmd-57bf33ff18698bd4{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-57bf33ff18698bd4 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-57bf33ff18698bd4 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-57bf33ff18698bd4 .error-icon{fill:#552222;}#mmd-57bf33ff18698bd4 .error-text{fill:#552222;stroke:#552222;}#mmd-57bf33ff18698bd4 .edge-thickness-normal{stroke-width:1px;}#mmd-57bf33ff18698bd4 .edge-thickness-thick{stroke-width:3.5px;}#mmd-57bf33ff18698bd4 .edge-pattern-solid{stroke-dasharray:0;}#mmd-57bf33ff18698bd4 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-57bf33ff18698bd4 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-57bf33ff18698bd4 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-57bf33ff18698bd4 .marker{fill:#333333;stroke:#333333;}#mmd-57bf33ff18698bd4 .marker.cross{stroke:#333333;}#mmd-57bf33ff18698bd4 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-57bf33ff18698bd4 p{margin:0;}#mmd-57bf33ff18698bd4 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g class="main"><g class="quadrants"><g class="quadrant"><rect x="263" y="45" width="232" height="212" fill="#ECECFF"/><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 50) rotate(0)">Critique</text></g><g class="quadrant"><rect x="31" y="45" width="232" height="212" fill="#f1f1ff"/><text x="0" y="0" fill="#0e0e00" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 50) rotate(0)">A surveiller</text></g><g class="quadrant"><rect x="31" y="257" width="232" height="212" fill="#f6f6ff"/><text x="0" y="0" fill="#090900" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 262) rotate(0)">Faible</text></g><g class="quadrant"><rect x="263" y="257" width="232" height="212" fill="#fbfbff"/><text x="0" y="0" fill="#040400" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 262) rotate(0)">A anticiper</text></g></g><g class="border"><line x1="30" y1="45" x2="496" y2="45" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="495" y1="46" x2="495" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="30" y1="469" x2="496" y2="469" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="31" y1="46" x2="31" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="263" y1="46" x2="263" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 1;"/><line x1="32" y1="257" x2="494" y2="257" style="stroke: rgb(199, 199, 241); stroke-width: 1;"/></g><g class="data-points"><g class="data-point"><circle cx="239.8" cy="320.6" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(239.8, 325.6) rotate(0)">Radon</text></g><g class="data-point"><circle cx="170.2" cy="235.79999999999998" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(170.2, 240.79999999999998) rotate(0)">Inondation</text></g><g class="data-point"><circle cx="379" cy="235.79999999999998" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 240.79999999999998) rotate(0)">Bruit</text></g><g class="data-point"><circle cx="332.6" cy="193.39999999999998" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(332.6, 198.39999999999998) rotate(0)">Copro</text></g><g class="data-point"><circle cx="402.2" cy="172.20000000000002" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(402.2, 177.20000000000002) rotate(0)">DPE E</text></g><g class="data-point"><circle cx="448.6" cy="108.60000000000001" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(448.6, 113.60000000000001) rotate(0)">Prix eleve</text></g></g><g class="labels"><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 479) rotate(0)">Peu probable</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 479) rotate(0)">Probable</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(5, 363) rotate(-90)">Impact faible</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(5, 151) rotate(-90)">Impact fort</text></g></g><g class="title"><text x="0" y="0" fill="#131300" font-size="20" dominant-baseline="hanging" text-anchor="middle" transform="translate(250, 10) rotate(0)">Matrice des risques identifies</text></g></g></svg></figure>
+<h3>Risques naturels / technologiques au niveau Bordeaux</h3>
+<table>
+<thead>
+<tr>
+<th>Risque</th>
+<th>Statut sans adresse exacte</th>
+<th>Sévérité</th>
+<th>Source / commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inondation</td>
+<td>À vérifier à l'adresse</td>
+<td>Moyenne</td>
+<td>Bordeaux est couvert par un PPRI agglomération bordelaise 2022/2023 selon Préfecture / PIGMA ; Victoire semble moins exposé que les secteurs proches Garonne, mais seul l'ERP adresse tranche.</td>
+</tr>
+<tr>
+<td>Sismicité</td>
+<td>Zone 2 signalée par ERP commercial</td>
+<td>Faible</td>
+<td>France ERP indique séisme 2 pour Bordeaux ; à confirmer par ERP officiel.</td>
+</tr>
+<tr>
+<td>Radon</td>
+<td>Niveau 2 signalé</td>
+<td>Faible à moyen</td>
+<td>France ERP indique radon niveau 2 ; ventilation à vérifier dans l'ancien.</td>
+</tr>
+<tr>
+<td>Argiles / mouvements terrain</td>
+<td>Non tranché sans parcelle</td>
+<td>Faible à moyen</td>
+<td>À confirmer sur Géorisques avec adresse exacte.</td>
+</tr>
+<tr>
+<td>ICPE / risques industriels</td>
+<td>Commune urbaine avec ICPE</td>
+<td>Faible à moyen</td>
+<td>France ERP recense 152 ICPE à l'échelle Bordeaux ; pertinence dépend de la distance exacte.</td>
+</tr>
+<tr>
+<td>Bruit environnemental</td>
+<td>Probable en quartier Victoire</td>
+<td>Moyen</td>
+<td>Bordeaux Métropole publie des cartes du bruit ; transports routiers/ferroviaires sont les principales sources en ville.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Point important :</strong> le rapport Géorisques générique par commune peut être trop agrégé. Pour l'achat, il faut exiger l'<strong>ERP daté de moins de 6 mois à l'adresse exacte</strong>, pas seulement une lecture au niveau commune.</p>
+<h3>Risques spécifiques au studio</h3>
+<ol>
+<li>
+<p><strong>DPE E — impact locatif à moyen terme</strong><br />
+   Les logements E restent louables aujourd'hui, mais l'interdiction de location des E est prévue à partir de <strong>2034</strong>. Pour un horizon investisseur 8–12 ans, c'est un vrai sujet. Demander le DPE complet : consommation, recommandations, scénario de travaux, contraintes copro.</p>
+</li>
+<li>
+<p><strong>Prix élevé — risque financier immédiat</strong><br />
+   C'est le risque n°1. Même avec forte demande locative, le prix de 6 100 €/m² donne une rentabilité basse et laisse peu de marge pour travaux / vacance / fiscalité.</p>
+</li>
+<li>
+<p><strong>Copropriété ancien + ascenseur</strong><br />
+   L'ascenseur est attractif, mais vérifier : carnet d'entretien, derniers PV d'AG, travaux votés, fonds travaux, impayés, ravalement, toiture, colonne électrique, plomberie, ventilation, ascenseur.</p>
+</li>
+<li>
+<p><strong>Charges de 70 €/mois</strong><br />
+   Pour 22 m², c'est significatif : <strong>~3,18 €/m²/mois</strong>. Il faut distinguer charges récupérables locataire vs non récupérables propriétaire.</p>
+</li>
+<li>
+<p><strong>Bruit / vie nocturne Victoire</strong><br />
+   Bonne zone étudiante, mais possible nuisance : bars, tram, flux piétons, scooters. Un studio côté rue sans double vitrage perd en qualité locative et peut augmenter le turnover.</p>
+</li>
+<li>
+<p><strong>Surface Carrez et décence</strong><br />
+   Vérifier la surface Carrez exacte, hauteur sous plafond, ventilation SDB, humidité, installation électrique, absence de nuisibles, conformité location meublée.</p>
+</li>
+</ol>
+<hr />
+<h2>6. Coûts additionnels et coût total d'acquisition</h2>
+<h3>Hypothèse d'acquisition prudente</h3>
+<table>
+<thead>
+<tr>
+<th>Poste</th>
+<th style="text-align: right;">Estimation</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prix du bien</td>
+<td style="text-align: right;">135 000 €</td>
+<td>Prix profil utilisateur</td>
+</tr>
+<tr>
+<td>Frais de notaire ancien</td>
+<td style="text-align: right;">~10 800 €</td>
+<td>Hypothèse ~8 % ; Kazba estime 7,5 % pour le secteur</td>
+</tr>
+<tr>
+<td>Frais bancaires / garantie / dossier</td>
+<td style="text-align: right;">~1 500 €</td>
+<td>Variable selon financement</td>
+</tr>
+<tr>
+<td>Mobilier meublé étudiant</td>
+<td style="text-align: right;">~4 000 €</td>
+<td>Lit, bureau, électroménager, rangements</td>
+</tr>
+<tr>
+<td>Travaux DPE / rafraîchissement prudentiel</td>
+<td style="text-align: right;">~10 000 €</td>
+<td>À confirmer après visite ; peut être 0 si rénové, ou beaucoup plus si copro / isolation</td>
+</tr>
+<tr>
+<td>Total prudentiel</td>
+<td style="text-align: right;"><strong>~161 300 €</strong></td>
+<td>Hors fiscalité annuelle</td>
+</tr>
+</tbody>
+</table>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-20cb3ec03e5a0108" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 625.96875 450" style="max-width: 625.969px; background-color: white;" role="graphics-document document" aria-roledescription="pie"><style>#mmd-20cb3ec03e5a0108{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-20cb3ec03e5a0108 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-20cb3ec03e5a0108 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-20cb3ec03e5a0108 .error-icon{fill:#552222;}#mmd-20cb3ec03e5a0108 .error-text{fill:#552222;stroke:#552222;}#mmd-20cb3ec03e5a0108 .edge-thickness-normal{stroke-width:1px;}#mmd-20cb3ec03e5a0108 .edge-thickness-thick{stroke-width:3.5px;}#mmd-20cb3ec03e5a0108 .edge-pattern-solid{stroke-dasharray:0;}#mmd-20cb3ec03e5a0108 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-20cb3ec03e5a0108 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-20cb3ec03e5a0108 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-20cb3ec03e5a0108 .marker{fill:#333333;stroke:#333333;}#mmd-20cb3ec03e5a0108 .marker.cross{stroke:#333333;}#mmd-20cb3ec03e5a0108 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-20cb3ec03e5a0108 p{margin:0;}#mmd-20cb3ec03e5a0108 .pieCircle{stroke:black;stroke-width:2px;opacity:0.7;}#mmd-20cb3ec03e5a0108 .pieOuterCircle{stroke:black;stroke-width:2px;fill:none;}#mmd-20cb3ec03e5a0108 .pieTitleText{text-anchor:middle;font-size:25px;fill:black;font-family:"trebuchet ms",verdana,arial,sans-serif;}#mmd-20cb3ec03e5a0108 .slice{font-family:"trebuchet ms",verdana,arial,sans-serif;fill:#333;font-size:17px;}#mmd-20cb3ec03e5a0108 .legend text{fill:black;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:17px;}#mmd-20cb3ec03e5a0108 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g transform="translate(225,225)"><circle cx="0" cy="0" r="186" class="pieOuterCircle"/><path d="M0,-185A185,185,0,1,1,-153.137,-103.799L0,0Z" fill="#ECECFF" class="pieCircle"/><path d="M-153.137,-103.799A185,185,0,0,1,-96.771,-157.672L0,0Z" fill="#ffffde" class="pieCircle"/><path d="M-96.771,-157.672A185,185,0,0,1,-28.976,-182.717L0,0Z" fill="hsl(80, 100%, 56.2745098039%)" class="pieCircle"/><path d="M-28.976,-182.717A185,185,0,0,1,0,-185L0,0Z" fill="hsl(240, 100%, 86.2745098039%)" class="pieCircle"/><text transform="translate(64.99998137168751,122.5828900037859)" class="slice" style="text-anchor: middle;">84%</text><text transform="translate(-95.86804166610494,-100.30394352719124)" class="slice" style="text-anchor: middle;">7%</text><text transform="translate(-48.08131807843617,-130.1527923320904)" class="slice" style="text-anchor: middle;">6%</text><text transform="translate(-10.899796233654781,-138.3212092994592)" class="slice" style="text-anchor: middle;">2%</text><text x="0" y="-200" class="pieTitleText">"Cout total prudentiel"</text><g class="legend" transform="translate(216,-55)"><rect width="18" height="18" style="fill: rgb(236, 236, 255); stroke: rgb(236, 236, 255);"/><text x="22" y="14">Prix du bien</text></g><g class="legend" transform="translate(216,-33)"><rect width="18" height="18" style="fill: rgb(255, 255, 222); stroke: rgb(255, 255, 222);"/><text x="22" y="14">Notaire</text></g><g class="legend" transform="translate(216,-11)"><rect width="18" height="18" style="fill: rgb(255, 255, 69); stroke: rgb(255, 255, 69);"/><text x="22" y="14">Frais bancaires</text></g><g class="legend" transform="translate(216,11)"><rect width="18" height="18" style="fill: rgb(185, 185, 255); stroke: rgb(185, 185, 255);"/><text x="22" y="14">Mobilier</text></g><g class="legend" transform="translate(216,33)"><rect width="18" height="18" style="fill: rgb(181, 255, 32); stroke: rgb(181, 255, 32);"/><text x="22" y="14">Travaux DPE</text></g></g></svg></figure>
+<h3>Charges annuelles à intégrer</h3>
+<table>
+<thead>
+<tr>
+<th>Poste annuel</th>
+<th style="text-align: right;">Montant prudentiel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Charges copropriété</td>
+<td style="text-align: right;">~840 €/an</td>
+</tr>
+<tr>
+<td>Taxe foncière</td>
+<td style="text-align: right;">~500–800 €/an à vérifier</td>
+</tr>
+<tr>
+<td>Assurance PNO</td>
+<td style="text-align: right;">~80–150 €/an</td>
+</tr>
+<tr>
+<td>Entretien / remplacement mobilier</td>
+<td style="text-align: right;">~200–400 €/an</td>
+</tr>
+<tr>
+<td>Vacance / remise en état entre étudiants</td>
+<td style="text-align: right;">Prévoir 2–4 semaines ou budget annuel</td>
+</tr>
+<tr>
+<td>Gestion locative si déléguée</td>
+<td style="text-align: right;">~6–8 % des loyers + frais de relocation</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Checklist de visite</h2>
+<h3>Avant visite — documents à demander</h3>
+<ol>
+<li>DPE complet, pas seulement la lettre E : consommation, GES, recommandations, montant travaux proposé.</li>
+<li>Diagnostic électrique, amiante, plomb, ERP, état des nuisances sonores si disponible.</li>
+<li>Surface Carrez officielle.</li>
+<li>Trois derniers PV d'assemblée générale de copropriété.</li>
+<li>Dernier appel de charges, budget prévisionnel, fonds travaux, état des impayés.</li>
+<li>Carnet d'entretien immeuble / ascenseur.</li>
+<li>Taxe foncière exacte.</li>
+<li>Si le studio est loué : bail, loyer HC, charges, dépôt de garantie, historique paiement, conformité encadrement des loyers.</li>
+</ol>
+<h3>Pendant visite — points physiques</h3>
+<ul>
+<li><strong>Bruit :</strong> venir en soirée et si possible jeudi/vendredi soir ; fermer les fenêtres, écouter rue/tram/voisins.</li>
+<li><strong>Luminosité :</strong> orientation, vis-à-vis, hauteur, cour intérieure ou rue.</li>
+<li><strong>Humidité :</strong> odeurs, traces murs/plafond, ventilation SDB/cuisine, état fenêtres.</li>
+<li><strong>DPE :</strong> type chauffage, ballon d'eau chaude, fenêtres, isolation, ventilation, ponts thermiques.</li>
+<li><strong>Agencement 22 m² :</strong> coin nuit, bureau, rangements, cuisine fonctionnelle ; facilité à meubler.</li>
+<li><strong>Copro :</strong> état parties communes, ascenseur, façade, toiture visible, boîtes aux lettres, caves, local vélos.</li>
+<li><strong>Sécurité :</strong> porte palière, interphone, accès immeuble, éclairage commun.</li>
+</ul>
+<hr />
+<h2>8. Questions à poser au vendeur / agence</h2>
+<ol>
+<li>Le prix de 135 000 € est-il <strong>frais d'agence inclus</strong> ? Quel est le prix net vendeur ?</li>
+<li>Quelle est la <strong>surface Carrez exacte</strong> ?</li>
+<li>Le studio est-il actuellement loué ? Si oui, à quel <strong>loyer hors charges</strong>, avec quel type de bail, et est-il conforme à l'encadrement des loyers ?</li>
+<li>Quelle est la <strong>zone d'encadrement des loyers</strong> exacte pour l'adresse ? Quel plafond majoré s'applique pour un T1 meublé ancien ?</li>
+<li>Quels travaux DPE sont recommandés pour passer de E à D/C ? Sont-ils réalisables sans vote copro ?</li>
+<li>Les 70 €/mois de charges comprennent-ils chauffage/eau/ascenseur ? Quelle part est récupérable auprès du locataire ?</li>
+<li>Des travaux copropriété sont-ils votés ou envisagés : ravalement, toiture, ascenseur, colonnes, mise aux normes ?</li>
+<li>Le logement donne-t-il sur rue ou cour ? Quel niveau de bruit le soir autour de Victoire ?</li>
+<li>Y a-t-il des locations courte durée dans l'immeuble ou des litiges copropriété ?</li>
+<li>Quel est le montant exact de la taxe foncière ?</li>
+</ol>
+<hr />
+<h2>9. Angle de négociation</h2>
+<h3>Argumentaire rationnel</h3>
+<ul>
+<li><strong>Prix au m² très supérieur aux références</strong> : +40,5 % vs médiane DVF Kazba Victoire ; +25,4 % vs Qoridor appartement Victoire.</li>
+<li><strong>DPE E</strong> : pas bloquant aujourd'hui, mais travaux à anticiper avant 2034 pour sécuriser la location long terme.</li>
+<li><strong>Charges élevées pour 22 m²</strong> : 70 €/mois rogne le cash-flow.</li>
+<li><strong>Copro ancien avec ascenseur</strong> : demander décote si travaux votés / impayés / ascenseur coûteux.</li>
+<li><strong>Encadrement des loyers</strong> : empêche de compenser un prix d'achat trop haut par un loyer libre.</li>
+</ul>
+<h3>Cibles de négociation</h3>
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th style="text-align: right;">Prix</th>
+<th style="text-align: right;">Prix/m²</th>
+<th>Lecture</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prix affiché</td>
+<td style="text-align: right;">135 000 €</td>
+<td style="text-align: right;">6 136 €/m²</td>
+<td>Très cher</td>
+</tr>
+<tr>
+<td>Première offre offensive</td>
+<td style="text-align: right;">115 000 €</td>
+<td style="text-align: right;">5 227 €/m²</td>
+<td>Défendable si travaux / bruit / copro</td>
+</tr>
+<tr>
+<td>Zone cible</td>
+<td style="text-align: right;"><strong>118 000–125 000 €</strong></td>
+<td style="text-align: right;"><strong>5 364–5 682 €/m²</strong></td>
+<td>Plus cohérent pour studio premium</td>
+</tr>
+<tr>
+<td>Maximum prudent avant travaux</td>
+<td style="text-align: right;">125 000 €</td>
+<td style="text-align: right;">5 682 €/m²</td>
+<td>À réserver à un bien excellent</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conseil :</strong> ne pas négocier seulement sur le prix/m². Négocier avec preuves : loyer plafonné, DPE E, charges, documents copro, devis travaux, taxe foncière.</p>
+<hr />
+<h2>10. Synthèse finale</h2>
+<p>Ce studio coche une case recherchée : <strong>petite surface dans un quartier étudiant central de Bordeaux</strong>. Pour de la location étudiante, la demande devrait être solide et la vacance limitée si le bien est propre, meublé correctement et pas trop bruyant.</p>
+<p>Mais le prix demandé autour de <strong>135 000 € / 6 100 €/m²</strong> est le point bloquant. Les références trouvées placent Victoire plutôt autour de <strong>4 343–4 863 €/m²</strong> pour les appartements selon les sources DVF/estimations, avec un marché bordelais globalement stable/corrigé depuis 2020. En investissement, ce surprix donne une rentabilité brute souvent autour de <strong>4,1 %</strong> au loyer médian et une rentabilité nette prudente proche de <strong>2,5–3 %</strong> après charges, taxe, vacance et entretien — avant même gros travaux.</p>
+<p><strong>Recommandation :</strong> visiter si le bien semble vraiment qualitatif, mais ne pas acheter au prix affiché sans justification exceptionnelle. La bonne stratégie est de valider le plafond de loyer exact, les PV de copropriété, le DPE complet et le niveau de bruit, puis d'amener la discussion vers <strong>118 000–125 000 €</strong>. Si l'agence refuse toute baisse et que des travaux apparaissent, le rendement ne compense probablement pas le risque.</p>
+<hr />
+<h2>Sources web consultées</h2>
+<ul>
+<li>Kazba — Investir dans un appartement à Bordeaux, quartier Victoire, données DVF 2025 : https://www.kazba.fr/immobilier/investir/appartement/nouvelle-aquitaine-75/gironde-33/bordeaux-33063/quartier-victoire</li>
+<li>Qoridor — Prix immobilier quartier Victoire à Bordeaux, avril 2026 : https://blog.qoridor.fr/prix-immobilier/bordeaux/quartier/victoire/</li>
+<li>SAFTI / Bien-estimer — Prix immobilier Capucins-Victoire, mai 2026 : https://bien-estimer-safti.fr/prix-immobilier/villes/bordeaux-33000-33063/quartiers/capucins-victoire-3306311</li>
+<li>PAP — Prix immobilier à Bordeaux, juin 2025 : https://www.pap.fr/vendeur/prix-m2/bordeaux-33-g43588</li>
+<li>MeilleursAgents — Prix immobilier Bordeaux, mars 2026 : https://www.meilleursagents.com/prix-immobilier/bordeaux-33000/</li>
+<li>Qoridor — Prix immobilier Bordeaux, mai 2026 : https://blog.qoridor.fr/prix-immobilier/bordeaux/</li>
+<li>SeLoger — Évolution du marché bordelais 2020–2026 : https://edito.seloger.com/actualites/france/municipales-2026-prix-de-vente-pouvoir-d-achat-loyers-evolutions-marche_2</li>
+<li>INSEE — Dossier complet commune de Bordeaux 33063 : https://www.insee.fr/fr/statistiques/2011101?geo=COM-33063</li>
+<li>Ville de Bordeaux — Études supérieures à Bordeaux : https://www.bordeaux.fr/etre-etudiant-a-bordeaux</li>
+<li>Bien-dans-ma-ville — Quartier Capucins-Victoire : https://www.bien-dans-ma-ville.fr/bordeaux-33063/quartier-capucins-victoire/</li>
+<li>TBM — Tram ligne B / station Victoire : https://www.infotbm.com/en/lines/line:BMA:60</li>
+<li>Ville de Bordeaux — Encadrement des loyers : https://www.bordeaux.fr/lencadrement-des-loyers-a-bordeaux</li>
+<li>Bordeaux Métropole — Encadrement des loyers : https://www.bordeaux-metropole.fr/a-votre-service/services-aux-particuliers/logement-urbanisme/je-suis-locataire/mes-droits-en-tant</li>
+<li>Préfecture de Gironde — Arrêté loyers de référence Bordeaux 20/06/2025 : https://www.gironde.gouv.fr/contenu/telechargement/80195/600834/file/Tableaux_loyers_reference_Bordeaux_Arrete_2025-06-20.pdf</li>
+<li>Crédit Agricole e-immobilier — calendrier interdiction location DPE : https://e-immobilier.credit-agricole.fr/conseils/reglementation/interdiction-location-dpe-calendrier</li>
+<li>Géorisques — risques près de Bordeaux : https://www.georisques.gouv.fr/mes-risques/connaitre-les-risques-pres-de-chez-moi/rapport2/33063/Bordeaux/commune/33000</li>
+<li>Préfecture / PIGMA — PPRI agglomération bordelaise : https://www.pigma.org/geonetwork/srv/api/records/12ce7574-4a9d-46ea-bbab-e62e2ba440a4</li>
+<li>Bordeaux Métropole — carte interactive du bruit : https://www.bordeaux-metropole.fr/a-votre-service/services-aux-particuliers/environnement-sante/lutte-contre-nuisances-sonores/carte</li>
+<li>Atmo Nouvelle-Aquitaine — air de ma commune Bordeaux : https://www.atmo-nouvelleaquitaine.org/air-commune/Bordeaux/33063/indice-atmo</li>
+</ul>
+    </main>
+
+<section class="feedback" aria-labelledby="feedback-heading-03-studio-bordeaux-victoire">
+      <h2 id="feedback-heading-03-studio-bordeaux-victoire">Report feedback</h2>
+      <p class="feedback-intro">Was this report useful? Your rating helps improve the skill.</p>
+      <form method="post" action="/jobs/03-studio-bordeaux-victoire/feedback">
+        <fieldset class="feedback-rating">
+          <legend>Rating (required)</legend>
+          <label><input type="radio" name="rating" value="5" required> 5 — Excellent</label>
+          <label><input type="radio" name="rating" value="4"> 4 — Good</label>
+          <label><input type="radio" name="rating" value="3"> 3 — OK</label>
+          <label><input type="radio" name="rating" value="2"> 2 — Poor</label>
+          <label><input type="radio" name="rating" value="1"> 1 — Not useful</label>
+        </fieldset>
+        <p>
+          <label for="feedback-comment-03-studio-bordeaux-victoire">Comment (optional)</label><br>
+          <textarea id="feedback-comment-03-studio-bordeaux-victoire" name="comment" rows="3" maxlength="2000" placeholder="What worked or what was missing?"></textarea>
+        </p>
+        <p><button type="submit">Submit feedback</button></p>
+      </form>
+    </section>
+    <footer class="report-footer">
+      <p>Generated by Skill Server. This report is static HTML.</p>
+    </footer>
+  </div>
+</body>
+</html>

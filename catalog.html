@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalogue — rapports exemples bien-evaluator</title>
+  <meta name="description" content="Parcourez les rapports acheteur exemples : Lyon, Toulouse, Bordeaux. Rapports HTML complets générés par bien-evaluator.">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="index.html">
+        <span class="brand__mark" aria-hidden="true">BE</span>
+        <span>bien-evaluator</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="catalog.html" aria-current="page">Rapports exemples</a>
+        <a class="btn btn--primary" href="#" data-mailto-cta>Essayer le service</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <h1>Catalogue des rapports exemples</h1>
+    <p class="section__intro" style="margin:0">
+      Chaque carte ouvre le rapport HTML complet tel qu'il est servi par le service
+      (verdict, prix, risques, graphiques Mermaid). Ces échantillons proviennent de
+      jeux de test golden — profils acheteur réalistes, URLs illustratives.
+    </p>
+  </div>
+
+  <div class="catalog-grid">
+    <a class="catalog-card" href="reports/01-appartement-lyon-croix-rousse.html">
+      <div class="catalog-card__body">
+        <span class="card__tag">Appartement · Lyon 4e</span>
+        <span class="verdict-pill verdict-pill--ok">Prix correct à légèrement élevé</span>
+        <h2>Appartement T3 — Croix-Rousse</h2>
+        <p>
+          Premier achat, budget ~350 k€. ~345 000 € pour ~70 m² (4 929 €/m²).
+          Verdict : cohérent mais budget total &gt; 350 k€ avec frais.
+        </p>
+        <p class="card__meta">Contexte : immeuble canut, 3e sans ascenseur, DPE D</p>
+      </div>
+      <div class="catalog-card__footer">
+        <span class="btn btn--ghost">Ouvrir le rapport complet →</span>
+      </div>
+    </a>
+
+    <a class="catalog-card" href="reports/02-maison-toulouse-perimetre.html">
+      <div class="catalog-card__body">
+        <span class="card__tag">Maison · Toulouse ouest</span>
+        <span class="verdict-pill">Prix élevé</span>
+        <h2>Maison familiale — périphérie ouest</h2>
+        <p>
+          Famille, jardin, budget ~450 k€. ~4 050 €/m², au-dessus du marché
+          Tournefeuille / Colomiers sauf secteur premium sans travaux.
+        </p>
+        <p class="card__meta">Contexte : ~110 m² + terrain, risques inondation à vérifier</p>
+      </div>
+      <div class="catalog-card__footer">
+        <span class="btn btn--ghost">Ouvrir le rapport complet →</span>
+      </div>
+    </a>
+
+    <a class="catalog-card" href="reports/03-studio-bordeaux-victoire.html">
+      <div class="catalog-card__body">
+        <span class="card__tag">Studio · Bordeaux Victoire</span>
+        <span class="verdict-pill">Prix trop ambitieux</span>
+        <h2>Studio investissement locatif</h2>
+        <p>
+          ~6 100 €/m² vs ~4 343 €/m² médiane DVF Victoire. Deal intéressant
+          seulement avec baisse de prix et loyer optimisé.
+        </p>
+        <p class="card__meta">Contexte : ~22 m², DPE E, demande étudiante</p>
+      </div>
+      <div class="catalog-card__footer">
+        <span class="btn btn--ghost">Ouvrir le rapport complet →</span>
+      </div>
+    </a>
+  </div>
+
+  <section class="cta-band" style="margin:0 auto 3rem; max-width:1100px">
+    <h2>Votre annonce n'est pas dans la liste ?</h2>
+    <p>Envoyez l'URL de l'annonce LeBonCoin, SeLoger, PAP ou Bien'ici — nous vous contactons par e-mail.</p>
+    <a class="btn btn--primary" href="#" data-mailto-cta>Envoyer l'URL de mon annonce</a>
+  </section>
+
+  <footer class="site-footer">
+    <p><a href="index.html">← Retour à l'accueil</a> · Rapports générés par bien-evaluator (meta-app)</p>
+  </footer>
+  <script src="assets/mailto.js"></script>
+</body>
+</html>

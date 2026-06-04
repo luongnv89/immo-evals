@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>bien-evaluator report</title>
+  <style>
+    :root {
+      --fg: #1a1a1a;
+      --muted: #5a5a5a;
+      --bg: #ffffff;
+      --accent: #1d4ed8;
+      --border: #e2e2e2;
+      --code-bg: #f5f5f5;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      color: var(--fg);
+      background: var(--bg);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .report {
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    header.report-header {
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+    }
+    header.report-header h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.5rem;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin: 0;
+    }
+    .meta code { font-size: 0.85em; }
+    main.report-body h1,
+    main.report-body h2,
+    main.report-body h3 {
+      line-height: 1.25;
+      margin-top: 1.75rem;
+    }
+    main.report-body h1 { font-size: 1.4rem; }
+    main.report-body h2 { font-size: 1.2rem; }
+    main.report-body h3 { font-size: 1.05rem; }
+    main.report-body p,
+    main.report-body ul,
+    main.report-body ol { margin: 0.75rem 0; }
+    main.report-body a { color: var(--accent); }
+    main.report-body code {
+      background: var(--code-bg);
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    main.report-body pre {
+      background: var(--code-bg);
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    main.report-body pre code { background: none; padding: 0; }
+    main.report-body blockquote {
+      border-left: 3px solid var(--border);
+      margin: 1rem 0;
+      padding: 0.25rem 1rem;
+      color: var(--muted);
+    }
+    main.report-body table { border-collapse: collapse; width: 100%; }
+    main.report-body th,
+    main.report-body td {
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.6rem;
+      text-align: left;
+    }
+    main.report-body img { max-width: 100%; height: auto; }
+    section.feedback {
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+    section.feedback h2 { font-size: 1.15rem; margin: 0 0 0.5rem; }
+    section.feedback .feedback-intro { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
+    section.feedback fieldset.feedback-rating { border: none; padding: 0; margin: 0 0 1rem; }
+    section.feedback fieldset.feedback-rating legend { font-weight: 600; margin-bottom: 0.5rem; }
+    section.feedback label { display: block; margin: 0.35rem 0; }
+    section.feedback textarea {
+      width: 100%;
+      max-width: 100%;
+      font: inherit;
+      padding: 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    section.feedback button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      font: inherit;
+      cursor: pointer;
+    }
+    footer.report-footer {
+      border-top: 1px solid var(--border);
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body class="report-view">
+<link rel="stylesheet" href="../assets/site.css">
+<header class="site-top" role="banner">
+  <div class="site-top__inner">
+    <a href="../index.html">← Accueil</a>
+    <a href="../catalog.html">Catalogue</a>
+    <a href="#" data-mailto-cta>Essayer le service</a>
+    <span class="sample-note">Rapport exemple · démo</span>
+  </div>
+</header>
+<script src="../assets/mailto.js" defer></script>
+
+  <div class="report">
+    <header class="report-header">
+      <h1>bien-evaluator</h1>
+      <p class="meta">Report for job <code>01-appartement-lyon-croix-rousse</code> &middot; generated 2026-06-02</p>
+    </header>
+    <main class="report-body">
+<h1>Évaluation Immobilière — Appartement T3 à Lyon 4e / Croix-Rousse</h1>
+<p><strong>Date d'analyse</strong> : 2026-06-02<br />
+<strong>Annonce</strong> : aucune page live fournie — analyse basée sur le <strong>profil structuré fourni par l'acheteur</strong>.<br />
+<strong>Prix demandé</strong> : 345 000 € pour ~70 m², soit <strong>4 929 €/m²</strong>.<br />
+<strong>Contexte acheteur</strong> : premier achat, budget annoncé ~350 k€.</p>
+<p>&gt; ⚠️ <strong>Limite importante</strong> : je n'ai pas pu récupérer de page LeBonCoin/SeLoger/PAP ni les photos. Les éléments normalement extraits de l'annonce — adresse exacte, surface Carrez, charges de copropriété, taxe foncière, orientation, état réel, diagnostics complets, date de mise en vente, honoraires agence — sont donc soit issus du profil, soit à vérifier.</p>
+<hr />
+<h2>Verdict Rapide</h2>
+<p>Le prix est <strong>cohérent mais pas spécialement bon marché</strong> : à <strong>4 929 €/m²</strong>, il est environ <strong>+6,1 % au-dessus</strong> de la médiane recherchée pour Croix-Rousse Centre (~4 647 €/m², Le Figaro 2026) et <strong>+2,4 % au-dessus</strong> de la médiane DVF 2025 calculée sur les appartements de Lyon 4e (~4 820 €/m²). Le vrai sujet pour un premier achat est le budget <strong>frais inclus</strong> : avec les frais de notaire, ce bien dépasse plutôt <strong>372 k€ hors travaux</strong>.</p>
+<p><strong>Indicateur prix</strong> : Prix correct à légèrement élevé<br />
+<strong>Points forts</strong> : Croix-Rousse très commerçante, transports TCL, marché dynamique, prix dans la fourchette lyonnaise 4e<br />
+<strong>Points de vigilance</strong> : 3e étage sans ascenseur, surface Carrez/charges non vérifiées, immeuble ancien/canut, budget total &gt; 350 k€ si frais inclus</p>
+<h3>Vue d'ensemble — décision</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-a33f26541ead5099" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="flowchart" style="max-width: 586px; background-color: white;" viewBox="0 0 586 978.921875" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mmd-a33f26541ead5099{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-a33f26541ead5099 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-a33f26541ead5099 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-a33f26541ead5099 .error-icon{fill:#552222;}#mmd-a33f26541ead5099 .error-text{fill:#552222;stroke:#552222;}#mmd-a33f26541ead5099 .edge-thickness-normal{stroke-width:1px;}#mmd-a33f26541ead5099 .edge-thickness-thick{stroke-width:3.5px;}#mmd-a33f26541ead5099 .edge-pattern-solid{stroke-dasharray:0;}#mmd-a33f26541ead5099 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-a33f26541ead5099 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-a33f26541ead5099 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-a33f26541ead5099 .marker{fill:#333333;stroke:#333333;}#mmd-a33f26541ead5099 .marker.cross{stroke:#333333;}#mmd-a33f26541ead5099 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-a33f26541ead5099 p{margin:0;}#mmd-a33f26541ead5099 .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#mmd-a33f26541ead5099 .cluster-label text{fill:#333;}#mmd-a33f26541ead5099 .cluster-label span{color:#333;}#mmd-a33f26541ead5099 .cluster-label span p{background-color:transparent;}#mmd-a33f26541ead5099 .label text,#mmd-a33f26541ead5099 span{fill:#333;color:#333;}#mmd-a33f26541ead5099 .node rect,#mmd-a33f26541ead5099 .node circle,#mmd-a33f26541ead5099 .node ellipse,#mmd-a33f26541ead5099 .node polygon,#mmd-a33f26541ead5099 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mmd-a33f26541ead5099 .rough-node .label text,#mmd-a33f26541ead5099 .node .label text,#mmd-a33f26541ead5099 .image-shape .label,#mmd-a33f26541ead5099 .icon-shape .label{text-anchor:middle;}#mmd-a33f26541ead5099 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mmd-a33f26541ead5099 .rough-node .label,#mmd-a33f26541ead5099 .node .label,#mmd-a33f26541ead5099 .image-shape .label,#mmd-a33f26541ead5099 .icon-shape .label{text-align:center;}#mmd-a33f26541ead5099 .node.clickable{cursor:pointer;}#mmd-a33f26541ead5099 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mmd-a33f26541ead5099 .arrowheadPath{fill:#333333;}#mmd-a33f26541ead5099 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mmd-a33f26541ead5099 .flowchart-link{stroke:#333333;fill:none;}#mmd-a33f26541ead5099 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mmd-a33f26541ead5099 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mmd-a33f26541ead5099 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mmd-a33f26541ead5099 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mmd-a33f26541ead5099 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mmd-a33f26541ead5099 .cluster text{fill:#333;}#mmd-a33f26541ead5099 .cluster span{color:#333;}#mmd-a33f26541ead5099 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mmd-a33f26541ead5099 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mmd-a33f26541ead5099 rect.text{fill:none;stroke-width:0;}#mmd-a33f26541ead5099 .icon-shape,#mmd-a33f26541ead5099 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mmd-a33f26541ead5099 .icon-shape p,#mmd-a33f26541ead5099 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mmd-a33f26541ead5099 .icon-shape rect,#mmd-a33f26541ead5099 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mmd-a33f26541ead5099 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mmd-a33f26541ead5099 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mmd-a33f26541ead5099 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="mmd-a33f26541ead5099_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-a33f26541ead5099_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-a33f26541ead5099_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-a33f26541ead5099_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-a33f26541ead5099_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><marker id="mmd-a33f26541ead5099_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"/></marker><g class="root"><g class="clusters"/><g class="edgePaths"><path d="M293,62L293,66.167C293,70.333,293,78.667,293,86.333C293,94,293,101,293,104.5L293,108" id="L_A_B_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_B_0" data-points="W3sieCI6MjkzLCJ5Ijo2Mn0seyJ4IjoyOTMsInkiOjg3fSx7IngiOjI5MywieSI6MTEyfV0=" marker-end="url(#mmd-a33f26541ead5099_flowchart-v2-pointEnd)"/><path d="M293,313.297L293,319.464C293,325.63,293,337.964,293,349.63C293,361.297,293,372.297,293,377.797L293,383.297" id="L_B_C_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_C_0" data-points="W3sieCI6MjkzLCJ5IjozMTMuMjk2ODc1fSx7IngiOjI5MywieSI6MzUwLjI5Njg3NX0seyJ4IjoyOTMsInkiOjM4Ny4yOTY4NzV9XQ==" marker-end="url(#mmd-a33f26541ead5099_flowchart-v2-pointEnd)"/><path d="M293,441.297L293,445.464C293,449.63,293,457.964,293,465.63C293,473.297,293,480.297,293,483.797L293,487.297" id="L_C_D_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C_D_0" data-points="W3sieCI6MjkzLCJ5Ijo0NDEuMjk2ODc1fSx7IngiOjI5MywieSI6NDY2LjI5Njg3NX0seyJ4IjoyOTMsInkiOjQ5MS4yOTY4NzV9XQ==" marker-end="url(#mmd-a33f26541ead5099_flowchart-v2-pointEnd)"/><path d="M246.357,620.279L228.298,636.22C210.238,652.16,174.119,684.041,156.06,709.481C138,734.922,138,753.922,138,763.422L138,772.922" id="L_D_E_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_E_0" data-points="W3sieCI6MjQ2LjM1NzI0OTk0NjQ1NTM0LCJ5Ijo2MjAuMjc5MTI0OTQ2NDU1M30seyJ4IjoxMzgsInkiOjcxNS45MjE4NzV9LHsieCI6MTM4LCJ5Ijo3NzYuOTIxODc1fV0=" marker-end="url(#mmd-a33f26541ead5099_flowchart-v2-pointEnd)"/><path d="M339.643,620.279L357.702,636.22C375.762,652.16,411.881,684.041,429.94,707.481C448,730.922,448,745.922,448,753.422L448,760.922" id="L_D_F_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_F_0" data-points="W3sieCI6MzM5LjY0Mjc1MDA1MzU0NDY2LCJ5Ijo2MjAuMjc5MTI0OTQ2NDU1M30seyJ4Ijo0NDgsInkiOjcxNS45MjE4NzV9LHsieCI6NDQ4LCJ5Ijo3NjQuOTIxODc1fV0=" marker-end="url(#mmd-a33f26541ead5099_flowchart-v2-pointEnd)"/><path d="M138,830.922L138,837.089C138,843.255,138,855.589,138,865.255C138,874.922,138,881.922,138,885.422L138,888.922" id="L_E_G_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E_G_0" data-points="W3sieCI6MTM4LCJ5Ijo4MzAuOTIxODc1fSx7IngiOjEzOCwieSI6ODY3LjkyMTg3NX0seyJ4IjoxMzgsInkiOjg5Mi45MjE4NzV9XQ==" marker-end="url(#mmd-a33f26541ead5099_flowchart-v2-pointEnd)"/><path d="M448,842.922L448,847.089C448,851.255,448,859.589,448,867.255C448,874.922,448,881.922,448,885.422L448,888.922" id="L_F_H_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_F_H_0" data-points="W3sieCI6NDQ4LCJ5Ijo4NDIuOTIxODc1fSx7IngiOjQ0OCwieSI6ODY3LjkyMTg3NX0seyJ4Ijo0NDgsInkiOjg5Mi45MjE4NzV9XQ==" marker-end="url(#mmd-a33f26541ead5099_flowchart-v2-pointEnd)"/></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_B_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(293, 350.296875)"><g class="label" data-id="L_B_C_0" transform="translate(-62.984375, -12)"><foreignObject width="125.96875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>+6.1% vs mediane</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_D_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(138, 715.921875)"><g class="label" data-id="L_D_E_0" transform="translate(-100, -24)"><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="edgeLabel"><p>Pas de risque critique identifie sans adresse</p></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(448, 715.921875)"><g class="label" data-id="L_D_F_0" transform="translate(-62.890625, -12)"><foreignObject width="125.78125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>Infos manquantes</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E_G_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_F_H_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-A-0" transform="translate(293, 35)"><rect class="basic label-container" style="" x="-125.8125" y="-27" width="251.625" height="54"/><g class="label" style="" transform="translate(-95.8125, -12)"><rect/><foreignObject width="191.625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Prix demande: 345000 EUR</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B-1" transform="translate(293, 212.6484375)"><polygon points="100.6484375,0 201.296875,-100.6484375 100.6484375,-201.296875 0,-100.6484375" class="label-container" transform="translate(-100.1484375, 100.6484375)"/><g class="label" style="" transform="translate(-73.6484375, -12)"><rect/><foreignObject width="147.296875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Prix vs Croix-Rousse?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C-3" transform="translate(293, 414.296875)"><rect class="basic label-container" style="fill:#FF9800 !important" x="-94.59375" y="-27" width="189.1875" height="54"/><g class="label" style="color:#fff !important" transform="translate(-64.59375, -12)"><rect/><foreignObject width="129.1875" height="24"><div style="color: rgb(255, 255, 255) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#fff !important" class="nodeLabel"><p>Legerement eleve</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D-5" transform="translate(293, 579.109375)"><polygon points="87.8125,0 175.625,-87.8125 87.8125,-175.625 0,-87.8125" class="label-container" transform="translate(-87.3125, 87.8125)"/><g class="label" style="" transform="translate(-60.8125, -12)"><rect/><foreignObject width="121.625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Risques majeurs?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-E-7" transform="translate(138, 803.921875)"><rect class="basic label-container" style="fill:#4CAF50 !important" x="-76.9296875" y="-27" width="153.859375" height="54"/><g class="label" style="color:#fff !important" transform="translate(-46.9296875, -12)"><rect/><foreignObject width="93.859375" height="24"><div style="color: rgb(255, 255, 255) !important; display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#fff !important" class="nodeLabel"><p>Bien a visiter</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F-9" transform="translate(448, 803.921875)"><rect class="basic label-container" style="fill:#FF9800 !important" x="-130" y="-39" width="260" height="78"/><g class="label" style="color:#fff !important" transform="translate(-100, -24)"><rect/><foreignObject width="200" height="48"><div style="color: rgb(255, 255, 255) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#fff !important" class="nodeLabel"><p>Verifier Carrez charges diagnostics</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-G-11" transform="translate(138, 931.921875)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"/><g class="label" style="" transform="translate(-100, -24)"><rect/><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>Offre prudente: 330-335k EUR</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-H-13" transform="translate(448, 931.921875)"><rect class="basic label-container" style="fill:#f44336 !important" x="-130" y="-39" width="260" height="78"/><g class="label" style="color:#fff !important" transform="translate(-100, -24)"><rect/><foreignObject width="200" height="48"><div style="color: rgb(255, 255, 255) !important; display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;" xmlns="http://www.w3.org/1999/xhtml"><span style="color:#fff !important" class="nodeLabel"><p>Ne pas signer sans PV AG et ERP adresse</p></span></div></foreignObject></g></g></g></g></g></svg></figure>
+<hr />
+<h2>1. Le Bien — Fiche Technique</h2>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th style="text-align: right;">Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Type</td>
+<td style="text-align: right;">Appartement T3</td>
+</tr>
+<tr>
+<td>Localisation</td>
+<td style="text-align: right;">Lyon 4e, Croix-Rousse, 69004</td>
+</tr>
+<tr>
+<td>Surface habitable</td>
+<td style="text-align: right;">~70 m² — <strong>Carrez non vérifié</strong></td>
+</tr>
+<tr>
+<td>Pièces / chambres</td>
+<td style="text-align: right;">3 pièces / 2 chambres</td>
+</tr>
+<tr>
+<td>Étage</td>
+<td style="text-align: right;">3e étage</td>
+</tr>
+<tr>
+<td>Immeuble</td>
+<td style="text-align: right;">Ancien, type canut selon profil</td>
+</tr>
+<tr>
+<td>Ascenseur</td>
+<td style="text-align: right;">Non</td>
+</tr>
+<tr>
+<td>DPE / GES</td>
+<td style="text-align: right;">D / D selon profil</td>
+</tr>
+<tr>
+<td>Prix demandé</td>
+<td style="text-align: right;">345 000 €</td>
+</tr>
+<tr>
+<td>Prix/m² demandé</td>
+<td style="text-align: right;">4 929 €/m²</td>
+</tr>
+<tr>
+<td>Vendeur</td>
+<td style="text-align: right;">Agence</td>
+</tr>
+<tr>
+<td>Parking</td>
+<td style="text-align: right;">Non renseigné</td>
+</tr>
+<tr>
+<td>Cave / balcon / extérieur</td>
+<td style="text-align: right;">Non renseigné</td>
+</tr>
+<tr>
+<td>Charges copropriété</td>
+<td style="text-align: right;">Non renseignées</td>
+</tr>
+<tr>
+<td>Taxe foncière</td>
+<td style="text-align: right;">Non renseignée</td>
+</tr>
+</tbody>
+</table>
+<h3>Observations sur les photos</h3>
+<p>Aucune photo n'a pu être consultée, car il n'y a pas de page live. À la visite, il faudra donc vérifier en priorité : luminosité réelle au 3e étage, état des fenêtres, chauffage, humidité, hauteur sous plafond, qualité des parties communes, bruit de rue et état de la cage d'escalier.</p>
+<hr />
+<h2>2. Analyse du Prix</h2>
+<h3>Comparaison avec le marché</h3>
+<table>
+<thead>
+<tr>
+<th>Référence</th>
+<th style="text-align: right;">Prix/m²</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ce bien</td>
+<td style="text-align: right;"><strong>4 929 €/m²</strong></td>
+<td>Profil fourni</td>
+</tr>
+<tr>
+<td>Croix-Rousse Centre — médiane</td>
+<td style="text-align: right;"><strong>4 647 €/m²</strong></td>
+<td>Le Figaro Immobilier, estimation 01/2026</td>
+</tr>
+<tr>
+<td>Croix-Rousse Centre — appartements</td>
+<td style="text-align: right;"><strong>4 650 €/m²</strong></td>
+<td>Efficity, avril 2026</td>
+</tr>
+<tr>
+<td>Lyon 4e — appartements</td>
+<td style="text-align: right;"><strong>5 003 €/m²</strong></td>
+<td>Le Figaro Immobilier, estimation 02/2026</td>
+</tr>
+<tr>
+<td>Lyon 4e — appartements, DVF 2025</td>
+<td style="text-align: right;"><strong>4 820 €/m²</strong></td>
+<td>Calcul local depuis fichiers Etalab DVF géolocalisés 2025</td>
+</tr>
+<tr>
+<td>Lyon 4e — appartements similaires 60-85 m², 2-4 pièces</td>
+<td style="text-align: right;"><strong>4 633 €/m²</strong></td>
+<td>Calcul local depuis fichiers Etalab DVF 2024-2025</td>
+</tr>
+<tr>
+<td>Plateau Croix-Rousse Ouest — appartements</td>
+<td style="text-align: right;"><strong>5 078 €/m²</strong></td>
+<td>SeLoger, données janvier 2026</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Écart vs médiane Croix-Rousse Centre</strong> : <strong>+6,1 %</strong><br />
+<strong>Écart vs médiane DVF Lyon 4e 2025</strong> : <strong>+2,4 %</strong><br />
+<strong>Écart vs comparables DVF 60-85 m²</strong> : <strong>+7,1 %</strong></p>
+<p>Interprétation : le prix n'est pas délirant pour Lyon 4e, mais il doit être justifié par un bon état, une adresse centrale, une copropriété saine et peu de travaux. Sans ascenseur et avec des données manquantes, il y a un levier de négociation réel.</p>
+<h3>Positionnement prix</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-fe5adfe83d4bb7b5" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 700px; background-color: white;" viewBox="0 0 700 500" role="graphics-document document" aria-roledescription="xychart"><style>#mmd-fe5adfe83d4bb7b5{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-fe5adfe83d4bb7b5 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-fe5adfe83d4bb7b5 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-fe5adfe83d4bb7b5 .error-icon{fill:#552222;}#mmd-fe5adfe83d4bb7b5 .error-text{fill:#552222;stroke:#552222;}#mmd-fe5adfe83d4bb7b5 .edge-thickness-normal{stroke-width:1px;}#mmd-fe5adfe83d4bb7b5 .edge-thickness-thick{stroke-width:3.5px;}#mmd-fe5adfe83d4bb7b5 .edge-pattern-solid{stroke-dasharray:0;}#mmd-fe5adfe83d4bb7b5 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-fe5adfe83d4bb7b5 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-fe5adfe83d4bb7b5 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-fe5adfe83d4bb7b5 .marker{fill:#333333;stroke:#333333;}#mmd-fe5adfe83d4bb7b5 .marker.cross{stroke:#333333;}#mmd-fe5adfe83d4bb7b5 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-fe5adfe83d4bb7b5 p{margin:0;}#mmd-fe5adfe83d4bb7b5 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g class="main"><rect width="700" height="500" class="background" fill="white"/><g class="chart-title"><text x="0" y="0" fill="#131300" font-size="20" dominant-baseline="middle" text-anchor="middle" transform="translate(350, 21.5) rotate(0)">Prix au m2 — Positionnement du bien</text></g><g class="plot"><g class="bar-plot-0"><rect x="77.04023628234863" y="123.828" width="63.27890625" height="343.172" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="188.64336090087892" y="143.00400000000002" width="63.27890625" height="323.996" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="300.2464855194092" y="131.24" width="63.27890625" height="335.76" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="411.84961013793946" y="118.79600000000002" width="63.27890625" height="348.20399999999995" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="523.4527347564697" y="142.79999999999998" width="63.27890625" height="324.20000000000005" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/><rect x="635.055859375" y="113.69599999999997" width="63.27890625" height="353.30400000000003" fill="#ECECFF" stroke="#ECECFF" stroke-width="0"/></g></g><g class="bottom-axis"><g class="axis-line"><path d="M 75.37500190734863,468 L 700,468" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(108.67968940734863, 479) rotate(0)">Ce bien</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(220.2828140258789, 479) rotate(0)">Croix med</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(331.8859386444092, 479) rotate(0)">DVF 2025</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(443.48906326293945, 479) rotate(0)">Lyon4 med</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(555.0921878814697, 479) rotate(0)">Efficity</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(666.6953125, 479) rotate(0)">SeLoger O</text></g><g class="ticks"><path d="M 108.67968940734863,469 L 108.67968940734863,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 220.2828140258789,469 L 220.2828140258789,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 331.8859386444092,469 L 331.8859386444092,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 443.48906326293945,469 L 443.48906326293945,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 555.0921878814697,469 L 555.0921878814697,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 666.6953125,469 L 666.6953125,474" fill="none" stroke="#131300" stroke-width="2"/></g></g><g class="left-axis"><g class="axisl-line"><path d="M 74.37500190734863,43 L 74.37500190734863,467" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 51) rotate(0)">6000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 85.00000000000001) rotate(0)">5500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 118.99999999999999) rotate(0)">5000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 153) rotate(0)">4500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 187.00000000000003) rotate(0)">4000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 220.99999999999997) rotate(0)">3500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 255) rotate(0)">3000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 288.99999999999994) rotate(0)">2500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 323.00000000000006) rotate(0)">2000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 357) rotate(0)">1500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 391) rotate(0)">1000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 425) rotate(0)">500</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 459) rotate(0)">0</text></g><g class="ticks"><path d="M 73.37500190734863,51 L 68.37500190734863,51" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,85.00000000000001 L 68.37500190734863,85.00000000000001" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,118.99999999999999 L 68.37500190734863,118.99999999999999" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,153 L 68.37500190734863,153" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,187.00000000000003 L 68.37500190734863,187.00000000000003" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,220.99999999999997 L 68.37500190734863,220.99999999999997" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,255 L 68.37500190734863,255" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,288.99999999999994 L 68.37500190734863,288.99999999999994" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,323.00000000000006 L 68.37500190734863,323.00000000000006" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,357 L 68.37500190734863,357" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,391 L 68.37500190734863,391" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,425 L 68.37500190734863,425" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,459 L 68.37500190734863,459" fill="none" stroke="#131300" stroke-width="2"/></g><g class="title"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(5, 255) rotate(270)">EUR / m2</text></g></g></g><g class="mermaid-tmp-group"/></svg></figure>
+<h3>Transactions récentes comparables — DVF / Etalab</h3>
+<p>Méthode : fichiers DVF géolocalisés Etalab pour <strong>Lyon 4e arrondissement, code INSEE 69384</strong>, millésimes 2024 et 2025 ; filtrage sur mutations avec un seul lot principal de type <strong>Appartement</strong>, surface 60-85 m², 2-4 pièces, prix/m² plausible. Sans adresse exacte, ces ventes sont des comparables d'arrondissement, pas des comparables de même rue.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Adresse DVF</th>
+<th style="text-align: right;">Surface</th>
+<th style="text-align: right;">Pièces</th>
+<th style="text-align: right;">Prix</th>
+<th style="text-align: right;">Prix/m²</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-12-23</td>
+<td>17 rue Richan</td>
+<td style="text-align: right;">70 m²</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">401 650 €</td>
+<td style="text-align: right;">5 738 €/m²</td>
+</tr>
+<tr>
+<td>2025-12-19</td>
+<td>27 place de la Croix-Rousse</td>
+<td style="text-align: right;">60 m²</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">295 000 €</td>
+<td style="text-align: right;">4 917 €/m²</td>
+</tr>
+<tr>
+<td>2025-11-07</td>
+<td>16 rue du Chariot d'Or</td>
+<td style="text-align: right;">64 m²</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">345 000 €</td>
+<td style="text-align: right;">5 391 €/m²</td>
+</tr>
+<tr>
+<td>2025-11-07</td>
+<td>59 boulevard des Canuts</td>
+<td style="text-align: right;">73 m²</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">360 000 €</td>
+<td style="text-align: right;">4 932 €/m²</td>
+</tr>
+<tr>
+<td>2024-05-29</td>
+<td>53 Grande Rue de la Croix-Rousse</td>
+<td style="text-align: right;">70 m²</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">331 000 €</td>
+<td style="text-align: right;">4 729 €/m²</td>
+</tr>
+<tr>
+<td>2024-12-17</td>
+<td>15 rue Roussy</td>
+<td style="text-align: right;">70 m²</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">346 630 €</td>
+<td style="text-align: right;">4 952 €/m²</td>
+</tr>
+</tbody>
+</table>
+<p>Lecture : votre bien est très proche de plusieurs transactions DVF autour de <strong>4 900-5 000 €/m²</strong>, mais au-dessus de la médiane des biens similaires, ce qui laisse supposer qu'il doit être propre, lumineux et bien placé pour tenir ce prix.</p>
+<h3>Tendance du marché</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-c201046b3096c967" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 700px; background-color: white;" viewBox="0 0 700 500" role="graphics-document document" aria-roledescription="xychart"><style>#mmd-c201046b3096c967{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-c201046b3096c967 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-c201046b3096c967 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-c201046b3096c967 .error-icon{fill:#552222;}#mmd-c201046b3096c967 .error-text{fill:#552222;stroke:#552222;}#mmd-c201046b3096c967 .edge-thickness-normal{stroke-width:1px;}#mmd-c201046b3096c967 .edge-thickness-thick{stroke-width:3.5px;}#mmd-c201046b3096c967 .edge-pattern-solid{stroke-dasharray:0;}#mmd-c201046b3096c967 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-c201046b3096c967 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-c201046b3096c967 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-c201046b3096c967 .marker{fill:#333333;stroke:#333333;}#mmd-c201046b3096c967 .marker.cross{stroke:#333333;}#mmd-c201046b3096c967 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-c201046b3096c967 p{margin:0;}#mmd-c201046b3096c967 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g class="main"><rect width="700" height="500" class="background" fill="white"/><g class="chart-title"><text x="0" y="0" fill="#131300" font-size="20" dominant-baseline="middle" text-anchor="middle" transform="translate(350, 21.55078125) rotate(0)">Evolution DVF mediane appartements — Lyon 4e</text></g><g class="plot"><g class="line-plot-0"><path d="M90.063,219.7L685.313,241.454" fill="none" stroke="#ECECFF" stroke-width="2"/></g></g><g class="bottom-axis"><g class="axis-line"><path d="M 75.37500190734863,468 L 700,468" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(90.06250190734863, 479) rotate(0)">2024</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(685.3125, 479) rotate(0)">2025</text></g><g class="ticks"><path d="M 90.06250190734863,469 L 90.06250190734863,474" fill="none" stroke="#131300" stroke-width="2"/><path d="M 685.3125,469 L 685.3125,474" fill="none" stroke="#131300" stroke-width="2"/></g></g><g class="left-axis"><g class="axisl-line"><path d="M 74.37500190734863,43.1015625 L 74.37500190734863,467" fill="none" stroke="#131300" stroke-width="2"/></g><g class="label"><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 51.1015625) rotate(0)">5100</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 85.09309895833334) rotate(0)">5050</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 119.08463541666666) rotate(0)">5000</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 153.076171875) rotate(0)">4950</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 187.06770833333337) rotate(0)">4900</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 221.05924479166663) rotate(0)">4850</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 255.05078125) rotate(0)">4800</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 289.04231770833326) rotate(0)">4750</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 323.03385416666674) rotate(0)">4700</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 357.025390625) rotate(0)">4650</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 391.0169270833333) rotate(0)">4600</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 425.0084635416667) rotate(0)">4550</text><text x="0" y="0" fill="#131300" font-size="14" dominant-baseline="middle" text-anchor="end" transform="translate(63.37500190734863, 459) rotate(0)">4500</text></g><g class="ticks"><path d="M 73.37500190734863,51.1015625 L 68.37500190734863,51.1015625" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,85.09309895833334 L 68.37500190734863,85.09309895833334" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,119.08463541666666 L 68.37500190734863,119.08463541666666" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,153.076171875 L 68.37500190734863,153.076171875" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,187.06770833333337 L 68.37500190734863,187.06770833333337" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,221.05924479166663 L 68.37500190734863,221.05924479166663" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,255.05078125 L 68.37500190734863,255.05078125" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,289.04231770833326 L 68.37500190734863,289.04231770833326" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,323.03385416666674 L 68.37500190734863,323.03385416666674" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,357.025390625 L 68.37500190734863,357.025390625" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,391.0169270833333 L 68.37500190734863,391.0169270833333" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,425.0084635416667 L 68.37500190734863,425.0084635416667" fill="none" stroke="#131300" stroke-width="2"/><path d="M 73.37500190734863,459 L 68.37500190734863,459" fill="none" stroke="#131300" stroke-width="2"/></g><g class="title"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="text-before-edge" text-anchor="middle" transform="translate(5, 255.05078125) rotate(270)">EUR / m2</text></g></g></g><g class="mermaid-tmp-group"/></svg></figure>
+<p>Sur les données DVF 2024-2025 traitées, la médiane des appartements à Lyon 4e ressort <strong>quasi stable / légèrement en baisse</strong> : 4 852 €/m² en 2024 puis 4 820 €/m² en 2025. Les sites d'estimation 2026 donnent une fourchette large : environ <strong>4 647-5 078 €/m²</strong> selon quartier exact et méthodologie.</p>
+<h3>Estimation de la valeur</h3>
+<p>Pour un T3 ancien de ~70 m² à Croix-Rousse, DPE D, 3e sans ascenseur :</p>
+<ul>
+<li><strong>Fourchette cohérente</strong> : <strong>322 000 à 350 000 €</strong> environ, soit 4 600-5 000 €/m².</li>
+<li><strong>Prix demandé de 345 000 €</strong> : acceptable si le bien est en très bon état, copropriété saine, charges raisonnables, adresse attractive.</li>
+<li><strong>Prix d'achat plus prudent</strong> : <strong>330 000 à 335 000 €</strong>, surtout si charges, travaux, absence de parking ou diagnostics créent des réserves.</li>
+</ul>
+<hr />
+<h2>3. La Commune — Lyon 4e / Croix-Rousse</h2>
+<h3>Radar qualité de vie</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-a005c2ceabe58c2e" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 500px; background-color: white;" viewBox="0 0 500 500" role="graphics-document document" aria-roledescription="quadrantChart"><style>#mmd-a005c2ceabe58c2e{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-a005c2ceabe58c2e .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-a005c2ceabe58c2e .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-a005c2ceabe58c2e .error-icon{fill:#552222;}#mmd-a005c2ceabe58c2e .error-text{fill:#552222;stroke:#552222;}#mmd-a005c2ceabe58c2e .edge-thickness-normal{stroke-width:1px;}#mmd-a005c2ceabe58c2e .edge-thickness-thick{stroke-width:3.5px;}#mmd-a005c2ceabe58c2e .edge-pattern-solid{stroke-dasharray:0;}#mmd-a005c2ceabe58c2e .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-a005c2ceabe58c2e .edge-pattern-dashed{stroke-dasharray:3;}#mmd-a005c2ceabe58c2e .edge-pattern-dotted{stroke-dasharray:2;}#mmd-a005c2ceabe58c2e .marker{fill:#333333;stroke:#333333;}#mmd-a005c2ceabe58c2e .marker.cross{stroke:#333333;}#mmd-a005c2ceabe58c2e svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-a005c2ceabe58c2e p{margin:0;}#mmd-a005c2ceabe58c2e :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g class="main"><g class="quadrants"><g class="quadrant"><rect x="263" y="45" width="232" height="212" fill="#ECECFF"/><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 50) rotate(0)">Ideal</text></g><g class="quadrant"><rect x="31" y="45" width="232" height="212" fill="#f1f1ff"/><text x="0" y="0" fill="#0e0e00" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 50) rotate(0)">Cadre agreable</text></g><g class="quadrant"><rect x="31" y="257" width="232" height="212" fill="#f6f6ff"/><text x="0" y="0" fill="#090900" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 262) rotate(0)">A surveiller</text></g><g class="quadrant"><rect x="263" y="257" width="232" height="212" fill="#fbfbff"/><text x="0" y="0" fill="#040400" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 262) rotate(0)">Bien desservi</text></g></g><g class="border"><line x1="30" y1="45" x2="496" y2="45" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="495" y1="46" x2="495" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="30" y1="469" x2="496" y2="469" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="31" y1="46" x2="31" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="263" y1="46" x2="263" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 1;"/><line x1="32" y1="257" x2="494" y2="257" style="stroke: rgb(199, 199, 241); stroke-width: 1;"/></g><g class="data-points"><g class="data-point"><circle cx="392.92" cy="87.39999999999999" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(392.92, 92.39999999999999) rotate(0)">Lyon 4e</text></g></g><g class="labels"><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 479) rotate(0)">Faible accessibilite</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 479) rotate(0)">Forte accessibilite</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(5, 363) rotate(-90)">Peu de services</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(5, 151) rotate(-90)">Services complets</text></g></g><g class="title"><text x="0" y="0" fill="#131300" font-size="20" dominant-baseline="hanging" text-anchor="middle" transform="translate(250, 10) rotate(0)">Qualite de vie — Lyon 4e Croix-Rousse</text></g></g></svg></figure>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-b802be57a7ad96d6" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 626.5625 450" style="max-width: 626.562px; background-color: white;" role="graphics-document document" aria-roledescription="pie"><style>#mmd-b802be57a7ad96d6{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-b802be57a7ad96d6 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-b802be57a7ad96d6 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-b802be57a7ad96d6 .error-icon{fill:#552222;}#mmd-b802be57a7ad96d6 .error-text{fill:#552222;stroke:#552222;}#mmd-b802be57a7ad96d6 .edge-thickness-normal{stroke-width:1px;}#mmd-b802be57a7ad96d6 .edge-thickness-thick{stroke-width:3.5px;}#mmd-b802be57a7ad96d6 .edge-pattern-solid{stroke-dasharray:0;}#mmd-b802be57a7ad96d6 .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-b802be57a7ad96d6 .edge-pattern-dashed{stroke-dasharray:3;}#mmd-b802be57a7ad96d6 .edge-pattern-dotted{stroke-dasharray:2;}#mmd-b802be57a7ad96d6 .marker{fill:#333333;stroke:#333333;}#mmd-b802be57a7ad96d6 .marker.cross{stroke:#333333;}#mmd-b802be57a7ad96d6 svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-b802be57a7ad96d6 p{margin:0;}#mmd-b802be57a7ad96d6 .pieCircle{stroke:black;stroke-width:2px;opacity:0.7;}#mmd-b802be57a7ad96d6 .pieOuterCircle{stroke:black;stroke-width:2px;fill:none;}#mmd-b802be57a7ad96d6 .pieTitleText{text-anchor:middle;font-size:25px;fill:black;font-family:"trebuchet ms",verdana,arial,sans-serif;}#mmd-b802be57a7ad96d6 .slice{font-family:"trebuchet ms",verdana,arial,sans-serif;fill:#333;font-size:17px;}#mmd-b802be57a7ad96d6 .legend text{fill:black;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:17px;}#mmd-b802be57a7ad96d6 :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g transform="translate(225,225)"><circle cx="0" cy="0" r="186" class="pieOuterCircle"/><path d="M0,-185A185,185,0,0,1,183.89,-20.234L0,0Z" fill="#ECECFF" class="pieCircle"/><path d="M183.89,-20.234A185,185,0,0,1,74.422,169.37L0,0Z" fill="#ffffde" class="pieCircle"/><path d="M74.422,169.37A185,185,0,0,1,-133.182,128.404L0,0Z" fill="hsl(80, 100%, 56.2745098039%)" class="pieCircle"/><path d="M-133.182,128.404A185,185,0,0,1,-167.825,-77.844L0,0Z" fill="hsl(240, 100%, 86.2745098039%)" class="pieCircle"/><path d="M-167.825,-77.844A185,185,0,0,1,0,-185L0,0Z" fill="hsl(60, 100%, 63.5294117647%)" class="pieCircle"/><text transform="translate(92.59048505708573,-103.33714035569973)" class="slice" style="text-anchor: middle;">23%</text><text transform="translate(120.16102477509087,69.37499999999997)" class="slice" style="text-anchor: middle;">20%</text><text transform="translate(-26.86161894567597,136.12500111154196)" class="slice" style="text-anchor: middle;">19%</text><text transform="translate(-136.83315929501995,22.983668491859543)" class="slice" style="text-anchor: middle;">19%</text><text transform="translate(-74.66902610076541,-116.94485470153535)" class="slice" style="text-anchor: middle;">18%</text><text x="0" y="-200" class="pieTitleText">"Profil commune — scores indicatifs sur 100"</text><g class="legend" transform="translate(216,-55)"><rect width="18" height="18" style="fill: rgb(236, 236, 255); stroke: rgb(236, 236, 255);"/><text x="22" y="14">Services</text></g><g class="legend" transform="translate(216,-33)"><rect width="18" height="18" style="fill: rgb(255, 255, 222); stroke: rgb(255, 255, 222);"/><text x="22" y="14">Transports</text></g><g class="legend" transform="translate(216,-11)"><rect width="18" height="18" style="fill: rgb(181, 255, 32); stroke: rgb(181, 255, 32);"/><text x="22" y="14">Economie</text></g><g class="legend" transform="translate(216,11)"><rect width="18" height="18" style="fill: rgb(185, 185, 255); stroke: rgb(185, 185, 255);"/><text x="22" y="14">Environnement</text></g><g class="legend" transform="translate(216,33)"><rect width="18" height="18" style="fill: rgb(255, 255, 69); stroke: rgb(255, 255, 69);"/><text x="22" y="14">Projets</text></g></g></svg></figure>
+<h3>Profil général</h3>
+<p>Lyon 4e est un arrondissement urbain dense, très identifié autour de la Croix-Rousse, avec une forte identité historique canut. L'INSEE donne <strong>35 232 habitants en 2022</strong>, contre 36 080 en 2016 : population plutôt stable à légèrement en baisse. Les avis Ville-Idéale ressortent très bons pour <strong>commerces 9,03/10</strong>, <strong>qualité de vie 8,29/10</strong>, <strong>santé 8,26/10</strong>, <strong>culture 8,21/10</strong>, <strong>enseignement 8,00/10</strong>, <strong>transports 7,76/10</strong>.</p>
+<h3>Services et commodités</h3>
+<p>Point fort très net : la Croix-Rousse est un quartier de commerces, marché et vie locale. La mairie du 4e décrit le boulevard de la Croix-Rousse comme une centralité majeure accueillant le marché presque quotidiennement. Le profil est très favorable pour un premier achat si vous cherchez un quartier vivant et autonome : commerces de bouche, restaurants, services, santé, équipements culturels et scolaires.</p>
+<h3>Transports et accessibilité</h3>
+<p>Le secteur est bien desservi par le réseau TCL, notamment via le <strong>métro C</strong> et plusieurs lignes de bus / navettes de plateau. TCL et la presse locale mentionnent les lignes de desserte Croix-Rousse, dont C18 et les évolutions S4A/S4B/S12 en 2025. À vérifier selon l'adresse exacte : distance à pied jusqu'à Croix-Rousse ou Hénon, bruit éventuel si l'appartement donne sur un axe bus, et facilité vélo/parking.</p>
+<h3>Économie et emploi</h3>
+<p>Lyon 4e bénéficie du bassin d'emploi lyonnais : centre-ville, Part-Dieu, Presqu'île, Villeurbanne et pôles hospitaliers accessibles en transports. Le profil socio-économique est favorable à la revente d'un T3 bien placé, car le quartier attire des actifs, jeunes familles et acheteurs patrimoniaux.</p>
+<h3>Environnement et cadre de vie</h3>
+<p>Cadre urbain agréable mais dense. Atouts : plateau de la Croix-Rousse, commerces, patrimoine, espaces de proximité et vues possibles selon emplacement. Points à surveiller : bruit routier sur boulevard/quais/grands axes, qualité de l'air urbaine lyonnaise, îlots de chaleur. Atmo Auvergne-Rhône-Alpes indique pour Lyon une qualité de l'air souvent <strong>moyenne à dégradée</strong> sur les 12 derniers mois ; ce n'est pas spécifique à l'appartement sans adresse.</p>
+<h3>Projets futurs</h3>
+<ul>
+<li><strong>Projet Cœur Croix-Rousse</strong> : apaiser le cœur de quartier, améliorer la sécurité piétonne, valoriser commerces/patrimoine et végétaliser.</li>
+<li><strong>Boulevard de la Croix-Rousse</strong> : projet d'aménagement sur une centralité majeure avec larges trottoirs plantés et marché.</li>
+<li><strong>Jardin des Balmes</strong> : programme annoncé par la mairie du 4e, dont 105 logements et équipements/activités en rez-de-chaussée.</li>
+</ul>
+<p>Impact : plutôt positif à long terme pour l'attractivité, mais à court terme il peut y avoir des travaux, nuisances et modifications de circulation.</p>
+<hr />
+<h2>4. Risques et Points d'Attention</h2>
+<h3>Matrice des risques</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-022109d57009e18f" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="max-width: 500px; background-color: white;" viewBox="0 0 500 500" role="graphics-document document" aria-roledescription="quadrantChart"><style>#mmd-022109d57009e18f{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-022109d57009e18f .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-022109d57009e18f .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-022109d57009e18f .error-icon{fill:#552222;}#mmd-022109d57009e18f .error-text{fill:#552222;stroke:#552222;}#mmd-022109d57009e18f .edge-thickness-normal{stroke-width:1px;}#mmd-022109d57009e18f .edge-thickness-thick{stroke-width:3.5px;}#mmd-022109d57009e18f .edge-pattern-solid{stroke-dasharray:0;}#mmd-022109d57009e18f .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-022109d57009e18f .edge-pattern-dashed{stroke-dasharray:3;}#mmd-022109d57009e18f .edge-pattern-dotted{stroke-dasharray:2;}#mmd-022109d57009e18f .marker{fill:#333333;stroke:#333333;}#mmd-022109d57009e18f .marker.cross{stroke:#333333;}#mmd-022109d57009e18f svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-022109d57009e18f p{margin:0;}#mmd-022109d57009e18f :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g class="main"><g class="quadrants"><g class="quadrant"><rect x="263" y="45" width="232" height="212" fill="#ECECFF"/><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 50) rotate(0)">Risque critique</text></g><g class="quadrant"><rect x="31" y="45" width="232" height="212" fill="#f1f1ff"/><text x="0" y="0" fill="#0e0e00" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 50) rotate(0)">A surveiller</text></g><g class="quadrant"><rect x="31" y="257" width="232" height="212" fill="#f6f6ff"/><text x="0" y="0" fill="#090900" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 262) rotate(0)">Risque faible</text></g><g class="quadrant"><rect x="263" y="257" width="232" height="212" fill="#fbfbff"/><text x="0" y="0" fill="#040400" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 262) rotate(0)">A anticiper</text></g></g><g class="border"><line x1="30" y1="45" x2="496" y2="45" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="495" y1="46" x2="495" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="30" y1="469" x2="496" y2="469" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="31" y1="46" x2="31" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 2;"/><line x1="263" y1="46" x2="263" y2="468" style="stroke: rgb(199, 199, 241); stroke-width: 1;"/><line x1="32" y1="257" x2="494" y2="257" style="stroke: rgb(199, 199, 241); stroke-width: 1;"/></g><g class="data-points"><g class="data-point"><circle cx="216.6" cy="320.6" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(216.6, 325.6) rotate(0)">Argiles</text></g><g class="data-point"><circle cx="239.8" cy="278.20000000000005" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(239.8, 283.20000000000005) rotate(0)">Bruit</text></g><g class="data-point"><circle cx="425.4" cy="320.6" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(425.4, 325.6) rotate(0)">DPE D</text></g><g class="data-point"><circle cx="355.8" cy="214.60000000000002" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(355.8, 219.60000000000002) rotate(0)">Ancien</text></g><g class="data-point"><circle cx="471.8" cy="235.79999999999998" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(471.8, 240.79999999999998) rotate(0)">Sans asc</text></g><g class="data-point"><circle cx="379" cy="172.20000000000002" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 177.20000000000002) rotate(0)">Charges</text></g><g class="data-point"><circle cx="355.8" cy="151" r="5" fill="hsl(240, 100%, NaN%)" stroke="hsl(240, 100%, NaN%)" stroke-width="0px"/><text x="0" y="0" fill="#131300" font-size="12" dominant-baseline="hanging" text-anchor="middle" transform="translate(355.8, 156) rotate(0)">Carrez</text></g></g><g class="labels"><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(147, 479) rotate(0)">Peu probable</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(379, 479) rotate(0)">Probable</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(5, 363) rotate(-90)">Impact faible</text></g><g class="label"><text x="0" y="0" fill="#131300" font-size="16" dominant-baseline="hanging" text-anchor="middle" transform="translate(5, 151) rotate(-90)">Impact fort</text></g></g><g class="title"><text x="0" y="0" fill="#131300" font-size="20" dominant-baseline="hanging" text-anchor="middle" transform="translate(250, 10) rotate(0)">Matrice des risques identifies</text></g></g></svg></figure>
+<h3>Risques naturels et technologiques</h3>
+<table>
+<thead>
+<tr>
+<th>Risque</th>
+<th>Statut</th>
+<th>Sévérité</th>
+<th>Commentaire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inondation</td>
+<td>Non déterminable sans adresse</td>
+<td>Moyen si quais / faible sur plateau</td>
+<td>Lyon est concernée par des PPRI Grand Lyon ; Croix-Rousse plateau est moins exposé que les berges Saône/Rhône, mais l'ERP adresse est indispensable.</td>
+</tr>
+<tr>
+<td>Séisme</td>
+<td>Zone 2</td>
+<td>Faible</td>
+<td>France ERP indique zone sismique 2 pour Lyon 04.</td>
+</tr>
+<tr>
+<td>Radon</td>
+<td>Niveau 1</td>
+<td>Faible</td>
+<td>France ERP indique radon niveau 1 pour Lyon 04.</td>
+</tr>
+<tr>
+<td>Retrait-gonflement argiles / géotechnique</td>
+<td>À vérifier à la parcelle</td>
+<td>Faible à moyen</td>
+<td>Le DICRIM de Lyon mentionne des risques géotechniques ; exposition exacte à vérifier sur Géorisques avec l'adresse.</td>
+</tr>
+<tr>
+<td>ICPE / industriel</td>
+<td>0 ICPE signalé pour Lyon 04 sur France ERP</td>
+<td>Faible</td>
+<td>À confirmer avec ERP officiel du bien.</td>
+</tr>
+<tr>
+<td>CATNAT</td>
+<td>28 arrêtés indiqués pour Lyon 04</td>
+<td>Information</td>
+<td>Historique communal, pas un risque spécifique au lot sans adresse.</td>
+</tr>
+<tr>
+<td>Transport matières dangereuses</td>
+<td>Risque ville de Lyon</td>
+<td>Faible à moyen</td>
+<td>DICRIM Lyon mentionne ce risque à l'échelle ville ; dépend de la proximité des axes.</td>
+</tr>
+</tbody>
+</table>
+<h3>Environnement</h3>
+<table>
+<thead>
+<tr>
+<th>Facteur</th>
+<th>Évaluation</th>
+<th>Détails</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bruit</td>
+<td>Moyen selon rue</td>
+<td>La Métropole de Lyon indique que 15,4 % de la population est affectée par le bruit routier et 8,2 % surexposée. À tester fenêtres ouvertes/fermées, matin et soir.</td>
+</tr>
+<tr>
+<td>Qualité de l'air</td>
+<td>Moyenne urbaine</td>
+<td>Atmo AURA : qualité de l'air lyonnaise régulièrement moyenne à dégradée ; vérifier si proximité d'axe routier.</td>
+</tr>
+<tr>
+<td>Nuisances travaux</td>
+<td>Moyen temporaire</td>
+<td>Projets Cœur Croix-Rousse / boulevard / aménagements peuvent créer des nuisances avant amélioration.</td>
+</tr>
+<tr>
+<td>Électromagnétique</td>
+<td>Non vérifié</td>
+<td>Nécessite adresse exacte : antennes, transformateurs, lignes.</td>
+</tr>
+<tr>
+<td>Atouts naturels</td>
+<td>Correct urbain</td>
+<td>Plateau, végétalisation en projet, proximité Saône selon secteur, mais pas un quartier “nature”.</td>
+</tr>
+</tbody>
+</table>
+<h3>Points d'attention spécifiques au bien</h3>
+<ul>
+<li><strong>Surface Carrez non vérifiée</strong> — Sévérité haute : le profil indique “~70 m²”. Pour un appartement, demandez le mesurage loi Carrez exact. Une différence de 2-3 m² change immédiatement le prix/m².</li>
+<li><strong>Charges de copropriété absentes</strong> — Sévérité haute : pour un premier achat, les charges peuvent changer la soutenabilité mensuelle. Demander les 3 derniers appels de charges, budget prévisionnel, fonds travaux et PV d'AG.</li>
+<li><strong>3e étage sans ascenseur</strong> — Sévérité moyenne : classique à Croix-Rousse, mais impact sur confort quotidien, déménagement, revente à certains profils et décote si escaliers raides.</li>
+<li><strong>Immeuble ancien / canut</strong> — Sévérité moyenne : vérifier toiture, façade, colonnes, planchers, humidité, acoustique, diagnostics plomb/amiante selon époque.</li>
+<li><strong>DPE D</strong> — Sévérité faible à moyenne : pas une passoire thermique, mais il faut confirmer chauffage, isolation, fenêtres et charges d'énergie.</li>
+<li><strong>Pas de parking renseigné</strong> — Sévérité faible à moyenne : à Lyon 4e cela peut être acceptable, mais impact si vous avez une voiture.</li>
+<li><strong>Photos non consultées</strong> — Sévérité moyenne : impossible d'évaluer état, luminosité, vis-à-vis, cuisine/salle d'eau, parties communes.</li>
+</ul>
+<hr />
+<h2>5. Estimation des Coûts Additionnels</h2>
+<h3>Décomposition du coût total d'acquisition</h3>
+<figure class="mermaid" style="margin:1rem 0;max-width:100%;overflow-x:auto"><svg id="mmd-36f8f3541c65db4b" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 646.828125 450" style="max-width: 646.828px; background-color: white;" role="graphics-document document" aria-roledescription="pie"><style>#mmd-36f8f3541c65db4b{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mmd-36f8f3541c65db4b .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mmd-36f8f3541c65db4b .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mmd-36f8f3541c65db4b .error-icon{fill:#552222;}#mmd-36f8f3541c65db4b .error-text{fill:#552222;stroke:#552222;}#mmd-36f8f3541c65db4b .edge-thickness-normal{stroke-width:1px;}#mmd-36f8f3541c65db4b .edge-thickness-thick{stroke-width:3.5px;}#mmd-36f8f3541c65db4b .edge-pattern-solid{stroke-dasharray:0;}#mmd-36f8f3541c65db4b .edge-thickness-invisible{stroke-width:0;fill:none;}#mmd-36f8f3541c65db4b .edge-pattern-dashed{stroke-dasharray:3;}#mmd-36f8f3541c65db4b .edge-pattern-dotted{stroke-dasharray:2;}#mmd-36f8f3541c65db4b .marker{fill:#333333;stroke:#333333;}#mmd-36f8f3541c65db4b .marker.cross{stroke:#333333;}#mmd-36f8f3541c65db4b svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#mmd-36f8f3541c65db4b p{margin:0;}#mmd-36f8f3541c65db4b .pieCircle{stroke:black;stroke-width:2px;opacity:0.7;}#mmd-36f8f3541c65db4b .pieOuterCircle{stroke:black;stroke-width:2px;fill:none;}#mmd-36f8f3541c65db4b .pieTitleText{text-anchor:middle;font-size:25px;fill:black;font-family:"trebuchet ms",verdana,arial,sans-serif;}#mmd-36f8f3541c65db4b .slice{font-family:"trebuchet ms",verdana,arial,sans-serif;fill:#333;font-size:17px;}#mmd-36f8f3541c65db4b .legend text{fill:black;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:17px;}#mmd-36f8f3541c65db4b :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g/><g transform="translate(225,225)"><circle cx="0" cy="0" r="186" class="pieOuterCircle"/><path d="M0,-185A185,185,0,1,1,-107.112,-150.838L0,0Z" fill="#ECECFF" class="pieCircle"/><path d="M-107.112,-150.838A185,185,0,0,1,-30.245,-182.511L0,0Z" fill="#ffffde" class="pieCircle"/><path d="M-30.245,-182.511A185,185,0,0,1,0,-185L0,0Z" fill="hsl(80, 100%, 56.2745098039%)" class="pieCircle"/><text transform="translate(42.16034663727557,132.18951422644977)" class="slice" style="text-anchor: middle;">90%</text><text transform="translate(-52.86040627600537,-128.2861642903694)" class="slice" style="text-anchor: middle;">7%</text><text transform="translate(-11.380196556320506,-138.28251381262749)" class="slice" style="text-anchor: middle;">3%</text><text x="0" y="-200" class="pieTitleText">"Cout total d'acquisition estime"</text><g class="legend" transform="translate(216,-33)"><rect width="18" height="18" style="fill: rgb(236, 236, 255); stroke: rgb(236, 236, 255);"/><text x="22" y="14">Prix du bien</text></g><g class="legend" transform="translate(216,-11)"><rect width="18" height="18" style="fill: rgb(255, 255, 222); stroke: rgb(255, 255, 222);"/><text x="22" y="14">Frais notaire</text></g><g class="legend" transform="translate(216,11)"><rect width="18" height="18" style="fill: rgb(181, 255, 32); stroke: rgb(181, 255, 32);"/><text x="22" y="14">Travaux prudence</text></g></g></svg></figure>
+<table>
+<thead>
+<tr>
+<th>Poste</th>
+<th style="text-align: right;">Estimation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prix du bien</td>
+<td style="text-align: right;">345 000 €</td>
+</tr>
+<tr>
+<td>Frais de notaire ancien (~8 %)</td>
+<td style="text-align: right;">~27 600 €</td>
+</tr>
+<tr>
+<td>Travaux / rafraîchissement prudence</td>
+<td style="text-align: right;">5 000 à 15 000 € — <strong>non vérifié, faute de photos</strong></td>
+</tr>
+<tr>
+<td>Frais d'agence</td>
+<td style="text-align: right;">Non déterminé ; probablement inclus dans le prix affiché, à confirmer</td>
+</tr>
+<tr>
+<td>Taxe foncière</td>
+<td style="text-align: right;">Non fournie ; taux communal Lyon 2025 cité à 31,89 %, montant lot à demander au vendeur</td>
+</tr>
+<tr>
+<td>Charges copropriété</td>
+<td style="text-align: right;">Non fournies ; point bloquant à demander avant offre ferme</td>
+</tr>
+<tr>
+<td>Coût total estimé hors travaux</td>
+<td style="text-align: right;"><strong>~372 600 €</strong></td>
+</tr>
+<tr>
+<td>Coût total estimé avec 10 k€ de prudence travaux</td>
+<td style="text-align: right;"><strong>~382 600 €</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Point budget</strong> : si vos <strong>350 k€ incluent les frais de notaire</strong>, le prix compatible serait plutôt autour de <strong>320-324 k€ hors travaux</strong>. Si vos 350 k€ correspondent uniquement au prix d'achat hors frais, ce bien rentre dans le budget, mais pas avec beaucoup de marge.</p>
+<hr />
+<h2>6. Questions à Poser au Vendeur / Checklist de Visite</h2>
+<ol>
+<li>Quelle est la <strong>surface loi Carrez exacte</strong> ? Pouvez-vous fournir le certificat ?</li>
+<li>Quel est le montant des <strong>charges de copropriété</strong> mensuelles/annuelles ? Chauffage inclus ou non ?</li>
+<li>Pouvez-vous transmettre les <strong>3 derniers PV d'assemblée générale</strong>, le carnet d'entretien et le montant du fonds travaux ?</li>
+<li>Y a-t-il des <strong>travaux votés ou à voter</strong> : façade, toiture, montée d'escalier, colonnes, isolation, chauffage ?</li>
+<li>Quel est le détail du <strong>DPE D</strong> : consommation, chauffage, eau chaude, recommandations, coût annuel estimé ?</li>
+<li>L'immeuble est-il concerné par <strong>plomb/amiante</strong> ? Diagnostics disponibles ?</li>
+<li>L'appartement donne-t-il sur rue, cour ou vis-à-vis ? Tester le <strong>bruit fenêtres ouvertes</strong> aux heures de passage.</li>
+<li>Pourquoi le vendeur vend-il ? Depuis combien de temps le bien est-il en vente ? Y a-t-il eu une baisse de prix ?</li>
+<li>Quelle est la <strong>taxe foncière</strong> exacte du lot ?</li>
+<li>Les honoraires d'agence sont-ils à charge vendeur ou acquéreur, et quel est le prix net vendeur ?</li>
+</ol>
+<hr />
+<h2>7. Synthèse et Recommandation</h2>
+<p>Ce T3 coche beaucoup de cases pour un premier achat patrimonial à Lyon : quartier recherché, vie locale forte, transports, marché de revente profond. Le prix de <strong>345 000 €</strong> n'est pas aberrant, mais il n'est pas suffisamment bas pour absorber les incertitudes actuelles : absence de Carrez exact, charges inconnues, pas de photos, pas d'ERP adresse, ancien canut et 3e sans ascenseur.</p>
+<p><strong>Recommandation</strong> : visiter si l'adresse est bien située et si vous acceptez le sans ascenseur, mais ne vous engagez pas sans le dossier copropriété complet. Le levier de négociation principal est simple : <strong>prix légèrement au-dessus de la médiane Croix-Rousse + budget total qui dépasse 350 k€ frais inclus + informations essentielles manquantes</strong>.</p>
+<p><strong>Fourchette de négociation suggérée</strong> : <strong>330 000 à 335 000 €</strong>, soit <strong>4 714 à 4 786 €/m²</strong>.<br />
+<strong>Offre agressive si budget 350 k€ frais inclus</strong> : autour de <strong>320 000 à 324 000 €</strong>, mais elle peut être difficile à faire accepter si le bien est propre et très central.</p>
+<h3>Disclaimer sources et limites</h3>
+<p>Cette analyse n'est pas un avis juridique, notarial ou technique. Elle s'appuie sur :</p>
+<ul>
+<li>Profil structuré fourni par l'utilisateur pour les caractéristiques du bien.</li>
+<li>Données DVF géolocalisées Etalab / data.gouv.fr pour Lyon 4e : fichiers communaux 2024 et 2025 (<code>files.data.gouv.fr/geo-dvf/latest/csv/2024/communes/69/69384.csv</code>, <code>.../2025/communes/69/69384.csv</code>).</li>
+<li>Estimations de marché : Le Figaro Immobilier Lyon 4e et Croix-Rousse Centre 2026, Efficity Croix-Rousse Centre 2026, SeLoger Plateau Croix-Rousse Ouest 2026, Hosman Lyon 4e 2026.</li>
+<li>Commune : INSEE dossier complet Lyon 4e Arrondissement 69384, Mairie du 4e, TCL, Ville-Idéale.</li>
+<li>Risques : Géorisques / DICRIM Lyon, Préfecture du Rhône PPRI Grand Lyon, France ERP Lyon 04, Métropole de Lyon bruit, Atmo Auvergne-Rhône-Alpes.</li>
+</ul>
+<p>À cause de l'absence d'adresse exacte et de page live, les points suivants <strong>n'ont pas pu être vérifiés</strong> : ERP officiel du lot, zone inondable à la parcelle, exposition bruit exacte, surface Carrez, charges, taxe foncière, état visuel, orientation, diagnostics complets, historique de prix de l'annonce.</p>
+    </main>
+
+<section class="feedback" aria-labelledby="feedback-heading-01-appartement-lyon-croix-rousse">
+      <h2 id="feedback-heading-01-appartement-lyon-croix-rousse">Report feedback</h2>
+      <p class="feedback-intro">Was this report useful? Your rating helps improve the skill.</p>
+      <form method="post" action="/jobs/01-appartement-lyon-croix-rousse/feedback">
+        <fieldset class="feedback-rating">
+          <legend>Rating (required)</legend>
+          <label><input type="radio" name="rating" value="5" required> 5 — Excellent</label>
+          <label><input type="radio" name="rating" value="4"> 4 — Good</label>
+          <label><input type="radio" name="rating" value="3"> 3 — OK</label>
+          <label><input type="radio" name="rating" value="2"> 2 — Poor</label>
+          <label><input type="radio" name="rating" value="1"> 1 — Not useful</label>
+        </fieldset>
+        <p>
+          <label for="feedback-comment-01-appartement-lyon-croix-rousse">Comment (optional)</label><br>
+          <textarea id="feedback-comment-01-appartement-lyon-croix-rousse" name="comment" rows="3" maxlength="2000" placeholder="What worked or what was missing?"></textarea>
+        </p>
+        <p><button type="submit">Submit feedback</button></p>
+      </form>
+    </section>
+    <footer class="report-footer">
+      <p>Generated by Skill Server. This report is static HTML.</p>
+    </footer>
+  </div>
+</body>
+</html>
