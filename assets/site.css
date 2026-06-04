@@ -758,6 +758,13 @@ summary:focus-visible {
   border-color: var(--line2);
 }
 
+.catalog-card:hover .catalog-card__footer .btn,
+.catalog-card:focus-visible .catalog-card__footer .btn {
+  background: var(--leafdeep);
+  border-color: var(--leafdeep);
+  transform: translateY(-1px);
+}
+
 .catalog-card__body {
   padding: 1.35rem;
   flex: 1;
@@ -789,6 +796,7 @@ summary:focus-visible {
 .catalog-card__footer .btn {
   width: 100%;
   pointer-events: none;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
 }
 
 /* —— Report page chrome (injected bar) —— */
