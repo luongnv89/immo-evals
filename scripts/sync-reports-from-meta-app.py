@@ -19,6 +19,8 @@ SITE_BASE = "https://luongnv.com/immo-evals"
 REPORT_MAILTO_CTA_RE = re.compile(
     r'<a href="mailto:contact\.nguyen\.fr@gmail\.com\?subject=Demande%20d%27%C3%A9valuation%20bien-evaluator"([^>]*)>Essayer</a>'
 )
+BODY_RE = re.compile(r"<body(\s[^>]*)?>", re.IGNORECASE)
+REPORT_CTA_ASSETS = '<link rel="stylesheet" href="../assets/site.css">\n<script src="../assets/mailto.js" defer></script>'
 
 # Prefer these job IDs (newest production-style template reports).
 PREFERRED_IDS = [
@@ -61,6 +63,14 @@ def normalize_report_html(path: Path) -> None:
     updated = REPORT_MAILTO_CTA_RE.sub(
         r'<a href="#essayer" data-mailto-cta\1>Essayer</a>', text
     )
+    if "../assets/mailto.js" not in updated:
+        updated = BODY_RE.sub(lambda m: m.group(0) + "\n" + REPORT_CTA_ASSETS, updated, count=1)
+    elif "../assets/site.css" not in updated:
+        updated = BODY_RE.sub(
+            lambda m: m.group(0) + '\n<link rel="stylesheet" href="../assets/site.css">',
+            updated,
+            count=1,
+        )
     if updated != text:
         path.write_text(updated, encoding="utf-8")
 
