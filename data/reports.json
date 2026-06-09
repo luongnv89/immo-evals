@@ -1,5 +1,35 @@
 [
   {
+    "id": "versailles-notre-dame-3-pieces",
+    "jobId": "13427960138045cba63e73595ee98bf5",
+    "title": "Appartement 3 pièces — Versailles (Notre-Dame)",
+    "date": "2026-06-09",
+    "url": "https://www.bienici.com/annonce/vente/versailles/appartement/3pieces/hektor-londonimmo-589",
+    "verdict": "Sous le marché — potentiel après rénovation",
+    "tone": "good",
+    "summary": "Appartement de 50 m² à rénover intégralement dans le quartier Notre-Dame, proposé à 262 000 € FAI (4 995 €/m²). Le prix est -21 % sous la médiane DVF de Versailles, reflétant le DPE F et les travaux lourds à prévoir. Opération intéressante pour un acheteur prêt à rénover, avec un budget total (acquisition + travaux) estimé entre 330 000 et 380 000 €.",
+    "price": "262 000 €",
+    "pricem2": "4 995 €/m²",
+    "surface": "50 m²",
+    "type": "3 pièces · 1 chambre",
+    "href": "reports/versailles-notre-dame-3-pieces.html"
+  },
+  {
+    "id": "versailles-montreuil-3-pieces",
+    "jobId": "631dd403ad654deb8e830bc960204ecf",
+    "title": "Appartement 3 pièces — Versailles (Montreuil)",
+    "date": "2026-06-09",
+    "url": "https://www.bienici.com/annonce/vente/versailles/appartement/3pieces/immo-facile-60754818",
+    "verdict": "Sous le marché — Bonne affaire potentielle",
+    "tone": "good",
+    "summary": "Cet appartement 3 pièces de 57 m² à Versailles-Montreuil est proposé à 310 000 € net (322 000 € FAI), soit 5 414 €/m² — significativement sous la médiane DVF de Versailles (6 498 €/m², -17 %). Le prix attractif s'explique par des travaux de rénovation à prévoir et un DPE D dans un bien de 1957. Le quartier Montreuil est calme, bien desservi (Gare Montreuil à ~300 m, Paris Saint-Lazare en 30 min) et offre un cadre de vie agréable. Points de vigilance : absence de surface Carrez, amiante probable (immeuble 1957), et budget rénovation à chiffrer.",
+    "price": "322 000 €",
+    "pricem2": "5 414 €/m²",
+    "surface": "57 m²",
+    "type": "3 pièces · 2 chambres",
+    "href": "reports/versailles-montreuil-3-pieces.html"
+  },
+  {
     "id": "chelles-foch-maison-5-pieces",
     "jobId": "3201113558",
     "title": "Pavillon 5 pièces — Chelles (Centre-ville / Foch)",

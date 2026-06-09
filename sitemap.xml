@@ -11,6 +11,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://luongnv.com/immo-evals/reports/versailles-notre-dame-3-pieces.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://luongnv.com/immo-evals/reports/versailles-montreuil-3-pieces.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://luongnv.com/immo-evals/reports/chelles-foch-maison-5-pieces.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
