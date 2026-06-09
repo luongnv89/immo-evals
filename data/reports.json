@@ -1,5 +1,20 @@
 [
   {
+    "id": "versailles-montreuil-2-pieces",
+    "jobId": "a64b904521584ca7b886634f86456058",
+    "title": "Appartement 2 pièces — Versailles (Montreuil)",
+    "date": "2026-06-09",
+    "url": "https://www.bienici.com/annonce/vente/versailles/appartement/2pieces/immo-facile-60690730",
+    "verdict": "Prix dans la fourchette haute — justifié par la terrasse",
+    "tone": "warn",
+    "summary": "Appartement bien situé à Versailles Montreuil avec une terrasse de 18 m² exceptionnelle. Le prix est dans le haut du marché mais cohérent avec les prestations (parking, cave, terrasse, excellent état). Les charges de copropriété et le DPE E sont les principaux points de vigilance.",
+    "price": "265 000 €",
+    "pricem2": "7 286 €/m²",
+    "surface": "35 m² + 18 m² terrasse",
+    "type": "2 pièces · 1 chambre",
+    "href": "reports/versailles-montreuil-2-pieces.html"
+  },
+  {
     "id": "versailles-notre-dame-3-pieces",
     "jobId": "13427960138045cba63e73595ee98bf5",
     "title": "Appartement 3 pièces — Versailles (Notre-Dame)",
