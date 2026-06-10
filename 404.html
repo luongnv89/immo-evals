@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>immo·evals — Rapport en préparation</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/immo-evals/assets/logo/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/immo-evals/assets/site.css">
+  <style>
+    .pending-wrap {
+      max-width: 38rem;
+      margin: 14vh auto 0;
+      padding: 2.2rem 1.6rem;
+      text-align: center;
+    }
+    .pending-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow-card);
+      padding: 2.2rem 1.8rem;
+    }
+    .pending-card h1 { font-family: var(--font-serif); font-size: 1.6rem; margin: 0.9rem 0 0.5rem; }
+    .pending-card p { color: var(--body); font-size: 0.95rem; margin: 0.4rem 0; }
+    .pending-card .muted { color: var(--mute); font-size: 0.82rem; }
+    .pending-spin {
+      width: 2.2rem; height: 2.2rem; margin: 0 auto;
+      border: 3px solid var(--line2); border-top-color: var(--leaf);
+      border-radius: 50%; animation: eval-spin 0.9s linear infinite;
+    }
+    .pending-card .btn { margin-top: 1.1rem; }
+  </style>
+</head>
+<body>
+  <main class="pending-wrap">
+    <div class="pending-card" data-pending hidden>
+      <div class="pending-spin" aria-hidden="true"></div>
+      <h1>Votre rapport est en préparation</h1>
+      <p>L'analyse de votre annonce est en cours ou vient de se terminer.</p>
+      <p>Gardez ce lien : cette page se rechargera automatiquement et affichera le rapport dès qu'il sera publié.</p>
+      <p class="muted">Comptez quelques minutes après la soumission.</p>
+      <a class="btn btn--ghost" href="/immo-evals/">← Retour à l'accueil</a>
+    </div>
+    <div class="pending-card" data-notfound hidden>
+      <h1>Page introuvable</h1>
+      <p>Cette page n'existe pas (ou plus).</p>
+      <a class="btn btn--primary" href="/immo-evals/">← Retour à l'accueil</a>
+    </div>
+  </main>
+  <script>
+    (function () {
+      // A pending report URL looks like /immo-evals/reports/{report_id}/ where
+      // {report_id} matches the meta-app publish-token grammar. Anything else
+      // is a plain 404.
+      var m = window.location.pathname.match(
+        /^\/immo-evals\/reports\/([a-z0-9][a-z0-9-]{2,62}[a-z0-9])\/?$/
+      );
+      if (m) {
+        document.querySelector("[data-pending]").removeAttribute("hidden");
+        setTimeout(function () { window.location.reload(); }, 30000);
+      } else {
+        document.querySelector("[data-notfound]").removeAttribute("hidden");
+      }
+    })();
+  </script>
+</body>
+</html>

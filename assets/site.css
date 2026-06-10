@@ -1636,3 +1636,76 @@ body.url-modal-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .url-modal__backdrop, .url-modal__dialog { animation: none; }
 }
+
+/* ===== Evaluation status panel (direct meta-app flow, issue #77) ===== */
+.eval-status {
+  margin-top: 0.9rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow-soft);
+}
+.eval-status[hidden] { display: none; }
+.eval-status__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--line2);
+  background: var(--paper);
+  color: var(--body);
+}
+.eval-status__badge--done,
+.eval-status__badge--live {
+  border-color: var(--leaf);
+  background: var(--leafsoft);
+  color: var(--leafdeep);
+}
+.eval-status__badge--error {
+  border-color: var(--danger);
+  background: var(--dangersoft);
+  color: var(--danger);
+}
+.eval-status__spin {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid var(--line2);
+  border-top-color: var(--leaf);
+  border-radius: 50%;
+  animation: eval-spin 0.9s linear infinite;
+}
+@keyframes eval-spin { to { transform: rotate(360deg); } }
+.eval-status__msg {
+  margin: 0.6rem 0 0;
+  font-size: 0.92rem;
+  color: var(--body);
+}
+.eval-status__detail {
+  margin: 0.45rem 0 0;
+  font-size: 0.85rem;
+  color: var(--danger);
+}
+.eval-status__urlrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+  flex-wrap: wrap;
+}
+.eval-status__url {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--info);
+  word-break: break-all;
+  text-decoration: underline;
+}
+.eval-status__copy { padding: 0.3rem 0.8rem; font-size: 0.8rem; }
+.eval-status__note {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  color: var(--mute);
+}
