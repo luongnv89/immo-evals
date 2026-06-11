@@ -35,7 +35,9 @@
         window.localStorage.setItem("immoEvalsApiBase", param);
       }
       var stored = window.localStorage.getItem("immoEvalsApiBase");
-      return (param && param !== "reset" ? param : stored || cfg.apiBase || "")
+      return (param && param !== "reset" && isLocalOrigin(param)
+        ? param
+        : stored || cfg.apiBase || "")
         .replace(/\/+$/, "");
     } catch (e) {
       return (cfg.apiBase || "").replace(/\/+$/, "");
@@ -181,7 +183,7 @@
         });
         return;
       }
-      fetch(base + statusUrl, { cache: "no-store" })
+      fetch(new URL(statusUrl, base + "/"), { cache: "no-store" })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (body) {
           if (!body) return;
