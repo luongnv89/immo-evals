@@ -1549,6 +1549,11 @@ body.report-view .site-top .sample-note {
   background: var(--dangersoft);
   color: var(--danger);
 }
+.eval-status__badge--info {
+  border-color: var(--info);
+  background: #eef4ff;
+  color: #3538cd;
+}
 .eval-status__spin {
   width: 0.8rem;
   height: 0.8rem;
