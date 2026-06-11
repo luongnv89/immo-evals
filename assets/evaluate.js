@@ -17,12 +17,21 @@
   var PAGES_BASE = (cfg.pagesBaseUrl || "").replace(/\/+$/, "");
 
   // --- meta-app origin: ?api=… override > localStorage > config default ----
+  // Persistence is restricted to localhost/127.x to prevent phishing via
+  // shared links that would redirect PII (email) to attacker-controlled hosts.
+  function isLocalOrigin(url) {
+    try {
+      var h = new URL(url).hostname;
+      return h === "localhost" || h === "127.0.0.1" || h.startsWith("127.");
+    } catch (e) { return false; }
+  }
+
   function apiBase() {
     try {
       var param = new URLSearchParams(window.location.search).get("api");
       if (param === "reset") {
         window.localStorage.removeItem("immoEvalsApiBase");
-      } else if (param) {
+      } else if (param && isLocalOrigin(param)) {
         window.localStorage.setItem("immoEvalsApiBase", param);
       }
       var stored = window.localStorage.getItem("immoEvalsApiBase");
@@ -73,6 +82,12 @@
   var panel = document.querySelector("[data-eval-status]");
   if (!panel) return;
 
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+
   function renderPanel(state) {
     // state: {phase, reportUrl, message, detail}
     var rows = [];
@@ -86,18 +101,18 @@
     } else if (state.phase === "done") {
       rows.push('<span class="eval-status__badge eval-status__badge--done">Analyse terminée</span>');
     } else {
-      rows.push('<span class="eval-status__badge eval-status__badge--pending"><span class="eval-status__spin" aria-hidden="true"></span>' + state.badge + "</span>");
+      rows.push('<span class="eval-status__badge eval-status__badge--pending"><span class="eval-status__spin" aria-hidden="true"></span>' + esc(state.badge) + "</span>");
     }
     rows.push("</div>");
     if (state.message) {
-      rows.push('<p class="eval-status__msg">' + state.message + "</p>");
+      rows.push('<p class="eval-status__msg">' + esc(state.message) + "</p>");
     }
     if (state.detail) {
       rows.push('<p class="eval-status__detail" role="alert"></p>');
     }
     if (state.reportUrl) {
       rows.push('<div class="eval-status__urlrow">');
-      rows.push('<a class="eval-status__url" href="' + state.reportUrl + '" target="_blank" rel="noopener">' + state.reportUrl + "</a>");
+      rows.push('<a class="eval-status__url" href="' + esc(state.reportUrl) + '" target="_blank" rel="noopener">' + esc(state.reportUrl) + "</a>");
       rows.push('<button type="button" class="btn btn--ghost eval-status__copy" data-copy-url>Copier</button>');
       rows.push("</div>");
       rows.push('<p class="eval-status__note">Ce lien est définitif : gardez-le, il affichera le rapport dès qu\'il sera prêt.</p>');
@@ -111,10 +126,12 @@
     var copy = panel.querySelector("[data-copy-url]");
     if (copy) {
       copy.addEventListener("click", function () {
-        navigator.clipboard.writeText(state.reportUrl).then(function () {
-          copy.textContent = "Copié !";
-          setTimeout(function () { copy.textContent = "Copier"; }, 2000);
-        });
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(state.reportUrl).then(function () {
+            copy.textContent = "Copié !";
+            setTimeout(function () { copy.textContent = "Copier"; }, 2000);
+          }).catch(function () { copy.textContent = "Copier"; });
+        }
       });
     }
     panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -124,6 +141,9 @@
   function errorStateFor(status, detail) {
     if (status === 404) {
       return { phase: "error", message: "Ce service est indisponible pour le moment.", detail: "" };
+    }
+    if (status === 409) {
+      return { phase: "error", message: "Ce rapport a déjà été soumis. Vérifiez vos emails ou soumettez l'annonce à nouveau.", detail: "" };
     }
     if (status === 503) {
       return {
@@ -144,6 +164,7 @@
 
   // --- Submission + polling --------------------------------------------------
   var polling = null;
+  var submitting = false;
 
   function pollStatus(statusUrl, reportUrl) {
     var base = apiBase();
@@ -174,6 +195,7 @@
             waitForLive(reportUrl);
           } else if (body.status === "failed") {
             clearInterval(polling);
+            submitting = false;
             renderPanel({
               phase: "failed",
               message: "L'analyse n'a pas abouti. Aucun rapport ne sera publié pour ce lien — vous pouvez soumettre l'annonce à nouveau.",
@@ -200,6 +222,7 @@
         .then(function (r) {
           if (r.ok) {
             clearInterval(timer);
+            submitting = false;
             renderPanel({
               phase: "live",
               message: "Votre rapport est en ligne :",
@@ -212,6 +235,9 @@
   }
 
   function submit(email, listingUrl, reportId, isRetry) {
+    if (submitting) return;
+    submitting = true;
+
     var base = apiBase();
     var reportUrl = reportUrlFor(reportId);
 
@@ -235,6 +261,11 @@
       })
       .then(function (r) {
         if (r.status === 202) {
+          if (!r.body || !r.body.status_url) {
+            submitting = false;
+            renderPanel(errorStateFor(0, ""));
+            return;
+          }
           renderPanel({
             phase: "pending",
             badge: "En file d'attente…",
@@ -246,13 +277,17 @@
         }
         if (r.status === 409 && !isRetry) {
           // §4.2: regenerate a fresh report_id, update the displayed URL,
-          // resubmit automatically (one retry).
+          // resubmit automatically (one retry). Reset submitting so the
+          // recursive call is allowed through the guard.
+          submitting = false;
           submit(email, listingUrl, generateReportId(), true);
           return;
         }
+        submitting = false;
         renderPanel(errorStateFor(r.status, r.body && r.body.detail ? String(r.body.detail) : ""));
       })
       .catch(function () {
+        submitting = false;
         renderPanel(errorStateFor(0, ""));
       });
   }
@@ -264,6 +299,8 @@
     var urlInput = formEl.querySelector('input[name="url"]');
     var emailErrorEl = formEl.querySelector("#hero-email-error");
     var urlErrorEl = formEl.querySelector("#hero-listing-url-error");
+
+    if (!emailInput || !urlInput || !emailErrorEl || !urlErrorEl) return;
 
     function showEmailError(message) {
       emailErrorEl.textContent = message;
