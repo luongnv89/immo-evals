@@ -306,6 +306,18 @@
           submit(email, listingUrl, generateReportId(), true);
           return;
         }
+        // 503: meta-app unavailable — use email fallback
+        if (r.status === 503 && window.EmailFallback) {
+          submitting = false;
+          setSubmitBusy(false);
+          window.EmailFallback.send(listingUrl);
+          renderPanel({
+            phase: "fallback",
+            message: "Le serveur d'analyse est temporairement indisponible. Un email a été envoyé avec votre lien — l'équipe traitera votre demande manuellement.",
+            reportUrl: reportUrl,
+          });
+          return;
+        }
         submitting = false;
         setSubmitBusy(false);
         renderPanel(errorStateFor(r.status, r.body && r.body.detail ? String(r.body.detail) : ""));
