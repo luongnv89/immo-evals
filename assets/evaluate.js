@@ -367,12 +367,13 @@
   // CTAs scroll to the hero form and focus the email input (no modal, no mailto).
   document.querySelectorAll("[data-eval-cta]").forEach(function (el) {
     el.addEventListener("click", function (e) {
-      e.preventDefault();
       var emailInput = document.getElementById("hero-email");
       if (emailInput) {
+        e.preventDefault();
         emailInput.scrollIntoView({ behavior: "smooth", block: "center" });
         setTimeout(function () { emailInput.focus(); }, 350);
       }
+      // else: let the href navigate to index.html#hero-email
     });
   });
 })();
