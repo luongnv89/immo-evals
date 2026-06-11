@@ -152,8 +152,8 @@
     }
     if (status === 503) {
       return {
-        phase: "error",
-        message: "Le service est temporairement indisponible — votre demande n'a pas été traitée. Réessayez dans quelques minutes.",
+        phase: "fallback",
+        message: "Le serveur d'analyse est temporairement indisponible. Un email va être envoyé avec votre lien.",
         detail: detail,
       };
     }
@@ -325,7 +325,17 @@
       .catch(function () {
         submitting = false;
         setSubmitBusy(false);
-        renderPanel(errorStateFor(0, ""));
+        // network error — use email fallback
+        if (window.EmailFallback) {
+          window.EmailFallback.send(listingUrl);
+          renderPanel({
+            phase: "fallback",
+            message: "Le serveur d'analyse est injoignable. Un email a été envoyé avec votre lien — l'équipe traitera votre demande manuellement.",
+            reportUrl: reportUrl,
+          });
+        } else {
+          renderPanel(errorStateFor(0, ""));
+        }
       });
   }
 
