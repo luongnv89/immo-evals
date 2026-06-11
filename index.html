@@ -66,7 +66,7 @@
       <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
         <a href="index.html" aria-current="page">Accueil</a>
         <a href="catalog.html">Rapports</a>
-        <a class="btn btn--primary" href="#" data-mailto-cta>Essayer le service</a>
+        <a class="btn btn--primary" href="#hero-listing-url" data-eval-cta>Essayer le service</a>
       </nav>
     </div>
   </header>
@@ -86,24 +86,30 @@
 
           <!-- Design decision: one calm action block replaces repeated platform/proof messaging. -->
           <div class="lp-request-card" aria-labelledby="hero-form-title">
-            <form class="lp-url-form" data-inline-url-form novalidate>
+            <form class="lp-url-form" data-eval-form novalidate>
               <div class="lp-url-form__header">
-                <label class="lp-url-form__label" id="hero-form-title" for="hero-listing-url">Votre annonce</label>
+                <label class="lp-url-form__label" id="hero-form-title" for="hero-email">Votre évaluation</label>
                 <a class="btn btn--ghost" href="reports/chelles-foch-maison-5-pieces.html">Voir un exemple</a>
+              </div>
+              <div class="lp-url-form__row lp-url-form__row--email">
+                <input id="hero-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="votre@email.fr" aria-describedby="hero-email-help hero-email-error">
+                <p class="lp-url-form__help" id="hero-email-help">Pour recevoir une notification quand votre rapport est prêt.</p>
+                <p class="lp-url-form__error" id="hero-email-error" role="alert" hidden></p>
               </div>
               <div class="lp-url-form__row">
                 <input id="hero-listing-url" name="url" type="url" inputmode="url" autocomplete="url" placeholder="https://www.leboncoin.fr/..." aria-describedby="hero-listing-url-help hero-listing-url-error">
-                <button class="btn btn--primary" type="submit">Préparer l'email</button>
+                <button class="btn btn--primary" type="submit">Évaluer mon annonce</button>
               </div>
-              <p class="lp-url-form__help" id="hero-listing-url-help">On ouvre un email pré-rempli. Votre adresse servira à recevoir le rapport.</p>
+              <p class="lp-url-form__help" id="hero-listing-url-help">Vous recevez immédiatement le lien définitif de votre rapport ; l'analyse prend quelques minutes.</p>
               <p class="lp-url-form__error" id="hero-listing-url-error" role="alert" hidden></p>
             </form>
+            <div class="eval-status" data-eval-status hidden></div>
             <ul class="lp-hero__assurance" aria-label="Garanties du service">
               <li>Gratuit en bêta</li>
-              <li>Réponse sous 24h</li>
+              <li>Rapport en ligne en quelques minutes</li>
               <li>Données DVF citées</li>
             </ul>
-            <p class="lp-request-card__notice">La version bêta est gratuite. Le service deviendra payant après la période de test.</p>
+            <p class="lp-request-card__notice">La version bêta est gratuite. Le service deviendra payant après la période de test. Votre adresse email est utilisée uniquement pour vous notifier de la disponibilité du rapport et est supprimée après 14 jours.</p>
           </div>
         </div>
 
@@ -293,7 +299,7 @@
         </details>
         <details>
           <summary>Comment lancer une évaluation ?</summary>
-          <p>Cliquez « Évaluer mon annonce » : collez l'URL de l'annonce dans le formulaire, puis envoyez l'email (votre adresse d'envoi servira à la réponse). <strong>Service gratuit pendant la période de test</strong>, puis payant ensuite. Réponse généralement sous <strong>24h</strong>, rapport livré par email au format <strong>PDF</strong>.</p>
+          <p>Collez l'URL de l'annonce dans le formulaire et cliquez « Évaluer mon annonce ». Vous recevez <strong>immédiatement le lien définitif</strong> de votre rapport ; l'analyse tourne ensuite quelques minutes et le rapport apparaît à ce lien dès qu'il est publié. <strong>Service gratuit pendant la période de test</strong>, puis payant ensuite.</p>
         </details>
       </div>
     </section>
@@ -304,8 +310,8 @@
         <h2>Une annonce en tête&nbsp;?</h2>
         <p>Envoyez-nous le lien. On vous répond avec le rapport.</p>
         <div class="lp-cta__action">
-          <a class="btn btn--primary btn--lg" href="#" data-mailto-cta>Envoyer l'URL de mon annonce</a>
-          <p class="lp-cta__note"><span class="lp-badge">Gratuit en bêta</span> · Deviendra payant après test · Réponse sous 24h · Rapport PDF</p>
+          <a class="btn btn--primary btn--lg" href="#hero-listing-url" data-eval-cta>Évaluer mon annonce</a>
+          <p class="lp-cta__note"><span class="lp-badge">Gratuit en bêta</span> · Deviendra payant après test · Rapport en ligne en quelques minutes</p>
         </div>
       </div>
     </section>
@@ -317,6 +323,7 @@
       · Rapports acheteur pour annonces immobilières en France
     </p>
   </footer>
-  <script src="assets/mailto.js"></script>
+  <script src="assets/config.js"></script>
+  <script src="assets/evaluate.js"></script>
 </body>
 </html>
