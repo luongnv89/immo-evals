@@ -119,6 +119,7 @@
       rows.push("</div>");
       rows.push('<p class="eval-status__note">Ce lien est définitif : gardez-le, il affichera le rapport dès qu\'il sera prêt.</p>');
     }
+    var wasHidden = panel.hasAttribute("hidden");
     panel.innerHTML = rows.join("");
     panel.removeAttribute("hidden");
     if (state.detail) {
@@ -136,7 +137,9 @@
         }
       });
     }
-    panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (wasHidden) {
+      panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   }
 
   // --- §4.2 error map: status → what the visitor must see -------------------
@@ -246,7 +249,7 @@
     }
     if (submitBtn) {
       submitBtn.disabled = busy;
-      submitBtn.textContent = busy ? "Envoi en cours…" : "Évaluer";
+      submitBtn.textContent = busy ? "Envoi en cours…" : "Évaluer mon annonce";
     }
   }
 
