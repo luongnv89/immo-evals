@@ -257,7 +257,7 @@
     }
   }
 
-  function submit(email, listingUrl, reportId, isRetry) {
+  function submit(email, listingUrl, reportId, catalogListed, isRetry) {
     if (submitting) return;
     submitting = true;
     setSubmitBusy(true);
@@ -276,6 +276,9 @@
     form.append("email", email);
     form.append("listing_url", listingUrl);
     form.append("report_id", reportId);
+    // catalog_listed (issue #85): "true" = listed in public catalog (default);
+    // "false" = report published at stable URL but hidden from catalog.
+    form.append("catalog_listed", catalogListed ? "true" : "false");
 
     fetch(base + "/services/" + SERVICE_ID + "/jobs", { method: "POST", body: form })
       .then(function (response) {
@@ -305,7 +308,7 @@
           // resubmit automatically (one retry). Reset submitting so the
           // recursive call is allowed through the guard.
           submitting = false;
-          submit(email, listingUrl, generateReportId(), true);
+          submit(email, listingUrl, generateReportId(), catalogListed, true);
           return;
         }
         // 503: meta-app unavailable — use email fallback
@@ -346,6 +349,7 @@
   if (formEl) {
     var emailInput = formEl.querySelector('input[name="email"]');
     var urlInput = formEl.querySelector('input[name="url"]');
+    var hideFromCatalogInput = formEl.querySelector('input[name="hide_from_catalog"]');
     var emailErrorEl = formEl.querySelector("#hero-email-error");
     var urlErrorEl = formEl.querySelector("#hero-listing-url-error");
 
@@ -386,7 +390,9 @@
       if (!url) { showUrlError("Indiquez l'URL de l'annonce."); urlInput.focus(); return; }
       if (!isValidUrl(url)) { showUrlError("Ce lien n'est pas une URL valide (https://…)."); urlInput.focus(); return; }
 
-      submit(email, url, generateReportId(), false);
+      // catalog_listed: true (listed) unless the "hide" checkbox is checked.
+      var catalogListed = !(hideFromCatalogInput && hideFromCatalogInput.checked);
+      submit(email, url, generateReportId(), catalogListed, false);
     });
   }
 

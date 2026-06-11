@@ -1115,6 +1115,27 @@ body.report-view .site-top .sample-note {
 .lp-url-form__error { color: var(--danger); }
 .lp-url-form__error[hidden] { display: none; }
 
+.lp-url-form__row--catalog {
+  grid-template-columns: 1fr;
+  margin-top: 0.5rem;
+}
+.lp-catalog-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: var(--mute);
+  user-select: none;
+}
+.lp-catalog-toggle input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  accent-color: var(--leaf);
+  cursor: pointer;
+}
+
 .lp-hero__assurance {
   display: flex;
   flex-wrap: wrap;
