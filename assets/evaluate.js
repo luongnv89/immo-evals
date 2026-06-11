@@ -102,6 +102,8 @@
       rows.push('<span class="eval-status__badge eval-status__badge--live">Rapport en ligne</span>');
     } else if (state.phase === "done") {
       rows.push('<span class="eval-status__badge eval-status__badge--done">Analyse terminée</span>');
+    } else if (state.phase === "fallback") {
+      rows.push('<span class="eval-status__badge eval-status__badge--info">Email envoyé</span>');
     } else {
       rows.push('<span class="eval-status__badge eval-status__badge--pending"><span class="eval-status__spin" aria-hidden="true"></span>' + esc(state.badge) + "</span>");
     }
@@ -152,8 +154,8 @@
     }
     if (status === 503) {
       return {
-        phase: "error",
-        message: "Le service est temporairement indisponible — votre demande n'a pas été traitée. Réessayez dans quelques minutes.",
+        phase: "fallback",
+        message: "Le serveur d'analyse est temporairement indisponible. Un email va être envoyé avec votre lien.",
         detail: detail,
       };
     }
@@ -306,6 +308,18 @@
           submit(email, listingUrl, generateReportId(), true);
           return;
         }
+        // 503: meta-app unavailable — use email fallback
+        if (r.status === 503 && window.EmailFallback) {
+          submitting = false;
+          setSubmitBusy(false);
+          window.EmailFallback.send(listingUrl);
+          renderPanel({
+            phase: "fallback",
+            message: "Le serveur d'analyse est temporairement indisponible. Un email a été envoyé avec votre lien — l'équipe traitera votre demande manuellement.",
+            reportUrl: reportUrl,
+          });
+          return;
+        }
         submitting = false;
         setSubmitBusy(false);
         renderPanel(errorStateFor(r.status, r.body && r.body.detail ? String(r.body.detail) : ""));
@@ -313,7 +327,17 @@
       .catch(function () {
         submitting = false;
         setSubmitBusy(false);
-        renderPanel(errorStateFor(0, ""));
+        // network error — use email fallback
+        if (window.EmailFallback) {
+          window.EmailFallback.send(listingUrl);
+          renderPanel({
+            phase: "fallback",
+            message: "Le serveur d'analyse est injoignable. Un email a été envoyé avec votre lien — l'équipe traitera votre demande manuellement.",
+            reportUrl: reportUrl,
+          });
+        } else {
+          renderPanel(errorStateFor(0, ""));
+        }
       });
   }
 
