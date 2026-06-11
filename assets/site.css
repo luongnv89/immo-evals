@@ -1515,124 +1515,87 @@ body.report-view .site-top .sample-note {
   .lp-hero__assurance { display: grid; gap: 0.35rem; }
 }
 
-/* ============ URL-CAPTURE MODAL ============ */
-.url-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-}
-.url-modal[hidden] { display: none; }
-body.url-modal-open { overflow: hidden; }
 
-.url-modal__backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.5);
-  animation: url-modal-fade 0.15s ease;
-}
-
-.url-modal__dialog {
-  position: relative;
-  width: 100%;
-  max-width: 28rem;
-  background: var(--paper);
+/* ===== Evaluation status panel (direct meta-app flow, issue #77/#81) ===== */
+.eval-status {
+  margin-top: 0.9rem;
+  padding: 0.9rem 1rem;
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  padding: 1.75rem;
-  animation: url-modal-pop 0.18s ease;
+  border-radius: var(--radius);
+  background: var(--cream);
+  box-shadow: var(--shadow-soft);
 }
-
-.url-modal__close {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: 2rem;
-  height: 2rem;
+.eval-status[hidden] { display: none; }
+.eval-status__badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  line-height: 1;
-  color: var(--mute);
-  background: transparent;
-  border: 0;
-  border-radius: 999px;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
-}
-.url-modal__close:hover { background: var(--sand); color: var(--ink); }
-
-.url-modal__title {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  margin: 0 0 0.4rem;
-  color: var(--ink);
-}
-.url-modal__lede {
-  margin: 0 0 1.25rem;
-  color: var(--mute);
-  font-size: 0.9rem;
-}
-
-.url-modal__field { margin-bottom: 1rem; }
-.url-modal__field label {
-  display: block;
-  font-family: var(--font-sans);
-  font-weight: 600;
+  gap: 0.45rem;
   font-size: 0.8rem;
-  color: var(--body);
-  margin-bottom: 0.35rem;
-}
-.url-modal__field input {
-  width: 100%;
-  height: 2.5rem;
-  padding: 0 0.75rem;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  color: var(--ink);
-  background: var(--cream);
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
   border: 1px solid var(--line2);
-  border-radius: 0.6rem;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  background: var(--paper);
+  color: var(--body);
 }
-.url-modal__field input:focus {
-  outline: none;
+.eval-status__badge--done,
+.eval-status__badge--live {
   border-color: var(--leaf);
-  box-shadow: 0 0 0 3px var(--leafsoft);
+  background: var(--leafsoft);
+  color: var(--leafdeep);
 }
-.url-modal__field input[aria-invalid="true"] {
+.eval-status__badge--error {
   border-color: var(--danger);
   background: var(--dangersoft);
-}
-.url-modal__field input[aria-invalid="true"]:focus {
-  box-shadow: 0 0 0 3px var(--dangersoft);
-}
-
-.url-modal__error {
-  margin: 0.35rem 0 0;
-  font-size: 0.78rem;
   color: var(--danger);
 }
-.url-modal__error[hidden] { display: none; }
+.eval-status__spin {
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid var(--line2);
+  border-top-color: var(--leaf);
+  border-radius: 50%;
+  animation: eval-spin 0.9s linear infinite;
+}
+@keyframes eval-spin { to { transform: rotate(360deg); } }
+.eval-status__msg {
+  margin: 0.6rem 0 0;
+  font-size: 0.92rem;
+  color: var(--body);
+}
+.eval-status__detail {
+  margin: 0.45rem 0 0;
+  font-size: 0.85rem;
+  color: var(--danger);
+}
+.eval-status__urlrow {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.7rem;
+  flex-wrap: wrap;
+}
+.eval-status__url {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--info);
+  word-break: break-all;
+  text-decoration: underline;
+}
+.eval-status__copy { padding: 0.3rem 0.8rem; font-size: 0.8rem; }
+.eval-status__note {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  color: var(--mute);
+}
 
-.url-modal__submit {
+/* Email row above the URL row */
+.lp-url-form__row--email {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.6rem;
+}
+.lp-url-form__row--email input {
   width: 100%;
-  margin-top: 0.5rem;
-}
-
-@keyframes url-modal-fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes url-modal-pop {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .url-modal__backdrop, .url-modal__dialog { animation: none; }
 }
