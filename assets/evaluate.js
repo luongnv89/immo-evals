@@ -198,6 +198,7 @@
           } else if (body.status === "failed") {
             clearInterval(polling);
             submitting = false;
+            setSubmitBusy(false);
             renderPanel({
               phase: "failed",
               message: "L'analyse n'a pas abouti. Aucun rapport ne sera publié pour ce lien — vous pouvez soumettre l'annonce à nouveau.",
@@ -219,12 +220,13 @@
     var started = Date.now();
     var MAX_MS = 10 * 60 * 1000;
     var timer = setInterval(function () {
-      if (Date.now() - started > MAX_MS) { clearInterval(timer); return; }
+      if (Date.now() - started > MAX_MS) { clearInterval(timer); submitting = false; setSubmitBusy(false); return; }
       fetch(reportUrl, { cache: "no-store" })
         .then(function (r) {
           if (r.ok) {
             clearInterval(timer);
             submitting = false;
+            setSubmitBusy(false);
             renderPanel({
               phase: "live",
               message: "Votre rapport est en ligne :",
@@ -236,9 +238,22 @@
     }, 15000);
   }
 
+  var submitBtn = null;
+
+  function setSubmitBusy(busy) {
+    if (!submitBtn) {
+      submitBtn = formEl ? formEl.querySelector('[type=submit]') : null;
+    }
+    if (submitBtn) {
+      submitBtn.disabled = busy;
+      submitBtn.textContent = busy ? "Envoi en cours…" : "Évaluer";
+    }
+  }
+
   function submit(email, listingUrl, reportId, isRetry) {
     if (submitting) return;
     submitting = true;
+    setSubmitBusy(true);
 
     var base = apiBase();
     var reportUrl = reportUrlFor(reportId);
@@ -265,6 +280,7 @@
         if (r.status === 202) {
           if (!r.body || !r.body.status_url) {
             submitting = false;
+            setSubmitBusy(false);
             renderPanel(errorStateFor(0, ""));
             return;
           }
@@ -286,10 +302,12 @@
           return;
         }
         submitting = false;
+        setSubmitBusy(false);
         renderPanel(errorStateFor(r.status, r.body && r.body.detail ? String(r.body.detail) : ""));
       })
       .catch(function () {
         submitting = false;
+        setSubmitBusy(false);
         renderPanel(errorStateFor(0, ""));
       });
   }
