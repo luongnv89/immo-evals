@@ -179,6 +179,8 @@
     polling = setInterval(function () {
       if (Date.now() - started > MAX_MS) {
         clearInterval(polling);
+        submitting = false;
+        setSubmitBusy(false);
         renderPanel({
           phase: "error",
           message: "L'analyse prend plus de temps que prévu. Gardez le lien du rapport et revérifiez plus tard.",
