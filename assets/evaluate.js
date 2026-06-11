@@ -102,6 +102,8 @@
       rows.push('<span class="eval-status__badge eval-status__badge--live">Rapport en ligne</span>');
     } else if (state.phase === "done") {
       rows.push('<span class="eval-status__badge eval-status__badge--done">Analyse terminée</span>');
+    } else if (state.phase === "fallback") {
+      rows.push('<span class="eval-status__badge eval-status__badge--info">Email envoyé</span>');
     } else {
       rows.push('<span class="eval-status__badge eval-status__badge--pending"><span class="eval-status__spin" aria-hidden="true"></span>' + esc(state.badge) + "</span>");
     }

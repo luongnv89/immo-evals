@@ -19,11 +19,6 @@
     return 'mailto:' + to + '?subject=' + subject + '&body=' + body;
   }
 
-  function openMailto(url) {
-    var mailtoUrl = buildMailtoUrl(url, window.FALLBACK_EMAIL_TO || DEFAULT_TO);
-    window.location.href = mailtoUrl;
-  }
-
   // --- Pending queue (localStorage) ---
 
   function getPending() {
@@ -91,7 +86,7 @@
       }
 
       var mailtoUrl = buildMailtoUrl(url, options.to || window.FALLBACK_EMAIL_TO || DEFAULT_TO);
-      openMailto(url);
+      window.location.href = mailtoUrl;
 
       return { mailtoUrl: mailtoUrl };
     },
