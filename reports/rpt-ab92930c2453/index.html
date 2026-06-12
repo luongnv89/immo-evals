@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rapport d'évaluation — immo·evals</title>
+<!-- immo·evals favicon (house + verified check), inlined as a base64 data URI so the report stays self-contained -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDY0IDY0IiBmaWxsPSJub25lIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9ImltbW/Ct2V2YWxzIGZhdmljb24iPgogIDwhLS0gTGF5ZXIgMTogaG91c2Ugc2lsaG91ZXR0ZSAoaW5rKSAtLT4KICA8cGF0aCBkPSJNMzIgNyBMNTUgMjYgTDU1IDU1IEw5IDU1IEw5IDI2IFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBhMGEwYSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8IS0tIExheWVyIDI6IHZlcmlmaWVkIGNoZWNrIChsZWFmKSAtLT4KICA8cGF0aCBkPSJNMjEgMzggTDI5IDQ2IEw0NCAzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTZhMzRhIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" />
+
+<!-- Tailwind Play CDN (dev/local use). For production builds, compile Tailwind instead. -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink:    '#0A0A0A',
+        paper:  '#FFFFFF',
+        cream:  '#FAF9F6',
+        sand:   '#F3F1EA',
+        line:   '#E7E5DF',
+        line2:  '#D8D5CC',
+        mute:   '#6B7280',
+        mute2:  '#9CA3AF',
+        body:   '#1F2937',
+        leaf:   '#16A34A',
+        leafdeep:'#15803D',
+        leafsoft:'#F0FDF4',
+        danger: '#DC2626',
+        dangersoft:'#FEF2F2',
+        warn:   '#D97706',
+        warnsoft:'#FFFBEB',
+        info:   '#2563EB',
+        infosoft:'#EFF6FF',
+      },
+      fontFamily: {
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        sans:  ['"Inter Tight"', 'system-ui', 'sans-serif'],
+        mono:  ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      },
+      boxShadow: {
+        card: '0 1px 2px rgba(10,10,10,.04), 0 8px 24px -12px rgba(10,10,10,.10)',
+        soft: '0 1px 2px rgba(10,10,10,.04)',
+      },
+    },
+  },
+};
+</script>
+
+<style>
+  body { font-feature-settings: "ss01","cv11"; -webkit-font-smoothing: antialiased; }
+  .serif-opsz { font-variation-settings: "opsz" 120; }
+  /* keyboard focus — visible ring on all interactive elements */
+  button:focus-visible, a:focus-visible, .acc-head:focus-visible {
+    outline: 2px solid #16A34A; outline-offset: 2px; border-radius: 6px;
+  }
+  .acc-head:focus-visible { outline-offset: -2px; }
+  /* collapsible */
+  .acc-body { display: grid; grid-template-rows: 1fr; transition: grid-template-rows .35s ease; }
+  .acc.collapsed .acc-body { grid-template-rows: 0fr; }
+  .acc-body > div { overflow: hidden; }
+  .acc.collapsed .acc-caret { transform: rotate(-90deg); }
+  .acc-caret { transition: transform .3s ease; }
+  /* prose tables (markdown-rendered) */
+  .prose-rt table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .875rem; }
+  .prose-rt thead th { background: #FAF9F6; color: #6B7280; text-transform: uppercase; letter-spacing: .08em;
+    font-size: .68rem; font-weight: 700; text-align: left; padding: .6rem .9rem; border-bottom: 1px solid #E7E5DF; white-space: nowrap; }
+  .prose-rt tbody td { padding: .6rem .9rem; border-bottom: 1px solid #E7E5DF; color: #1F2937; vertical-align: top; }
+  .prose-rt tbody tr:last-child td { border-bottom: none; }
+  .prose-rt tbody tr:nth-child(even) td { background: rgba(10,10,10,.012); }
+  .prose-rt tbody tr:hover td { background: #F0FDF4; }
+  .prose-rt table { border: 1px solid #E7E5DF; border-radius: 10px; overflow: hidden; }
+  .prose-rt h3 { font-family: Fraunces, serif; font-weight: 600; font-size: 1.05rem; color: #0A0A0A; margin: 1.4rem 0 .5rem; }
+  .prose-rt h3:first-child { margin-top: 0; }
+  .prose-rt h4 { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #6B7280; margin: 1.1rem 0 .4rem; }
+  .prose-rt p { margin: .55rem 0; line-height: 1.65; color: #1F2937; }
+  .prose-rt ul, .prose-rt ol { margin: .6rem 0; padding-left: 1.25rem; }
+  .prose-rt li { margin: .25rem 0; line-height: 1.6; }
+  .prose-rt li::marker { color: #9CA3AF; }
+  .prose-rt strong { color: #0A0A0A; font-weight: 600; }
+  .prose-rt a { color: #15803D; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #D8D5CC; }
+  .prose-rt a:hover { text-decoration-color: #16A34A; }
+  .prose-rt blockquote { border-left: 3px solid #16A34A; background: #F0FDF4; padding: .75rem 1.1rem;
+    margin: .9rem 0; border-radius: 0 8px 8px 0; font-family: Fraunces, serif; font-style: italic; color: #0A0A0A; }
+  .prose-rt code { font-family: "JetBrains Mono", monospace; font-size: .8rem; background: #FAF9F6;
+    border: 1px solid #E7E5DF; padding: .05rem .35rem; border-radius: 4px; color: #0A0A0A; }
+  .prose-rt hr { border: none; border-top: 1px solid #E7E5DF; margin: 1.5rem 0; }
+  /* DPE scale */
+  .dpe-a{background:#00a651}.dpe-b{background:#5db347}.dpe-c{background:#aac619}
+  .dpe-d{background:#f8d20a;color:#0A0A0A}.dpe-e{background:#f08e1f}.dpe-f{background:#d8421b}.dpe-g{background:#b21f1a}
+  @media print {
+    .no-print { display: none !important; }
+    .acc.collapsed .acc-body { grid-template-rows: 1fr !important; }
+    .acc-body > div { overflow: visible !important; }
+    body { background: #fff !important; }
+    .break-avoid { break-inside: avoid; }
+  }
+</style>
+</head>
+
+<body class="bg-cream font-sans text-body">
+
+<!-- ───────── top bar ───────── -->
+<header class="no-print sticky top-0 z-50 backdrop-blur-md bg-cream/85 border-b border-line">
+  <div class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="w-8 h-8 grid place-items-center shrink-0" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+          <path d="M32 8 L54 26 L54 54 L10 54 L10 26 Z" fill="none" stroke="#0A0A0A" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M22 37 L29 44 L43 30" fill="none" stroke="#16A34A" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="leading-none">
+        <span class="block font-serif font-bold text-[15px] tracking-tight text-ink">immo<span class="text-leaf">·</span>evals</span>
+        <span class="block text-[10px] font-semibold uppercase tracking-[.18em] text-mute mt-0.5">Rapport d'évaluation</span>
+      </span>
+    </a>
+    <div class="flex items-center gap-1.5">
+      <button id="btnExpand" class="h-9 px-3.5 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition inline-flex items-center gap-1.5">＋ <span class="hidden sm:inline">Déplier</span></button>
+      <button id="btnCollapse" class="h-9 px-3.5 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition inline-flex items-center gap-1.5">− <span class="hidden sm:inline">Replier</span></button>
+      <button onclick="window.print()" class="h-9 px-3.5 rounded-full bg-ink text-paper text-xs font-semibold hover:bg-leafdeep transition inline-flex items-center gap-1.5">⤓ <span class="hidden sm:inline">PDF</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="max-w-6xl mx-auto px-5 pt-7 pb-20">
+
+  <!-- ───────── hero ───────── -->
+  <section id="hero" class="relative bg-paper border border-line rounded-2xl shadow-card overflow-hidden mb-5 break-avoid">
+    <div id="heroBar" class="absolute inset-x-0 top-0 h-1 bg-ink"></div>
+    <div class="p-7 sm:p-9">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span id="verdictPill" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-line2 bg-paper text-xs font-bold uppercase tracking-wider text-ink">
+          <span id="verdictDot" class="w-2 h-2 rounded-full bg-mute"></span><span id="verdictLabel">Verdict</span>
+        </span>
+        <span class="inline-flex items-center gap-2.5 text-xs font-medium text-mute tabular-nums">
+          <span id="heroDate">—</span>
+          <span id="heroUrlSep" class="w-[3px] h-[3px] rounded-full bg-mute2 hidden"></span>
+          <a id="heroUrl" href="#" target="_blank" rel="noopener" class="text-body border-b border-dotted border-line2 hover:text-leafdeep hidden">Voir l'annonce ↗</a>
+        </span>
+      </div>
+
+      <h1 id="heroTitle" class="font-serif font-bold text-ink tracking-tight leading-[1.05] text-3xl sm:text-[2.7rem]" style="font-variation-settings:'opsz' 120;">—</h1>
+      <p id="heroSummary" class="mt-3.5 text-[15px] leading-relaxed text-body max-w-[68ch]"></p>
+
+      <!-- score gauge + KPI strip -->
+      <div class="mt-7 grid grid-cols-12 gap-6 items-center border-t border-line pt-6">
+        <!-- gauge -->
+        <div class="col-span-12 md:col-span-3 flex items-center gap-4 md:border-r md:border-line md:pr-6">
+          <div class="relative w-[92px] h-[92px] shrink-0">
+            <canvas id="scoreGauge" width="92" height="92"></canvas>
+            <div class="absolute inset-0 grid place-items-center">
+              <span id="scoreVal" class="font-serif font-bold text-2xl text-ink tabular-nums leading-none">—</span>
+              <span class="text-[9px] font-semibold uppercase tracking-[.14em] text-mute mt-0.5">/ 10</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1">Note globale</div>
+            <div id="scoreNote" class="text-sm font-semibold text-ink leading-tight">—</div>
+          </div>
+        </div>
+        <!-- KPIs -->
+        <div class="col-span-12 md:col-span-9 grid grid-cols-2 sm:grid-cols-4 gap-y-5">
+          <div class="px-0 sm:px-5 sm:border-r sm:border-line">
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Prix</div>
+            <div id="kpiPrice" class="font-serif font-bold text-[1.55rem] leading-none text-ink tabular-nums" style="font-variation-settings:'opsz' 60;">—</div>
+            <div id="kpiPriceSub" class="text-[11px] text-mute mt-1 tabular-nums"></div>
+          </div>
+          <div class="px-0 sm:px-5 sm:border-r sm:border-line">
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Prix au m²</div>
+            <div id="kpiPm2" class="font-serif font-bold text-[1.55rem] leading-none text-ink tabular-nums" style="font-variation-settings:'opsz' 60;">—</div>
+            <div id="kpiEcart" class="text-[11px] text-mute mt-1 flex items-center gap-1.5"></div>
+          </div>
+          <div class="px-0 sm:px-5 sm:border-r sm:border-line">
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Surface</div>
+            <div id="kpiSurface" class="font-serif font-bold text-[1.55rem] leading-none text-ink tabular-nums" style="font-variation-settings:'opsz' 60;">—</div>
+            <div id="kpiType" class="text-[11px] text-mute mt-1"></div>
+          </div>
+          <div class="px-0 sm:px-5">
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">DPE</div>
+            <div class="flex items-center gap-2">
+              <span id="kpiDpe" class="inline-grid place-items-center w-9 h-9 rounded-md font-serif font-black text-lg text-paper bg-mute">?</span>
+              <span id="kpiDpeSub" class="text-[11px] text-mute leading-tight"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── photo gallery (populated from data.photos; hidden if none) ───────── -->
+  <section id="gallery" class="hidden mb-5 break-avoid"></section>
+
+  <!-- ───────── workspace ───────── -->
+  <div class="grid grid-cols-12 gap-7 items-start">
+
+    <!-- TOC -->
+    <aside class="no-print hidden lg:block col-span-3 sticky top-[72px]">
+      <div class="text-[10px] font-bold uppercase tracking-[.18em] text-mute2 mb-3 pl-3.5">Sommaire</div>
+      <nav id="tocNav" class="flex flex-col"></nav>
+    </aside>
+
+    <!-- content -->
+    <div class="col-span-12 lg:col-span-9 min-w-0" id="reportBody"></div>
+  </div>
+
+  <footer class="mt-10 pt-5 border-t border-line text-[11px] text-mute2 text-center tracking-wide">
+    <span class="font-serif font-bold text-mute">immo<span class="text-leaf">·</span>evals</span> · Rapport généré le <span id="footDate">—</span> · Pour information uniquement, ne se substitue pas à une expertise professionnelle.
+  </footer>
+</main>
+
+<!-- ════════════════════ REPORT DATA ════════════════════
+     The report-generator agent replaces ONLY the JSON object below with the
+     evaluation's data. Everything else in this file is the fixed template.
+     Omit any field that is unavailable (do not invent values). -->
+<script type="application/json" id="report-data">
+{
+  "title": "Appartement 3 pièces — Versailles (Chantiers)",
+  "date": "2026-06-12",
+  "url": "https://www.bienici.com/annonce/vente/versailles/appartement/3pieces/century-21-202_3270_2359",
+  "photos": [
+    "https://file.bienici.com/photo/century-21-202_3270_2359_images.century21.fr_202_3270_c21_202_3270_2359_1_CD454745-5702-424E-85A6-DA2B6B7B8AB5.jpg",
+    "https://file.bienici.com/photo/century-21-202_3270_2359_images.century21.fr_202_3270_c21_202_3270_2359_1_506C0CC5-3B38-4467-B725-05953407846A.jpg",
+    "https://file.bienici.com/photo/century-21-202_3270_2359_images.century21.fr_202_3270_c21_202_3270_2359_1_28169F77-D7ED-4220-965D-69E3F19F8287.jpg",
+    "https://file.bienici.com/photo/century-21-202_3270_2359_images.century21.fr_202_3270_c21_202_3270_2359_1_D5C24113-1FF4-4894-858C-C558F4CE7804.jpg",
+    "https://file.bienici.com/photo/century-21-202_3270_2359_images.century21.fr_202_3270_c21_202_3270_2359_1_83D16777-CB7D-4A58-81B9-E6A13A2A9103.jpg",
+    "https://file.bienici.com/photo/century-21-202_3270_2359_images.century21.fr_202_3270_c21_202_3270_2359_1_B04DDC3A-EBB5-4C8D-84B0-30F37CDB37D5.jpg",
+    "https://file.bienici.com/photo/century-21-202_3270_2359_images.century21.fr_202_3270_c21_202_3270_2359_1_96825110-1835-4982-ACD6-223D941EEDFC.jpg"
+  ],
+  "verdict": {
+    "label": "Au prix du marché — emplacement excellent, vigilance sur le DPE",
+    "tone": "good"
+  },
+  "summary": "Ce T3 de 41 m² dans le quartier Chantiers à Versailles est proposé à 295 000 € FAI, soit 6 901 €/m² net vendeur. Le prix est en ligne avec la médiane DVF (6 782 €/m²), légèrement en dessous des estimations de marché. Le point fort est l'emplacement exceptionnel (gare Chantiers à 5 min, Paris en 15 min, centre-ville historique). Les réserves principales sont le DPE E (291 kWh/m².an) dans un bâtiment de 1800 avec chauffage électrique, et une très petite copropriété (5 lots) qui fragilise la gouvernance.",
+  "score": {
+    "value": 6.5,
+    "note": "Bon emplacement, prix correct, mais attention au DPE et à la copropriété"
+  },
+  "kpi": {
+    "price": "295 000 €",
+    "priceSub": "dont 15 379 € d'honoraires (5,50%)",
+    "pricem2": "6 901 €/m²",
+    "ecart": "+1,7%",
+    "ecartTone": "flat",
+    "ecartLabel": "vs médiane DVF",
+    "surface": "41 m²",
+    "type": "3 pièces · 1 chambre + bureau",
+    "dpe": "E",
+    "dpeSub": "291 kWh/m²·an"
+  },
+  "charts": {
+    "priceBars": {
+      "labels": [
+        "Ce bien (net)",
+        "Médiane DVF",
+        "Estimation marché",
+        "Voisines similaires"
+      ],
+      "values": [
+        6901,
+        6782,
+        7167,
+        6200
+      ],
+      "unit": "€/m²"
+    },
+    "priceTrend": {
+      "years": [
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "values": [
+        7400,
+        7100,
+        6900,
+        6759,
+        6782
+      ],
+      "unit": "€/m²",
+      "commune": "Versailles"
+    },
+    "communeRadar": {
+      "axes": [
+        "Services",
+        "Transports",
+        "Emploi",
+        "Environnement",
+        "Écoles",
+        "Sécurité"
+      ],
+      "values": [
+        9.0,
+        9.0,
+        8.0,
+        7.0,
+        9.5,
+        7.5
+      ]
+    },
+    "riskMatrix": [
+      {
+        "label": "DPE E (291 kWh/m².an)",
+        "likelihood": 0.9,
+        "impact": 0.6,
+        "severity": "élevé"
+      },
+      {
+        "label": "Petite copropriété (5 lots)",
+        "likelihood": 0.4,
+        "impact": 0.8,
+        "severity": "élevé"
+      },
+      {
+        "label": "Bâtiment 1800 (plomb/amiante)",
+        "likelihood": 0.5,
+        "impact": 0.5,
+        "severity": "moyen"
+      },
+      {
+        "label": "Pas de parking",
+        "likelihood": 0.8,
+        "impact": 0.3,
+        "severity": "faible"
+      },
+      {
+        "label": "Chauffage électrique",
+        "likelihood": 0.9,
+        "impact": 0.4,
+        "severity": "moyen"
+      },
+      {
+        "label": "Termites (arrêté préfectoral)",
+        "likelihood": 0.3,
+        "impact": 0.7,
+        "severity": "moyen"
+      },
+      {
+        "label": "Bruit aérien (Orly/Le Bourget)",
+        "likelihood": 0.6,
+        "impact": 0.3,
+        "severity": "faible"
+      }
+    ],
+    "costBreakdown": {
+      "labels": [
+        "Prix FAI",
+        "Frais de notaire",
+        "Travaux énergétiques"
+      ],
+      "values": [
+        295000,
+        21000,
+        25000
+      ],
+      "total": "341 000 €"
+    }
+  },
+  "sections": [
+    {
+      "id": "le-bien",
+      "num": "01",
+      "title": "Le Bien — Fiche technique",
+      "html": "\u003ctable>\u003ctr>\u003ctd>\u003cstrong>Type\u003c/strong>\u003c/td>\u003ctd>Appartement 3 pièces (T3)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Surface Carrez\u003c/strong>\u003c/td>\u003ctd>40,52 m²\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Prix FAI\u003c/strong>\u003c/td>\u003ctd>295 000 € (honoraires 5,50% inclus)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Prix net vendeur\u003c/strong>\u003c/td>\u003ctd>279 621 €\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Prix/m² net\u003c/strong>\u003c/td>\u003ctd>6 901 €/m²\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Pièces\u003c/strong>\u003c/td>\u003ctd>1 séjour, 1 chambre, 1 bureau, 1 salle d'eau, 1 WC\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Étage\u003c/strong>\u003c/td>\u003ctd>1er étage / 4\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Année construction\u003c/strong>\u003c/td>\u003ctd>1800\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>DPE / GES\u003c/strong>\u003c/td>\u003ctd>E (291 kWh/m².an) / C (11 kgCO2/m².an)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Chauffage\u003c/strong>\u003c/td>\u003ctd>Individuel électrique (radiateurs)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Copropriété\u003c/strong>\u003c/td>\u003ctd>5 lots, charges annuelles 564 €\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Stationnement\u003c/strong>\u003c/td>\u003ctd>Non mentionné\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Dépendances\u003c/strong>\u003c/td>\u003ctd>1 cave, digicode\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Agence\u003c/strong>\u003c/td>\u003ctd>CENTURY 21 Fels Immobilier (exclusivité)\u003c/td>\u003c/tr>\u003c/table>\u003ch3>Observations sur les photos\u003c/h3>\u003cp>Les photos montrent un appartement lumineux avec belle hauteur sous plafond, typique du bâtiment ancien. Le séjour parait bien proportionné. La cuisine semble fonctionnelle mais pourrait bénéficier d'une remise à niveau. La salle d'eau est propre mais de facture simple. Les fenêtres semblent être en double vitrage (vérifier sur place). Les murs et plafonds présentent un bon aspect général.\u003c/p>"
+    },
+    {
+      "id": "analyse-prix",
+      "num": "02",
+      "title": "Analyse du prix",
+      "chart": "price",
+      "html": "\u003ch3>Comparaison avec le marché\u003c/h3>\u003ctable>\u003ctr>\u003cth>Indicateur\u003c/th>\u003cth>Valeur\u003c/th>\u003cth>Source\u003c/th>\u003c/tr>\u003ctr>\u003ctd>Ce bien (prix/m² net)\u003c/td>\u003ctd>6 901 €/m²\u003c/td>\u003ctd>Annonce\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Médiane DVF Versailles (appart.)\u003c/td>\u003ctd>6 782 €/m²\u003c/td>\u003ctd>DVF (valoris-immo.fr)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Estimation marché (Orpi)\u003c/td>\u003ctd>7 167 €/m²\u003c/td>\u003ctd>Orpi, juin 2026\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Intervalle interquartile DVF\u003c/td>\u003ctd>5 740 – 7 988 €/m²\u003c/td>\u003ctd>DVF (nofiiz.com)\u003c/td>\u003c/tr>\u003c/table>\u003ch3>Transactions DVF comparables (2024-2025)\u003c/h3>\u003cul>\u003cli>T3 102 m² → 607 410 € (5 955 €/m²) — 2025\u003c/li>\u003cli>T3 78 m² → 479 544 € (6 148 €/m²) — 2025\u003c/li>\u003cli>T3 83 m² → 489 700 € (5 900 €/m²) — 2025\u003c/li>\u003cli>T3 100 m² → 645 500 € (6 455 €/m²) — 2025\u003c/li>\u003cli>T3 95 m² → 709 935 € (7 473 €/m²) — 2025\u003c/li>\u003c/ul>\u003ch3>Verdict prix\u003c/h3>\u003cp>Écart vs médiane DVF : \u003cstrong>+1,7%\u003c/strong> — le prix net vendeur est essentiellement \u003cstrong>au prix du marché\u003c/strong>. Les petits T3 (41 m²) bénéficient généralement d'une prime au m² par rapport aux grands appartements, ce qui justifie le léger écart.\u003c/p>\u003cblockquote>Estimation juste valeur : \u003cstrong>260 000 – 295 000 €\u003c/strong> (net vendeur). Le marché versaillais est en léger déclin annuel (-1% à -2,6%) depuis le pic post-COVID.\u003c/blockquote>"
+    },
+    {
+      "id": "commune",
+      "num": "03",
+      "title": "La Commune — Versailles",
+      "chart": "commune",
+      "html": "\u003ch3>Profil général\u003c/h3>\u003cp>Versailles (~84 000 hab.) est une commune urbaine de l'ouest parisien, préfecture des Yvelines. Célèbre pour son Château classé UNESCO, elle offre un cadre patrimonial exceptionnel, des commerces de proximité dynamiques, et une qualité de vie reconnue (7,9/10 sur monaviscitoyen.fr). Revenu médian élevé (33 780 €/an), faible taux de pauvreté (7%).\u003c/p>\u003ch3>Services\u003c/h3>\u003cp>Excellent : 1 800+ commerces et artisans, marchés Notre-Dame, nombreuses boulangeries, restaurants. Offre de soins complète (Centre Hospitalier de Versailles, 1 700+ professionnels de santé). Écoles maternelle, primaire, collèges et lycées (Hoche, La Bruyère) de très bon niveau.\u003c/p>\u003ch3>Transports\u003c/h3>\u003cp>3 gares : Versailles Chantiers (RER C, Transilien N/U/V, TGV, 15 min Paris Montparnasse), Rive Gauche (RER C), Rive Droite (Transilien L). Bus Phébus (20+ lignes). À venir : Ligne 18 du Grand Paris Express (Satory, après 2030).\u003c/p>\u003ch3>Emploi & Économie\u003c/h3>\u003cp>Bassin d'emploi Versailles-Saclay : 420 700 emplois. Principaux employeurs : Ministère des Armées (camp Satory), Château de Versailles, CHV, UVSQ. Taux de chômage 7,9% (inférieur à la moyenne nationale). Économie dynamique avec forte proportion de cadres (33% des résidents).\u003c/p>\u003ch3>Environnement\u003c/h3>\u003cp>46% du territoire est agricole ou forestier. Parc du Château (815 ha), Parc Balbi, forêt de Satory. 3e fleur au concours des Villes et Villages Fleuris. Qualité de l'air modérée (contrainte régionale Île-de-France). Zone de bruit d'aéroport Orly/Le Bourget (PEB A/B/C).\u003c/p>\u003ch3>Projets futurs\u003c/h3>\u003cp>ZAC Satory Ouest (236 ha, 82 M€) — futur 8e quartier de Versailles avec 1 000+ logements, parc, et la future Ligne 18. Impact positif attendu sur les prix dans le secteur sud-est.\u003c/p>"
+    },
+    {
+      "id": "risques",
+      "num": "04",
+      "title": "Risques et points d'attention",
+      "chart": "risk",
+      "html": "\u003ch3>Risques naturels et technologiques\u003c/h3>\u003ctable>\u003ctr>\u003cth>Risque\u003c/th>\u003cth>Statut\u003c/th>\u003cth>Severité\u003c/th>\u003c/tr>\u003ctr>\u003ctd>Inondation (coulée de boue)\u003c/td>\u003ctd>Oui (7 événements cat nat)\u003c/td>\u003ctd>Moyen\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Séisme\u003c/td>\u003ctd>Zone 1 (très faible)\u003c/td>\u003ctd>Négligeable\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Retrait-gonflement argiles\u003c/td>\u003ctd>Oui (6 épisodes sécheresse)\u003c/td>\u003ctd>Moyen\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Radon\u003c/td>\u003ctd>Niveau 1/3\u003c/td>\u003ctd>Faible\u003c/td>\u003c/tr>\u003ctr>\u003ctd>SEVESO\u003c/td>\u003ctd>11 sites dans le 78 (aucun à Versailles)\u003c/td>\u003ctd>Faible\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Termites\u003c/td>\u003ctd>Arrêté préfectoral couvrant la commune\u003c/td>\u003ctd>Moyen\u003c/td>\u003c/tr>\u003c/table>\u003ch3>Points d'attention spécifiques au bien\u003c/h3>\u003cul>\u003cli>\u003cstrong>DPE E (291 kWh/m².an)\u003c/strong> (élevé) : Le chauffage électrique individuel est coûteux. Le DPE E ne rend pas le bien en location impossible avant 2034, mais des travaux d'isolation seront nécessaires à terme. Prévoir 20 000 – 50 000 € de rénovation énergétique.\u003c/li>\u003cli>\u003cstrong>Petite copropriété (5 lots)\u003c/strong> (élevé) : Les très petites copropriétés sont fragiles — défaut de paiement d'un seul copropriétaire peut bloquer les décisions. Vérifier les comptes des 3 dernières AG.\u003c/li>\u003cli>\u003cstrong>Bâtiment de 1800\u003c/strong> (moyen) : Risque de plomb (CREP obligatoire avant vente), amiante possible, isolation inexistante d'origine.\u003c/li>\u003cli>\u003cstrong>Pas de parking\u003c/strong> (moyen) : Le stationnement est difficile dans le quartier Chantiers. Impact sur la revente et la location.\u003c/li>\u003c/ul>\u003cblockquote>Exigez le diagnostic amiante, CREP (plomb), et termites avant signature. Demandez les PV d'assemblée générale des 3 dernières années pour vérifier la santé financière de la copropriété.\u003c/blockquote>"
+    },
+    {
+      "id": "couts",
+      "num": "05",
+      "title": "Coûts additionnels",
+      "chart": "cost",
+      "html": "\u003ctable>\u003ctr>\u003cth>Poste\u003c/th>\u003cth>Montant\u003c/th>\u003cth>Notes\u003c/th>\u003c/tr>\u003ctr>\u003ctd>Prix du bien (FAI)\u003c/td>\u003ctd>295 000 €\u003c/td>\u003ctd>Honoraires 5,50% inclus (15 379 €)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Frais de notaire\u003c/td>\u003ctd>~21 000 €\u003c/td>\u003ctd>~7,5% du prix net vendeur (ancien)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Taxe foncière\u003c/td>\u003ctd>~800 €/an\u003c/td>\u003ctd>Estimation (taxe 15% à Versailles)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Charges copropriété\u003c/td>\u003ctd>564 €/an\u003c/td>\u003ctd>47 €/mois\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Énergie (estimation)\u003c/td>\u003ctd>1 130 – 1 550 €/an\u003c/td>\u003ctd>Indexé 2021-2023 (annonce)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Travaux estimés\u003c/td>\u003ctd>~25 000 €\u003c/td>\u003ctd>Rénovation énergétique + mise aux normes\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Coût total acquisition\u003c/strong>\u003c/td>\u003ctd>\u003cstrong>~341 000 €\u003c/strong>\u003c/td>\u003ctd>Prix FAI + notaire + travaux\u003c/td>\u003c/tr>\u003c/table>\u003cp>\u003cem>Les frais de notaire pour un bien ancien dans les Yvelines représentent environ 7-8% du prix net vendeur, incluant les droits de mutation, la contribution de sécurité immobilière et les émoluments du notaire.\u003c/em>\u003c/p>"
+    },
+    {
+      "id": "questions",
+      "num": "06",
+      "title": "Questions à poser au vendeur",
+      "html": "\u003col>\u003cli>\u003cstrong>DPE :\u003c/strong> Pouvez-vous fournir le numéro du DPE (code 13 chiffres) pour vérification sur data.ademe.fr ?\u003c/li>\u003cli>\u003cstrong>Copropriété :\u003c/strong> Quels sont les comptes des 3 dernières années ? Y a-t-il un fonds travaux ? Des travaux votés ou à prévoir ?\u003c/li>\u003cli>\u003cstrong>Travaux :\u003c/strong> Quels travaux ont été réalisés depuis l'achat ? Les fenêtres sont-elles en double vitrage ? Y a-t-il une isolation des combles ?\u003c/li>\u003cli>\u003cstrong>Diagnostics :\u003c/strong> Pouvez-vous fournir le CREP (plomb), le diagnostic amiante, et le diagnostic termites ?\u003c/li>\u003cli>\u003cstrong>Stationnement :\u003c/strong> Existe-t-il une possibilité de louer un parking à proximité ? Quel est le coût ?\u003c/li>\u003cli>\u003cstrong>Charges :\u003c/strong> Les charges de 564 €/an incluent-elles l'entretien des parties communes ? L'eau ?\u003c/li>\u003cli>\u003cstrong>Rénovation énergétique :\u003c/strong> Des devis ont-ils été obtenus pour améliorer le DPE ? Le bien est-il éligible MaPrimeRénov' ?\u003c/li>\u003cli>\u003cstrong>Nuisances :\u003c/strong> Y a-t-il des nuisances sonores liées à la proximité de la gare ou de la rue ?\u003c/li>\u003c/ol>"
+    },
+    {
+      "id": "synthese",
+      "num": "07",
+      "title": "Synthèse et recommandation",
+      "html": "\u003cp>Cet appartement T3 de 41 m² dans le quartier Chantiers à Versailles est un \u003cstrong>bon compromis emplacement-prix\u003c/strong>. L'offre à 6 901 €/m² est en phase avec le marché local. Le quartier est exceptionnellement bien desservi (gare Chantiers à 5 min, Paris en 15 min) et le cadre de vie versaillais est reconnu.\u003c/p>\u003cp>Les points de vigilance sont le DPE E dans un bâtiment de 1800 (nécessitera des travaux d'isolation à moyen terme), la petite copropriété (5 lots) qui peut être source de complications, et l'absence de parking dans un quartier dense. Ces éléments sont connus et ne remettent pas en cause l'opportunité, mais justifient une négociation et des vérifications approfondies.\u003c/p>\u003cblockquote>\u003cstrong>Recommandation de négociation :\u003c/strong> Proposer autour de 275 000 € – 280 000 € FAI (écart de 15 000 – 20 000 €) en arguant du DPE E et des travaux à prévoir. Le prix de 295 000 € est un point de départ correct pour négocier.\u003c/blockquote>\u003cp>\u003cstrong>Public cible :\u003c/strong> Primo-accédant ou investisseur cherche un pied-à-terre ou un bien locatif dans un secteur de qualité. Idéal pour un cadre travaillant à Paris ou dans le bassin versaillais.\u003c/p>"
+    }
+  ],
+  "reliability": {
+    "score": "moyenne",
+    "summary": "Les données principales de l'annonce sont cohérentes (prix, surface). Le DPE mérite vérification (GES potentiellement B et non C). L'année de construction (1800) n'a pu être confirmée. La distance à la gare Rive Gauche est surestimée dans l'annonce.",
+    "checks": [
+      {
+        "claim": "Cohérence prix / surface / prix/m²",
+        "listingValue": "295 000 € / 41 m² / 6 901 €/m²",
+        "verified": "279 621 € (net) ÷ 40,52 m² = 6 901 €/m² ✓",
+        "source": "Cohérence arithmétique",
+        "status": "confirmed",
+        "note": "Le prix/m² correspond au prix net vendeur, pas au FAI. Cohérent."
+      },
+      {
+        "claim": "DPE (E) / GES (C)",
+        "listingValue": "E / C",
+        "verified": "291 kWh/m².an → E ✓ | 11 kgCO2/m².an → B (seuils 2021), pas C",
+        "source": "ADEME (seuils réglementaires 2021)",
+        "status": "mismatch",
+        "note": "Le GES annoncé comme C correspond probablement à l'ancienne échelle thermique. Le score 11 kgCO2/m².an classe le bien en B sous le nouveau référentiel post-2021."
+      },
+      {
+        "claim": "Année de construction",
+        "listingValue": "1800",
+        "verified": "Plausible pour le quartier Saint-Louis/Chantiers (bâti 17e-19e), impossible à confirmer sans le numéro de DPE",
+        "source": "ADEME / Cadastre",
+        "status": "unverified",
+        "note": "L'année 1800 est typique des immeubles anciens versaillais mais n'a pu être recoupée avec le registre ADEME."
+      },
+      {
+        "claim": "« À 5 min de la gare Chantiers »",
+        "listingValue": "5 min",
+        "verified": "Gare Chantiers à ~390 m à vol d'oiseau (~6-7 min à pied estimé)",
+        "source": "Géocodage BAN (vol d'oiseau)",
+        "status": "consistent",
+        "note": "Distance tout à fait plausible pour le quartier Chantiers. Estimation à vérifier sur place."
+      },
+      {
+        "claim": "« À 10 min de la gare Rive Gauche »",
+        "listingValue": "10 min",
+        "verified": "Gare Rive Gauche à ~1 km à vol d'oiseau (~17-20 min à pied estimé)",
+        "source": "Géocodage BAN (vol d'oiseau)",
+        "status": "mismatch",
+        "note": "La distance estimée depuis le centre du quartier Chantiers nécessite plutôt 17-20 min à pied. L'annonce sous-estime le temps de parcours."
+      },
+      {
+        "claim": "Risque inondation",
+        "listingValue": "Non mentionné explicitement",
+        "verified": "7 événements cat nat depuis 1990. Pas de PPRI (pas de cours d'eau). Coulées de boue possibles.",
+        "source": "Géorisques",
+        "status": "consistent",
+        "note": "Absence de PPRI, mais risque pluvial modéré existant. Conforme à la réalité du secteur."
+      },
+      {
+        "claim": "Termites",
+        "listingValue": "Non mentionné",
+        "verified": "Arrêté préfectoral couvrant toute la commune de Versailles",
+        "source": "Géorisques / Linternaute",
+        "status": "unverified",
+        "note": "Le diagnostic termites est obligatoire dans la commune. Vérifier sa présence dans le dossier de diagnostic."
+      }
+    ]
+  }
+}
+</script>
+
+<!-- ════════════════════ RENDERER (fixed) ════════════════════ -->
+<script>
+const PALETTE = {
+  ink:'#0A0A0A', leaf:'#16A34A', leafdeep:'#15803D', warn:'#D97706', danger:'#DC2626',
+  info:'#2563EB', mute:'#6B7280', line:'#E7E5DF', cream:'#FAF9F6', sand:'#F3F1EA'
+};
+const TONE = {
+  good:  { bar:'#16A34A', pill:'leaf',   ring:'#16A34A' },
+  warn:  { bar:'#D97706', pill:'warn',   ring:'#D97706' },
+  bad:   { bar:'#DC2626', pill:'danger', ring:'#DC2626' },
+  neutral:{ bar:'#0A0A0A', pill:'mute',  ring:'#0A0A0A' },
+};
+// Escape HTML-significant chars: these scalar fields (title, KPI labels, cost
+// labels) are interpolated into innerHTML, so a "<" or "&" in scraped data must
+// not become live markup. Rich section fragments (s.html) are intentionally NOT
+// routed through here — the template trusts those as authored HTML.
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c => (
+  {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+const DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+/* ---------- hero ---------- */
+(function hero(){
+  const d = DATA;
+  document.title = (d.title || 'Rapport') + ' — immo·evals';
+  document.getElementById('footDate').textContent = d.date || '';
+  document.getElementById('heroDate').textContent = d.date || 'Analyse du jour';
+
+  // title — split at em/dash → second half italic green
+  const t = esc(d.title);
+  const parts = t.split(/\s+[—–-]\s+/);
+  document.getElementById('heroTitle').innerHTML = parts.length === 2
+    ? `${parts[0]}<br><em class="not-italic font-[600] text-leafdeep" style="font-style:italic;">${parts.slice(1).join(' — ')}</em>`
+    : t;
+
+  document.getElementById('heroSummary').textContent = d.summary || '';
+
+  if (d.url){
+    const a = document.getElementById('heroUrl'); a.href = d.url;
+    a.classList.remove('hidden'); document.getElementById('heroUrlSep').classList.remove('hidden');
+  }
+
+  // verdict
+  const tone = (d.verdict && d.verdict.tone) || 'neutral';
+  const tk = TONE[tone] || TONE.neutral;
+  const pill = document.getElementById('verdictPill');
+  const dot = document.getElementById('verdictDot');
+  document.getElementById('verdictLabel').textContent = (d.verdict && d.verdict.label) || 'Verdict';
+  const toneBg = { good:['bg-leafsoft','border-leaf','text-leafdeep'], warn:['bg-warnsoft','border-warn','text-warn'],
+    bad:['bg-dangersoft','border-danger','text-danger'], neutral:[] };
+  (toneBg[tone]||[]).forEach(c=>pill.classList.add(c));
+  dot.style.background = tk.ring;
+  dot.style.boxShadow = `0 0 0 3px ${tk.ring}2e`;
+  document.getElementById('heroBar').style.background = tk.bar;
+
+  // kpis
+  const k = d.kpi || {};
+  set('kpiPrice', k.price); set('kpiPriceSub', k.priceSub);
+  set('kpiPm2', k.pricem2); set('kpiSurface', k.surface); set('kpiType', k.type);
+  if (k.ecart){
+    const tt = { up:['text-warn','▲'], down:['text-leafdeep','▼'], flat:['text-mute','▬'] }[k.ecartTone||'flat'];
+    document.getElementById('kpiEcart').innerHTML =
+      `<span class="font-semibold ${tt[0]}">${tt[1]} ${esc(k.ecart)}</span><span class="text-mute2">${esc(k.ecartLabel||'')}</span>`;
+  }
+  if (k.dpe){
+    const el = document.getElementById('kpiDpe');
+    el.textContent = k.dpe; el.className = `inline-grid place-items-center w-9 h-9 rounded-md font-serif font-black text-lg text-paper dpe-${String(k.dpe).toLowerCase()}`;
+    set('kpiDpeSub', k.dpeSub);
+  }
+
+  // score gauge
+  if (d.score && typeof d.score.value === 'number'){
+    document.getElementById('scoreVal').textContent = Number(d.score.value).toLocaleString('fr-FR');
+    set('scoreNote', d.score.note);
+    const v = Math.max(0, Math.min(10, d.score.value));
+    const col = v >= 7 ? PALETTE.leaf : v >= 5 ? PALETTE.warn : PALETTE.danger;
+    new Chart(document.getElementById('scoreGauge'), {
+      type:'doughnut',
+      data:{ datasets:[{ data:[v, 10-v], backgroundColor:[col, '#ECEAE2'], borderWidth:0 }] },
+      options:{ cutout:'76%', responsive:false, plugins:{ legend:{display:false}, tooltip:{enabled:false} }, animation:{animateRotate:true,duration:900} }
+    });
+  }
+
+  // reliability flag — surface any listing/source contradiction in the hero,
+  // not buried in section 8. A wrong construction date is the headline.
+  const rel = d.reliability;
+  const mismatches = (rel && Array.isArray(rel.checks) ? rel.checks : []).filter(c => c && c.status === 'mismatch');
+  if (mismatches.length){
+    const badge = document.createElement('a');
+    badge.href = '#fiabilite';
+    badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-dangersoft border border-danger/30 text-[11px] font-bold uppercase tracking-wider text-danger no-underline hover:bg-danger hover:text-paper transition';
+    const n = mismatches.length;
+    badge.innerHTML = `<span aria-hidden="true">⚠</span> ${n} donnée${n>1?'s':''} à vérifier`;
+    const row = document.querySelector('#hero .flex.flex-wrap.items-center');
+    if (row) row.appendChild(badge);
+  }
+
+  function set(id,val){ const el=document.getElementById(id); if(el && val!=null && val!=='') el.textContent = val; }
+})();
+
+/* ---------- photo gallery ---------- */
+// Renders data.photos (the listing's HOSTED image URLs — never downloaded) as a
+// responsive grid. Security: only http(s) URLs are allowed (reject javascript:/
+// data:/etc), and the src is set via a parsed URL, not raw interpolation. Broken
+// images hide themselves (onerror) so a dead listing URL leaves no empty box.
+(function gallery(){
+  const photos = Array.isArray(DATA.photos) ? DATA.photos : [];
+  // keep only well-formed http(s) URLs; cap at 12 so a 30-photo listing can't bloat the report
+  const safe = [];
+  for (const p of photos){
+    try { const u = new URL(String(p)); if (u.protocol === 'http:' || u.protocol === 'https:') safe.push(u.href); }
+    catch(_){ /* skip malformed */ }
+    if (safe.length >= 12) break;
+  }
+  const host = document.getElementById('gallery');
+  if (!host || !safe.length) return;   // no photos → section stays hidden
+
+  host.classList.remove('hidden');
+  host.className = 'bg-paper border border-line rounded-2xl shadow-card overflow-hidden mb-5 break-avoid';
+  const head = `
+    <div class="flex items-center gap-3.5 px-7 pt-6 pb-1">
+      <span class="text-[10px] font-bold uppercase tracking-[.18em] text-mute2">Photos de l'annonce</span>
+      <span class="text-[11px] text-mute2">· ${safe.length} photo${safe.length>1?'s':''} · source : annonce</span>
+    </div>`;
+  const grid = document.createElement('div');
+  grid.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 p-5 pt-3';
+  safe.forEach((href, i) => {
+    const a = document.createElement('a');
+    a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    a.className = 'group relative block aspect-[4/3] overflow-hidden rounded-lg bg-sand border border-line';
+    // first photo spans 2×2 on larger screens for a hero-ish layout
+    if (i === 0) a.className += ' col-span-2 row-span-2 sm:aspect-auto';
+    const img = document.createElement('img');
+    img.src = href; img.loading = 'lazy'; img.decoding = 'async';
+    img.alt = 'Photo ' + (i+1) + " de l'annonce";
+    img.className = 'w-full h-full object-cover transition duration-300 group-hover:scale-[1.03]';
+    // a broken/blocked URL removes its tile entirely (no empty grey box)
+    img.addEventListener('error', () => { a.remove(); if (!grid.querySelector('img')) host.classList.add('hidden'); });
+    a.appendChild(img);
+    grid.appendChild(a);
+  });
+  host.innerHTML = head;
+  host.appendChild(grid);
+
+  // Print→PDF: lazy + below-the-fold images often render blank in Chrome's
+  // print output. Flip them to eager before printing so the gallery survives
+  // "Save as PDF". (Best-effort; CDNs that block file:// hotlinking may still
+  // 403 — the onerror handler then drops those tiles cleanly.)
+  window.addEventListener('beforeprint', () => {
+    grid.querySelectorAll('img[loading="lazy"]').forEach(im => { im.loading = 'eager'; });
+  });
+})();
+
+/* ---------- shared Chart.js defaults ---------- */
+Chart.defaults.font.family = "'Inter Tight', system-ui, sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#6B7280';
+
+/* ---------- sections ---------- */
+(function sections(){
+  const body = document.getElementById('reportBody');
+  const toc = document.getElementById('tocNav');
+  const charts = DATA.charts || {};
+
+  (DATA.sections || []).forEach((s, i) => {
+    const sec = document.createElement('section');
+    sec.id = s.id || ('section-'+i);
+    sec.className = 'acc bg-paper border border-line rounded-xl shadow-soft mb-[18px] overflow-hidden break-avoid';
+
+    const num = s.num || String(i+1).padStart(2,'0');
+    sec.innerHTML = `
+      <div class="acc-head flex items-center gap-3.5 px-7 py-5 cursor-pointer select-none hover:bg-ink/[.015] transition" role="button" tabindex="0" aria-expanded="true" aria-controls="${sec.id}-body">
+        <span class="inline-grid place-items-center w-8 h-8 bg-ink text-paper font-mono text-xs font-semibold rounded-lg shrink-0">${num}</span>
+        <span class="flex-1 font-serif font-bold text-[1.35rem] tracking-tight text-ink leading-tight" style="font-variation-settings:'opsz' 36;">${esc(s.title)}</span>
+        <span class="acc-caret font-mono text-xs text-mute2" aria-hidden="true">▾</span>
+      </div>
+      <div class="acc-body border-t border-transparent" id="${sec.id}-body"><div><div class="px-7 pt-5 pb-7">
+        ${s.chart ? `<div class="chart-slot mb-5"></div>` : ''}
+        <div class="prose-rt">${s.html || ''}</div>
+      </div></div></div>`;
+
+    body.appendChild(sec);
+
+    // chart for this section
+    if (s.chart){
+      const slot = sec.querySelector('.chart-slot');
+      buildChart(s.chart, slot, charts);
+    }
+
+    // toc entry
+    const a = document.createElement('a');
+    a.href = '#'+sec.id;
+    a.className = 'flex items-baseline gap-2.5 px-3.5 py-2 text-[13px] font-medium text-mute no-underline border-l-2 border-line hover:text-ink hover:border-ink hover:bg-ink/[.02] transition';
+    a.innerHTML = `<span class="font-mono text-[10px] font-semibold text-mute2 shrink-0">${num}</span><span>${esc(s.title)}</span>`;
+    a.addEventListener('click', e=>{ e.preventDefault();
+      sec.classList.remove('collapsed');
+      setTimeout(()=>window.scrollTo({top: sec.getBoundingClientRect().top+scrollY-68, behavior:'smooth'}), 60);
+    });
+    toc.appendChild(a);
+
+    // collapse toggle — mouse + keyboard (Enter / Space), with aria-expanded sync
+    const head = sec.querySelector('.acc-head');
+    const toggle = ()=>{ const collapsed = sec.classList.toggle('collapsed');
+      head.setAttribute('aria-expanded', String(!collapsed)); };
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } });
+  });
+
+  // ---------- Fiabilité de l'annonce (listing claim verification) ----------
+  // Template-owned, structured render (NOT a trusted s.html fragment): every
+  // scraped/verified scalar goes through esc(). Four states, each with its own
+  // color + glyph so an honest verdict is structural, not trust-the-agent.
+  buildReliability(DATA.reliability, body, toc);
+
+  const setAll = (collapsed)=> document.querySelectorAll('.acc').forEach(s=>{
+    s.classList.toggle('collapsed', collapsed);
+    const h = s.querySelector('.acc-head'); if(h) h.setAttribute('aria-expanded', String(!collapsed));
+  });
+  document.getElementById('btnExpand').onclick = ()=> setAll(false);
+  document.getElementById('btnCollapse').onclick = ()=> setAll(true);
+
+  // scroll-spy
+  if ('IntersectionObserver' in window){
+    const links = [...toc.querySelectorAll('a')];
+    const obs = new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('text-ink','border-leaf','font-semibold'));
+      const l = toc.querySelector(`a[href="#${e.target.id}"]`);
+      if(l) l.classList.add('text-ink','border-leaf','font-semibold');
+    }});}, { rootMargin:'-80px 0px -55% 0px' });
+    document.querySelectorAll('#reportBody > section').forEach(s=>obs.observe(s));
+  }
+})();
+
+/* ---------- Fiabilité de l'annonce (listing claim verification) ---------- */
+// Renders the optional `reliability` block as a first-class accordion section
+// (same shell as data sections) with a per-claim verdict table. Four honest
+// states — never a bare ✓: a checkmark only means "confirmed against a source".
+// Omits itself entirely if there is no reliability data (graceful degradation,
+// mirroring how charts drop out when their data is missing).
+function buildReliability(rel, body, toc){
+  if (!rel || !Array.isArray(rel.checks) || !rel.checks.length) return;
+
+  // status vocabulary — glyph + colors. `confirmed` is the ONLY green ✓ and is
+  // reserved for "source agrees + high-confidence match"; a fuzzy match is at
+  // most `consistent`. `mismatch` is the source actively contradicting the
+  // listing (the wrong-construction-date case).
+  const ST = {
+    confirmed:  { glyph:'✓', label:'Confirmé',      cls:'bg-leafsoft text-leafdeep border-leaf/30',     dot:'#16A34A' },
+    consistent: { glyph:'≈', label:'Cohérent',      cls:'bg-infosoft text-info border-info/30',         dot:'#2563EB' },
+    unverified: { glyph:'?', label:'Non vérifiable', cls:'bg-sand text-mute border-line2',               dot:'#9CA3AF' },
+    mismatch:   { glyph:'✗', label:'Incohérent',    cls:'bg-dangersoft text-danger border-danger/30',   dot:'#DC2626' },
+  };
+  const SCORE = {
+    'élevée':  { cls:'text-leafdeep', label:'Fiabilité élevée' },
+    'moyenne': { cls:'text-warn',     label:'Fiabilité moyenne' },
+    'faible':  { cls:'text-danger',   label:'Fiabilité faible' },
+  };
+
+  const num = rel.num || '08';
+  const sec = document.createElement('section');
+  sec.id = 'fiabilite';
+  sec.className = 'acc bg-paper border border-line rounded-xl shadow-soft mb-[18px] overflow-hidden break-avoid';
+
+  // count by status for the header summary chips
+  const counts = rel.checks.reduce((m,c)=>{ const k=(c&&c.status)||'unverified'; m[k]=(m[k]||0)+1; return m; }, {});
+  const sc = SCORE[rel.score] || null;
+
+  const rows = rel.checks.map(c => {
+    const st = ST[(c && c.status)] || ST.unverified;
+    return `<tr>
+      <td class="align-top"><span class="font-semibold text-ink">${esc(c.claim)}</span>${c.note ? `<span class="block text-[12px] text-mute mt-0.5">${esc(c.note)}</span>` : ''}</td>
+      <td class="align-top tabular-nums">${esc(c.listingValue)}</td>
+      <td class="align-top tabular-nums">${c.verified ? esc(c.verified) : '<span class="text-mute2">—</span>'}${c.source ? `<span class="block text-[11px] text-mute2 mt-0.5">${esc(c.source)}</span>` : ''}</td>
+      <td class="align-top"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-bold ${st.cls}"><span aria-hidden="true">${st.glyph}</span>${st.label}</span></td>
+    </tr>`;
+  }).join('');
+
+  sec.innerHTML = `
+    <div class="acc-head flex items-center gap-3.5 px-7 py-5 cursor-pointer select-none hover:bg-ink/[.015] transition" role="button" tabindex="0" aria-expanded="true" aria-controls="fiabilite-body">
+      <span class="inline-grid place-items-center w-8 h-8 bg-ink text-paper font-mono text-xs font-semibold rounded-lg shrink-0">${esc(num)}</span>
+      <span class="flex-1 font-serif font-bold text-[1.35rem] tracking-tight text-ink leading-tight" style="font-variation-settings:'opsz' 36;">Fiabilité de l'annonce</span>
+      ${sc ? `<span class="hidden sm:inline text-[12px] font-bold ${sc.cls}">${sc.label}</span>` : ''}
+      <span class="acc-caret font-mono text-xs text-mute2" aria-hidden="true">▾</span>
+    </div>
+    <div class="acc-body border-t border-transparent" id="fiabilite-body"><div><div class="px-7 pt-5 pb-7">
+      ${rel.summary ? `<p class="text-[14px] leading-relaxed text-body mb-4 max-w-[72ch]">${esc(rel.summary)}</p>` : ''}
+      <div class="prose-rt">
+        <table>
+          <thead><tr><th>Donnée annoncée</th><th>Valeur annonce</th><th>Vérification (source)</th><th>Verdict</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <p class="text-[11px] text-mute2 mt-3 leading-relaxed">Les vérifications « ${ST.confirmed.label} » sont recoupées avec une source officielle ; « ${ST.consistent.label} » indique une estimation plausible non confirmée (ex. distance à vol d'oiseau) ; « ${ST.unverified.label} », aucune source trouvée. Aucune donnée n'est inventée.</p>
+    </div></div></div>`;
+
+  body.appendChild(sec);
+
+  // toc entry (mirrors the data-section TOC styling)
+  const a = document.createElement('a');
+  a.href = '#fiabilite';
+  a.className = 'flex items-baseline gap-2.5 px-3.5 py-2 text-[13px] font-medium text-mute no-underline border-l-2 border-line hover:text-ink hover:border-ink hover:bg-ink/[.02] transition';
+  a.innerHTML = `<span class="font-mono text-[10px] font-semibold text-mute2 shrink-0">${esc(num)}</span><span>Fiabilité de l'annonce</span>`;
+  a.addEventListener('click', e=>{ e.preventDefault();
+    sec.classList.remove('collapsed');
+    setTimeout(()=>window.scrollTo({top: sec.getBoundingClientRect().top+scrollY-68, behavior:'smooth'}), 60);
+  });
+  toc.appendChild(a);
+
+  // collapse toggle — mouse + keyboard, aria-expanded sync (same as data sections)
+  const head = sec.querySelector('.acc-head');
+  const toggle = ()=>{ const collapsed = sec.classList.toggle('collapsed');
+    head.setAttribute('aria-expanded', String(!collapsed)); };
+  head.addEventListener('click', toggle);
+  head.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } });
+}
+
+/* ---------- chart builders ---------- */
+function buildChart(kind, slot, charts){
+  const mk = (h=300)=>{ const wrap=document.createElement('div');
+    wrap.className='bg-cream border border-line rounded-xl p-5'; wrap.style.height=h+'px';
+    const c=document.createElement('canvas'); wrap.appendChild(c); slot.appendChild(wrap); return c; };
+  const cap = (txt)=>{ const p=document.createElement('p'); p.className='text-[11px] text-mute2 mt-2 text-center font-medium'; p.textContent=txt; slot.appendChild(p); };
+
+  try {
+    if (kind==='price'){
+      const grid = document.createElement('div'); grid.className='grid grid-cols-1 lg:grid-cols-2 gap-4'; slot.appendChild(grid);
+      // positioning bars
+      const pb = charts.priceBars;
+      if (pb){
+        const w=document.createElement('div'); w.className='bg-cream border border-line rounded-xl p-5'; w.style.height='280px';
+        const c=document.createElement('canvas'); w.appendChild(c); grid.appendChild(w);
+        const cols = pb.labels.map((_,i)=> i===0 ? PALETTE.ink : '#C9C6BC');
+        new Chart(c,{ type:'bar', data:{ labels:pb.labels, datasets:[{ data:pb.values, backgroundColor:cols, borderRadius:6, barPercentage:.62 }] },
+          options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false},
+            title:{display:true,text:'Positionnement — prix au m²',color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+            tooltip:{callbacks:{label:x=>` ${x.raw.toLocaleString('fr-FR')} ${pb.unit||''}`}} },
+            scales:{ y:{beginAtZero:true,grid:{color:'#ECEAE2'},ticks:{callback:v=>v.toLocaleString('fr-FR')}}, x:{grid:{display:false}} } } });
+      }
+      // trend line
+      const pt = charts.priceTrend;
+      if (pt){
+        const w=document.createElement('div'); w.className='bg-cream border border-line rounded-xl p-5'; w.style.height='280px';
+        const c=document.createElement('canvas'); w.appendChild(c); grid.appendChild(w);
+        const ctx=c.getContext('2d'); const g=ctx.createLinearGradient(0,0,0,240);
+        g.addColorStop(0,'rgba(22,163,74,.22)'); g.addColorStop(1,'rgba(22,163,74,0)');
+        new Chart(c,{ type:'line', data:{ labels:pt.years, datasets:[{ data:pt.values, borderColor:PALETTE.leaf, backgroundColor:g,
+          fill:true, tension:.35, borderWidth:2.5, pointRadius:3, pointBackgroundColor:PALETTE.leaf, pointBorderColor:'#fff', pointBorderWidth:1.5 }] },
+          options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false},
+            title:{display:true,text:`Évolution prix/m² — ${pt.commune||''}`,color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+            tooltip:{callbacks:{label:x=>` ${x.raw.toLocaleString('fr-FR')} ${pt.unit||''}`}} },
+            scales:{ y:{grid:{color:'#ECEAE2'},ticks:{callback:v=>v.toLocaleString('fr-FR')}}, x:{grid:{display:false}} } } });
+      }
+    }
+    else if (kind==='commune'){
+      const r = charts.communeRadar; if(!r) return;
+      const c = mk(340);
+      new Chart(c,{ type:'radar', data:{ labels:r.axes, datasets:[{ data:r.values, label:'Score /10',
+        backgroundColor:'rgba(22,163,74,.14)', borderColor:PALETTE.leaf, borderWidth:2,
+        pointBackgroundColor:PALETTE.leaf, pointBorderColor:'#fff', pointRadius:3.5 }] },
+        options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false},
+          title:{display:true,text:'Qualité de vie — profil de la commune',color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}} },
+          scales:{ r:{ min:0, max:10, ticks:{stepSize:2,backdropColor:'transparent',color:'#9CA3AF',font:{size:10}},
+            grid:{color:'#E2E0D8'}, angleLines:{color:'#E2E0D8'}, pointLabels:{color:'#1F2937',font:{size:12,weight:'500'}} } } } });
+    }
+    else if (kind==='risk'){
+      const rm = charts.riskMatrix; if(!rm || !rm.length) return;
+      const sevColor = { eleve:PALETTE.danger, 'élevé':PALETTE.danger, fort:PALETTE.danger,
+        moyen:PALETTE.warn, faible:PALETTE.leaf };
+      const c = mk(360);
+      const pts = rm.map(r=>({ x:r.likelihood, y:r.impact, label:r.label,
+        bg:(sevColor[(r.severity||'').toLowerCase()]||PALETTE.mute) }));
+      new Chart(c,{ type:'scatter', data:{ datasets:[{ data:pts, pointRadius:11, pointHoverRadius:13,
+        backgroundColor:pts.map(p=>p.bg+'cc'), borderColor:pts.map(p=>p.bg), borderWidth:2 }] },
+        options:{ responsive:true, maintainAspectRatio:false,
+          layout:{padding:6},
+          plugins:{ legend:{display:false},
+            title:{display:true,text:'Matrice des risques — probabilité × impact',color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+            tooltip:{callbacks:{label:x=>` ${x.raw.label}`}},
+            datalabels:false },
+          scales:{ x:{min:0,max:1,title:{display:true,text:'Probabilité →',color:'#6B7280',font:{size:11}},grid:{color:'#ECEAE2'},ticks:{display:false}},
+                   y:{min:0,max:1,title:{display:true,text:'Impact →',color:'#6B7280',font:{size:11}},grid:{color:'#ECEAE2'},ticks:{display:false}} } },
+        plugins:[{ id:'risklabels', afterDatasetsDraw(ch){ const {ctx}=ch; ctx.save();
+          ctx.font='600 10px "Inter Tight"'; ctx.fillStyle='#0A0A0A'; ctx.textAlign='center';
+          ch.getDatasetMeta(0).data.forEach((pt,idx)=>{ ctx.fillText(pts[idx].label, pt.x, pt.y-16); }); ctx.restore(); } }] });
+      // legend
+      const lg=document.createElement('div'); lg.className='flex flex-wrap gap-3 justify-center mt-3 text-[11px] font-medium';
+      lg.innerHTML = `<span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:${PALETTE.danger}"></span>Élevé</span>
+        <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:${PALETTE.warn}"></span>Moyen</span>
+        <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:${PALETTE.leaf}"></span>Faible</span>`;
+      slot.appendChild(lg);
+    }
+    else if (kind==='cost'){
+      const cb = charts.costBreakdown; if(!cb) return;
+      const grid=document.createElement('div'); grid.className='grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-5 items-center bg-cream border border-line rounded-xl p-5'; slot.appendChild(grid);
+      const cw=document.createElement('div'); cw.style.height='240px'; const c=document.createElement('canvas'); cw.appendChild(c); grid.appendChild(cw);
+      const cols=[PALETTE.ink,PALETTE.leaf,PALETTE.warn,PALETTE.info,PALETTE.mute];
+      const idx = cb.values.map((v,i)=>i).filter(i=>cb.values[i]>0);
+      new Chart(c,{ type:'doughnut', data:{ labels:idx.map(i=>cb.labels[i]),
+        datasets:[{ data:idx.map(i=>cb.values[i]), backgroundColor:idx.map((_,j)=>cols[j%cols.length]), borderColor:'#FAF9F6', borderWidth:2 }] },
+        options:{ responsive:true, maintainAspectRatio:false, cutout:'58%', plugins:{ legend:{display:false},
+          title:{display:true,text:"Coût total d'acquisition",color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+          tooltip:{callbacks:{label:x=>` ${x.label}: ${x.raw.toLocaleString('fr-FR')} €`}} } } });
+      // custom legend w/ values
+      const lg=document.createElement('div'); lg.className='flex flex-col gap-2 text-[12.5px] min-w-[180px]';
+      idx.forEach((i,j)=>{ const row=document.createElement('div'); row.className='flex items-center justify-between gap-3';
+        row.innerHTML=`<span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm" style="background:${cols[j%cols.length]}"></span>${esc(cb.labels[i])}</span><span class="font-mono text-[11.5px] text-ink tabular-nums">${cb.values[i].toLocaleString('fr-FR')} €</span>`;
+        lg.appendChild(row); });
+      if(cb.total){ const tot=document.createElement('div'); tot.className='flex items-center justify-between gap-3 border-t border-line2 pt-2 mt-1 font-semibold';
+        tot.innerHTML=`<span class="text-ink">Total</span><span class="font-mono text-ink tabular-nums">${esc(cb.total)}</span>`; lg.appendChild(tot); }
+      grid.appendChild(lg);
+    }
+  } catch(err){
+    slot.innerHTML = `<div class="bg-warnsoft border border-warn/30 rounded-xl p-4 text-[13px] text-warn">Graphique indisponible (données incomplètes).</div>`;
+    console.error('chart error', kind, err);
+  }
+}
+</script>
+</body>
+</html>
