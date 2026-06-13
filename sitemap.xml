@@ -11,12 +11,17 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://luongnv.com/immo-evals/reports/versailles-notre-dame-2-pieces.html</loc>
+    <loc>https://luongnv.com/immo-evals/reports/rpt-832fd479f553/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://luongnv.com/immo-evals/reports/versailles-montreuil-2-pieces.html</loc>
+    <loc>https://luongnv.com/immo-evals/reports/rpt-ab92930c2453/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://luongnv.com/immo-evals/reports/versailles-notre-dame-2-pieces.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -27,6 +32,11 @@
   </url>
   <url>
     <loc>https://luongnv.com/immo-evals/reports/versailles-montreuil-3-pieces.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://luongnv.com/immo-evals/reports/versailles-montreuil-2-pieces.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
