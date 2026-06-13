@@ -30,22 +30,7 @@
     "href": "reports/rpt-ab92930c2453/"
   },
   {
-    "id": "rpt-4f9685934973",
-    "jobId": "",
-    "title": "Appartement 2 pièces — Versailles (Notre-Dame)",
-    "date": "2026-06-12",
-    "url": "https://www.bienici.com/annonce/vente/versailles/appartement/2pieces/ag781094-534897044",
-    "verdict": "Au prix du marché, mais attention au DPE F",
-    "tone": "warn",
-    "summary": "Un charmant 2 pièces de 29 m² dans le quartier historique Notre-Dame, exposé plein sud au 2e étage. Le prix de 6 793 €/m² est cohérent avec les prix de quartier, mais le DPE F (passoire thermique) est un point d'attention majeur qui impactera la revente et le confort. Excellent emplacement à deux pas des gares, commerces et du marché.",
-    "price": "205 000 €",
-    "pricem2": "6 793 €/m²",
-    "surface": "29 m²",
-    "type": "2 pièces · 1 chambre",
-    "href": "reports/rpt-4f9685934973/"
-  },
-  {
-    "id": "rpt-ae981a51117b",
+    "id": "versailles-notre-dame-2-pieces",
     "jobId": "",
     "title": "Appartement 2 pièces 29 m² — Versailles (Notre-Dame)",
     "date": "2026-06-11",
@@ -57,37 +42,7 @@
     "pricem2": "6 793 €/m²",
     "surface": "29 m²",
     "type": "2 pièces · 1 chambre",
-    "href": "reports/rpt-ae981a51117b/"
-  },
-  {
-    "id": "rpt-20260610-fpnosbak",
-    "jobId": "",
-    "title": "Appartement 3 pièces — Versailles (Chantiers)",
-    "date": "2026-06-10",
-    "url": "https://www.bienici.com/annonce/vente/versailles/appartement/3pieces/century-21-202_3270_2359",
-    "verdict": "Au-dessus du marché",
-    "tone": "warn",
-    "summary": "Bel emplacement à Versailles Chantiers, à 5 min de la gare. Mais le prix de 295 000 € est ~6% au-dessus du marché pour un T3 de 40 m² avec DPE E, chauffage électrique, sans parking, dans un immeuble de 1800. La qualité de vie est excellente mais le bien paie cher son address.",
-    "price": "295 000 €",
-    "pricem2": "6 901 €/m²",
-    "surface": "41 m²",
-    "type": "3 pièces · 1 chambre + bureau",
-    "href": "reports/rpt-20260610-fpnosbak/"
-  },
-  {
-    "id": "rpt-20260610-6fag8xp3",
-    "jobId": "",
-    "title": "Appartement 2 pièces — Versailles (Montreuil)",
-    "date": "2026-06-10",
-    "url": "https://www.bienici.com/annonce/vente/versailles/appartement/2pieces/immo-facile-60690730",
-    "verdict": "Au prix du marché (terrasse valorisée)",
-    "tone": "good",
-    "summary": "Un 2 pièces de 34 m² avec une grande terrasse de 18 m², parking et cave en résidence arborée à Versailles. Le prix de 265 000 € semble élevé au m² apparent mais devient compétitif quand on intègre la terrasse. Le DPE E et l'absence de mention Loi Carrez sont les principaux points de vigilance.",
-    "price": "265 000 €",
-    "pricem2": "7 571 €/m²",
-    "surface": "35 m² + 18 m² terrasse",
-    "type": "2 pièces · 1 chambre",
-    "href": "reports/rpt-20260610-6fag8xp3/"
+    "href": "reports/versailles-notre-dame-2-pieces.html"
   },
   {
     "id": "versailles-notre-dame-3-pieces",
