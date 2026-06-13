@@ -27,6 +27,19 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      # Rebuild the catalog from the reports in the repo (incl. those meta-app's
+      # publisher just committed) so every published+listed report appears —
+      # delivering the "every new report" requirement (meta-app#101). The rebuilt
+      # catalog.html ships in the deployed artifact below; nothing is committed
+      # back, so this never re-triggers the workflow.
+      - name: Build catalog
+        run: python3 scripts/build-catalog.py
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
