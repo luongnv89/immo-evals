@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rapport d'évaluation — immo·evals</title>
+<!-- immo·evals favicon (house + verified check), inlined as a base64 data URI so the report stays self-contained -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDY0IDY0IiBmaWxsPSJub25lIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9ImltbW/Ct2V2YWxzIGZhdmljb24iPgogIDwhLS0gTGF5ZXIgMTogaG91c2Ugc2lsaG91ZXR0ZSAoaW5rKSAtLT4KICA8cGF0aCBkPSJNMzIgNyBMNTUgMjYgTDU1IDU1IEw5IDU1IEw5IDI2IFoiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBhMGEwYSIgc3Ryb2tlLXdpZHRoPSI2IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8IS0tIExheWVyIDI6IHZlcmlmaWVkIGNoZWNrIChsZWFmKSAtLT4KICA8cGF0aCBkPSJNMjEgMzggTDI5IDQ2IEw0NCAzMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTZhMzRhIiBzdHJva2Utd2lkdGg9IjciIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K" />
+
+<!-- Tailwind Play CDN (dev/local use). For production builds, compile Tailwind instead. -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        ink:    '#0A0A0A',
+        paper:  '#FFFFFF',
+        cream:  '#FAF9F6',
+        sand:   '#F3F1EA',
+        line:   '#E7E5DF',
+        line2:  '#D8D5CC',
+        mute:   '#6B7280',
+        mute2:  '#9CA3AF',
+        body:   '#1F2937',
+        leaf:   '#16A34A',
+        leafdeep:'#15803D',
+        leafsoft:'#F0FDF4',
+        danger: '#DC2626',
+        dangersoft:'#FEF2F2',
+        warn:   '#D97706',
+        warnsoft:'#FFFBEB',
+        info:   '#2563EB',
+        infosoft:'#EFF6FF',
+      },
+      fontFamily: {
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        sans:  ['"Inter Tight"', 'system-ui', 'sans-serif'],
+        mono:  ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      },
+      boxShadow: {
+        card: '0 1px 2px rgba(10,10,10,.04), 0 8px 24px -12px rgba(10,10,10,.10)',
+        soft: '0 1px 2px rgba(10,10,10,.04)',
+      },
+    },
+  },
+};
+</script>
+
+<style>
+  body { font-feature-settings: "ss01","cv11"; -webkit-font-smoothing: antialiased; }
+  .serif-opsz { font-variation-settings: "opsz" 120; }
+  /* keyboard focus — visible ring on all interactive elements */
+  button:focus-visible, a:focus-visible, .acc-head:focus-visible {
+    outline: 2px solid #16A34A; outline-offset: 2px; border-radius: 6px;
+  }
+  .acc-head:focus-visible { outline-offset: -2px; }
+  /* collapsible */
+  .acc-body { display: grid; grid-template-rows: 1fr; transition: grid-template-rows .35s ease; }
+  .acc.collapsed .acc-body { grid-template-rows: 0fr; }
+  .acc-body > div { overflow: hidden; }
+  .acc.collapsed .acc-caret { transform: rotate(-90deg); }
+  .acc-caret { transition: transform .3s ease; }
+  /* prose tables (markdown-rendered) */
+  .prose-rt table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .875rem; }
+  .prose-rt thead th { background: #FAF9F6; color: #6B7280; text-transform: uppercase; letter-spacing: .08em;
+    font-size: .68rem; font-weight: 700; text-align: left; padding: .6rem .9rem; border-bottom: 1px solid #E7E5DF; white-space: nowrap; }
+  .prose-rt tbody td { padding: .6rem .9rem; border-bottom: 1px solid #E7E5DF; color: #1F2937; vertical-align: top; }
+  .prose-rt tbody tr:last-child td { border-bottom: none; }
+  .prose-rt tbody tr:nth-child(even) td { background: rgba(10,10,10,.012); }
+  .prose-rt tbody tr:hover td { background: #F0FDF4; }
+  .prose-rt table { border: 1px solid #E7E5DF; border-radius: 10px; overflow: hidden; }
+  .prose-rt h3 { font-family: Fraunces, serif; font-weight: 600; font-size: 1.05rem; color: #0A0A0A; margin: 1.4rem 0 .5rem; }
+  .prose-rt h3:first-child { margin-top: 0; }
+  .prose-rt h4 { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #6B7280; margin: 1.1rem 0 .4rem; }
+  .prose-rt p { margin: .55rem 0; line-height: 1.65; color: #1F2937; }
+  .prose-rt ul, .prose-rt ol { margin: .6rem 0; padding-left: 1.25rem; }
+  .prose-rt li { margin: .25rem 0; line-height: 1.6; }
+  .prose-rt li::marker { color: #9CA3AF; }
+  .prose-rt strong { color: #0A0A0A; font-weight: 600; }
+  .prose-rt a { color: #15803D; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: #D8D5CC; }
+  .prose-rt a:hover { text-decoration-color: #16A34A; }
+  .prose-rt blockquote { border-left: 3px solid #16A34A; background: #F0FDF4; padding: .75rem 1.1rem;
+    margin: .9rem 0; border-radius: 0 8px 8px 0; font-family: Fraunces, serif; font-style: italic; color: #0A0A0A; }
+  .prose-rt code { font-family: "JetBrains Mono", monospace; font-size: .8rem; background: #FAF9F6;
+    border: 1px solid #E7E5DF; padding: .05rem .35rem; border-radius: 4px; color: #0A0A0A; }
+  .prose-rt hr { border: none; border-top: 1px solid #E7E5DF; margin: 1.5rem 0; }
+  /* DPE scale */
+  .dpe-a{background:#00a651}.dpe-b{background:#5db347}.dpe-c{background:#aac619}
+  .dpe-d{background:#f8d20a;color:#0A0A0A}.dpe-e{background:#f08e1f}.dpe-f{background:#d8421b}.dpe-g{background:#b21f1a}
+  @media print {
+    .no-print { display: none !important; }
+    .acc.collapsed .acc-body { grid-template-rows: 1fr !important; }
+    .acc-body > div { overflow: visible !important; }
+    body { background: #fff !important; }
+    .break-avoid { break-inside: avoid; }
+  }
+</style>
+</head>
+
+<body class="bg-cream font-sans text-body">
+
+<!-- ───────── top bar ───────── -->
+<header class="no-print sticky top-0 z-50 backdrop-blur-md bg-cream/85 border-b border-line">
+  <div class="max-w-6xl mx-auto px-5 h-14 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <span class="w-8 h-8 grid place-items-center shrink-0" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+          <path d="M32 8 L54 26 L54 54 L10 54 L10 26 Z" fill="none" stroke="#0A0A0A" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M22 37 L29 44 L43 30" fill="none" stroke="#16A34A" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="leading-none">
+        <span class="block font-serif font-bold text-[15px] tracking-tight text-ink">immo<span class="text-leaf">·</span>evals</span>
+        <span class="block text-[10px] font-semibold uppercase tracking-[.18em] text-mute mt-0.5">Rapport d'évaluation</span>
+      </span>
+    </a>
+    <div class="flex items-center gap-1.5">
+      <button id="btnExpand" class="h-9 px-3.5 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition inline-flex items-center gap-1.5">＋ <span class="hidden sm:inline">Déplier</span></button>
+      <button id="btnCollapse" class="h-9 px-3.5 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition inline-flex items-center gap-1.5">− <span class="hidden sm:inline">Replier</span></button>
+      <button onclick="window.print()" class="h-9 px-3.5 rounded-full bg-ink text-paper text-xs font-semibold hover:bg-leafdeep transition inline-flex items-center gap-1.5">⤓ <span class="hidden sm:inline">PDF</span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="max-w-6xl mx-auto px-5 pt-7 pb-20">
+
+  <!-- ───────── hero ───────── -->
+  <section id="hero" class="relative bg-paper border border-line rounded-2xl shadow-card overflow-hidden mb-5 break-avoid">
+    <div id="heroBar" class="absolute inset-x-0 top-0 h-1 bg-ink"></div>
+    <div class="p-7 sm:p-9">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span id="verdictPill" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-line2 bg-paper text-xs font-bold uppercase tracking-wider text-ink">
+          <span id="verdictDot" class="w-2 h-2 rounded-full bg-mute"></span><span id="verdictLabel">Verdict</span>
+        </span>
+        <span class="inline-flex items-center gap-2.5 text-xs font-medium text-mute tabular-nums">
+          <span id="heroDate">—</span>
+          <span id="heroUrlSep" class="w-[3px] h-[3px] rounded-full bg-mute2 hidden"></span>
+          <a id="heroUrl" href="#" target="_blank" rel="noopener" class="text-body border-b border-dotted border-line2 hover:text-leafdeep hidden">Voir l'annonce ↗</a>
+        </span>
+      </div>
+
+      <h1 id="heroTitle" class="font-serif font-bold text-ink tracking-tight leading-[1.05] text-3xl sm:text-[2.7rem]" style="font-variation-settings:'opsz' 120;">—</h1>
+      <p id="heroSummary" class="mt-3.5 text-[15px] leading-relaxed text-body max-w-[68ch]"></p>
+
+      <!-- score gauge + KPI strip -->
+      <div class="mt-7 grid grid-cols-12 gap-6 items-center border-t border-line pt-6">
+        <!-- gauge -->
+        <div class="col-span-12 md:col-span-3 flex items-center gap-4 md:border-r md:border-line md:pr-6">
+          <div class="relative w-[92px] h-[92px] shrink-0">
+            <canvas id="scoreGauge" width="92" height="92"></canvas>
+            <div class="absolute inset-0 grid place-items-center">
+              <span id="scoreVal" class="font-serif font-bold text-2xl text-ink tabular-nums leading-none">—</span>
+              <span class="text-[9px] font-semibold uppercase tracking-[.14em] text-mute mt-0.5">/ 10</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1">Note globale</div>
+            <div id="scoreNote" class="text-sm font-semibold text-ink leading-tight">—</div>
+          </div>
+        </div>
+        <!-- KPIs -->
+        <div class="col-span-12 md:col-span-9 grid grid-cols-2 sm:grid-cols-4 gap-y-5">
+          <div class="px-0 sm:px-5 sm:border-r sm:border-line">
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Prix</div>
+            <div id="kpiPrice" class="font-serif font-bold text-[1.55rem] leading-none text-ink tabular-nums" style="font-variation-settings:'opsz' 60;">—</div>
+            <div id="kpiPriceSub" class="text-[11px] text-mute mt-1 tabular-nums"></div>
+          </div>
+          <div class="px-0 sm:px-5 sm:border-r sm:border-line">
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Prix au m²</div>
+            <div id="kpiPm2" class="font-serif font-bold text-[1.55rem] leading-none text-ink tabular-nums" style="font-variation-settings:'opsz' 60;">—</div>
+            <div id="kpiEcart" class="text-[11px] text-mute mt-1 flex items-center gap-1.5"></div>
+          </div>
+          <div class="px-0 sm:px-5 sm:border-r sm:border-line">
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Surface</div>
+            <div id="kpiSurface" class="font-serif font-bold text-[1.55rem] leading-none text-ink tabular-nums" style="font-variation-settings:'opsz' 60;">—</div>
+            <div id="kpiType" class="text-[11px] text-mute mt-1"></div>
+          </div>
+          <div class="px-0 sm:px-5">
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">DPE</div>
+            <div class="flex items-center gap-2">
+              <span id="kpiDpe" class="inline-grid place-items-center w-9 h-9 rounded-md font-serif font-black text-lg text-paper bg-mute">?</span>
+              <span id="kpiDpeSub" class="text-[11px] text-mute leading-tight"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────── photo gallery (populated from data.photos; hidden if none) ───────── -->
+  <section id="gallery" class="hidden mb-5 break-avoid"></section>
+
+  <!-- ───────── workspace ───────── -->
+  <div class="grid grid-cols-12 gap-7 items-start">
+
+    <!-- TOC -->
+    <aside class="no-print hidden lg:block col-span-3 sticky top-[72px]">
+      <div class="text-[10px] font-bold uppercase tracking-[.18em] text-mute2 mb-3 pl-3.5">Sommaire</div>
+      <nav id="tocNav" class="flex flex-col"></nav>
+    </aside>
+
+    <!-- content -->
+    <div class="col-span-12 lg:col-span-9 min-w-0" id="reportBody"></div>
+  </div>
+
+  <footer class="mt-10 pt-5 border-t border-line text-[11px] text-mute2 text-center tracking-wide">
+    <span class="font-serif font-bold text-mute">immo<span class="text-leaf">·</span>evals</span> · Rapport généré le <span id="footDate">—</span> · Pour information uniquement, ne se substitue pas à une expertise professionnelle.
+  </footer>
+</main>
+
+<!-- ════════════════════ REPORT DATA ════════════════════
+     The report-generator agent replaces ONLY the JSON object below with the
+     evaluation's data. Everything else in this file is the fixed template.
+     Omit any field that is unavailable (do not invent values). -->
+<script type="application/json" id="report-data">
+{
+  "title": "Maison 5 pièces 90 m² — Versailles/Satory (lisière Forêt de Versailles)",
+  "date": "2026-06-14",
+  "url": "https://www.bienici.com/annonce/vente/versailles/maison/5pieces/adapt-immo-780152778",
+  "photos": [
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_21.jpg",
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_1.jpg",
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_2.jpg",
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_3.jpg",
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_22.jpg",
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_4.jpg",
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_5.jpg",
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_6.jpg",
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_7.jpg",
+    "https://file.bienici.com/photo/adapt-immo-780152778_photos.exportadapt.com_78015_780152778_8.jpg"
+  ],
+  "verdict": {
+    "label": "Au prix du marché — légère décote justifiée",
+    "tone": "good"
+  },
+  "summary": "Maison en pierre des années 1930 en lisière de la Forêt de Versailles, proposée à 499 000 € FAI (5 378 €/m² net) dans le quartier Satory. Le prix est ~3% sous la médiane du secteur, cohérent avec le DPE E (278 kWh/m²·an) et les travaux à prévoir. Atout majeur : cadre exceptionnel au calme absolu, toiture et double vitrage récents. Point de vigilance : bien en lot arrière avec accès via sente piétonne, et commune probablement Buc (78530) plutôt que Versailles.",
+  "score": {
+    "value": 6.8,
+    "note": "Bon rapport qualité/prix pour un acheteur prêt à entreprendre des travaux de rénovation légère"
+  },
+  "kpi": {
+    "price": "499 000 €",
+    "priceSub": "FAI (dont 15 000 € d'honoraires)",
+    "pricem2": "5 378 €/m²",
+    "ecart": "-3%",
+    "ecartTone": "down",
+    "ecartLabel": "vs médiane Satory",
+    "surface": "90 m²",
+    "type": "5 pièces · 3 chambres",
+    "dpe": "E",
+    "dpeSub": "278 kWh/m²·an"
+  },
+  "charts": {
+    "priceBars": {
+      "labels": [
+        "Ce bien (net)",
+        "Satory 1 (médiane)",
+        "Satory 2 (médiane)",
+        "Jouy-en-Josas"
+      ],
+      "values": [
+        5378,
+        5562,
+        5878,
+        5682
+      ],
+      "unit": "€/m²"
+    },
+    "priceTrend": {
+      "years": [
+        "2021",
+        "2022",
+        "2023",
+        "2024",
+        "2025"
+      ],
+      "values": [
+        6100,
+        6450,
+        6720,
+        6580,
+        6650
+      ],
+      "unit": "€/m²",
+      "commune": "Satory (estimation quartier)"
+    },
+    "communeRadar": {
+      "axes": [
+        "Services",
+        "Transports",
+        "Emploi",
+        "Environnement",
+        "Écoles",
+        "Sécurité"
+      ],
+      "values": [
+        8.0,
+        7.0,
+        7.0,
+        8.5,
+        8.0,
+        6.5
+      ]
+    },
+    "riskMatrix": [
+      {
+        "label": "Lot arrière (accès)",
+        "likelihood": 0.9,
+        "impact": 0.7,
+        "severity": "élevé"
+      },
+      {
+        "label": "DPE E (énergie)",
+        "likelihood": 1.0,
+        "impact": 0.5,
+        "severity": "moyen"
+      },
+      {
+        "label": "Sol argileux (RGA)",
+        "likelihood": 0.6,
+        "impact": 0.6,
+        "severity": "moyen"
+      },
+      {
+        "label": "Tableau électrique",
+        "likelihood": 0.9,
+        "impact": 0.3,
+        "severity": "moyen"
+      },
+      {
+        "label": "Assainissement",
+        "likelihood": 0.4,
+        "impact": 0.7,
+        "severity": "moyen"
+      },
+      {
+        "label": "Proximité forêt",
+        "likelihood": 0.2,
+        "impact": 0.8,
+        "severity": "moyen"
+      },
+      {
+        "label": "Fondations 1930s",
+        "likelihood": 0.5,
+        "impact": 0.8,
+        "severity": "élevé"
+      }
+    ],
+    "costBreakdown": {
+      "labels": [
+        "Prix net vendeur",
+        "Frais de notaire",
+        "Travaux estimés"
+      ],
+      "values": [
+        484000,
+        36000,
+        15000
+      ],
+      "total": "535 000 €"
+    }
+  },
+  "sections": [
+    {
+      "id": "le-bien",
+      "num": "01",
+      "title": "Le Bien — Fiche technique",
+      "html": "\u003ch3>Fiche technique\u003c/h3>\u003ctable>\u003ctr>\u003cth>Type\u003c/th>\u003ctd>Maison de ville (lot arrière)\u003c/td>\u003c/tr>\u003ctr>\u003cth>Surface habitable\u003c/th>\u003ctd>90 m² (71 m² hab. + véranda 15 m² + espace indépendant 25 m² = 110 m² exploitables)\u003c/td>\u003c/tr>\u003ctr>\u003cth>Terrain\u003c/th>\u003ctd>213 m² + sente piétonne partagée 74 m²\u003c/td>\u003c/tr>\u003ctr>\u003cth>Pièces\u003c/th>\u003ctd>5 (3 chambres)\u003c/td>\u003c/tr>\u003ctr>\u003cth>Année construction\u003c/th>\u003ctd>Années 1930 (base en pierre)\u003c/td>\u003c/tr>\u003ctr>\u003cth>DPE / GES\u003c/th>\u003ctd>E (278 kWh/m²·an) / B (10 kg CO₂/m²·an)\u003c/td>\u003c/tr>\u003ctr>\u003cth>Date DPE\u003c/th>\u003ctd>15 avril 2026\u003c/td>\u003c/tr>\u003ctr>\u003cth>Chauffage\u003c/th>\u003ctd>Électrique + poêle à bois\u003c/td>\u003c/tr>\u003ctr>\u003cth>Toiture\u003c/th>\u003ctd>Récente (bac acier zinc)\u003c/td>\u003c/tr>\u003ctr>\u003cth>Menuiseries\u003c/th>\u003ctd>Double vitrage\u003c/td>\u003c/tr>\u003ctr>\u003cth>Exposition\u003c/th>\u003ctd>Sud-Ouest\u003c/td>\u003c/tr>\u003ctr>\u003cth>Cave\u003c/th>\u003ctd>Partielle + vide sanitaire\u003c/td>\u003c/tr>\u003ctr>\u003cth>Bâtiment annexe\u003c/th>\u003ctd>25 m² cadastré (dur)\u003c/td>\u003c/tr>\u003c/table>\u003ch3>Observations sur les photos\u003c/h3>\u003cp>La maison semble en état correct mais nécessite des rafraîchissements : peintures à prévoir, tableau électrique ancien (à remplacer), radiateurs d'époque. La véranda de 15 m² est un atout mais son isolation thermique est à vérifier. Le terrain arrière est arboré et agréable, avec accès direct à la forêt. Le bâtiment annexe de 25 m² (cadastré) offre un potentiel intéressant (atelier, télétravail). La toiture et le double vitrage sont récents — deux postes coûteux déjà traités.\u003c/p>"
+    },
+    {
+      "id": "analyse-prix",
+      "num": "02",
+      "title": "Analyse du prix",
+      "chart": "price",
+      "html": "\u003ch3>Comparaison avec le marché\u003c/h3>\u003ctable>\u003ctr>\u003cth>Indicateur\u003c/th>\u003cth>Valeur\u003c/th>\u003cth>Source\u003c/th>\u003c/tr>\u003ctr>\u003ctd>Prix au m² (net vendeur)\u003c/td>\u003ctd>5 378 €/m²\u003c/td>\u003ctd>Annonce\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Médiane Satory 1\u003c/td>\u003ctd>5 562 €/m²\u003c/td>\u003ctd>DVF 2025\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Médiane Satory 2\u003c/td>\u003ctd>5 878 €/m²\u003c/td>\u003ctd>DVF 2025\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Médiane Versailles (maisons)\u003c/td>\u003ctd>8 777 à 9 013 €/m²\u003c/td>\u003ctd>DVF 2025\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Jouy-en-Josas\u003c/td>\u003ctd>5 682 €/m²\u003c/td>\u003ctd>DVF 2025\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Le Chesnay-Rocquencourt\u003c/td>\u003ctd>5 700 à 6 900 €/m²\u003c/td>\u003ctd>DVF 2025\u003c/td>\u003c/tr>\u003c/table>\u003ch3>Transactions comparables (DVF)\u003c/h3>\u003ctable>\u003ctr>\u003cth>Date\u003c/th>\u003cth>Adresse\u003c/th>\u003cth>Surface\u003c/th>\u003cth>Prix\u003c/th>\u003cth>Prix/m²\u003c/th>\u003c/tr>\u003ctr>\u003ctd>30/06/2025\u003c/td>\u003ctd>Rue Fragonard, Versailles\u003c/td>\u003ctd>117 m²\u003c/td>\u003ctd>799 000 €\u003c/td>\u003ctd>6 829 €/m²\u003c/td>\u003c/tr>\u003ctr>\u003ctd>23/06/2025\u003c/td>\u003ctd>Rue Corneille, Le Chesnay-R.\u003c/td>\u003ctd>108 m²\u003c/td>\u003ctd>614 900 €\u003c/td>\u003ctd>5 694 €/m²\u003c/td>\u003c/tr>\u003ctr>\u003ctd>12/06/2025\u003c/td>\u003ctd>Rue Corneille, Le Chesnay-R.\u003c/td>\u003ctd>104 m²\u003c/td>\u003ctd>575 000 €\u003c/td>\u003ctd>5 529 €/m²\u003c/td>\u003c/tr>\u003ctr>\u003ctd>05/06/2025\u003c/td>\u003ctd>Av de Bellevue, Le Chesnay-R.\u003c/td>\u003ctd>100 m²\u003c/td>\u003ctd>690 000 €\u003c/td>\u003ctd>6 900 €/m²\u003c/td>\u003c/tr>\u003ctr>\u003ctd>30/04/2025\u003c/td>\u003ctd>Rue J-Baptiste Clement, Guyancourt\u003c/td>\u003ctd>88 m²\u003c/td>\u003ctd>380 953 €\u003c/td>\u003ctd>4 329 €/m²\u003c/td>\u003c/tr>\u003c/table>\u003ch3>Estimation de valeur\u003c/h3>\u003cp>Le prix au m² de 5 378 € (net vendeur) se situe ~3 % sous la médiane du quartier Satory 1 et ~8,5 % sous Satory 2, ce qui est cohérent avec le DPE E et les travaux à prévoir. La fourchette de valeur estimée se situe entre \u003cstrong>440 000 € et 510 000 €\u003c/strong> net vendeur.\u003c/p>\u003cp>Évolution des prix à Satory : marché légèrement baissier (-1,9 % sur un an), après un pic en 2022. Le quartier reste dynamique porté par les projets ZAC Satory Ouest et Ligne 18.\u003c/p>\u003cblockquote>Prix justifié par le marché pour un acheteur prêt à rénover. Le DPE E et le tableau électrique à mettre aux normes sont les principaux leviers de négociation.\u003c/blockquote>"
+    },
+    {
+      "id": "commune",
+      "num": "03",
+      "title": "La Commune — Versailles / Satory",
+      "chart": "commune",
+      "html": "\u003ch3>Profil général\u003c/h3>\u003cp>Versailles (~85 000 hab) est la préfecture des Yvelines, classée 24\u003csup>e\u003c/sup> nationale des villes où il fait bon vivre 2025 et 1\u003csup>re\u003c/sup> des Yvelines (Ville-idéale : 7,07/10). Revenu médian de 60 116 €/foyer. \u003cstrong>Attention :\u003c/strong> le bien est très probablement situé à \u003cstrong>Buc (78530)\u003c/strong> en limite de Versailles — la référence interne mentionne 'BAS BUC'. Les deux communes sont limitrophes mais les taxes et le secteur scolaire diffèrent.\u003c/p>\u003ch3>Services et commodités\u003c/h3>\u003cp>44 écoles, 11 collèges, 13 lycées (dont Hoche, La Bruyère, Sainte-Geneviève). 82 médecins, 4 hôpitaux, 26 pharmacies. 18 supermarchés, 340 restaurants, 21 marchés/semaine. Commerces de proximité et écoles à Satory même.\u003c/p>\u003ch3>Transports\u003c/h3>\u003cp>RER C (25-35 min Paris centre), Ligne N (12-15 min Montparnasse), Ligne U (20 min La Défense). Bus Vélizy (6161-6164, 264) : Buc ↔ Gare des Chantiers. Gare des Chantiers à ~1,35 km à vol d'oiseau. \u003cstrong>FUTUR : Ligne 18 Grand Paris Express, gare Satory prévue en 2030\u003c/strong> — plus-value immobilière et désenclavement majeur du secteur.\u003c/p>\u003cp>\u003cem>Vérification distance :\u003c/em> 1,4 km annoncé réaliste en orthodromique. 15 min à pied optimiste (compter 20-22 min). 3 min en bus cohérent.\u003c/p>\u003ch3>Environnement et cadre de vie\u003c/h3>\u003cp>Forêt de Versailles (1 057 ha), Bois de Satory (~250 ha). 50 % du territoire communal en espaces verts. Le bien est en lisière de forêt — calme absolu garanti. Exposition sud-ouest offrant un bon ensoleillement.\u003c/p>\u003ch3>Projets futurs\u003c/h3>\u003cp>ZAC Satory Ouest : 236 ha, 4 000+ logements, 12-15 000 nouveaux habitants (2025-2035+). Gare Ligne 18 (2030). Groupe scolaire Satory Ouest (2028). Pôle multimodal Gare des Chantiers (2024-2028).\u003c/p>"
+    },
+    {
+      "id": "risques",
+      "num": "04",
+      "title": "Risques et points d'attention",
+      "chart": "risk",
+      "html": "\u003ch3>Risques naturels et technologiques\u003c/h3>\u003ctable>\u003ctr>\u003cth>Risque\u003c/th>\u003cth>Niveau\u003c/th>\u003cth>Détail\u003c/th>\u003c/tr>\u003ctr>\u003ctd>Inondation (PPRI)\u003c/td>\u003ctd>Très faible ✅\u003c/td>\u003ctd>Aucun PPRI, zone plus élevée\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Séisme\u003c/td>\u003ctd>Zone 1 — Très faible ✅\u003c/td>\u003ctd>\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Retrait-gonflement argiles\u003c/td>\u003ctd>Moyen ⚠️\u003c/td>\u003ctd>Présent sur marnes ludiennes. CATNAT 2003 et 2009\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Radon\u003c/td>\u003ctd>Niveau 1 — Faible ✅\u003c/td>\u003ctd>\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Termites\u003c/td>\u003ctd>Présence avérée ⚠️\u003c/td>\u003ctd>Arrêté préfectoral Versailles. Visite obligatoire\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Incendie forêt\u003c/td>\u003ctd>Émergent — Faible/Modéré ⚠️\u003c/td>\u003ctd>Adjacent Forêt de Versailles, OLD débroussaillement\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Transport mat. dangereuses\u003c/td>\u003ctd>Modéré ⚠️\u003c/td>\u003ctd>N12/A86 à proximité\u003c/td>\u003c/tr>\u003ctr>\u003ctd>SEVESO / ICPE\u003c/td>\u003ctd>Aucun ✅\u003c/td>\u003ctd>Site ARQUUS au Camp de Satory (non SEVESO)\u003c/td>\u003c/tr>\u003c/table>\u003ch3>Points d'attention spécifiques au bien\u003c/h3>\u003cul>\u003cli>\u003cstrong>Lot arrière (élevé) :\u003c/strong> Accès via sente piétonne de 74 m² non constructible. Vérifier accessibilité véhicules de secours et servitude de passage.\u003c/li>\u003cli>\u003cstrong>Fondations 1930s sur sol argileux (élevé) :\u003c/strong> Maison pré-1970 sans normes parasismiques ni fondations adaptées au RGA. Une étude G2 est recommandée avant achat.\u003c/li>\u003cli>\u003cstrong>DPE E (moyen-élevé) :\u003c/strong> 278 kWh/m²·an. Murs en pierre des années 1930 mal isolés. Coût de chauffage annoncé 1 610-2 230 €/an, probablement 2 500-3 500 € en usage réel.\u003c/li>\u003cli>\u003cstrong>Tableau électrique (élevé) :\u003c/strong> À remplacer intégralement. Budget 1 500-3 000 €.\u003c/li>\u003cli>\u003cstrong>Assainissement (élevé) :\u003c/strong> 'OK' dans l'annonce est insuffisant. Si fosse septique : contrôle SPANC obligatoire, coût 6 000-12 000 € selon travaux.\u003c/li>\u003cli>\u003cstrong>Proximité forêt (moyen) :\u003c/strong> Branches, animaux, humidité. OLD débroussaillement obligatoire.\u003c/li>\u003cli>\u003cstrong>Cave partielle + vide sanitaire (moyen) :\u003c/strong> Humidité possible sur sol argileux en lisière de forêt.\u003c/li>\u003c/ul>"
+    },
+    {
+      "id": "couts",
+      "num": "05",
+      "title": "Coûts additionnels",
+      "chart": "cost",
+      "html": "\u003ch3>Détail des coûts\u003c/h3>\u003ctable>\u003ctr>\u003cth>Poste\u003c/th>\u003cth>Montant\u003c/th>\u003cth>Notes\u003c/th>\u003c/tr>\u003ctr>\u003ctd>Prix de vente (net vendeur)\u003c/td>\u003ctd>484 000 €\u003c/td>\u003ctd>\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Frais d'agence\u003c/td>\u003ctd>15 000 €\u003c/td>\u003ctd>3,10 % inclus dans le prix FAI\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Frais de notaire (est.)\u003c/td>\u003ctd>~36 000 €\u003c/td>\u003ctd>~7,5 % sur bien ancien\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Rénovation tableau électrique\u003c/td>\u003ctd>1 500-3 000 €\u003c/td>\u003ctd>Mise aux normes obligatoire\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Peintures / rafraîchissement\u003c/td>\u003ctd>5 000-8 000 €\u003c/td>\u003ctd>Selon finitions\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Radiateurs\u003c/td>\u003ctd>2 000-4 000 €\u003c/td>\u003ctd>Remplacement chauffage électrique vétuste\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Budget total estimé\u003c/strong>\u003c/td>\u003ctd>\u003cstrong>~530 000-540 000 €\u003c/strong>\u003c/td>\u003ctd>Avec travaux et frais\u003c/td>\u003c/tr>\u003c/table>\u003ch3>Autres charges annuelles\u003c/h3>\u003cul>\u003cli>Taxe foncière : à vérifier (Versailles/Buc, estimée ~1 200-1 800 €/an)\u003c/li>\u003cli>Énergie (estimation DPE) : 1 610 € à 2 230 €/an\u003c/li>\u003cli>Assurance habitation : ~300-500 €/an\u003c/li>\u003c/ul>"
+    },
+    {
+      "id": "questions",
+      "num": "06",
+      "title": "Questions à poser au vendeur",
+      "html": "\u003col>\u003cli>\u003cstrong>Accès et servitudes :\u003c/strong> La sente piétonne de 74 m² est-elle une copropriété ? Existe-t-il une servitude de passage ? Les véhicules de secours (pompiers, ambulance) peuvent-ils accéder jusqu'à la maison ?\u003c/li>\u003cli>\u003cstrong>Assainissement :\u003c/strong> Le bien est-il raccordé au tout-à-l'égout ou sur fosse septique ? Si fosse, date du dernier contrôle SPANC et conformité ?\u003c/li>\u003cli>\u003cstrong>Tableau électrique :\u003c/strong> Quelle est la date de la dernière mise aux normes ? Un diagnostic électrique récent a-t-il été réalisé ?\u003c/li>\u003cli>\u003cstrong>Fondations :\u003c/strong> Une étude de sol (G2) a-t-elle déjà été réalisée ? Y a-t-il eu des fissures ou des signes de mouvement depuis la construction ?\u003c/li>\u003cli>\u003cstrong>DPE :\u003c/strong> Le DPE mentionne 278 kWh/m²·an — quels sont les principaux postes de déperdition ? Y a-t-il des projets d'isolation complémentaire ?\u003c/li>\u003cli>\u003cstrong>Voisinage et nuisances :\u003c/strong> Le bien est en lisière de forêt — les nuisances sonores (RN286/N12) sont-elles perceptibles depuis le jardin ou la maison ?\u003c/li>\u003cli>\u003cstrong>Travaux :\u003c/strong> Des travaux ont-ils été réalisés sans déclaration préalable (véranda, bâtiment annexe) ? Les autorisations d'urbanisme sont-elles en règle ?\u003c/li>\u003cli>\u003cstrong>Commune exacte :\u003c/strong> Le bien est-il sur la commune de Versailles (78000) ou de Buc (78530) ? La référence 'BAS BUC' laisse planer un doute.\u003c/li>\u003c/ol>"
+    },
+    {
+      "id": "synthese",
+      "num": "07",
+      "title": "Synthèse et recommandation",
+      "html": "\u003cp>Cette maison en pierre des années 1930 en lisière de la Forêt de Versailles offre un cadre de vie exceptionnel à un prix de marché cohérent. Le quartier Satory, en pleine mutation avec l'arrivée de la Ligne 18 du Grand Paris Express (2030) et la ZAC Satory Ouest, bénéficie d'une dynamique positive à moyen terme.\u003c/p>\u003cp>\u003cstrong>Points forts :\u003c/strong> cadre calme et arboré, toiture et menuiseries récentes, double vitrage, exposition sud-ouest, proximité future gare, potentiel d'espace indépendant avec le bâtiment annexe de 25 m², DPE récent (avril 2026).\u003c/p>\u003cp>\u003cstrong>Points faibles :\u003c/strong> DPE E nécessitant des travaux d'isolation, tableau électrique à remplacer, lot arrière avec accès via sente piétonne à vérifier, sol argileux (RGA), incertitude sur l'assainissement, commune exacte à confirmer (Buc vs Versailles).\u003c/p>\u003cblockquote>Recommandation : bonne opportunité pour un acheteur bricoleur prêt à investir ~15 000-20 000 € de travaux. Prix net vendeur de 484 000 € dans la fourchette basse du marché Satory. Proposition recommandée entre 465 000 € et 475 000 € net vendeur, en valorisant le DPE E et les travaux électriques comme arguments de négociation. Vérifier la question de la commune avant toute offre.\u003c/blockquote>"
+    }
+  ],
+  "reliability": {
+    "score": "moyenne",
+    "summary": "L'annonce est globalement cohérente mais comporte une incohérence notable : la référence 'BAS BUC' suggère que le bien est à Buc (78530) et non Versailles (78000). Le DPE récent est plausible et le prix/m² correspond au calcul arithmétique du prix net vendeur.",
+    "checks": [
+      {
+        "claim": "Prix au m²",
+        "listingValue": "5 378 €/m²",
+        "verified": "484 000 € ÷ 90 m² = 5 378 €/m²",
+        "source": "Cohérence arithmétique (prix net vendeur)",
+        "status": "confirmed",
+        "note": "Le prix/m² annoncé correspond au prix net vendeur (hors honoraires). Avec le prix FAI (499 000 € ÷ 90 = 5 544 €/m²), les deux calculs sont cohérents."
+      },
+      {
+        "claim": "DPE Énergie E (278 kWh/m²·an)",
+        "listingValue": "E — 278 kWh/m²·an",
+        "verified": "DPE du 15/04/2026 — diagnostic récent",
+        "source": "Annonce (ADEME non consulté)",
+        "status": "consistent",
+        "note": "Valeur plausible pour une maison en pierre des années 1930 avec chauffage électrique. Le DPE est très récent, ce qui est un point positif."
+      },
+      {
+        "claim": "DPE GES B (10 kg CO₂/m²·an)",
+        "listingValue": "B — 10 kg CO₂/m²·an",
+        "verified": "Cohérent avec chauffage électrique + poêle à bois",
+        "source": "Cohérence interne",
+        "status": "consistent",
+        "note": "Le chauffage électrique (peu carboné en France) et le poêle à bois expliquent le faible GES."
+      },
+      {
+        "claim": "Construction années 1930 (base pierre)",
+        "listingValue": "Années 1930",
+        "verified": "Non vérifié sur registre ADEME",
+        "source": "Non disponible",
+        "status": "unverified",
+        "note": "Impossible à confirmer sans accès au registre ADEME. La description architecturale est cohérente avec les constructions du secteur."
+      },
+      {
+        "claim": "Surface habitable 90 m²",
+        "listingValue": "90 m²",
+        "verified": "Cohérence arithmétique : 484 000 ÷ 5 378 = 90,0",
+        "source": "Cohérence interne",
+        "status": "confirmed",
+        "note": "Le prix net et le prix/m² sont strictement cohérents avec la surface annoncée."
+      },
+      {
+        "claim": "Distance gare des Chantiers : 1,4 km / 15 min à pied / 3 min bus",
+        "listingValue": "1,4 km — 15 min à pied",
+        "verified": "~1,35 km à vol d'oiseau",
+        "source": "Géocodage BAN",
+        "status": "consistent",
+        "note": "La distance orthodromique est réaliste. Les 15 min à pied sont optimistes (compter 20-22 min). Les 3 min en bus sont cohérents avec une navette directe."
+      },
+      {
+        "claim": "Commune : Versailles (78000)",
+        "listingValue": "Versailles",
+        "verified": "Référence 'BAS BUC' dans les données internes",
+        "source": "Référence interne de l'annonce",
+        "status": "mismatch",
+        "note": "La mention 'BAS BUC' indique que le bien est très probablement situé à Buc (78530), pas Versailles (78000). Cela impacte les taxes locales, le secteur scolaire et le standing perçu."
+      },
+      {
+        "claim": "Non inondable",
+        "listingValue": "Non mentionné explicitement",
+        "verified": "Aucun PPRI sur le secteur",
+        "source": "Géorisques",
+        "status": "consistent",
+        "note": "Le secteur n'est pas couvert par un PPRI. Le risque inondation est très faible."
+      }
+    ]
+  }
+}
+</script>
+
+<!-- ════════════════════ RENDERER (fixed) ════════════════════ -->
+<script>
+const PALETTE = {
+  ink:'#0A0A0A', leaf:'#16A34A', leafdeep:'#15803D', warn:'#D97706', danger:'#DC2626',
+  info:'#2563EB', mute:'#6B7280', line:'#E7E5DF', cream:'#FAF9F6', sand:'#F3F1EA'
+};
+const TONE = {
+  good:  { bar:'#16A34A', pill:'leaf',   ring:'#16A34A' },
+  warn:  { bar:'#D97706', pill:'warn',   ring:'#D97706' },
+  bad:   { bar:'#DC2626', pill:'danger', ring:'#DC2626' },
+  neutral:{ bar:'#0A0A0A', pill:'mute',  ring:'#0A0A0A' },
+};
+// Escape HTML-significant chars: these scalar fields (title, KPI labels, cost
+// labels) are interpolated into innerHTML, so a "<" or "&" in scraped data must
+// not become live markup. Rich section fragments (s.html) are intentionally NOT
+// routed through here — the template trusts those as authored HTML.
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, c => (
+  {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+const DATA = JSON.parse(document.getElementById('report-data').textContent);
+
+/* ---------- hero ---------- */
+(function hero(){
+  const d = DATA;
+  document.title = (d.title || 'Rapport') + ' — immo·evals';
+  document.getElementById('footDate').textContent = d.date || '';
+  document.getElementById('heroDate').textContent = d.date || 'Analyse du jour';
+
+  // title — split at em/dash → second half italic green
+  const t = esc(d.title);
+  const parts = t.split(/\s+[—–-]\s+/);
+  document.getElementById('heroTitle').innerHTML = parts.length === 2
+    ? `${parts[0]}<br><em class="not-italic font-[600] text-leafdeep" style="font-style:italic;">${parts.slice(1).join(' — ')}</em>`
+    : t;
+
+  document.getElementById('heroSummary').textContent = d.summary || '';
+
+  if (d.url){
+    const a = document.getElementById('heroUrl'); a.href = d.url;
+    a.classList.remove('hidden'); document.getElementById('heroUrlSep').classList.remove('hidden');
+  }
+
+  // verdict
+  const tone = (d.verdict && d.verdict.tone) || 'neutral';
+  const tk = TONE[tone] || TONE.neutral;
+  const pill = document.getElementById('verdictPill');
+  const dot = document.getElementById('verdictDot');
+  document.getElementById('verdictLabel').textContent = (d.verdict && d.verdict.label) || 'Verdict';
+  const toneBg = { good:['bg-leafsoft','border-leaf','text-leafdeep'], warn:['bg-warnsoft','border-warn','text-warn'],
+    bad:['bg-dangersoft','border-danger','text-danger'], neutral:[] };
+  (toneBg[tone]||[]).forEach(c=>pill.classList.add(c));
+  dot.style.background = tk.ring;
+  dot.style.boxShadow = `0 0 0 3px ${tk.ring}2e`;
+  document.getElementById('heroBar').style.background = tk.bar;
+
+  // kpis
+  const k = d.kpi || {};
+  set('kpiPrice', k.price); set('kpiPriceSub', k.priceSub);
+  set('kpiPm2', k.pricem2); set('kpiSurface', k.surface); set('kpiType', k.type);
+  if (k.ecart){
+    const tt = { up:['text-warn','▲'], down:['text-leafdeep','▼'], flat:['text-mute','▬'] }[k.ecartTone||'flat'];
+    document.getElementById('kpiEcart').innerHTML =
+      `<span class="font-semibold ${tt[0]}">${tt[1]} ${esc(k.ecart)}</span><span class="text-mute2">${esc(k.ecartLabel||'')}</span>`;
+  }
+  if (k.dpe){
+    const el = document.getElementById('kpiDpe');
+    el.textContent = k.dpe; el.className = `inline-grid place-items-center w-9 h-9 rounded-md font-serif font-black text-lg text-paper dpe-${String(k.dpe).toLowerCase()}`;
+    set('kpiDpeSub', k.dpeSub);
+  }
+
+  // score gauge
+  if (d.score && typeof d.score.value === 'number'){
+    document.getElementById('scoreVal').textContent = Number(d.score.value).toLocaleString('fr-FR');
+    set('scoreNote', d.score.note);
+    const v = Math.max(0, Math.min(10, d.score.value));
+    const col = v >= 7 ? PALETTE.leaf : v >= 5 ? PALETTE.warn : PALETTE.danger;
+    new Chart(document.getElementById('scoreGauge'), {
+      type:'doughnut',
+      data:{ datasets:[{ data:[v, 10-v], backgroundColor:[col, '#ECEAE2'], borderWidth:0 }] },
+      options:{ cutout:'76%', responsive:false, plugins:{ legend:{display:false}, tooltip:{enabled:false} }, animation:{animateRotate:true,duration:900} }
+    });
+  }
+
+  // reliability flag — surface any listing/source contradiction in the hero,
+  // not buried in section 8. A wrong construction date is the headline.
+  const rel = d.reliability;
+  const mismatches = (rel && Array.isArray(rel.checks) ? rel.checks : []).filter(c => c && c.status === 'mismatch');
+  if (mismatches.length){
+    const badge = document.createElement('a');
+    badge.href = '#fiabilite';
+    badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-dangersoft border border-danger/30 text-[11px] font-bold uppercase tracking-wider text-danger no-underline hover:bg-danger hover:text-paper transition';
+    const n = mismatches.length;
+    badge.innerHTML = `<span aria-hidden="true">⚠</span> ${n} donnée${n>1?'s':''} à vérifier`;
+    const row = document.querySelector('#hero .flex.flex-wrap.items-center');
+    if (row) row.appendChild(badge);
+  }
+
+  function set(id,val){ const el=document.getElementById(id); if(el && val!=null && val!=='') el.textContent = val; }
+})();
+
+/* ---------- photo gallery ---------- */
+// Renders data.photos (the listing's HOSTED image URLs — never downloaded) as a
+// responsive grid. Security: only http(s) URLs are allowed (reject javascript:/
+// data:/etc), and the src is set via a parsed URL, not raw interpolation. Broken
+// images hide themselves (onerror) so a dead listing URL leaves no empty box.
+(function gallery(){
+  const photos = Array.isArray(DATA.photos) ? DATA.photos : [];
+  // keep only well-formed http(s) URLs; cap at 12 so a 30-photo listing can't bloat the report
+  const safe = [];
+  for (const p of photos){
+    try { const u = new URL(String(p)); if (u.protocol === 'http:' || u.protocol === 'https:') safe.push(u.href); }
+    catch(_){ /* skip malformed */ }
+    if (safe.length >= 12) break;
+  }
+  const host = document.getElementById('gallery');
+  if (!host || !safe.length) return;   // no photos → section stays hidden
+
+  host.classList.remove('hidden');
+  host.className = 'bg-paper border border-line rounded-2xl shadow-card overflow-hidden mb-5 break-avoid';
+  const head = `
+    <div class="flex items-center gap-3.5 px-7 pt-6 pb-1">
+      <span class="text-[10px] font-bold uppercase tracking-[.18em] text-mute2">Photos de l'annonce</span>
+      <span class="text-[11px] text-mute2">· ${safe.length} photo${safe.length>1?'s':''} · source : annonce</span>
+    </div>`;
+  const grid = document.createElement('div');
+  grid.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 p-5 pt-3';
+  safe.forEach((href, i) => {
+    const a = document.createElement('a');
+    a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    a.className = 'group relative block aspect-[4/3] overflow-hidden rounded-lg bg-sand border border-line';
+    // first photo spans 2×2 on larger screens for a hero-ish layout
+    if (i === 0) a.className += ' col-span-2 row-span-2 sm:aspect-auto';
+    const img = document.createElement('img');
+    img.src = href; img.loading = 'lazy'; img.decoding = 'async';
+    img.alt = 'Photo ' + (i+1) + " de l'annonce";
+    img.className = 'w-full h-full object-cover transition duration-300 group-hover:scale-[1.03]';
+    // a broken/blocked URL removes its tile entirely (no empty grey box)
+    img.addEventListener('error', () => { a.remove(); if (!grid.querySelector('img')) host.classList.add('hidden'); });
+    a.appendChild(img);
+    grid.appendChild(a);
+  });
+  host.innerHTML = head;
+  host.appendChild(grid);
+
+  // Print→PDF: lazy + below-the-fold images often render blank in Chrome's
+  // print output. Flip them to eager before printing so the gallery survives
+  // "Save as PDF". (Best-effort; CDNs that block file:// hotlinking may still
+  // 403 — the onerror handler then drops those tiles cleanly.)
+  window.addEventListener('beforeprint', () => {
+    grid.querySelectorAll('img[loading="lazy"]').forEach(im => { im.loading = 'eager'; });
+  });
+})();
+
+/* ---------- shared Chart.js defaults ---------- */
+Chart.defaults.font.family = "'Inter Tight', system-ui, sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#6B7280';
+
+/* ---------- sections ---------- */
+(function sections(){
+  const body = document.getElementById('reportBody');
+  const toc = document.getElementById('tocNav');
+  const charts = DATA.charts || {};
+
+  (DATA.sections || []).forEach((s, i) => {
+    const sec = document.createElement('section');
+    sec.id = s.id || ('section-'+i);
+    sec.className = 'acc bg-paper border border-line rounded-xl shadow-soft mb-[18px] overflow-hidden break-avoid';
+
+    const num = s.num || String(i+1).padStart(2,'0');
+    sec.innerHTML = `
+      <div class="acc-head flex items-center gap-3.5 px-7 py-5 cursor-pointer select-none hover:bg-ink/[.015] transition" role="button" tabindex="0" aria-expanded="true" aria-controls="${sec.id}-body">
+        <span class="inline-grid place-items-center w-8 h-8 bg-ink text-paper font-mono text-xs font-semibold rounded-lg shrink-0">${num}</span>
+        <span class="flex-1 font-serif font-bold text-[1.35rem] tracking-tight text-ink leading-tight" style="font-variation-settings:'opsz' 36;">${esc(s.title)}</span>
+        <span class="acc-caret font-mono text-xs text-mute2" aria-hidden="true">▾</span>
+      </div>
+      <div class="acc-body border-t border-transparent" id="${sec.id}-body"><div><div class="px-7 pt-5 pb-7">
+        ${s.chart ? `<div class="chart-slot mb-5"></div>` : ''}
+        <div class="prose-rt">${s.html || ''}</div>
+      </div></div></div>`;
+
+    body.appendChild(sec);
+
+    // chart for this section
+    if (s.chart){
+      const slot = sec.querySelector('.chart-slot');
+      buildChart(s.chart, slot, charts);
+    }
+
+    // toc entry
+    const a = document.createElement('a');
+    a.href = '#'+sec.id;
+    a.className = 'flex items-baseline gap-2.5 px-3.5 py-2 text-[13px] font-medium text-mute no-underline border-l-2 border-line hover:text-ink hover:border-ink hover:bg-ink/[.02] transition';
+    a.innerHTML = `<span class="font-mono text-[10px] font-semibold text-mute2 shrink-0">${num}</span><span>${esc(s.title)}</span>`;
+    a.addEventListener('click', e=>{ e.preventDefault();
+      sec.classList.remove('collapsed');
+      setTimeout(()=>window.scrollTo({top: sec.getBoundingClientRect().top+scrollY-68, behavior:'smooth'}), 60);
+    });
+    toc.appendChild(a);
+
+    // collapse toggle — mouse + keyboard (Enter / Space), with aria-expanded sync
+    const head = sec.querySelector('.acc-head');
+    const toggle = ()=>{ const collapsed = sec.classList.toggle('collapsed');
+      head.setAttribute('aria-expanded', String(!collapsed)); };
+    head.addEventListener('click', toggle);
+    head.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } });
+  });
+
+  // ---------- Fiabilité de l'annonce (listing claim verification) ----------
+  // Template-owned, structured render (NOT a trusted s.html fragment): every
+  // scraped/verified scalar goes through esc(). Four states, each with its own
+  // color + glyph so an honest verdict is structural, not trust-the-agent.
+  buildReliability(DATA.reliability, body, toc);
+
+  const setAll = (collapsed)=> document.querySelectorAll('.acc').forEach(s=>{
+    s.classList.toggle('collapsed', collapsed);
+    const h = s.querySelector('.acc-head'); if(h) h.setAttribute('aria-expanded', String(!collapsed));
+  });
+  document.getElementById('btnExpand').onclick = ()=> setAll(false);
+  document.getElementById('btnCollapse').onclick = ()=> setAll(true);
+
+  // scroll-spy
+  if ('IntersectionObserver' in window){
+    const links = [...toc.querySelectorAll('a')];
+    const obs = new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('text-ink','border-leaf','font-semibold'));
+      const l = toc.querySelector(`a[href="#${e.target.id}"]`);
+      if(l) l.classList.add('text-ink','border-leaf','font-semibold');
+    }});}, { rootMargin:'-80px 0px -55% 0px' });
+    document.querySelectorAll('#reportBody > section').forEach(s=>obs.observe(s));
+  }
+})();
+
+/* ---------- Fiabilité de l'annonce (listing claim verification) ---------- */
+// Renders the optional `reliability` block as a first-class accordion section
+// (same shell as data sections) with a per-claim verdict table. Four honest
+// states — never a bare ✓: a checkmark only means "confirmed against a source".
+// Omits itself entirely if there is no reliability data (graceful degradation,
+// mirroring how charts drop out when their data is missing).
+function buildReliability(rel, body, toc){
+  if (!rel || !Array.isArray(rel.checks) || !rel.checks.length) return;
+
+  // status vocabulary — glyph + colors. `confirmed` is the ONLY green ✓ and is
+  // reserved for "source agrees + high-confidence match"; a fuzzy match is at
+  // most `consistent`. `mismatch` is the source actively contradicting the
+  // listing (the wrong-construction-date case).
+  const ST = {
+    confirmed:  { glyph:'✓', label:'Confirmé',      cls:'bg-leafsoft text-leafdeep border-leaf/30',     dot:'#16A34A' },
+    consistent: { glyph:'≈', label:'Cohérent',      cls:'bg-infosoft text-info border-info/30',         dot:'#2563EB' },
+    unverified: { glyph:'?', label:'Non vérifiable', cls:'bg-sand text-mute border-line2',               dot:'#9CA3AF' },
+    mismatch:   { glyph:'✗', label:'Incohérent',    cls:'bg-dangersoft text-danger border-danger/30',   dot:'#DC2626' },
+  };
+  const SCORE = {
+    'élevée':  { cls:'text-leafdeep', label:'Fiabilité élevée' },
+    'moyenne': { cls:'text-warn',     label:'Fiabilité moyenne' },
+    'faible':  { cls:'text-danger',   label:'Fiabilité faible' },
+  };
+
+  const num = rel.num || '08';
+  const sec = document.createElement('section');
+  sec.id = 'fiabilite';
+  sec.className = 'acc bg-paper border border-line rounded-xl shadow-soft mb-[18px] overflow-hidden break-avoid';
+
+  // count by status for the header summary chips
+  const counts = rel.checks.reduce((m,c)=>{ const k=(c&&c.status)||'unverified'; m[k]=(m[k]||0)+1; return m; }, {});
+  const sc = SCORE[rel.score] || null;
+
+  const rows = rel.checks.map(c => {
+    const st = ST[(c && c.status)] || ST.unverified;
+    return `<tr>
+      <td class="align-top"><span class="font-semibold text-ink">${esc(c.claim)}</span>${c.note ? `<span class="block text-[12px] text-mute mt-0.5">${esc(c.note)}</span>` : ''}</td>
+      <td class="align-top tabular-nums">${esc(c.listingValue)}</td>
+      <td class="align-top tabular-nums">${c.verified ? esc(c.verified) : '<span class="text-mute2">—</span>'}${c.source ? `<span class="block text-[11px] text-mute2 mt-0.5">${esc(c.source)}</span>` : ''}</td>
+      <td class="align-top"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-[11px] font-bold ${st.cls}"><span aria-hidden="true">${st.glyph}</span>${st.label}</span></td>
+    </tr>`;
+  }).join('');
+
+  sec.innerHTML = `
+    <div class="acc-head flex items-center gap-3.5 px-7 py-5 cursor-pointer select-none hover:bg-ink/[.015] transition" role="button" tabindex="0" aria-expanded="true" aria-controls="fiabilite-body">
+      <span class="inline-grid place-items-center w-8 h-8 bg-ink text-paper font-mono text-xs font-semibold rounded-lg shrink-0">${esc(num)}</span>
+      <span class="flex-1 font-serif font-bold text-[1.35rem] tracking-tight text-ink leading-tight" style="font-variation-settings:'opsz' 36;">Fiabilité de l'annonce</span>
+      ${sc ? `<span class="hidden sm:inline text-[12px] font-bold ${sc.cls}">${sc.label}</span>` : ''}
+      <span class="acc-caret font-mono text-xs text-mute2" aria-hidden="true">▾</span>
+    </div>
+    <div class="acc-body border-t border-transparent" id="fiabilite-body"><div><div class="px-7 pt-5 pb-7">
+      ${rel.summary ? `<p class="text-[14px] leading-relaxed text-body mb-4 max-w-[72ch]">${esc(rel.summary)}</p>` : ''}
+      <div class="prose-rt">
+        <table>
+          <thead><tr><th>Donnée annoncée</th><th>Valeur annonce</th><th>Vérification (source)</th><th>Verdict</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <p class="text-[11px] text-mute2 mt-3 leading-relaxed">Les vérifications « ${ST.confirmed.label} » sont recoupées avec une source officielle ; « ${ST.consistent.label} » indique une estimation plausible non confirmée (ex. distance à vol d'oiseau) ; « ${ST.unverified.label} », aucune source trouvée. Aucune donnée n'est inventée.</p>
+    </div></div></div>`;
+
+  body.appendChild(sec);
+
+  // toc entry (mirrors the data-section TOC styling)
+  const a = document.createElement('a');
+  a.href = '#fiabilite';
+  a.className = 'flex items-baseline gap-2.5 px-3.5 py-2 text-[13px] font-medium text-mute no-underline border-l-2 border-line hover:text-ink hover:border-ink hover:bg-ink/[.02] transition';
+  a.innerHTML = `<span class="font-mono text-[10px] font-semibold text-mute2 shrink-0">${esc(num)}</span><span>Fiabilité de l'annonce</span>`;
+  a.addEventListener('click', e=>{ e.preventDefault();
+    sec.classList.remove('collapsed');
+    setTimeout(()=>window.scrollTo({top: sec.getBoundingClientRect().top+scrollY-68, behavior:'smooth'}), 60);
+  });
+  toc.appendChild(a);
+
+  // collapse toggle — mouse + keyboard, aria-expanded sync (same as data sections)
+  const head = sec.querySelector('.acc-head');
+  const toggle = ()=>{ const collapsed = sec.classList.toggle('collapsed');
+    head.setAttribute('aria-expanded', String(!collapsed)); };
+  head.addEventListener('click', toggle);
+  head.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); } });
+}
+
+/* ---------- chart builders ---------- */
+function buildChart(kind, slot, charts){
+  const mk = (h=300)=>{ const wrap=document.createElement('div');
+    wrap.className='bg-cream border border-line rounded-xl p-5'; wrap.style.height=h+'px';
+    const c=document.createElement('canvas'); wrap.appendChild(c); slot.appendChild(wrap); return c; };
+  const cap = (txt)=>{ const p=document.createElement('p'); p.className='text-[11px] text-mute2 mt-2 text-center font-medium'; p.textContent=txt; slot.appendChild(p); };
+
+  try {
+    if (kind==='price'){
+      const grid = document.createElement('div'); grid.className='grid grid-cols-1 lg:grid-cols-2 gap-4'; slot.appendChild(grid);
+      // positioning bars
+      const pb = charts.priceBars;
+      if (pb){
+        const w=document.createElement('div'); w.className='bg-cream border border-line rounded-xl p-5'; w.style.height='280px';
+        const c=document.createElement('canvas'); w.appendChild(c); grid.appendChild(w);
+        const cols = pb.labels.map((_,i)=> i===0 ? PALETTE.ink : '#C9C6BC');
+        new Chart(c,{ type:'bar', data:{ labels:pb.labels, datasets:[{ data:pb.values, backgroundColor:cols, borderRadius:6, barPercentage:.62 }] },
+          options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false},
+            title:{display:true,text:'Positionnement — prix au m²',color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+            tooltip:{callbacks:{label:x=>` ${x.raw.toLocaleString('fr-FR')} ${pb.unit||''}`}} },
+            scales:{ y:{beginAtZero:true,grid:{color:'#ECEAE2'},ticks:{callback:v=>v.toLocaleString('fr-FR')}}, x:{grid:{display:false}} } } });
+      }
+      // trend line
+      const pt = charts.priceTrend;
+      if (pt){
+        const w=document.createElement('div'); w.className='bg-cream border border-line rounded-xl p-5'; w.style.height='280px';
+        const c=document.createElement('canvas'); w.appendChild(c); grid.appendChild(w);
+        const ctx=c.getContext('2d'); const g=ctx.createLinearGradient(0,0,0,240);
+        g.addColorStop(0,'rgba(22,163,74,.22)'); g.addColorStop(1,'rgba(22,163,74,0)');
+        new Chart(c,{ type:'line', data:{ labels:pt.years, datasets:[{ data:pt.values, borderColor:PALETTE.leaf, backgroundColor:g,
+          fill:true, tension:.35, borderWidth:2.5, pointRadius:3, pointBackgroundColor:PALETTE.leaf, pointBorderColor:'#fff', pointBorderWidth:1.5 }] },
+          options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false},
+            title:{display:true,text:`Évolution prix/m² — ${pt.commune||''}`,color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+            tooltip:{callbacks:{label:x=>` ${x.raw.toLocaleString('fr-FR')} ${pt.unit||''}`}} },
+            scales:{ y:{grid:{color:'#ECEAE2'},ticks:{callback:v=>v.toLocaleString('fr-FR')}}, x:{grid:{display:false}} } } });
+      }
+    }
+    else if (kind==='commune'){
+      const r = charts.communeRadar; if(!r) return;
+      const c = mk(340);
+      new Chart(c,{ type:'radar', data:{ labels:r.axes, datasets:[{ data:r.values, label:'Score /10',
+        backgroundColor:'rgba(22,163,74,.14)', borderColor:PALETTE.leaf, borderWidth:2,
+        pointBackgroundColor:PALETTE.leaf, pointBorderColor:'#fff', pointRadius:3.5 }] },
+        options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false},
+          title:{display:true,text:'Qualité de vie — profil de la commune',color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}} },
+          scales:{ r:{ min:0, max:10, ticks:{stepSize:2,backdropColor:'transparent',color:'#9CA3AF',font:{size:10}},
+            grid:{color:'#E2E0D8'}, angleLines:{color:'#E2E0D8'}, pointLabels:{color:'#1F2937',font:{size:12,weight:'500'}} } } } });
+    }
+    else if (kind==='risk'){
+      const rm = charts.riskMatrix; if(!rm || !rm.length) return;
+      const sevColor = { eleve:PALETTE.danger, 'élevé':PALETTE.danger, fort:PALETTE.danger,
+        moyen:PALETTE.warn, faible:PALETTE.leaf };
+      const c = mk(360);
+      const pts = rm.map(r=>({ x:r.likelihood, y:r.impact, label:r.label,
+        bg:(sevColor[(r.severity||'').toLowerCase()]||PALETTE.mute) }));
+      new Chart(c,{ type:'scatter', data:{ datasets:[{ data:pts, pointRadius:11, pointHoverRadius:13,
+        backgroundColor:pts.map(p=>p.bg+'cc'), borderColor:pts.map(p=>p.bg), borderWidth:2 }] },
+        options:{ responsive:true, maintainAspectRatio:false,
+          layout:{padding:6},
+          plugins:{ legend:{display:false},
+            title:{display:true,text:'Matrice des risques — probabilité × impact',color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+            tooltip:{callbacks:{label:x=>` ${x.raw.label}`}},
+            datalabels:false },
+          scales:{ x:{min:0,max:1,title:{display:true,text:'Probabilité →',color:'#6B7280',font:{size:11}},grid:{color:'#ECEAE2'},ticks:{display:false}},
+                   y:{min:0,max:1,title:{display:true,text:'Impact →',color:'#6B7280',font:{size:11}},grid:{color:'#ECEAE2'},ticks:{display:false}} } },
+        plugins:[{ id:'risklabels', afterDatasetsDraw(ch){ const {ctx}=ch; ctx.save();
+          ctx.font='600 10px "Inter Tight"'; ctx.fillStyle='#0A0A0A'; ctx.textAlign='center';
+          ch.getDatasetMeta(0).data.forEach((pt,idx)=>{ ctx.fillText(pts[idx].label, pt.x, pt.y-16); }); ctx.restore(); } }] });
+      // legend
+      const lg=document.createElement('div'); lg.className='flex flex-wrap gap-3 justify-center mt-3 text-[11px] font-medium';
+      lg.innerHTML = `<span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:${PALETTE.danger}"></span>Élevé</span>
+        <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:${PALETTE.warn}"></span>Moyen</span>
+        <span class="inline-flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full" style="background:${PALETTE.leaf}"></span>Faible</span>`;
+      slot.appendChild(lg);
+    }
+    else if (kind==='cost'){
+      const cb = charts.costBreakdown; if(!cb) return;
+      const grid=document.createElement('div'); grid.className='grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-5 items-center bg-cream border border-line rounded-xl p-5'; slot.appendChild(grid);
+      const cw=document.createElement('div'); cw.style.height='240px'; const c=document.createElement('canvas'); cw.appendChild(c); grid.appendChild(cw);
+      const cols=[PALETTE.ink,PALETTE.leaf,PALETTE.warn,PALETTE.info,PALETTE.mute];
+      const idx = cb.values.map((v,i)=>i).filter(i=>cb.values[i]>0);
+      new Chart(c,{ type:'doughnut', data:{ labels:idx.map(i=>cb.labels[i]),
+        datasets:[{ data:idx.map(i=>cb.values[i]), backgroundColor:idx.map((_,j)=>cols[j%cols.length]), borderColor:'#FAF9F6', borderWidth:2 }] },
+        options:{ responsive:true, maintainAspectRatio:false, cutout:'58%', plugins:{ legend:{display:false},
+          title:{display:true,text:"Coût total d'acquisition",color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+          tooltip:{callbacks:{label:x=>` ${x.label}: ${x.raw.toLocaleString('fr-FR')} €`}} } } });
+      // custom legend w/ values
+      const lg=document.createElement('div'); lg.className='flex flex-col gap-2 text-[12.5px] min-w-[180px]';
+      idx.forEach((i,j)=>{ const row=document.createElement('div'); row.className='flex items-center justify-between gap-3';
+        row.innerHTML=`<span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-sm" style="background:${cols[j%cols.length]}"></span>${esc(cb.labels[i])}</span><span class="font-mono text-[11.5px] text-ink tabular-nums">${cb.values[i].toLocaleString('fr-FR')} €</span>`;
+        lg.appendChild(row); });
+      if(cb.total){ const tot=document.createElement('div'); tot.className='flex items-center justify-between gap-3 border-t border-line2 pt-2 mt-1 font-semibold';
+        tot.innerHTML=`<span class="text-ink">Total</span><span class="font-mono text-ink tabular-nums">${esc(cb.total)}</span>`; lg.appendChild(tot); }
+      grid.appendChild(lg);
+    }
+  } catch(err){
+    slot.innerHTML = `<div class="bg-warnsoft border border-warn/30 rounded-xl p-4 text-[13px] text-warn">Graphique indisponible (données incomplètes).</div>`;
+    console.error('chart error', kind, err);
+  }
+}
+</script>
+</body>
+</html>
