@@ -873,10 +873,10 @@ summary:focus-visible {
     border-bottom: 1px solid var(--line);
     box-shadow: var(--shadow-card);
     /* hidden by default; revealed when [data-open] is set */
-    display: none;
-  }
-  .site-nav[data-open] {
     display: flex;
+  }
+  .nav-toggle {
+    display: none;
   }
   .site-nav[data-open]::before {
     content: "Menu ouvert";
