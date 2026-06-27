@@ -3,5 +3,17 @@
   "status": "done",
   "harness": "opencode-run",
   "raw_format": "html",
-  "catalog_listed": true
+  "catalog_listed": true,
+  "related_reports": [
+    {
+      "title": "Analyse documents GPT-5.5",
+      "href": "documents-gpt55.html",
+      "type": "documents"
+    },
+    {
+      "title": "Plan rénovation T2 → T3",
+      "href": "renovation-plan-t3.html",
+      "type": "renovation"
+    }
+  ]
 }

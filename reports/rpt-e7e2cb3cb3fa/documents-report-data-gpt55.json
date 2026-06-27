@@ -1,0 +1,121 @@
+{
+  "title": "Dossier de vente — Appartement T2, Versailles (4 rue Philippe de Dangeau)",
+  "date": "2026-06-27",
+  "verdict": { "label": "Dossier partiel — points bloquants à lever", "tone": "warn" },
+  "summary": "Le dossier transmis permet une première analyse, mais il reste partiel : amiante manquant, ERP et termites expirés, documents copropriété L.721-2 incomplets, état daté, taxe foncière et titre non fournis. Les éléments positifs sont réels : DPE valide, charges cohérentes avec le budget 2026, pas de gros travaux non appelés visibles, trésorerie et fonds travaux présents. Les leviers chiffrés représentent environ 13 000 à 43 000 € selon l'ambition énergétique, avec un repère de négociation autour de 24 000 € hors devis plomb/amiante.",
+  "score": { "value": 5.1, "note": "Achetable seulement après régularisation du dossier" },
+  "kpi": {
+    "price": "6 / 16",
+    "priceSub": "fournis et valides",
+    "pricem2": "≈ 24 000 €",
+    "ecart": "10 à lever",
+    "ecartTone": "up",
+    "ecartLabel": "manquants, expirés ou partiels",
+    "surface": "10",
+    "type": "dont 5 élevés",
+    "dpe": "F",
+    "dpeSub": "402 kWhEP/m²·an"
+  },
+  "charts": {
+    "dpeScenarios": [
+      { "label": "Actuel (F)", "letter": "F", "conso": 402 },
+      { "label": "F → E", "letter": "E", "cost": "532 – 1 775 € DPE ; 700 – 1 600 € référence ITI", "costNet": "non garanti ; aides par geste limitées" },
+      { "label": "F → E/D confort", "letter": "D", "cost": "7 000 – 16 000 €", "costNet": "avant CEE/aides locales" },
+      { "label": "F → D plausible", "letter": "D", "cost": "11 000 – 34 000 €", "costNet": "≈ 3 000 – 30 000 € selon revenus" },
+      { "label": "F → C ambitieux", "letter": "C", "cost": "20 000 – 45 000 €", "costNet": "très variable" }
+    ],
+    "costBreakdown": {
+      "labels": ["Rénovation énergétique F→D", "Électricité", "Risque PPPT si revoté", "Pavés à solder si non payé"],
+      "values": [22500, 600, 430, 194],
+      "total": "≈ 23 724 €"
+    },
+    "riskMatrix": [
+      { "label": "DPE F / passoire", "likelihood": 1.0, "impact": 0.82, "severity": "élevé" },
+      { "label": "CREP positif classe 3", "likelihood": 1.0, "impact": 0.78, "severity": "élevé" },
+      { "label": "Amiante manquant", "likelihood": 1.0, "impact": 0.72, "severity": "élevé" },
+      { "label": "ERP expiré", "likelihood": 1.0, "impact": 0.45, "severity": "moyen" },
+      { "label": "Termites expiré", "likelihood": 1.0, "impact": 0.46, "severity": "moyen" },
+      { "label": "Électricité B4.3 j1", "likelihood": 0.9, "impact": 0.48, "severity": "moyen" },
+      { "label": "L.721-2 incomplet", "likelihood": 1.0, "impact": 0.68, "severity": "élevé" },
+      { "label": "PV 2026 / comptes à obtenir", "likelihood": 0.8, "impact": 0.55, "severity": "moyen" },
+      { "label": "Impayé SARL SINRAY", "likelihood": 0.8, "impact": 0.42, "severity": "moyen" }
+    ],
+    "negotiation": [
+      { "label": "Budget rénovation F→D", "value": 22500, "severity": "élevé" },
+      { "label": "Électricité B4.3 j1", "value": 600, "severity": "moyen" },
+      { "label": "Risque PPPT si revoté", "value": 430, "severity": "moyen" },
+      { "label": "Pavés à solder si non payé", "value": 194, "severity": "faible" },
+      { "label": "Fonds travaux non annoncé", "value": 61, "severity": "faible" }
+    ]
+  },
+  "sections": [
+    {
+      "id": "completude",
+      "num": "01",
+      "title": "Complétude du dossier",
+      "html": "<p>Bien analysé : <strong>appartement T2 en copropriété</strong>, 1er étage, 4 rue Philippe de Dangeau, 78000 Versailles. Immeuble ancien déclaré 1800 / avant 1949. Surface habitable 45,05 m² ; surface Loi Carrez 44,75 m². Lots vendeur : lot 11 appartement 95/1023 et lot 8 1/1023, soit 96/1023 pour de nombreux appels.</p><table><thead><tr><th>Document</th><th>Statut au 27/06/2026</th><th>Note acheteur</th></tr></thead><tbody><tr><td>DPE</td><td><strong>Fourni, valide</strong></td><td>Établi le 18/03/2024, valable jusqu'au 17/03/2034. Classe F 402 kWhEP/m²/an, GES C 13.</td></tr><tr><td>Audit énergétique réglementaire</td><td>Non applicable</td><td>Appartement en copropriété : pas d'audit obligatoire malgré le DPE F.</td></tr><tr><td>CREP / plomb</td><td><strong>Fourni, vigilance élevée</strong></td><td>Positif ; valable pour la vente jusqu'au 16/11/2026 si transaction avant un an. 4 unités classe 3.</td></tr><tr><td>Amiante avant vente</td><td><strong>Manquant</strong></td><td>Obligatoire pour immeuble/permis avant le 01/07/1997. Le DDT ne contient pas le rapport amiante réel.</td></tr><tr><td>Gaz</td><td>Non applicable à confirmer</td><td>Chauffage et eau chaude connus en électrique ; aucune preuve d'installation gaz dans les pièces lues.</td></tr><tr><td>Électricité</td><td><strong>Fourni</strong></td><td>Valide environ jusqu'au 17/11/2028 ; anomalie B4.3 j1.</td></tr><tr><td>Termites</td><td><strong>Fourni mais expiré</strong></td><td>Daté du 17/11/2025, validité 6 mois ; négatif mais expiré au 27/06/2026.</td></tr><tr><td>ERP</td><td><strong>Fourni mais expiré</strong></td><td>Daté du 17/11/2025, validité 6 mois ; pas de risque réglementé bâtiment, pas de PEB. Déclaration sinistres non complétée dans l'extrait.</td></tr><tr><td>ENSA / bruit</td><td>Non applicable</td><td>ERP : PEB non.</td></tr><tr><td>ANC</td><td>Non applicable si tout-à-l'égout confirmé</td><td>À confirmer par les pièces de propriété ou le notaire si besoin.</td></tr><tr><td>Loi Carrez</td><td><strong>Fourni</strong></td><td>44,75 m². Écart avec habitable 45,05 m² : 0,67 %, pas de levier Carrez.</td></tr><tr><td>PV d'AG 3 dernières années</td><td><strong>Partiel</strong></td><td>PV 2024 et PV 2025 fournis ; convocation 2026 fournie. Demander le PV définitif du 17/06/2026 dès disponible et le PV 2023.</td></tr><tr><td>Fiche synthétique copropriété</td><td><strong>Manquante</strong></td><td>Document L.721-2 à obtenir.</td></tr><tr><td>Règlement de copropriété, EDD, modificatifs</td><td><strong>Manquants</strong></td><td>Indispensables pour vérifier lots, tantièmes, destination, servitudes et parties communes.</td></tr><tr><td>Carnet d'entretien</td><td><strong>Manquant</strong></td><td>À demander au syndic.</td></tr><tr><td>DTG / PPT / PPPT</td><td>Non fourni / non adopté dans les pièces lues</td><td>DPE/PPT/DTG reportés en 2024 ; PPPT rejeté en 2025.</td></tr><tr><td>Charges et comptes</td><td><strong>Partiel</strong></td><td>Projet 2025 et annexes fournis. Comptes 2024 rejetés en 2025 et remis au vote 2026 : demander les comptes approuvés.</td></tr><tr><td>Fonds travaux</td><td><strong>Fourni</strong></td><td>Total 3 992,74 € au 31/12/2025 ; quote-part vendeur 374,74 € ; contribution T4 2025 : 15,89 €.</td></tr><tr><td>Impayés / dettes</td><td><strong>Partiel</strong></td><td>SARL SINRAY débiteur 1 368,20 € ; fournisseurs créditeurs 820,73 € ; factures non parvenues 147,60 €.</td></tr><tr><td>État daté</td><td><strong>Manquant</strong></td><td>À exiger avant signature pour cristalliser charges, avances, travaux et dettes.</td></tr><tr><td>Taxe foncière</td><td><strong>Manquante</strong></td><td>Aucun montant inventé ; demander l'avis vendeur.</td></tr><tr><td>Titre de propriété / servitudes</td><td><strong>Manquant</strong></td><td>À vérifier avec notaire, règlement et EDD.</td></tr></tbody></table><blockquote>Verdict complétude : dossier <strong>partiel</strong>. Avant offre ferme ou compromis, exiger au minimum le rapport amiante, ERP et termites à jour, les annexes L.721-2 manquantes, l'état daté, la taxe foncière et les pièces de propriété. Les annexes obligatoires manquantes repoussent la purge correcte du délai de rétractation.</blockquote>"
+    },
+    {
+      "id": "dpe",
+      "num": "02",
+      "title": "DPE — Diagnostic et amélioration",
+      "chart": "dpe",
+      "html": "<h3>État énergétique constaté</h3><table><thead><tr><th>Point DPE</th><th>Valeur</th></tr></thead><tbody><tr><td>Date et validité</td><td>18/03/2024 au 17/03/2034</td></tr><tr><td>Classe énergie</td><td><strong>F</strong> — 402 kWhEP/m²/an</td></tr><tr><td>GES</td><td>C — 13 kgCO₂/m²/an</td></tr><tr><td>Dépense énergie estimée</td><td>1 134 à 1 534 €/an, prix 2021</td></tr><tr><td>Chauffage</td><td>Convecteurs électriques NFC 1995</td></tr><tr><td>Eau chaude</td><td>Électrique, ballon 2022</td></tr><tr><td>Ventilation</td><td>Ouverture des fenêtres</td></tr></tbody></table><p>Le DPE est valide et opposable. Les points favorables sont le GES C, l'eau chaude récente, l'absence de toiture/plafond déperditif dans les éléments lus et l'absence d'audit énergétique obligatoire pour ce lot de copropriété.</p><h3>Déperditions et contraintes</h3><ul><li>Fenêtres et portes : 32 % des pertes ; menuiseries bois simple vitrage.</li><li>Ventilation : 21 % ; pas de VMC identifiée.</li><li>Murs : 20 % ; pierre/moellons sans isolation.</li><li>Plancher : 20 % ; non isolé.</li><li>Ponts thermiques : 7 %.</li></ul><h3>Scénarios indicatifs</h3><table><thead><tr><th>Objectif</th><th>Travaux typiques</th><th>Budget brut / net indicatif</th><th>Limites</th></tr></thead><tbody><tr><td>F → E</td><td>Isolation intérieure murs seule</td><td>DPE : 532 – 1 775 € ; référence ITI : 700 – 1 600 €</td><td>Très partiel, finition et contraintes probablement sous-estimées ; classe non garantie.</td></tr><tr><td>F → E/D confort</td><td>ITI, plancher, double vitrage bois, VMC simple</td><td>7 000 – 16 000 € avant CEE et aides locales</td><td>D non garanti sans simulation.</td></tr><tr><td>F → D plausible</td><td>ITI, plancher, double vitrage bois, VMC, PAC air/air si autorisée</td><td>11 000 – 34 000 € brut ; net très indicatif : bleu 3 000 – 9 000 €, jaune 5 000 – 15 000 €, violet 6 500 – 20 000 €, rose 10 000 – 30 000 €</td><td>Autorisation copropriété à vérifier, simulation/audit indispensable.</td></tr><tr><td>F → C ambitieux</td><td>Rénovation plus complète et cohérente</td><td>20 000 – 45 000 € brut</td><td>Net très variable ; faisabilité copropriété et patrimoniale à confirmer.</td></tr></tbody></table><blockquote>Le levier principal est la <strong>passoire F</strong> : pour un investisseur, l'interdiction de louer les logements F arrive en 2028. Le DPE propose un coût mur très faible, mais une trajectoire réaliste F → D se situe plutôt autour de <strong>11 000 à 34 000 € brut</strong>, avec un repère médian de 22 500 € utilisé dans les graphiques.</blockquote>"
+    },
+    {
+      "id": "copropriete",
+      "num": "03",
+      "title": "Copropriété — PV d'AG et finances",
+      "chart": "cost",
+      "html": "<h3>Charges et budgets</h3><table><thead><tr><th>Poste</th><th>Montant</th><th>Lecture</th></tr></thead><tbody><tr><td>Charges annoncées</td><td>1 272 €/an</td><td>Cohérent avec budget 2026 de 13 530 € × 96/1023 = 1 269,68 €/an.</td></tr><tr><td>Appel T4 2025</td><td>317,42 € charges + 15,89 € fonds travaux</td><td>Soit environ 333,31 € sur le trimestre.</td></tr><tr><td>Charges individuelles 2025</td><td>1 249,56 €</td><td>Provisions 1 269,68 €, crédit vendeur 20,12 € sur charges.</td></tr><tr><td>Appels annuels avec fonds travaux</td><td>≈ 1 333,24 €/an</td><td>Le montant d'annonce peut exclure environ 61 €/an de fonds travaux.</td></tr><tr><td>Budget 2027 proposé</td><td>14 255 €</td><td>Quote-part 1 337,71 €/an, soit +68 €/an vs 2026 ; fonds travaux proposé 66,88 €/an.</td></tr></tbody></table><h3>Trésorerie, fonds travaux, impayés</h3><ul><li>Trésorerie : 7 482,86 €.</li><li>Fonds travaux total : 3 992,74 € au 31/12/2025 ; quote-part vendeur : 374,74 €.</li><li>Avance trésorerie vendeur : 200,29 € ; compte vendeur créditeur : 353,41 €.</li><li>Débiteur SARL SINRAY : 1 368,20 €, soit environ 10,1 % du budget 2026.</li><li>Pas de lourde dette fournisseur visible dans les extraits : fournisseurs créditeurs 820,73 €, factures non parvenues 147,60 €.</li></ul><h3>Travaux et décisions AG</h3><table><thead><tr><th>Sujet</th><th>Montant</th><th>Quote-part vendeur estimée</th><th>État</th></tr></thead><tbody><tr><td>Pavés votés en 2025</td><td>1 747,75 € TTC + 317,77 € honoraires syndic = 2 065,52 €</td><td>≈ 193,83 € à 96/1023</td><td>Appelés 100 % au 01/11/2025 et financés avec fonds travaux ; vérifier dans l'état daté qu'il ne reste rien.</td></tr><tr><td>PPPT rejeté en 2025</td><td>3 480 € TTC + 1 107 € honoraires = 4 587 €</td><td>≈ 430,45 € si revoté</td><td>Risque futur modéré ; DPE/PPT/DTG déjà reportés en 2024.</td></tr><tr><td>PV 2026</td><td>Non lu comme PV définitif</td><td>À déterminer</td><td>Convocation fournie ; demander le PV définitif de l'AG du 17/06/2026 dès disponibilité.</td></tr></tbody></table><blockquote>Point positif : aucun gros travaux voté non appelé n'apparaît dans les pièces lues. Point à sécuriser : l'état daté doit confirmer que les pavés sont soldés, que les comptes 2024/2025 sont approuvés et qu'aucune décision 2026 ne change l'économie de l'achat.</blockquote>"
+    },
+    {
+      "id": "diagnostics",
+      "num": "04",
+      "title": "Diagnostics — Anomalies",
+      "chart": "risk",
+      "html": "<h3>Plomb / CREP</h3><p>Le CREP est positif : 55 unités diagnostiquées, dont 4 en classe 3 et 4 en classe 1. Les unités classe 3 concernent la cuisine mur D et garde-corps, le séjour garde-corps et la chambre 1 garde-corps.</p><blockquote>Le vendeur doit réaliser les travaux appropriés pour supprimer l'exposition au plomb. Le coût n'est pas chiffré dans les documents : demander un devis ou une séquestration, sans inventer de montant.</blockquote><h3>Électricité</h3><p>Le diagnostic électricité est fourni et valable environ jusqu'au 17/11/2028. Il mentionne l'anomalie <strong>B4.3 j1</strong> : le courant assigné de l'interrupteur différentiel protégeant des circuits n'est pas adapté. Correction typique : installer un différentiel 63 A.</p><ul><li>Coût indicatif si correction simple : 200 à 600 €.</li><li>Si reprise plus large du tableau : 1 000 à 2 500 €.</li><li>Plusieurs points n'ont pas été vérifiés, notamment terre en parties communes et tableau non démontable.</li></ul><h3>Diagnostics manquants ou expirés</h3><ul><li><strong>Amiante</strong> : rapport manquant alors qu'il est obligatoire pour un immeuble/permis antérieur au 01/07/1997.</li><li><strong>Termites</strong> : diagnostic négatif mais expiré au 27/06/2026.</li><li><strong>ERP</strong> : expiré ; déclaration de sinistres non complétée dans l'extrait.</li><li><strong>Assurance diagnostiqueur</strong> : incohérence à clarifier, certaines pages indiquent une validité jusqu'au 30/09/2024 alors qu'une attestation jointe indique 01/10/2025–30/09/2026.</li></ul><blockquote>La régularisation du DDT est une condition préalable : amiante à obtenir, ERP et termites à refaire, et clarification d'assurance à demander au diagnostiqueur ou au notaire.</blockquote>"
+    },
+    {
+      "id": "couts-recurrents",
+      "num": "05",
+      "title": "Coûts récurrents et prix",
+      "html": "<table><thead><tr><th>Poste</th><th>Montant / valeur</th><th>Commentaire</th></tr></thead><tbody><tr><td>Prix affiché HAI</td><td>300 000 €</td><td>Honoraires acquéreur 10 000 € ; net vendeur 290 000 €.</td></tr><tr><td>Prix au m² HAI</td><td>≈ 6 704 €/m² Carrez</td><td>300 000 € / 44,75 m².</td></tr><tr><td>Prix au m² net vendeur</td><td>≈ 6 480 €/m² Carrez</td><td>290 000 € / 44,75 m².</td></tr><tr><td>Charges courantes annoncées</td><td>1 272 €/an</td><td>Cohérent avec le budget 2026 ; probablement hors fonds travaux.</td></tr><tr><td>Charges avec fonds travaux observées</td><td>≈ 1 333 €/an</td><td>Écart modéré d'environ 61 €/an.</td></tr><tr><td>Budget 2027 proposé</td><td>≈ 1 338 €/an hors fonds travaux</td><td>Hausse d'environ 68 €/an vs 2026.</td></tr><tr><td>Énergie DPE</td><td>1 134 – 1 534 €/an</td><td>Estimation prix 2021, à actualiser selon usage et tarifs.</td></tr><tr><td>Taxe foncière</td><td>Manquante</td><td>Demander l'avis ; ne pas chiffrer sans pièce.</td></tr></tbody></table><blockquote>Le niveau de charges annoncé est globalement cohérent, mais il faut intégrer le fonds travaux et obtenir la taxe foncière. Le vrai coût de portage dépendra surtout de la stratégie DPE F.</blockquote>"
+    },
+    {
+      "id": "negociation",
+      "num": "06",
+      "title": "Leviers de négociation",
+      "chart": "negotiation",
+      "html": "<p>Les leviers chiffrés ne doivent pas être additionnés comme un devis certain. Le bon cadrage est : <strong>≈ 13 000 à 43 000 €</strong> de leviers chiffrés selon l'ambition énergétique, plus plomb/amiante à chiffrer par devis. Le graphique utilise un repère médian prudent de 23 785 € pour hiérarchiser les sujets.</p><ol><li><strong>DPE F et trajectoire F → D</strong> — base : 11 000 à 34 000 € brut, repère médian 22 500 €. Arguments : passoire F, location F interdite à partir de 2028 pour investisseurs, simple vitrage, ventilation par ouverture, murs et plancher non isolés.</li><li><strong>Plomb classe 3</strong> — base : devis ou séquestre à exiger. 4 unités classe 3 ; le vendeur doit supprimer l'exposition. Impact potentiellement significatif mais non chiffrable sans entreprise.</li><li><strong>DDT et annexes obligatoires incomplets</strong> — base : amiante manquant, ERP/termites expirés, L.721-2 incomplet, état daté absent, taxe foncière et titre manquants. Levier procédural fort : condition suspensive, retenue, ou baisse si les pièces révèlent des risques.</li><li><strong>Électricité</strong> — base : 200 à 600 € si correction simple, jusqu'à 1 000 à 2 500 € si tableau à reprendre ; repère 600 €.</li><li><strong>Risque PPPT futur</strong> — base : environ 430 € de quote-part si la mission rejetée en 2025 était revotée.</li><li><strong>Pavés 2025</strong> — base : environ 194 € de quote-part ; plutôt à vérifier dans l'état daté qu'à transformer en gros rabais si déjà payé.</li><li><strong>Fonds travaux non annoncé</strong> — base : environ 61 €/an d'écart entre charges annoncées et appels avec fonds travaux.</li></ol><blockquote>Stratégie : formuler une offre qui isole le DPE F comme levier économique principal, puis demander une régularisation documentaire avant compromis. Pour le plomb, préférer un <strong>devis vendeur ou séquestre notarial</strong> plutôt qu'un chiffre inventé.</blockquote>"
+    },
+    {
+      "id": "synthese",
+      "num": "07",
+      "title": "Synthèse et recommandation",
+      "html": "<h3>Ce qui rassure</h3><ul><li>DPE fourni, valide et cohérent avec les systèmes observés.</li><li>GES C malgré la classe énergie F.</li><li>Charges annoncées cohérentes avec le budget 2026.</li><li>Trésorerie de copropriété et fonds travaux existants.</li><li>Pas de gros travaux votés non appelés visibles dans les pièces lues.</li><li>Surface Carrez cohérente avec l'habitable : pas de levier de surface.</li></ul><h3>Ce qui bloque une décision propre</h3><ul><li>DPE F avec travaux réalistes plus élevés que la recommandation mur seule du DPE.</li><li>CREP positif avec 4 unités classe 3.</li><li>Amiante manquant alors que l'immeuble est ancien.</li><li>ERP et termites expirés au 27/06/2026.</li><li>Annexes copropriété L.721-2 incomplètes : fiche synthétique, règlement/EDD/modificatifs, carnet d'entretien, PV 2023, PV définitif 2026, comptes approuvés, état daté.</li><li>Taxe foncière, titre et servitudes non fournis.</li></ul><blockquote>Recommandation : ne pas traiter le dossier comme complet. Continuer l'étude et négocier, mais conditionner toute signature à la remise des pièces manquantes, à la mise à jour ERP/termites, au rapport amiante et à une solution écrite pour le plomb classe 3. Offre défendable : intégrer un levier économique autour de 24 000 € hors plomb/amiante, avec fourchette argumentaire 13 000–43 000 €.</blockquote>"
+    }
+  ],
+  "reliability": {
+    "num": "08",
+    "title": "Cohérence des documents",
+    "score": "moyenne",
+    "summary": "Plusieurs chiffres se recoupent correctement, mais la fiabilité globale reste moyenne car des documents obligatoires sont absents ou expirés.",
+    "checks": [
+      { "claim": "DPE", "listingValue": "Classe F 402 kWhEP/m²/an", "verified": "DPE du 18/03/2024 valable jusqu'au 17/03/2034", "source": "DPE fourni", "status": "confirmed", "note": "DPE valide et opposable ; pas d'audit réglementaire obligatoire pour cet appartement en copropriété." },
+      { "claim": "Audit énergétique", "listingValue": "Non fourni", "verified": "Non applicable à un lot d'appartement en copropriété", "source": "Règle audit vente passoires", "status": "confirmed", "note": "Pas un manque bloquant malgré la classe F." },
+      { "claim": "Charges annoncées", "listingValue": "1 272 €/an", "verified": "Budget 2026 13 530 € × 96/1023 = 1 269,68 €/an", "source": "Annexes copropriété / appels", "status": "consistent", "note": "Annonce cohérente, probablement hors fonds travaux." },
+      { "claim": "Surface", "listingValue": "45,05 m² habitables", "verified": "44,75 m² Loi Carrez", "source": "Métrage fourni", "status": "consistent", "note": "Écart de 0,67 %, pas de levier Carrez." },
+      { "claim": "Amiante avant vente", "listingValue": "Immeuble ancien 1800 / avant 1949", "verified": "Rapport amiante absent du DDT transmis", "source": "Obligation immeuble permis avant 01/07/1997", "status": "mismatch", "note": "Document obligatoire manquant à obtenir avant compromis." },
+      { "claim": "Termites", "listingValue": "Diagnostic négatif du 17/11/2025", "verified": "Validité 6 mois expirée au 27/06/2026", "source": "DDT transmis", "status": "mismatch", "note": "À refaire pour la vente." },
+      { "claim": "ERP", "listingValue": "ERP du 17/11/2025", "verified": "Validité 6 mois expirée au 27/06/2026 ; déclaration sinistres non complétée dans l'extrait", "source": "ERP transmis", "status": "mismatch", "note": "À refaire et compléter." },
+      { "claim": "CREP / plomb", "listingValue": "CREP positif", "verified": "4 unités classe 3 et 4 classe 1", "source": "CREP fourni", "status": "confirmed", "note": "Vigilance élevée ; devis ou travaux vendeur à demander." },
+      { "claim": "Électricité", "listingValue": "Diagnostic fourni", "verified": "Anomalie B4.3 j1 et points non vérifiés", "source": "Diagnostic électricité", "status": "confirmed", "note": "Validité encore courante, mais correction à budgéter." },
+      { "claim": "PV d'AG 3 ans", "listingValue": "PV 2024 et 2025 fournis, convocation 2026 fournie", "verified": "PV 2023 absent et PV définitif 17/06/2026 à demander", "source": "Exigence L.721-2", "status": "mismatch", "note": "Dossier copropriété incomplet." },
+      { "claim": "Fiche synthétique / règlement / EDD / carnet", "listingValue": "Non transmis", "verified": "Documents L.721-2 requis pour la vente d'un lot de copropriété", "source": "Dossier transmis", "status": "mismatch", "note": "À réclamer au vendeur ou au syndic." },
+      { "claim": "État daté", "listingValue": "Non fourni", "verified": "Passif, avances, charges et travaux non cristallisés", "source": "Notaire / syndic", "status": "unverified", "note": "Indispensable avant acte et utile avant décision finale." },
+      { "claim": "Taxe foncière", "listingValue": "Non fournie", "verified": "Montant non vérifiable", "source": "Avis vendeur attendu", "status": "unverified", "note": "Ne pas intégrer de montant inventé dans le budget." },
+      { "claim": "Assurance diagnostiqueur", "listingValue": "Mentions contradictoires", "verified": "Pages avec échéance 30/09/2024 et attestation 01/10/2025–30/09/2026", "source": "DDT transmis", "status": "unverified", "note": "Demander clarification ou attestation à jour." }
+    ]
+  }
+}

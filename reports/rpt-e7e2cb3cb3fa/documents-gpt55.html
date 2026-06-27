@@ -106,6 +106,13 @@ tailwind.config = {
 </head>
 
 <body class="bg-cream font-sans text-body">
+<div class="no-print bg-leafsoft border-b border-line">
+  <div class="max-w-6xl mx-auto px-5 py-3 flex flex-wrap items-center justify-between gap-3 text-sm">
+    <a href="index.html" class="font-bold text-leafdeep hover:underline">← Retour au rapport annonce</a>
+    <a href="renovation-plan-t3.html" class="font-bold text-leafdeep hover:underline">Voir le plan rénovation T3 ↗</a>
+  </div>
+</div>
+
 
 <!-- ───────── top bar ───────── -->
 <header class="no-print sticky top-0 z-50 backdrop-blur-md bg-cream/85 border-b border-line">
@@ -119,7 +126,7 @@ tailwind.config = {
       </span>
       <span class="leading-none">
         <span class="block font-serif font-bold text-[15px] tracking-tight text-ink">immo<span class="text-leaf">·</span>evals</span>
-        <span class="block text-[10px] font-semibold uppercase tracking-[.18em] text-mute mt-0.5">Rapport d'évaluation</span>
+        <span class="block text-[10px] font-semibold uppercase tracking-[.18em] text-mute mt-0.5">Analyse des documents</span>
       </span>
     </a>
     <div class="flex items-center gap-1.5">
@@ -169,17 +176,17 @@ tailwind.config = {
         <!-- KPIs -->
         <div class="col-span-12 md:col-span-9 grid grid-cols-2 sm:grid-cols-4 gap-y-5">
           <div class="px-0 sm:px-5 sm:border-r sm:border-line">
-            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Prix</div>
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Complétude</div>
             <div id="kpiPrice" class="font-serif font-bold text-[1.55rem] leading-none text-ink tabular-nums" style="font-variation-settings:'opsz' 60;">—</div>
             <div id="kpiPriceSub" class="text-[11px] text-mute mt-1 tabular-nums"></div>
           </div>
           <div class="px-0 sm:px-5 sm:border-r sm:border-line">
-            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Prix au m²</div>
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Levier total</div>
             <div id="kpiPm2" class="font-serif font-bold text-[1.55rem] leading-none text-ink tabular-nums" style="font-variation-settings:'opsz' 60;">—</div>
             <div id="kpiEcart" class="text-[11px] text-mute mt-1 flex items-center gap-1.5"></div>
           </div>
           <div class="px-0 sm:px-5 sm:border-r sm:border-line">
-            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Surface</div>
+            <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-1.5">Points d'attention</div>
             <div id="kpiSurface" class="font-serif font-bold text-[1.55rem] leading-none text-ink tabular-nums" style="font-variation-settings:'opsz' 60;">—</div>
             <div id="kpiType" class="text-[11px] text-mute mt-1"></div>
           </div>
@@ -191,35 +198,6 @@ tailwind.config = {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <!-- ───────── linked follow-up reports ───────── -->
-  <section id="linked-reports" class="bg-paper border border-line rounded-2xl shadow-card overflow-hidden mb-5 break-avoid">
-    <div class="p-6 sm:p-7">
-      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-        <div>
-          <div class="text-[10px] font-bold uppercase tracking-[.18em] text-leafdeep mb-1">Rapports liés à cette annonce</div>
-          <h2 class="font-serif font-bold text-ink text-2xl leading-tight">Dossier post-visite & plan travaux</h2>
-        </div>
-        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-leafsoft border border-line text-xs font-bold text-leafdeep">4 rue Philippe de Dangeau</span>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <a href="documents-gpt55.html" class="block rounded-xl border border-line bg-cream p-5 hover:border-leaf hover:shadow-card transition">
-          <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-2">Analyse documents · GPT-5.5</div>
-          <div class="font-serif font-bold text-xl text-ink mb-2">Diagnostics, DPE, PV d'AG, leviers de négociation</div>
-          <p class="text-sm text-body leading-relaxed">Complétude du dossier, DPE F, plomb, amiante manquant, ERP/termites expirés, copropriété et points à exiger avant compromis.</p>
-          <div class="mt-3 text-sm font-bold text-leafdeep">Ouvrir le rapport documents ↗</div>
-        </a>
-        <a href="renovation-plan-t3.html" class="block rounded-xl border border-line bg-cream p-5 hover:border-leaf hover:shadow-card transition">
-          <div class="text-[10px] font-bold uppercase tracking-[.16em] text-mute mb-2">Plan rénovation · T2 → T3</div>
-          <div class="font-serif font-bold text-xl text-ink mb-2">Fenêtres, murs, sol, redistribution en 2 chambres</div>
-          <p class="text-sm text-body leading-relaxed">Programme travaux, budgets 2026 sourcés, planning, risques copro/Versailles, et simulation schématique après travaux.</p>
-          <div class="mt-3 text-sm font-bold text-leafdeep">Ouvrir le plan travaux ↗</div>
-        </a>
       </div>
     </div>
   </section>
@@ -251,268 +229,325 @@ tailwind.config = {
      Omit any field that is unavailable (do not invent values). -->
 <script type="application/json" id="report-data">
 {
-  "title": "Appartement 2 pièces 45 m² — Versailles (Notre-Dame / Montbauron)",
-  "date": "2026-06-17",
-  "url": "https://www.bienici.com/annonce/vente/versailles/appartement/2pieces/immo-facile-60595654",
-  "photos": [
-    "https://file.bienici.com/photo/immo-facile-60595654_media.immo-facile.com_office20_agenceromy_040923_catalog_images_pr_p_6_0_5_9_5_6_5_4_60595654a.jpg_DATEMAJ_11_05_2026-10_16_32?width=600&height=370&fit=cover",
-    "https://file.bienici.com/photo/immo-facile-60595654_media.immo-facile.com_office20_agenceromy_040923_catalog_images_pr_p_6_0_5_9_5_6_5_4_60595654b.jpg_DATEMAJ_11_05_2026-10_16_33?width=600&height=370&fit=cover",
-    "https://file.bienici.com/photo/immo-facile-60595654_media.immo-facile.com_office20_agenceromy_040923_catalog_images_pr_p_6_0_5_9_5_6_5_4_60595654c.jpg_DATEMAJ_11_05_2026-10_16_33?width=600&height=370&fit=cover",
-    "https://file.bienici.com/photo/immo-facile-60595654_media.immo-facile.com_office20_agenceromy_040923_catalog_images_pr_p_6_0_5_9_5_6_5_4_60595654d.jpg_DATEMAJ_11_05_2026-10_16_33?width=600&height=370&fit=cover",
-    "https://file.bienici.com/photo/immo-facile-60595654_media.immo-facile.com_office20_agenceromy_040923_catalog_images_pr_p_6_0_5_9_5_6_5_4_60595654e.jpg_DATEMAJ_11_05_2026-10_16_33?width=600&height=370&fit=cover"
-  ],
+  "title": "Dossier de vente — Appartement T2, Versailles (4 rue Philippe de Dangeau)",
+  "date": "2026-06-27",
   "verdict": {
-    "label": "Au prix du marché — attention au DPE F",
+    "label": "Dossier partiel — points bloquants à lever",
     "tone": "warn"
   },
-  "summary": "Bel appartement traversant de 45 m² dans le quartier Montbauron à Versailles, à 10 min à pied des trois gares. Le prix de 300 000 € FAI est dans la fourchette basse du marché pour ce quartier, mais le DPE F (passoire thermique) nécessite des travaux de rénovation énergétique estimés entre 30 000 et 70 000 €. L'emplacement est idéal avec toutes les commodités à pied.",
+  "summary": "Le dossier transmis permet une première analyse, mais il reste partiel : amiante manquant, ERP et termites expirés, documents copropriété L.721-2 incomplets, état daté, taxe foncière et titre non fournis. Les éléments positifs sont réels : DPE valide, charges cohérentes avec le budget 2026, pas de gros travaux non appelés visibles, trésorerie et fonds travaux présents. Les leviers chiffrés représentent environ 13 000 à 43 000 € selon l'ambition énergétique, avec un repère de négociation autour de 24 000 € hors devis plomb/amiante.",
   "score": {
-    "value": 6.0,
-    "note": "Emplacement excellent, prix correct, mais DPE F préoccupant"
+    "value": 5.1,
+    "note": "Achetable seulement après régularisation du dossier"
   },
   "kpi": {
-    "price": "300 000 €",
-    "priceSub": "Frais d'agence inclus (290 000 € net)",
-    "pricem2": "6 437 €/m²",
-    "ecart": "-0.8%",
-    "ecartTone": "down",
-    "ecartLabel": "vs médiane DVF Versailles",
-    "surface": "45 m²",
-    "type": "2 pièces · 1 chambre",
+    "price": "6 / 16",
+    "priceSub": "fournis et valides",
+    "pricem2": "≈ 24 000 €",
+    "ecart": "10 à lever",
+    "ecartTone": "up",
+    "ecartLabel": "manquants, expirés ou partiels",
+    "surface": "10",
+    "type": "dont 5 élevés",
     "dpe": "F",
-    "dpeSub": "402 kWh/m²·an"
+    "dpeSub": "402 kWhEP/m²·an"
   },
   "charts": {
-    "priceBars": {
-      "labels": [
-        "Ce bien (net)",
-        "Médiane DVF Versailles",
-        "Notre-Dame (quartier)",
-        "Estimation marché"
-      ],
-      "values": [
-        6444,
-        6498,
-        7093,
-        6530
-      ],
-      "unit": "€/m²"
-    },
-    "priceTrend": {
-      "years": [
-        "2021",
-        "2022",
-        "2023",
-        "2024",
-        "2025",
-        "2026"
-      ],
-      "values": [
-        5700,
-        6000,
-        6300,
-        6600,
-        6498,
-        6623
-      ],
-      "unit": "€/m²",
-      "commune": "Versailles"
-    },
-    "communeRadar": {
-      "axes": [
-        "Services",
-        "Transports",
-        "Emploi",
-        "Environnement",
-        "Écoles",
-        "Sécurité"
-      ],
-      "values": [
-        9.0,
-        9.0,
-        7.0,
-        8.5,
-        9.5,
-        7.5
-      ]
-    },
-    "riskMatrix": [
+    "dpeScenarios": [
       {
-        "label": "DPE F (passoire)",
-        "likelihood": 1.0,
-        "impact": 0.9,
-        "severity": "élevé"
+        "label": "Actuel (F)",
+        "letter": "F",
+        "conso": 402
       },
       {
-        "label": "Bâti 1800 (plomb/amiante)",
-        "likelihood": 0.7,
-        "impact": 0.6,
-        "severity": "élevé"
+        "label": "F → E",
+        "letter": "E",
+        "cost": "532 – 1 775 € DPE ; 700 – 1 600 € référence ITI",
+        "costNet": "non garanti ; aides par geste limitées"
       },
       {
-        "label": "Pas de surface Carrez",
-        "likelihood": 0.6,
-        "impact": 0.5,
-        "severity": "moyen"
+        "label": "F → E/D confort",
+        "letter": "D",
+        "cost": "7 000 – 16 000 €",
+        "costNet": "avant CEE/aides locales"
       },
       {
-        "label": "Charges élevées",
-        "likelihood": 0.7,
-        "impact": 0.3,
-        "severity": "moyen"
+        "label": "F → D plausible",
+        "letter": "D",
+        "cost": "11 000 – 34 000 €",
+        "costNet": "≈ 3 000 – 30 000 € selon revenus"
       },
       {
-        "label": "Pas de parking",
-        "likelihood": 0.8,
-        "impact": 0.3,
-        "severity": "faible"
-      },
-      {
-        "label": "ICPE VERSEO (proximité)",
-        "likelihood": 0.4,
-        "impact": 0.2,
-        "severity": "faible"
+        "label": "F → C ambitieux",
+        "letter": "C",
+        "cost": "20 000 – 45 000 €",
+        "costNet": "très variable"
       }
     ],
     "costBreakdown": {
       "labels": [
-        "Prix du bien (net)",
-        "Frais de notaire (est.)",
-        "Travaux rénovation énergétique",
-        "Frais d'agence"
+        "Rénovation énergétique F→D",
+        "Électricité",
+        "Risque PPPT si revoté",
+        "Pavés à solder si non payé"
       ],
       "values": [
-        290000,
-        26000,
-        50000,
-        10000
+        22500,
+        600,
+        430,
+        194
       ],
-      "total": "376 000 €"
-    }
+      "total": "≈ 23 724 €"
+    },
+    "riskMatrix": [
+      {
+        "label": "DPE F / passoire",
+        "likelihood": 1.0,
+        "impact": 0.82,
+        "severity": "élevé"
+      },
+      {
+        "label": "CREP positif classe 3",
+        "likelihood": 1.0,
+        "impact": 0.78,
+        "severity": "élevé"
+      },
+      {
+        "label": "Amiante manquant",
+        "likelihood": 1.0,
+        "impact": 0.72,
+        "severity": "élevé"
+      },
+      {
+        "label": "ERP expiré",
+        "likelihood": 1.0,
+        "impact": 0.45,
+        "severity": "moyen"
+      },
+      {
+        "label": "Termites expiré",
+        "likelihood": 1.0,
+        "impact": 0.46,
+        "severity": "moyen"
+      },
+      {
+        "label": "Électricité B4.3 j1",
+        "likelihood": 0.9,
+        "impact": 0.48,
+        "severity": "moyen"
+      },
+      {
+        "label": "L.721-2 incomplet",
+        "likelihood": 1.0,
+        "impact": 0.68,
+        "severity": "élevé"
+      },
+      {
+        "label": "PV 2026 / comptes à obtenir",
+        "likelihood": 0.8,
+        "impact": 0.55,
+        "severity": "moyen"
+      },
+      {
+        "label": "Impayé SARL SINRAY",
+        "likelihood": 0.8,
+        "impact": 0.42,
+        "severity": "moyen"
+      }
+    ],
+    "negotiation": [
+      {
+        "label": "Budget rénovation F→D",
+        "value": 22500,
+        "severity": "élevé"
+      },
+      {
+        "label": "Électricité B4.3 j1",
+        "value": 600,
+        "severity": "moyen"
+      },
+      {
+        "label": "Risque PPPT si revoté",
+        "value": 430,
+        "severity": "moyen"
+      },
+      {
+        "label": "Pavés à solder si non payé",
+        "value": 194,
+        "severity": "faible"
+      },
+      {
+        "label": "Fonds travaux non annoncé",
+        "value": 61,
+        "severity": "faible"
+      }
+    ]
   },
   "sections": [
     {
-      "id": "le-bien",
+      "id": "completude",
       "num": "01",
-      "title": "Le Bien — Fiche technique",
-      "html": "\u003ctable>\u003cthead>\u003ctr>\u003cth>Caractéristique\u003c/th>\u003cth>Valeur\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>Type\u003c/td>\u003ctd>Appartement 2 pièces\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Surface\u003c/td>\u003ctd>45 m² (45,05 m² exact)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Pièces\u003c/td>\u003ctd>2 pièces, 1 chambre\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Étage\u003c/td>\u003ctd>1er sur 2 (sans ascenseur)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Année de construction\u003c/td>\u003ctd>1800\u003c/td>\u003c/tr>\u003ctr>\u003ctd>DPE / GES\u003c/td>\u003ctd>F / C — 402 kWh/m²·an / 13 kgCO₂/m²·an\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Chauffage\u003c/td>\u003ctd>Électrique individuel\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Charges copropriété\u003c/td>\u003ctd>1 272 €/an (18 lots)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Cave\u003c/td>\u003ctd>Oui\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Parking\u003c/td>\u003ctd>Non mentionné\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Orientation\u003c/td>\u003ctd>Traversant\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Agence\u003c/td>\u003ctd>ROMY (immo-facile) — mandat exclusif\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Réf. annonce\u003c/td>\u003ctd>4309\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003ch3>Observations sur les photos\u003c/h3>\u003cp>L'annonce propose 5 photos et une visite vidéo. L'appartement semble en bon état général, avec une belle hauteur sous plafond typique de l'ancien. La cuisine est équipée avec rangements, le séjour est lumineux. Les photos ne montrent pas de signes visibles d'humidité ou de dégradation majeure. La salle de bains paraît fonctionnelle. Attention : l'absence de photo de la cave ne permet pas d'évaluer son état.\u003c/p>"
+      "title": "Complétude du dossier",
+      "html": "\u003cp>Bien analysé : \u003cstrong>appartement T2 en copropriété\u003c/strong>, 1er étage, 4 rue Philippe de Dangeau, 78000 Versailles. Immeuble ancien déclaré 1800 / avant 1949. Surface habitable 45,05 m² ; surface Loi Carrez 44,75 m². Lots vendeur : lot 11 appartement 95/1023 et lot 8 1/1023, soit 96/1023 pour de nombreux appels.\u003c/p>\u003ctable>\u003cthead>\u003ctr>\u003cth>Document\u003c/th>\u003cth>Statut au 27/06/2026\u003c/th>\u003cth>Note acheteur\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>DPE\u003c/td>\u003ctd>\u003cstrong>Fourni, valide\u003c/strong>\u003c/td>\u003ctd>Établi le 18/03/2024, valable jusqu'au 17/03/2034. Classe F 402 kWhEP/m²/an, GES C 13.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Audit énergétique réglementaire\u003c/td>\u003ctd>Non applicable\u003c/td>\u003ctd>Appartement en copropriété : pas d'audit obligatoire malgré le DPE F.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>CREP / plomb\u003c/td>\u003ctd>\u003cstrong>Fourni, vigilance élevée\u003c/strong>\u003c/td>\u003ctd>Positif ; valable pour la vente jusqu'au 16/11/2026 si transaction avant un an. 4 unités classe 3.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Amiante avant vente\u003c/td>\u003ctd>\u003cstrong>Manquant\u003c/strong>\u003c/td>\u003ctd>Obligatoire pour immeuble/permis avant le 01/07/1997. Le DDT ne contient pas le rapport amiante réel.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Gaz\u003c/td>\u003ctd>Non applicable à confirmer\u003c/td>\u003ctd>Chauffage et eau chaude connus en électrique ; aucune preuve d'installation gaz dans les pièces lues.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Électricité\u003c/td>\u003ctd>\u003cstrong>Fourni\u003c/strong>\u003c/td>\u003ctd>Valide environ jusqu'au 17/11/2028 ; anomalie B4.3 j1.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Termites\u003c/td>\u003ctd>\u003cstrong>Fourni mais expiré\u003c/strong>\u003c/td>\u003ctd>Daté du 17/11/2025, validité 6 mois ; négatif mais expiré au 27/06/2026.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>ERP\u003c/td>\u003ctd>\u003cstrong>Fourni mais expiré\u003c/strong>\u003c/td>\u003ctd>Daté du 17/11/2025, validité 6 mois ; pas de risque réglementé bâtiment, pas de PEB. Déclaration sinistres non complétée dans l'extrait.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>ENSA / bruit\u003c/td>\u003ctd>Non applicable\u003c/td>\u003ctd>ERP : PEB non.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>ANC\u003c/td>\u003ctd>Non applicable si tout-à-l'égout confirmé\u003c/td>\u003ctd>À confirmer par les pièces de propriété ou le notaire si besoin.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Loi Carrez\u003c/td>\u003ctd>\u003cstrong>Fourni\u003c/strong>\u003c/td>\u003ctd>44,75 m². Écart avec habitable 45,05 m² : 0,67 %, pas de levier Carrez.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>PV d'AG 3 dernières années\u003c/td>\u003ctd>\u003cstrong>Partiel\u003c/strong>\u003c/td>\u003ctd>PV 2024 et PV 2025 fournis ; convocation 2026 fournie. Demander le PV définitif du 17/06/2026 dès disponible et le PV 2023.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Fiche synthétique copropriété\u003c/td>\u003ctd>\u003cstrong>Manquante\u003c/strong>\u003c/td>\u003ctd>Document L.721-2 à obtenir.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Règlement de copropriété, EDD, modificatifs\u003c/td>\u003ctd>\u003cstrong>Manquants\u003c/strong>\u003c/td>\u003ctd>Indispensables pour vérifier lots, tantièmes, destination, servitudes et parties communes.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Carnet d'entretien\u003c/td>\u003ctd>\u003cstrong>Manquant\u003c/strong>\u003c/td>\u003ctd>À demander au syndic.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>DTG / PPT / PPPT\u003c/td>\u003ctd>Non fourni / non adopté dans les pièces lues\u003c/td>\u003ctd>DPE/PPT/DTG reportés en 2024 ; PPPT rejeté en 2025.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Charges et comptes\u003c/td>\u003ctd>\u003cstrong>Partiel\u003c/strong>\u003c/td>\u003ctd>Projet 2025 et annexes fournis. Comptes 2024 rejetés en 2025 et remis au vote 2026 : demander les comptes approuvés.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Fonds travaux\u003c/td>\u003ctd>\u003cstrong>Fourni\u003c/strong>\u003c/td>\u003ctd>Total 3 992,74 € au 31/12/2025 ; quote-part vendeur 374,74 € ; contribution T4 2025 : 15,89 €.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Impayés / dettes\u003c/td>\u003ctd>\u003cstrong>Partiel\u003c/strong>\u003c/td>\u003ctd>SARL SINRAY débiteur 1 368,20 € ; fournisseurs créditeurs 820,73 € ; factures non parvenues 147,60 €.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>État daté\u003c/td>\u003ctd>\u003cstrong>Manquant\u003c/strong>\u003c/td>\u003ctd>À exiger avant signature pour cristalliser charges, avances, travaux et dettes.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Taxe foncière\u003c/td>\u003ctd>\u003cstrong>Manquante\u003c/strong>\u003c/td>\u003ctd>Aucun montant inventé ; demander l'avis vendeur.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Titre de propriété / servitudes\u003c/td>\u003ctd>\u003cstrong>Manquant\u003c/strong>\u003c/td>\u003ctd>À vérifier avec notaire, règlement et EDD.\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003cblockquote>Verdict complétude : dossier \u003cstrong>partiel\u003c/strong>. Avant offre ferme ou compromis, exiger au minimum le rapport amiante, ERP et termites à jour, les annexes L.721-2 manquantes, l'état daté, la taxe foncière et les pièces de propriété. Les annexes obligatoires manquantes repoussent la purge correcte du délai de rétractation.\u003c/blockquote>"
     },
     {
-      "id": "analyse-prix",
+      "id": "dpe",
       "num": "02",
-      "title": "Analyse du prix",
-      "chart": "price",
-      "html": "\u003ch3>Comparaison avec le marché\u003c/h3>\u003ctable>\u003cthead>\u003ctr>\u003cth>Indicateur\u003c/th>\u003cth>Valeur\u003c/th>\u003cth>Source\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>Prix FAI\u003c/td>\u003ctd>300 000 €\u003c/td>\u003ctd>Annonce\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Prix net vendeur\u003c/td>\u003ctd>290 000 €\u003c/td>\u003ctd>Annonce (hors 3,45% honoraires)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Prix/m² net\u003c/td>\u003ctd>6 444 €/m²\u003c/td>\u003ctd>Calcul\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Médiane DVF Versailles (appart.)\u003c/td>\u003ctd>6 498 €/m²\u003c/td>\u003ctd>DVF 2025 (immo-dvf.fr)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Médiane quartier Notre-Dame\u003c/td>\u003ctd>7 093 €/m²\u003c/td>\u003ctd>Le Figaro Immobilier\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Estimation marché\u003c/td>\u003ctd>~6 530 €/m²\u003c/td>\u003ctd>Efficity\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003ch3>Transactions comparables récentes\u003c/h3>\u003ctable>\u003cthead>\u003ctr>\u003cth>Adresse\u003c/th>\u003cth>Date\u003c/th>\u003cth>Surface\u003c/th>\u003cth>Prix\u003c/th>\u003cth>Prix/m²\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>Rue des Chantiers\u003c/td>\u003ctd>06/2024\u003c/td>\u003ctd>43 m²\u003c/td>\u003ctd>275 000 €\u003c/td>\u003ctd>6 395 €/m²\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Av. de Sceaux\u003c/td>\u003ctd>11/2024\u003c/td>\u003ctd>51 m²\u003c/td>\u003ctd>330 000 €\u003c/td>\u003ctd>6 471 €/m²\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Rue St-Lazare\u003c/td>\u003ctd>12/2024\u003c/td>\u003ctd>29 m²\u003c/td>\u003ctd>190 000 €\u003c/td>\u003ctd>6 552 €/m²\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Rue Général Pershing\u003c/td>\u003ctd>06/2025\u003c/td>\u003ctd>71 m²\u003c/td>\u003ctd>427 000 €\u003c/td>\u003ctd>6 014 €/m²\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003cp>Le prix net vendeur (6 444 €/m²) est très légèrement sous la médiane DVF de Versailles (-0,8%) et nettement sous la moyenne du quartier Notre-Dame (-9,1%). Cela s'explique par le sous-secteur Montbauron (médiane DVF ~6 481 €/m² selon ma-rentabilite.fr) et par le DPE F qui justifie une décote.\u003c/p>\u003cblockquote>\u003cstrong>Estimation juste valeur : 275 000 € – 305 000 €\u003c/strong> (6 111 – 6 778 €/m²). Le prix de 290 000 € net vendeur est dans la fourchette. Négociation possible de -3% à -5% compte tenu du DPE F.\u003c/blockquote>"
+      "title": "DPE — Diagnostic et amélioration",
+      "chart": "dpe",
+      "html": "\u003ch3>État énergétique constaté\u003c/h3>\u003ctable>\u003cthead>\u003ctr>\u003cth>Point DPE\u003c/th>\u003cth>Valeur\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>Date et validité\u003c/td>\u003ctd>18/03/2024 au 17/03/2034\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Classe énergie\u003c/td>\u003ctd>\u003cstrong>F\u003c/strong> — 402 kWhEP/m²/an\u003c/td>\u003c/tr>\u003ctr>\u003ctd>GES\u003c/td>\u003ctd>C — 13 kgCO₂/m²/an\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Dépense énergie estimée\u003c/td>\u003ctd>1 134 à 1 534 €/an, prix 2021\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Chauffage\u003c/td>\u003ctd>Convecteurs électriques NFC 1995\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Eau chaude\u003c/td>\u003ctd>Électrique, ballon 2022\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Ventilation\u003c/td>\u003ctd>Ouverture des fenêtres\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003cp>Le DPE est valide et opposable. Les points favorables sont le GES C, l'eau chaude récente, l'absence de toiture/plafond déperditif dans les éléments lus et l'absence d'audit énergétique obligatoire pour ce lot de copropriété.\u003c/p>\u003ch3>Déperditions et contraintes\u003c/h3>\u003cul>\u003cli>Fenêtres et portes : 32 % des pertes ; menuiseries bois simple vitrage.\u003c/li>\u003cli>Ventilation : 21 % ; pas de VMC identifiée.\u003c/li>\u003cli>Murs : 20 % ; pierre/moellons sans isolation.\u003c/li>\u003cli>Plancher : 20 % ; non isolé.\u003c/li>\u003cli>Ponts thermiques : 7 %.\u003c/li>\u003c/ul>\u003ch3>Scénarios indicatifs\u003c/h3>\u003ctable>\u003cthead>\u003ctr>\u003cth>Objectif\u003c/th>\u003cth>Travaux typiques\u003c/th>\u003cth>Budget brut / net indicatif\u003c/th>\u003cth>Limites\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>F → E\u003c/td>\u003ctd>Isolation intérieure murs seule\u003c/td>\u003ctd>DPE : 532 – 1 775 € ; référence ITI : 700 – 1 600 €\u003c/td>\u003ctd>Très partiel, finition et contraintes probablement sous-estimées ; classe non garantie.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>F → E/D confort\u003c/td>\u003ctd>ITI, plancher, double vitrage bois, VMC simple\u003c/td>\u003ctd>7 000 – 16 000 € avant CEE et aides locales\u003c/td>\u003ctd>D non garanti sans simulation.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>F → D plausible\u003c/td>\u003ctd>ITI, plancher, double vitrage bois, VMC, PAC air/air si autorisée\u003c/td>\u003ctd>11 000 – 34 000 € brut ; net très indicatif : bleu 3 000 – 9 000 €, jaune 5 000 – 15 000 €, violet 6 500 – 20 000 €, rose 10 000 – 30 000 €\u003c/td>\u003ctd>Autorisation copropriété à vérifier, simulation/audit indispensable.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>F → C ambitieux\u003c/td>\u003ctd>Rénovation plus complète et cohérente\u003c/td>\u003ctd>20 000 – 45 000 € brut\u003c/td>\u003ctd>Net très variable ; faisabilité copropriété et patrimoniale à confirmer.\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003cblockquote>Le levier principal est la \u003cstrong>passoire F\u003c/strong> : pour un investisseur, l'interdiction de louer les logements F arrive en 2028. Le DPE propose un coût mur très faible, mais une trajectoire réaliste F → D se situe plutôt autour de \u003cstrong>11 000 à 34 000 € brut\u003c/strong>, avec un repère médian de 22 500 € utilisé dans les graphiques.\u003c/blockquote>"
     },
     {
-      "id": "commune",
+      "id": "copropriete",
       "num": "03",
-      "title": "La Commune — Versailles",
-      "chart": "commune",
-      "html": "\u003ch3>Profil général\u003c/h3>\u003cp>Versailles (78 000 hab., Yvelines) est une ville urbaine prestigieuse, préfecture du département, classée 7,07/10 sur ville-ideale.fr. Revenu médian de 33 780 €/an (64% au-dessus de la moyenne nationale). La population est stable, avec une légère décroissance de -0,3%/an.\u003c/p>\u003ch3>Services et commodités\u003c/h3>\u003cp>Commerces très denses (53+ points de vente), 21 marchés hebdomadaires, centre commercial Parly 2 à proximité. Excellents établissements scolaires : lycées Hoche et La Bruyère (prépa), nombreux collèges et écoles primaires. Hôpital André Mignot au Chesnay voisin. \u003cstrong>Score : Excellent\u003c/strong>\u003c/p>\u003ch3>Transports\u003c/h3>\u003cp>3 gares à moins de 1 km : Rive Gauche (RER C, ~6 min à pied), Rive Droite (Ligne L, ~8 min), Chantiers (5 lignes + TGV, ~11 min). Trajet Paris-Montparnasse en 11-15 min. Bus Phébus/Grand Versailles. Future ligne 18 du Grand Paris Express (2030). \u003cstrong>Score : Excellent\u003c/strong>\u003c/p>\u003ch3>Emploi et économie\u003c/h3>\u003cp>Bassin Versailles-Saclay : 428 000 emplois salariés. Taux de chômage bas (5,8% vs 7,7% national). Économie tertiaire, tourisme (Château), pôle d'innovation. \u003cstrong>Score : Bon\u003c/strong>\u003c/p>\u003ch3>Environnement et cadre de vie\u003c/h3>\u003cp>50% de la surface est végétalisée. Parc du Château (800 ha), forêt de Fausses-Reposes (340 ha). Label 4 fleurs. Environnement calme pour le quartier Notre-Dame. \u003cstrong>Score : Excellent\u003c/strong>\u003c/p>\u003ch3>Projets futurs\u003c/h3>\u003cp>Grand Paris Express ligne 18 (gare Satory 2030), ZAC Satory Ouest (550 000 m², pôle d'innovation), pôle multimodal Chantiers en restructuration. Impact positif sur la valeur immobilière à long terme.\u003c/p>\u003cblockquote>Versailles offre un cadre de vie exceptionnel avec un patrimoine UNESCO, 167 m² d'espaces verts par habitant et des transports rapides vers Paris (11-30 min). Le quartier Montbauron est idéalement situé à distance de marche de toutes les commodités et des trois gares.\u003c/blockquote>"
-    },
-    {
-      "id": "risques",
-      "num": "04",
-      "title": "Risques et points d'attention",
-      "chart": "risk",
-      "html": "\u003ch3>Risques naturels et technologiques\u003c/h3>\u003ctable>\u003cthead>\u003ctr>\u003cth>Risque\u003c/th>\u003cth>Statut\u003c/th>\u003cth>Sévérité\u003c/th>\u003cth>Détail\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>Inondation\u003c/td>\u003ctd>Non\u003c/td>\u003ctd>Aucun\u003c/td>\u003ctd>Versailles non listé dans le PPRI Seine & Oise\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Séisme\u003c/td>\u003ctd>Zone 1\u003c/td>\u003ctd>Faible\u003c/td>\u003ctd>Aléa très faible\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Retrait argile\u003c/td>\u003ctd>Faible\u003c/td>\u003ctd>Faible\u003c/td>\u003ctd>Exposition limitée (immeuble collectif)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>ICPE/Seveso\u003c/td>\u003ctd>Oui\u003c/td>\u003ctd>Faible\u003c/td>\u003ctd>VERSEO (non Seveso) au 1 Av. Maréchal Juin\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Radon\u003c/td>\u003ctd>Niveau 1\u003c/td>\u003ctd>Faible\u003c/td>\u003ctd>Potentiel le plus bas\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Mines/carrières\u003c/td>\u003ctd>Non\u003c/td>\u003ctd>Aucun\u003c/td>\u003ctd>Non identifié à Versailles\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003ch3>Points d'attention spécifiques\u003c/h3>\u003cul>\u003cli>\u003cstrong>DPE F — Passoire thermique (Critique)\u003c/strong> : 402 kWh/m²·an. Interdiction de location des DPE F en 2028. Audit énergétique obligatoire pour la vente. Coût de rénovation estimé : 30 000 – 70 000 €.\u003c/li>\u003cli>\u003cstrong>Bâti de 1800 — Plomb/Amiante (Élevé)\u003c/strong> : Présomption forte de plomb (peintures) et d'amiante (matériaux avant 1997). Diagnostics obligatoires. Rénovation thermique complexe en copropriété ancienne.\u003c/li>\u003cli>\u003cstrong>Absence de surface Carrez (Élevé)\u003c/strong> : Obligation légale non respectée dans l'annonce. Risque de réduction de prix ou nullité si surface réelle \u003c 45 m².\u003c/li>\u003cli>\u003cstrong>Charges de copropriété (Moyen)\u003c/strong> : 1 272 €/an (28 €/m²) — légèrement au-dessus de la moyenne francilienne (20-25 €/m²). Petite copropriété de 18 lots : vigilance sur les impayés.\u003c/li>\u003cli>\u003cstrong>Absence de parking (Faible)\u003c/strong> : Stationnement payant dans le quartier. Budget parking : 80-120 €/mois.\u003c/li>\u003c/ul>\u003cblockquote>Le DPE F est le point le plus bloquant : budget rénovation énergétique de 30 000 à 70 000 € à prévoir, avec une échéance 2028 pour la mise en location. Exigez les diagnostics amiante/plomb et le mesurage Carrez avant toute offre.\u003c/blockquote>"
-    },
-    {
-      "id": "couts",
-      "num": "05",
-      "title": "Coûts additionnels",
+      "title": "Copropriété — PV d'AG et finances",
       "chart": "cost",
-      "html": "\u003ctable>\u003cthead>\u003ctr>\u003cth>Poste\u003c/th>\u003cth>Montant estimé\u003c/th>\u003cth>Notes\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>Prix du bien (net vendeur)\u003c/td>\u003ctd>290 000 €\u003c/td>\u003ctd>Hors honoraires\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Frais d'agence (3,45%)\u003c/td>\u003ctd>10 000 €\u003c/td>\u003ctd>Inclus dans le prix FAI\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Frais de notaire (est.)\u003c/td>\u003ctd>~26 000 €\u003c/td>\u003ctd>~8% de 290 000 € (ancien)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Rénovation énergétique\u003c/td>\u003ctd>30 000 – 70 000 €\u003c/td>\u003ctd>DPE F → D (isolation, chauffage)\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Charges annuelles copro.\u003c/td>\u003ctd>1 272 €/an\u003c/td>\u003ctd>106 €/mois\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Taxe foncière (est.)\u003c/td>\u003ctd>~1 200 €/an\u003c/td>\u003ctd>15% à Versailles\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Coût total d'acquisition\u003c/strong>\u003c/td>\u003ctd>\u003cstrong>~316 000 €\u003c/strong>\u003c/td>\u003ctd>Hors rénovation\u003c/td>\u003c/tr>\u003ctr>\u003ctd>\u003cstrong>Avec rénovation\u003c/strong>\u003c/td>\u003ctd>\u003cstrong>~346 000 – 386 000 €\u003c/strong>\u003c/td>\u003ctd>Budget total prévisionnel\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003cp>Le coût total d'acquisition (frais de notaire inclus) est d'environ 316 000 €. En ajoutant les travaux de rénovation énergétique (estimation médiane 50 000 €), le budget total atteint ~366 000 €, soit l'équivalent d'un bien classé D/E dans le même quartier.\u003c/p>\u003cblockquote>Prévoyez un budget total de 350 000 à 390 000 € pour acquérir ce bien ET le rénover à un niveau énergétique décent.\u003c/blockquote>"
+      "html": "\u003ch3>Charges et budgets\u003c/h3>\u003ctable>\u003cthead>\u003ctr>\u003cth>Poste\u003c/th>\u003cth>Montant\u003c/th>\u003cth>Lecture\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>Charges annoncées\u003c/td>\u003ctd>1 272 €/an\u003c/td>\u003ctd>Cohérent avec budget 2026 de 13 530 € × 96/1023 = 1 269,68 €/an.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Appel T4 2025\u003c/td>\u003ctd>317,42 € charges + 15,89 € fonds travaux\u003c/td>\u003ctd>Soit environ 333,31 € sur le trimestre.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Charges individuelles 2025\u003c/td>\u003ctd>1 249,56 €\u003c/td>\u003ctd>Provisions 1 269,68 €, crédit vendeur 20,12 € sur charges.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Appels annuels avec fonds travaux\u003c/td>\u003ctd>≈ 1 333,24 €/an\u003c/td>\u003ctd>Le montant d'annonce peut exclure environ 61 €/an de fonds travaux.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Budget 2027 proposé\u003c/td>\u003ctd>14 255 €\u003c/td>\u003ctd>Quote-part 1 337,71 €/an, soit +68 €/an vs 2026 ; fonds travaux proposé 66,88 €/an.\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003ch3>Trésorerie, fonds travaux, impayés\u003c/h3>\u003cul>\u003cli>Trésorerie : 7 482,86 €.\u003c/li>\u003cli>Fonds travaux total : 3 992,74 € au 31/12/2025 ; quote-part vendeur : 374,74 €.\u003c/li>\u003cli>Avance trésorerie vendeur : 200,29 € ; compte vendeur créditeur : 353,41 €.\u003c/li>\u003cli>Débiteur SARL SINRAY : 1 368,20 €, soit environ 10,1 % du budget 2026.\u003c/li>\u003cli>Pas de lourde dette fournisseur visible dans les extraits : fournisseurs créditeurs 820,73 €, factures non parvenues 147,60 €.\u003c/li>\u003c/ul>\u003ch3>Travaux et décisions AG\u003c/h3>\u003ctable>\u003cthead>\u003ctr>\u003cth>Sujet\u003c/th>\u003cth>Montant\u003c/th>\u003cth>Quote-part vendeur estimée\u003c/th>\u003cth>État\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>Pavés votés en 2025\u003c/td>\u003ctd>1 747,75 € TTC + 317,77 € honoraires syndic = 2 065,52 €\u003c/td>\u003ctd>≈ 193,83 € à 96/1023\u003c/td>\u003ctd>Appelés 100 % au 01/11/2025 et financés avec fonds travaux ; vérifier dans l'état daté qu'il ne reste rien.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>PPPT rejeté en 2025\u003c/td>\u003ctd>3 480 € TTC + 1 107 € honoraires = 4 587 €\u003c/td>\u003ctd>≈ 430,45 € si revoté\u003c/td>\u003ctd>Risque futur modéré ; DPE/PPT/DTG déjà reportés en 2024.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>PV 2026\u003c/td>\u003ctd>Non lu comme PV définitif\u003c/td>\u003ctd>À déterminer\u003c/td>\u003ctd>Convocation fournie ; demander le PV définitif de l'AG du 17/06/2026 dès disponibilité.\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003cblockquote>Point positif : aucun gros travaux voté non appelé n'apparaît dans les pièces lues. Point à sécuriser : l'état daté doit confirmer que les pavés sont soldés, que les comptes 2024/2025 sont approuvés et qu'aucune décision 2026 ne change l'économie de l'achat.\u003c/blockquote>"
     },
     {
-      "id": "questions",
+      "id": "diagnostics",
+      "num": "04",
+      "title": "Diagnostics — Anomalies",
+      "chart": "risk",
+      "html": "\u003ch3>Plomb / CREP\u003c/h3>\u003cp>Le CREP est positif : 55 unités diagnostiquées, dont 4 en classe 3 et 4 en classe 1. Les unités classe 3 concernent la cuisine mur D et garde-corps, le séjour garde-corps et la chambre 1 garde-corps.\u003c/p>\u003cblockquote>Le vendeur doit réaliser les travaux appropriés pour supprimer l'exposition au plomb. Le coût n'est pas chiffré dans les documents : demander un devis ou une séquestration, sans inventer de montant.\u003c/blockquote>\u003ch3>Électricité\u003c/h3>\u003cp>Le diagnostic électricité est fourni et valable environ jusqu'au 17/11/2028. Il mentionne l'anomalie \u003cstrong>B4.3 j1\u003c/strong> : le courant assigné de l'interrupteur différentiel protégeant des circuits n'est pas adapté. Correction typique : installer un différentiel 63 A.\u003c/p>\u003cul>\u003cli>Coût indicatif si correction simple : 200 à 600 €.\u003c/li>\u003cli>Si reprise plus large du tableau : 1 000 à 2 500 €.\u003c/li>\u003cli>Plusieurs points n'ont pas été vérifiés, notamment terre en parties communes et tableau non démontable.\u003c/li>\u003c/ul>\u003ch3>Diagnostics manquants ou expirés\u003c/h3>\u003cul>\u003cli>\u003cstrong>Amiante\u003c/strong> : rapport manquant alors qu'il est obligatoire pour un immeuble/permis antérieur au 01/07/1997.\u003c/li>\u003cli>\u003cstrong>Termites\u003c/strong> : diagnostic négatif mais expiré au 27/06/2026.\u003c/li>\u003cli>\u003cstrong>ERP\u003c/strong> : expiré ; déclaration de sinistres non complétée dans l'extrait.\u003c/li>\u003cli>\u003cstrong>Assurance diagnostiqueur\u003c/strong> : incohérence à clarifier, certaines pages indiquent une validité jusqu'au 30/09/2024 alors qu'une attestation jointe indique 01/10/2025–30/09/2026.\u003c/li>\u003c/ul>\u003cblockquote>La régularisation du DDT est une condition préalable : amiante à obtenir, ERP et termites à refaire, et clarification d'assurance à demander au diagnostiqueur ou au notaire.\u003c/blockquote>"
+    },
+    {
+      "id": "couts-recurrents",
+      "num": "05",
+      "title": "Coûts récurrents et prix",
+      "html": "\u003ctable>\u003cthead>\u003ctr>\u003cth>Poste\u003c/th>\u003cth>Montant / valeur\u003c/th>\u003cth>Commentaire\u003c/th>\u003c/tr>\u003c/thead>\u003ctbody>\u003ctr>\u003ctd>Prix affiché HAI\u003c/td>\u003ctd>300 000 €\u003c/td>\u003ctd>Honoraires acquéreur 10 000 € ; net vendeur 290 000 €.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Prix au m² HAI\u003c/td>\u003ctd>≈ 6 704 €/m² Carrez\u003c/td>\u003ctd>300 000 € / 44,75 m².\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Prix au m² net vendeur\u003c/td>\u003ctd>≈ 6 480 €/m² Carrez\u003c/td>\u003ctd>290 000 € / 44,75 m².\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Charges courantes annoncées\u003c/td>\u003ctd>1 272 €/an\u003c/td>\u003ctd>Cohérent avec le budget 2026 ; probablement hors fonds travaux.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Charges avec fonds travaux observées\u003c/td>\u003ctd>≈ 1 333 €/an\u003c/td>\u003ctd>Écart modéré d'environ 61 €/an.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Budget 2027 proposé\u003c/td>\u003ctd>≈ 1 338 €/an hors fonds travaux\u003c/td>\u003ctd>Hausse d'environ 68 €/an vs 2026.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Énergie DPE\u003c/td>\u003ctd>1 134 – 1 534 €/an\u003c/td>\u003ctd>Estimation prix 2021, à actualiser selon usage et tarifs.\u003c/td>\u003c/tr>\u003ctr>\u003ctd>Taxe foncière\u003c/td>\u003ctd>Manquante\u003c/td>\u003ctd>Demander l'avis ; ne pas chiffrer sans pièce.\u003c/td>\u003c/tr>\u003c/tbody>\u003c/table>\u003cblockquote>Le niveau de charges annoncé est globalement cohérent, mais il faut intégrer le fonds travaux et obtenir la taxe foncière. Le vrai coût de portage dépendra surtout de la stratégie DPE F.\u003c/blockquote>"
+    },
+    {
+      "id": "negociation",
       "num": "06",
-      "title": "Questions à poser au vendeur",
-      "html": "\u003col>\u003cli>\u003cstrong>Surface Carrez :\u003c/strong> Quelle est la surface exacte selon la loi Carrez ? Le mesurage a-t-il été réalisé ?\u003c/li>\u003cli>\u003cstrong>DPE F :\u003c/strong> Un audit énergétique a-t-il été réalisé ? Quels travaux ont déjà été envisagés ou chiffrés ?\u003c/li>\u003cli>\u003cstrong>Diagnostics :\u003c/strong> Les diagnostics amiante et plomb (CREP) sont-ils disponibles ? Quels sont leurs résultats ?\u003c/li>\u003cli>\u003cstrong>Copropriété :\u003c/strong> Quels sont les derniers PV d'AG ? Y a-t-il des travaux votés ou provisionnés (toiture, façade, parties communes) ?\u003c/li>\u003cli>\u003cstrong>Travaux :\u003c/strong> Quels travaux ont été réalisés depuis la construction (réfection toiture, électricité, plomberie, isolation) ?\u003c/li>\u003cli>\u003cstrong>Chauffage :\u003c/strong> Quel est le type exact de chauffage électrique (radiateurs, pompe à chaleur) ? Quel est l'âge du système ?\u003c/li>\u003cli>\u003cstrong>Cave :\u003c/strong> Quel est l'état de la cave ? Y a-t-il des traces d'humidité ou d'infiltration ?\u003c/li>\u003cli>\u003cstrong>Bruit :\u003c/strong> L'appartement est-il vraiment calme ? Y a-t-il des nuisances sonores (rue passante, voisins, commerces) ?\u003c/li>\u003c/ol>"
+      "title": "Leviers de négociation",
+      "chart": "negotiation",
+      "html": "\u003cp>Les leviers chiffrés ne doivent pas être additionnés comme un devis certain. Le bon cadrage est : \u003cstrong>≈ 13 000 à 43 000 €\u003c/strong> de leviers chiffrés selon l'ambition énergétique, plus plomb/amiante à chiffrer par devis. Le graphique utilise un repère médian prudent de 23 785 € pour hiérarchiser les sujets.\u003c/p>\u003col>\u003cli>\u003cstrong>DPE F et trajectoire F → D\u003c/strong> — base : 11 000 à 34 000 € brut, repère médian 22 500 €. Arguments : passoire F, location F interdite à partir de 2028 pour investisseurs, simple vitrage, ventilation par ouverture, murs et plancher non isolés.\u003c/li>\u003cli>\u003cstrong>Plomb classe 3\u003c/strong> — base : devis ou séquestre à exiger. 4 unités classe 3 ; le vendeur doit supprimer l'exposition. Impact potentiellement significatif mais non chiffrable sans entreprise.\u003c/li>\u003cli>\u003cstrong>DDT et annexes obligatoires incomplets\u003c/strong> — base : amiante manquant, ERP/termites expirés, L.721-2 incomplet, état daté absent, taxe foncière et titre manquants. Levier procédural fort : condition suspensive, retenue, ou baisse si les pièces révèlent des risques.\u003c/li>\u003cli>\u003cstrong>Électricité\u003c/strong> — base : 200 à 600 € si correction simple, jusqu'à 1 000 à 2 500 € si tableau à reprendre ; repère 600 €.\u003c/li>\u003cli>\u003cstrong>Risque PPPT futur\u003c/strong> — base : environ 430 € de quote-part si la mission rejetée en 2025 était revotée.\u003c/li>\u003cli>\u003cstrong>Pavés 2025\u003c/strong> — base : environ 194 € de quote-part ; plutôt à vérifier dans l'état daté qu'à transformer en gros rabais si déjà payé.\u003c/li>\u003cli>\u003cstrong>Fonds travaux non annoncé\u003c/strong> — base : environ 61 €/an d'écart entre charges annoncées et appels avec fonds travaux.\u003c/li>\u003c/ol>\u003cblockquote>Stratégie : formuler une offre qui isole le DPE F comme levier économique principal, puis demander une régularisation documentaire avant compromis. Pour le plomb, préférer un \u003cstrong>devis vendeur ou séquestre notarial\u003c/strong> plutôt qu'un chiffre inventé.\u003c/blockquote>"
     },
     {
       "id": "synthese",
       "num": "07",
       "title": "Synthèse et recommandation",
-      "html": "\u003ch3>Points forts\u003c/h3>\u003cul>\u003cli>Emplacement idéal : quartier Montbauron, à 6-11 min à pied des 3 gares de Versailles\u003c/li>\u003cli>Appartement traversant, lumineux, belle hauteur sous plafond\u003c/li>\u003cli>Prix correct par rapport au marché (-0,8% vs médiane DVF)\u003c/li>\u003cli>Quartier calme avec tous commerces à pied\u003c/li>\u003cli>Potentiel de plus-value avec l'arrivée du Grand Paris Express (2030)\u003c/li>\u003c/ul>\u003ch3>Points faibles\u003c/h3>\u003cul>\u003cli>DPE F : passoire thermique, travaux lourds à prévoir (30-70 k€)\u003c/li>\u003cli>Bâti de 1800 : risques plomb/amiante, rénovation thermique complexe\u003c/li>\u003cli>Surface Carrez non mentionnée (obligation légale)\u003c/li>\u003cli>Pas de parking en zone tendue\u003c/li>\u003cli>Premier étage sans ascenseur\u003c/li>\u003c/ul>\u003cblockquote>\u003cstrong>Négociation recommandée : 275 000 – 285 000 € net vendeur\u003c/strong> (soit -3% à -5%). Ce prix permet d'intégrer une partie du coût des travaux de rénovation énergétique dans la négociation. Si les diagnostics amiante/plomb sont vierges et la surface Carrez confirmée à 45 m², le bien est un bon compromis emplacement/prix pour un investisseur prêt à entreprendre des travaux.\u003c/blockquote>\u003cp>Ce bien s'adresse à un acheteur prêt à investir dans la rénovation énergétique. L'emplacement est excellent et le prix de base est juste, mais le DPE F (~402 kWh/m²·an) est un passif lourd. Pour un premier achat ou un investissement locatif, il faut intégrer le coût des travaux (30-70 k€) et l'échéance 2028 (interdiction de location des DPE F). Idéal pour un acheteur occupant avec un budget rénovation.\u003c/p>"
+      "html": "\u003ch3>Ce qui rassure\u003c/h3>\u003cul>\u003cli>DPE fourni, valide et cohérent avec les systèmes observés.\u003c/li>\u003cli>GES C malgré la classe énergie F.\u003c/li>\u003cli>Charges annoncées cohérentes avec le budget 2026.\u003c/li>\u003cli>Trésorerie de copropriété et fonds travaux existants.\u003c/li>\u003cli>Pas de gros travaux votés non appelés visibles dans les pièces lues.\u003c/li>\u003cli>Surface Carrez cohérente avec l'habitable : pas de levier de surface.\u003c/li>\u003c/ul>\u003ch3>Ce qui bloque une décision propre\u003c/h3>\u003cul>\u003cli>DPE F avec travaux réalistes plus élevés que la recommandation mur seule du DPE.\u003c/li>\u003cli>CREP positif avec 4 unités classe 3.\u003c/li>\u003cli>Amiante manquant alors que l'immeuble est ancien.\u003c/li>\u003cli>ERP et termites expirés au 27/06/2026.\u003c/li>\u003cli>Annexes copropriété L.721-2 incomplètes : fiche synthétique, règlement/EDD/modificatifs, carnet d'entretien, PV 2023, PV définitif 2026, comptes approuvés, état daté.\u003c/li>\u003cli>Taxe foncière, titre et servitudes non fournis.\u003c/li>\u003c/ul>\u003cblockquote>Recommandation : ne pas traiter le dossier comme complet. Continuer l'étude et négocier, mais conditionner toute signature à la remise des pièces manquantes, à la mise à jour ERP/termites, au rapport amiante et à une solution écrite pour le plomb classe 3. Offre défendable : intégrer un levier économique autour de 24 000 € hors plomb/amiante, avec fourchette argumentaire 13 000–43 000 €.\u003c/blockquote>"
     }
   ],
   "reliability": {
+    "num": "08",
+    "title": "Cohérence des documents",
     "score": "moyenne",
-    "summary": "Les données de prix et de localisation sont cohérentes. Le DPE F est vérifiable sur l'annonce mais non recoupé via le registre ADEME. L'année de construction (1800) est plausible pour le quartier. La surface Carrez n'est pas mentionnée — point à clarifier avec le vendeur.",
+    "summary": "Plusieurs chiffres se recoupent correctement, mais la fiabilité globale reste moyenne car des documents obligatoires sont absents ou expirés.",
     "checks": [
       {
-        "claim": "Prix ÷ surface = prix/m²",
-        "listingValue": "300 000 € / 45,05 m² = 6 437 €/m²",
-        "verified": "290 000 € (net) / 45,05 m² = 6 437 €/m² — cohérent",
-        "source": "Calcul arithmétique (prix net vendeur)",
+        "claim": "DPE",
+        "listingValue": "Classe F 402 kWhEP/m²/an",
+        "verified": "DPE du 18/03/2024 valable jusqu'au 17/03/2034",
+        "source": "DPE fourni",
         "status": "confirmed",
-        "note": "Le prix/m² affiché correspond au prix net vendeur (hors honoraires)."
+        "note": "DPE valide et opposable ; pas d'audit réglementaire obligatoire pour cet appartement en copropriété."
       },
       {
-        "claim": "Année de construction",
-        "listingValue": "1800",
-        "verified": "Non vérifiable dans le registre ADEME (adresse exacte non trouvée)",
-        "source": "DPE ADEME",
+        "claim": "Audit énergétique",
+        "listingValue": "Non fourni",
+        "verified": "Non applicable à un lot d'appartement en copropriété",
+        "source": "Règle audit vente passoires",
+        "status": "confirmed",
+        "note": "Pas un manque bloquant malgré la classe F."
+      },
+      {
+        "claim": "Charges annoncées",
+        "listingValue": "1 272 €/an",
+        "verified": "Budget 2026 13 530 € × 96/1023 = 1 269,68 €/an",
+        "source": "Annexes copropriété / appels",
         "status": "consistent",
-        "note": "Plausible pour le bâti du quartier Notre-Dame (XVIIIe-XIXe). À confirmer avec le vendeur."
+        "note": "Annonce cohérente, probablement hors fonds travaux."
       },
       {
-        "claim": "DPE / GES",
-        "listingValue": "F / C (402 kWh/m²·an / 13 kgCO₂/m²·an)",
-        "verified": "Non vérifié dans la base ADEME (pas de correspondance exacte)",
-        "source": "DPE ADEME",
-        "status": "unverified",
-        "note": "Profil cohérent : chauffage électrique, bâti ancien, 45 m²."
-      },
-      {
-        "claim": "\"À 10 min à pied des gares\" (Rive Droite)",
-        "listingValue": "10 min à pied",
-        "verified": "Place Charost → Gare Rive Droite : ~0,67 km (~8 min à pied)",
-        "source": "Géocodage BAN (vol d'oiseau)",
-        "status": "confirmed",
-        "note": "Bien en deçà des 10 min annoncés."
-      },
-      {
-        "claim": "\"À 10 min à pied des gares\" (Rive Gauche)",
-        "listingValue": "10 min à pied",
-        "verified": "Place Charost → Gare Rive Gauche : ~0,50 km (~6 min à pied)",
-        "source": "Géocodage BAN (vol d'oiseau)",
-        "status": "confirmed",
-        "note": "Bien en deçà des 10 min annoncés."
-      },
-      {
-        "claim": "\"À 10 min à pied des gares\" (Chantiers)",
-        "listingValue": "10 min à pied",
-        "verified": "Place Charost → Gare Chantiers : ~0,93 km (~11 min à pied)",
-        "source": "Géocodage BAN (vol d'oiseau)",
+        "claim": "Surface",
+        "listingValue": "45,05 m² habitables",
+        "verified": "44,75 m² Loi Carrez",
+        "source": "Métrage fourni",
         "status": "consistent",
-        "note": "Légèrement au-delà de 10 min à vitesse normale. Atteignable à pas rapide (~10 min)."
+        "note": "Écart de 0,67 %, pas de levier Carrez."
       },
       {
-        "claim": "Risque inondation",
-        "listingValue": "Non mentionné",
-        "verified": "Géorisques : aucun risque inondation identifié pour Versailles",
-        "source": "Géorisques",
+        "claim": "Amiante avant vente",
+        "listingValue": "Immeuble ancien 1800 / avant 1949",
+        "verified": "Rapport amiante absent du DDT transmis",
+        "source": "Obligation immeuble permis avant 01/07/1997",
+        "status": "mismatch",
+        "note": "Document obligatoire manquant à obtenir avant compromis."
+      },
+      {
+        "claim": "Termites",
+        "listingValue": "Diagnostic négatif du 17/11/2025",
+        "verified": "Validité 6 mois expirée au 27/06/2026",
+        "source": "DDT transmis",
+        "status": "mismatch",
+        "note": "À refaire pour la vente."
+      },
+      {
+        "claim": "ERP",
+        "listingValue": "ERP du 17/11/2025",
+        "verified": "Validité 6 mois expirée au 27/06/2026 ; déclaration sinistres non complétée dans l'extrait",
+        "source": "ERP transmis",
+        "status": "mismatch",
+        "note": "À refaire et compléter."
+      },
+      {
+        "claim": "CREP / plomb",
+        "listingValue": "CREP positif",
+        "verified": "4 unités classe 3 et 4 classe 1",
+        "source": "CREP fourni",
         "status": "confirmed",
-        "note": "Versailles non listé dans le PPRI Seine & Oise. 0 arrêté CatNat inondation."
+        "note": "Vigilance élevée ; devis ou travaux vendeur à demander."
       },
       {
-        "claim": "Surface (45 m²)",
-        "listingValue": "45,05 m²",
-        "verified": "Non vérifiable sans mesurage Carrez",
-        "source": "Annonce",
-        "status": "unverified",
-        "note": "Surface Carrez non mentionnée dans l'annonce — obligation légale. À demander au vendeur."
+        "claim": "Électricité",
+        "listingValue": "Diagnostic fourni",
+        "verified": "Anomalie B4.3 j1 et points non vérifiés",
+        "source": "Diagnostic électricité",
+        "status": "confirmed",
+        "note": "Validité encore courante, mais correction à budgéter."
       },
       {
-        "claim": "Copropriété (pas de procédure)",
-        "listingValue": "Pas de procédure en cours, 18 lots",
-        "verified": "Non vérifiable sans PV d'AG",
-        "source": "Annonce",
+        "claim": "PV d'AG 3 ans",
+        "listingValue": "PV 2024 et 2025 fournis, convocation 2026 fournie",
+        "verified": "PV 2023 absent et PV définitif 17/06/2026 à demander",
+        "source": "Exigence L.721-2",
+        "status": "mismatch",
+        "note": "Dossier copropriété incomplet."
+      },
+      {
+        "claim": "Fiche synthétique / règlement / EDD / carnet",
+        "listingValue": "Non transmis",
+        "verified": "Documents L.721-2 requis pour la vente d'un lot de copropriété",
+        "source": "Dossier transmis",
+        "status": "mismatch",
+        "note": "À réclamer au vendeur ou au syndic."
+      },
+      {
+        "claim": "État daté",
+        "listingValue": "Non fourni",
+        "verified": "Passif, avances, charges et travaux non cristallisés",
+        "source": "Notaire / syndic",
         "status": "unverified",
-        "note": "À vérifier sur les derniers PV d'assemblée générale."
+        "note": "Indispensable avant acte et utile avant décision finale."
+      },
+      {
+        "claim": "Taxe foncière",
+        "listingValue": "Non fournie",
+        "verified": "Montant non vérifiable",
+        "source": "Avis vendeur attendu",
+        "status": "unverified",
+        "note": "Ne pas intégrer de montant inventé dans le budget."
+      },
+      {
+        "claim": "Assurance diagnostiqueur",
+        "listingValue": "Mentions contradictoires",
+        "verified": "Pages avec échéance 30/09/2024 et attestation 01/10/2025–30/09/2026",
+        "source": "DDT transmis",
+        "status": "unverified",
+        "note": "Demander clarification ou attestation à jour."
       }
     ]
   }
@@ -777,7 +812,8 @@ function buildReliability(rel, body, toc){
     'faible':  { cls:'text-danger',   label:'Fiabilité faible' },
   };
 
-  const num = rel.num || '08';
+  const hasProvenance = (DATA.sections || []).some(s => s && s.id === 'provenance');
+  const num = rel.num || (hasProvenance ? '10' : '08');
   const sec = document.createElement('section');
   sec.id = 'fiabilite';
   sec.className = 'acc bg-paper border border-line rounded-xl shadow-soft mb-[18px] overflow-hidden break-avoid';
@@ -929,6 +965,43 @@ function buildChart(kind, slot, charts){
       if(cb.total){ const tot=document.createElement('div'); tot.className='flex items-center justify-between gap-3 border-t border-line2 pt-2 mt-1 font-semibold';
         tot.innerHTML=`<span class="text-ink">Total</span><span class="font-mono text-ink tabular-nums">${esc(cb.total)}</span>`; lg.appendChild(tot); }
       grid.appendChild(lg);
+    }
+    else if (kind==='dpe'){
+      // DPE upgrade path — grouped bars of énergie consumption (kWh/m²·an) for the
+      // current state and each proposed scenario, colored on the DPE letter scale.
+      const ds = charts.dpeScenarios; if(!ds || !ds.length) return;
+      const c = mk(300);
+      const DPECOL = { a:'#16A34A', b:'#4CAF50', c:'#A3CB38', d:'#F4D03F', e:'#F5A623', f:'#E8743B', g:'#D63031' };
+      const cols = ds.map(s=> DPECOL[String(s.letter||'').toLowerCase()] || PALETTE.mute);
+      new Chart(c,{ type:'bar', data:{ labels:ds.map(s=>s.label), datasets:[{ data:ds.map(s=> s.conso ?? null),
+        backgroundColor:cols, borderRadius:6, barPercentage:.6 }] },
+        options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false},
+          title:{display:true,text:'Trajectoire DPE — consommation (kWh/m²·an)',color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+          tooltip:{callbacks:{label:x=>{ const s=ds[x.dataIndex]; return ` ${s.letter? 'Classe '+s.letter+' · ':''}${x.raw!=null? x.raw.toLocaleString('fr-FR')+' kWh/m²·an':'—'}`; }}} },
+          scales:{ y:{beginAtZero:true,grid:{color:'#ECEAE2'},ticks:{callback:v=>v.toLocaleString('fr-FR')}}, x:{grid:{display:false}} } } });
+      // cost caption under the chart: scenario → coût net
+      const withCost = ds.filter(s=>s.costNet || s.cost);
+      if (withCost.length){
+        const lg=document.createElement('div'); lg.className='flex flex-wrap gap-x-4 gap-y-1.5 justify-center mt-3 text-[11.5px] font-medium';
+        withCost.forEach(s=>{ const span=document.createElement('span'); span.className='inline-flex items-center gap-1.5';
+          span.innerHTML=`<span class="w-2.5 h-2.5 rounded-sm" style="background:${DPECOL[String(s.letter||'').toLowerCase()]||PALETTE.mute}"></span>${esc(s.label)} : <span class="font-mono text-ink">${esc(s.costNet||s.cost)}</span>${s.costNet&&s.cost?` <span class="text-mute2">(brut ${esc(s.cost)})</span>`:''}`;
+          lg.appendChild(span); });
+        slot.appendChild(lg);
+      }
+    }
+    else if (kind==='negotiation'){
+      // Negotiation levers — horizontal bars of estimated € impact per lever,
+      // so the buyer sees at a glance where the money is.
+      const ng = charts.negotiation; if(!ng || !ng.length) return;
+      const c = mk(Math.max(220, 60 + ng.length*42));
+      const cols = ng.map(n=>{ const s=String(n.severity||'').toLowerCase();
+        return s==='élevé'||s==='eleve'||s==='fort' ? PALETTE.danger : s==='moyen' ? PALETTE.warn : PALETTE.leaf; });
+      new Chart(c,{ type:'bar', data:{ labels:ng.map(n=>n.label), datasets:[{ data:ng.map(n=> n.value ?? 0),
+        backgroundColor:cols.map(c=>c+'cc'), borderColor:cols, borderWidth:1.5, borderRadius:5, barPercentage:.7 }] },
+        options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false},
+          title:{display:true,text:'Leviers de négociation — impact estimé (€)',color:PALETTE.ink,font:{size:13,weight:'600',family:'Fraunces'}},
+          tooltip:{callbacks:{label:x=>` ${x.raw.toLocaleString('fr-FR')} €`}} },
+          scales:{ x:{beginAtZero:true,grid:{color:'#ECEAE2'},ticks:{callback:v=>v.toLocaleString('fr-FR')+' €'}}, y:{grid:{display:false},ticks:{font:{size:11}}} } } });
     }
   } catch(err){
     slot.innerHTML = `<div class="bg-warnsoft border border-warn/30 rounded-xl p-4 text-[13px] text-warn">Graphique indisponible (données incomplètes).</div>`;
