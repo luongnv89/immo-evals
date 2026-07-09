@@ -255,6 +255,16 @@
     function clearError(alertEl) {
       if (alertEl) alertEl.textContent = "";
     }
+    function isValidEmail(v) {
+      // Pragmatic email check: one @, a local part and a dotted domain.
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+    function isValidPhone(v) {
+      // Allow digits, spaces and + ( ) - . / — require at least 6 digits.
+      if (!/^[0-9+()\-./\s]+$/.test(v)) return false;
+      const digits = v.replace(/\D/g, "");
+      return digits.length >= 6 && digits.length <= 15;
+    }
 
     // --- Build modal DOM ---
     const overlay = document.createElement("div");
@@ -334,17 +344,44 @@
       ].join("");
       const form = body.querySelector("#oa-form");
       const fullName = form.querySelector("#oa-fullName");
+      const phone = form.querySelector("#oa-phone");
+      const email = form.querySelector("#oa-email");
       form.querySelector("#oa-back").addEventListener("click", renderChoice);
+      // Clear a field's error as soon as the visitor edits it.
+      [fullName, phone, email].forEach(function (input) {
+        input.addEventListener("input", function () {
+          input.removeAttribute("aria-invalid");
+          if (!errorEl.textContent) return;
+          errorEl.textContent = "";
+        });
+      });
       fullName.focus();
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         clearError(errorEl);
         fullName.removeAttribute("aria-invalid");
-        const value = fullName.value.trim();
-        if (!value) {
+        phone.removeAttribute("aria-invalid");
+        email.removeAttribute("aria-invalid");
+
+        const fullNameVal = fullName.value.trim();
+        if (!fullNameVal) {
           fullName.setAttribute("aria-invalid", "true");
           showError(errorEl, "Le nom et prénom sont requis.");
           fullName.focus();
+          return;
+        }
+        const phoneVal = phone.value.trim();
+        if (phoneVal && !isValidPhone(phoneVal)) {
+          phone.setAttribute("aria-invalid", "true");
+          showError(errorEl, "Le numéro de téléphone n'est pas valide.");
+          phone.focus();
+          return;
+        }
+        const emailVal = email.value.trim();
+        if (emailVal && !isValidEmail(emailVal)) {
+          email.setAttribute("aria-invalid", "true");
+          showError(errorEl, "L'adresse email n'est pas valide.");
+          email.focus();
           return;
         }
         const buyerData = {
