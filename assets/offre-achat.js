@@ -72,11 +72,11 @@
       doc.setTextColor(10);
       const lines = doc.splitTextToSize(label, MAX_W);
       doc.text(lines, MARGIN, y, { maxWidth: MAX_W });
-      y += lines.length * LINE + 4;
+      y += lines.length * LINE + 2;
       doc.setDrawColor(22, 130, 61);
       doc.setLineWidth(0.8);
       doc.line(MARGIN, y, PAGE_W - MARGIN, y);
-      y += GAP;
+      y += GAP + 5;
       doc.setFont("helvetica", "normal");
       doc.setTextColor(30);
     }
