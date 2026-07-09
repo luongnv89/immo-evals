@@ -176,7 +176,14 @@
   }
 
   function initOffreAchat() {
-    const DATA = JSON.parse(document.getElementById("report-data").textContent);
+    const dataEl = document.getElementById("report-data");
+    if (!dataEl) return;
+    let DATA;
+    try {
+      DATA = JSON.parse(dataEl.textContent);
+    } catch (e) {
+      return;
+    }
 
     const STYLE_ID = "oa-style";
     const SCRIPT_SRC = "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";
@@ -199,8 +206,9 @@
       ".oa-field{display:flex;flex-direction:column;gap:0.25rem;margin-bottom:0.75rem}",
       ".oa-field label{font-size:0.82rem;font-weight:600}",
       ".oa-field input,.oa-field textarea{font:inherit;padding:0.5rem 0.6rem;border:1px solid #d4d4d4;border-radius:10px;background:#fff;color:inherit}",
+      ".oa-field input:focus-visible,.oa-field textarea:focus-visible,.oa-btn:focus-visible,.oa-modal__close:focus-visible,.oa-link:focus-visible{outline:2px solid var(--leaf,#16a34a);outline-offset:2px}",
       ".oa-field input[aria-invalid='true'],.oa-field textarea[aria-invalid='true']{border-color:#dc2626}",
-      ".oa-error{color:#dc2626;font-size:0.8rem;margin:0 0 0.75rem}",
+      ".oa-modal__error,.oa-error{color:#dc2626;font-size:0.8rem;margin:0 0 0.75rem}",
       ".oa-link{background:none;border:0;color:var(--leafdeep,#15803d);text-decoration:underline;cursor:pointer;font:inherit;padding:0.25rem 0;margin-top:0.5rem}",
     ].join("\n");
 
@@ -211,8 +219,11 @@
       document.head.appendChild(style);
     }
 
+    const jspdfWaiters = [];
+
     function loadJsPdf(cb) {
       if (jspdfLoaded) return cb(true);
+      jspdfWaiters.push(cb);
       if (jspdfLoading) return;
       jspdfLoading = true;
       const s = document.createElement("script");
@@ -220,11 +231,17 @@
       s.onload = function () {
         jspdfLoaded = true;
         jspdfLoading = false;
-        cb(true);
+        const waiters = jspdfWaiters.splice(0);
+        waiters.forEach(function (fn) {
+          fn(true);
+        });
       };
       s.onerror = function () {
         jspdfLoading = false;
-        cb(false);
+        const waiters = jspdfWaiters.splice(0);
+        waiters.forEach(function (fn) {
+          fn(false);
+        });
       };
       document.head.appendChild(s);
     }
@@ -295,7 +312,7 @@
       body.innerHTML = [
         '<form id="oa-form" novalidate>',
         '  <div class="oa-field"><label for="oa-fullName">Nom et prénom *</label>',
-        '    <input id="oa-fullName" name="fullName" type="text" autocomplete="name" required></div>',
+        '    <input id="oa-fullName" name="fullName" type="text" autocomplete="name" required aria-required="true" aria-describedby="oa-error"></div>',
         '  <div class="oa-field"><label for="oa-address">Adresse</label>',
         '    <input id="oa-address" name="address" type="text" autocomplete="street-address"></div>',
         '  <div class="oa-field"><label for="oa-phone">Téléphone</label>',
@@ -387,17 +404,34 @@
       }
     });
 
-    // Hook next to the print button
+    function mountOffreTrigger(btn) {
+      btn.setAttribute("type", "button");
+      btn.setAttribute("aria-label", "Générer une offre d'achat (PDF)");
+      btn.addEventListener("click", function () {
+        openModal(btn);
+      });
+    }
+
     const printBtn = document.querySelector('button[onclick="window.print()"]');
     if (printBtn) {
       const offreBtn = document.createElement("button");
       offreBtn.className = printBtn.className;
       offreBtn.innerHTML = "✍ <span class=\"hidden sm:inline\">Offre</span>";
-      offreBtn.setAttribute("aria-label", "Générer une offre d'achat (PDF)");
-      offreBtn.addEventListener("click", function () {
-        openModal(offreBtn);
-      });
+      mountOffreTrigger(offreBtn);
       printBtn.insertAdjacentElement("afterend", offreBtn);
+    } else {
+      const toolbar =
+        document.querySelector("header .flex.items-center") ||
+        document.querySelector("header .container .flex") ||
+        document.querySelector("header");
+      if (toolbar) {
+        const offreBtn = document.createElement("button");
+        offreBtn.className =
+          "h-9 px-3.5 rounded-full border border-line2 bg-paper text-xs font-semibold text-body hover:bg-ink hover:text-paper hover:border-ink transition inline-flex items-center gap-1.5";
+        offreBtn.innerHTML = "✍ <span class=\"hidden sm:inline\">Offre</span>";
+        mountOffreTrigger(offreBtn);
+        toolbar.appendChild(offreBtn);
+      }
     }
   }
 
