@@ -1,0 +1,11 @@
+{
+  "name": "immo-evals",
+  "private": true,
+  "description": "Static evaluation reports; npm used only for dev smoke tests.",
+  "scripts": {
+    "smoke:offre-achat": "node scripts/offre-achat-smoke.mjs"
+  },
+  "devDependencies": {
+    "jspdf": "2.5.1"
+  }
+}
