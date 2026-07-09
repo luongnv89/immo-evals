@@ -82,23 +82,24 @@
     }
 
     function field(label, value) {
-      ensureSpace(LINE);
       doc.setFont("helvetica", "normal");
       doc.setFontSize(11);
       doc.setTextColor(30);
       const text = label + " : " + (value === undefined || value === null || value === "" ? "—" : value);
       const lines = doc.splitTextToSize(text, MAX_W);
+      ensureSpace(lines.length * LINE);
       doc.text(lines, MARGIN, y, { maxWidth: MAX_W });
       y += lines.length * LINE;
     }
 
     function blankLine(label) {
-      ensureSpace(LINE);
       doc.setFont("helvetica", "normal");
       doc.setFontSize(11);
       doc.setTextColor(30);
-      doc.text(label + " : ____________", MARGIN, y);
-      y += LINE;
+      const lines = doc.splitTextToSize(label + " : ____________", MAX_W);
+      ensureSpace(lines.length * LINE);
+      doc.text(lines, MARGIN, y, { maxWidth: MAX_W });
+      y += lines.length * LINE;
     }
 
     title("OFFRE D'ACHAT");
@@ -166,6 +167,13 @@
   }
 
   // --- Browser bootstrap ----------------------------------------------------
+
+  // HTML-context escaping for any value injected into modal markup (defense in depth).
+  function htmlEncode(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
 
   function initOffreAchat() {
     const DATA = JSON.parse(document.getElementById("report-data").textContent);
@@ -296,7 +304,7 @@
         '    <input id="oa-email" name="email" type="email" autocomplete="email"></div>',
         '  <div class="oa-field"><label for="oa-offerPrice">Prix proposé</label>',
         '    <input id="oa-offerPrice" name="offerPrice" type="text" value="' +
-          (price ? price.replace(/"/g, "&quot;") : "") + '"></div>',
+          htmlEncode(price) + '"></div>',
         '  <div class="oa-field"><label for="oa-conditions">Conditions particulières</label>',
         '    <textarea id="oa-conditions" name="conditions" rows="3"></textarea></div>',
         '  <div class="oa-field"><label for="oa-validity">Validité de l\'offre en jours</label>',
@@ -358,6 +366,25 @@
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && !overlay.hasAttribute("hidden")) closeModal();
+    });
+
+    // Simple focus trap so keyboard users stay inside the open dialog.
+    const dialog = overlay.querySelector(".oa-modal__dialog");
+    dialog.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      const focusable = dialog.querySelectorAll(
+        'button, [href], input, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
 
     // Hook next to the print button
