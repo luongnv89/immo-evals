@@ -260,7 +260,9 @@
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
     }
     function isValidPhone(v) {
-      // Allow digits, spaces and + ( ) - . / — require at least 6 digits.
+      // Empty is allowed (optional field). Otherwise allow digits, spaces and
+      // + ( ) - . / — require at least 6 and at most 15 digits.
+      if (!v) return true;
       if (!/^[0-9+()\-./\s]+$/.test(v)) return false;
       const digits = v.replace(/\D/g, "");
       return digits.length >= 6 && digits.length <= 15;
