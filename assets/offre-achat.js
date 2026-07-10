@@ -70,24 +70,41 @@
       });
     }
 
+    // Right-aligned multi-line block starting at `startY`; returns the y after it.
+    function rightBlock(lines, startY) {
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+      doc.setTextColor(30);
+      let yy = startY;
+      lines.forEach(function (l) {
+        const spl = doc.splitTextToSize(String(l == null ? "" : l), MAX_W);
+        spl.forEach(function (s) {
+          doc.text(s, PAGE_W - MARGIN, yy, { align: "right" });
+          yy += LINE;
+        });
+      });
+      return yy;
+    }
+
     function isBlank() {
       return !bd || Object.keys(bd).length === 0 || !(bd.buyers && bd.buyers.length);
     }
 
     // --- Blank "modèle vierge" ----------------------------------------------
     if (isBlank()) {
+      // Sender (left) + agency (right) letterhead
       doc.setFont("helvetica", "bold");
       doc.setFontSize(11);
       doc.setTextColor(10);
       writeLines("[Vos Nom et Prénom]");
       writeLines("[Votre adresse]");
       writeLines("[Code Postal Ville]");
-      y += GAP;
-      writeLines("[Nom de l'agence]");
-      writeLines("[Adresse de l'agence]");
-      writeLines("[Code Postal Ville]");
-      y += GAP;
-      writeLines("[Date du jour]");
+      const blankAgency = rightBlock(
+        ["[Nom de l'agence]", "[Adresse de l'agence]", "[Code Postal Ville]"],
+        MARGIN
+      );
+      y = Math.max(y, blankAgency) + GAP;
+      writeRight("[Date du jour]");
       y += GAP * 1.5;
       writeText("Objet : Proposition d'offre d'achat pour [Adresse du bien] à [Ville]");
       y += GAP;
@@ -177,24 +194,30 @@
     const validityDate = bd.validityDate || "[JJ/MM/AAAA]";
 
     // Sender block (top-left)
-    writeText(bd.senderName || "[Nom et Prénom]", { style: "bold" });
-    writeLines(bd.senderAddress || "");
-    writeLines(bd.senderCity || "");
-    y += GAP;
+    const senderLines = [];
+    if (bd.senderName) senderLines.push(bd.senderName);
+    if (bd.senderAddress) senderLines.push(bd.senderAddress);
+    if (bd.senderCity) senderLines.push(bd.senderCity);
+    if (!senderLines.length) senderLines.push("[Nom et Prénom]");
+    senderLines.forEach(function (l, i) {
+      writeText(l, { style: i === 0 ? "bold" : "normal" });
+    });
 
-    // Agency block
-    writeText(bd.agencyName || "AGENCE IMMOBILIERE ROMY", { style: "bold" });
+    // Agency block (top-right)
+    const agencyLines = [];
+    agencyLines.push(bd.agencyName || "AGENCE IMMOBILIERE ROMY");
     if (bd.agencyAddress) {
       bd.agencyAddress.split(/\n+/).forEach(function (l) {
-        if (l.trim()) writeLines(l.trim());
+        if (l.trim()) agencyLines.push(l.trim());
       });
     } else {
-      writeLines("71 rue de la Paroisse");
-      writeLines("78000 VERSAILLES");
+      agencyLines.push("71 rue de la Paroisse");
+      agencyLines.push("78000 VERSAILLES");
     }
-    y += GAP;
+    const agencyEnd = rightBlock(agencyLines, MARGIN);
+    y = Math.max(y, agencyEnd) + GAP;
 
-    // Date (right aligned)
+    // Date (right aligned, under the agency)
     writeRight(letterDate);
     y += GAP * 1.5;
 
