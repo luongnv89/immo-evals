@@ -5,6 +5,10 @@
  * unit-tested in Node (require('jspdf')) and used in the browser
  * (window.jspdf.jsPDF). The browser bootstrap that wires the modal/button is
  * guarded so requiring this file in Node never touches the DOM.
+ *
+ * Two render modes:
+ *  - blank  : emits the agency "modèle vierge" with [bracket placeholders].
+ *  - filled : builds the formal French purchase-offer letter from buyerData.
  */
 (function () {
   "use strict";
@@ -13,7 +17,7 @@
 
   function buildOffreAchatPdf(jsPDFCtor, reportData, buyerData) {
     const report = reportData || {};
-    const buyer = buyerData || {};
+    const bd = buyerData || {};
     const kpi = report.kpi || {};
 
     const doc = new jsPDFCtor({ unit: "pt", format: "a4" });
@@ -21,10 +25,10 @@
 
     const PAGE_W = 595;
     const PAGE_H = 842;
-    const MARGIN = 40;
+    const MARGIN = 50;
     const MAX_W = PAGE_W - MARGIN * 2;
     const BOTTOM = PAGE_H - MARGIN;
-    const LINE = 16;
+    const LINE = 15;
     const GAP = 10;
 
     let y = MARGIN;
@@ -36,6 +40,13 @@
       }
     }
 
+    function writeLines(text) {
+      const lines = doc.splitTextToSize(String(text == null ? "" : text), MAX_W);
+      ensureSpace(lines.length * LINE);
+      doc.text(lines, MARGIN, y, { maxWidth: MAX_W });
+      y += lines.length * LINE;
+    }
+
     function writeText(text, opts) {
       opts = opts || {};
       const size = opts.size || 11;
@@ -44,124 +55,208 @@
       doc.setFont("helvetica", style);
       doc.setFontSize(size);
       doc.setTextColor(color);
+      writeLines(text);
+    }
+
+    function writeRight(text) {
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+      doc.setTextColor(30);
       const lines = doc.splitTextToSize(String(text), MAX_W);
       ensureSpace(lines.length * LINE);
-      doc.text(lines, MARGIN, y, { maxWidth: MAX_W });
-      y += lines.length * LINE;
+      lines.forEach(function (l) {
+        doc.text(l, PAGE_W - MARGIN, y, { align: "right" });
+        y += LINE;
+      });
     }
 
-    function title(text) {
-      ensureSpace(40);
+    function isBlank() {
+      return !bd || Object.keys(bd).length === 0 || !(bd.buyers && bd.buyers.length);
+    }
+
+    // --- Blank "modèle vierge" ----------------------------------------------
+    if (isBlank()) {
       doc.setFont("helvetica", "bold");
-      doc.setFontSize(20);
-      doc.setTextColor(22, 130, 61);
-      doc.text(text, MARGIN, y);
-      y += 26;
-      doc.setFont("helvetica", "normal");
       doc.setFontSize(11);
-      doc.setTextColor(90);
-      const sub = doc.splitTextToSize("Conformément à la pratique immobilière en France", MAX_W);
-      doc.text(sub, MARGIN, y, { maxWidth: MAX_W });
-      y += sub.length * LINE + GAP;
-    }
-
-    function section(label) {
-      ensureSpace(30);
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(13);
       doc.setTextColor(10);
-      const lines = doc.splitTextToSize(label, MAX_W);
-      doc.text(lines, MARGIN, y, { maxWidth: MAX_W });
-      y += lines.length * LINE + 2;
-      doc.setDrawColor(22, 130, 61);
-      doc.setLineWidth(0.8);
-      doc.line(MARGIN, y, PAGE_W - MARGIN, y);
-      y += GAP + 5;
-      doc.setFont("helvetica", "normal");
-      doc.setTextColor(30);
+      writeLines("[Vos Nom et Prénom]");
+      writeLines("[Votre adresse]");
+      writeLines("[Code Postal Ville]");
+      y += GAP;
+      writeLines("[Nom de l'agence]");
+      writeLines("[Adresse de l'agence]");
+      writeLines("[Code Postal Ville]");
+      y += GAP;
+      writeLines("[Date du jour]");
+      y += GAP * 1.5;
+      writeText("Objet : Proposition d'offre d'achat pour [Adresse du bien] à [Ville]");
+      y += GAP;
+      writeText("Madame, Monsieur,");
+      y += GAP;
+      writeText(
+        "nous, soussigné(e)s [Monsieur / Madame Prénom Nom, adresse, date et lieu de " +
+          "naissance]" +
+          "[et Madame / Monsieur Prénom Nom, adresse, date et lieu de naissance],"
+      );
+      y += GAP;
+      writeText(
+        "vous informons vouloir nous porter acquéreurs du bien sis à [Ville] " +
+          "[adresse / désignation / surface]."
+      );
+      writeText("Nous vous faisons donc une offre au prix de [PRIX] frais d'agence inclus.");
+      writeText("Le financement de cet achat se fera de la façon suivante :");
+      writeText("[Modalités]");
+      y += GAP;
+      writeText("Cette offre est valable jusqu'au [JJ/MM/AAAA].");
+      y += GAP * 1.5;
+      doc.setFont("helvetica", "italic");
+      doc.setFontSize(10);
+      doc.setTextColor(80);
+      writeLines(
+        "(Date et signature de tous les acheteurs, précédées de la mention manuscrite"
+      );
+      writeLines("« Bon pour achat »)");
+      y += GAP;
+      writeLines("[Votre Signature]");
+      return doc;
     }
 
-    function field(label, value) {
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(11);
-      doc.setTextColor(30);
-      const text = label + " : " + (value === undefined || value === null || value === "" ? "—" : value);
-      const lines = doc.splitTextToSize(text, MAX_W);
-      ensureSpace(lines.length * LINE);
-      doc.text(lines, MARGIN, y, { maxWidth: MAX_W });
-      y += lines.length * LINE;
+    // --- Filled formal letter -----------------------------------------------
+
+    function guessCity(r) {
+      const t = r.title || "";
+      const m = t.match(/—\s*([A-Za-zÉÉÈÀÇ0-9().\s-]+)$/);
+      if (m) return m[1].trim();
+      return "";
     }
 
-    function blankLine(label) {
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(11);
-      doc.setTextColor(30);
-      const lines = doc.splitTextToSize(label + " : ____________", MAX_W);
-      ensureSpace(lines.length * LINE);
-      doc.text(lines, MARGIN, y, { maxWidth: MAX_W });
-      y += lines.length * LINE;
+    const reportPrice =
+      bd.offerPrice || report.price || kpi.price || "";
+    const surface = report.surface || kpi.surface || "";
+    const type = report.type || kpi.type || "";
+
+    const city = (bd.propertyCity || guessCity(report) || "VERSAILLES").toUpperCase();
+
+    const propRefParts = [];
+    if (bd.propertyAddress) propRefParts.push(bd.propertyAddress);
+    if (bd.propertyDesignation) propRefParts.push(bd.propertyDesignation);
+    else {
+      if (surface) propRefParts.push(surface);
+      if (type) propRefParts.push(type);
+    }
+    const propRef = propRefParts.join(" — ");
+
+    function buildBuyerClause(buyers) {
+      return buyers
+        .map(function (b) {
+          const civ = b.civilite || "Monsieur";
+          const nom = (b.nom || "").trim().toUpperCase();
+          const pre = (b.prenom || "").trim();
+          let s = civ + " " + (pre ? pre + " " : "") + (nom || "");
+          const bits = [];
+          if (b.adresse) bits.push("demeurant " + b.adresse);
+          if (b.dateNaissance) bits.push("né(e) le " + b.dateNaissance);
+          if (b.lieuNaissance) bits.push("à " + b.lieuNaissance);
+          if (bits.length) s += ", " + bits.join(", ");
+          return s.trim();
+        })
+        .join(" et ");
     }
 
-    title("OFFRE D'ACHAT");
+    const buyerClause = buildBuyerClause(bd.buyers);
+    const letterDate =
+      bd.date ||
+      new Date().toLocaleDateString("fr-FR", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+    const offerPrice = reportPrice || "[PRIX]";
+    const financing =
+      bd.financing || "Sous réserve d'obtention d'un prêt bancaire";
+    const validityDate = bd.validityDate || "[JJ/MM/AAAA]";
 
-    // Date
-    ensureSpace(LINE);
-    field("Date", report.date || new Date().toISOString().slice(0, 10));
+    // Sender block (top-left)
+    writeText(bd.senderName || "[Nom et Prénom]", { style: "bold" });
+    writeLines(bd.senderAddress || "");
+    writeLines(bd.senderCity || "");
     y += GAP;
 
-    // 1. Désignation du bien
-    section("1. Désignation du bien");
-    field("Titre", report.title);
-    field("Prix de vente", kpi.price);
-    field("Surface", kpi.surface);
-    field("Type", kpi.type);
-    field("Lien de l'annonce", report.url);
-    y += GAP;
-
-    // 2. L'acheteur
-    section("2. L'acheteur");
-    if (buyer.fullName) {
-      field("Nom et prénom", buyer.fullName);
-      field("Adresse", buyer.address);
-      field("Téléphone", buyer.phone);
-      field("Email", buyer.email);
+    // Agency block
+    writeText(bd.agencyName || "AGENCE IMMOBILIERE ROMY", { style: "bold" });
+    if (bd.agencyAddress) {
+      bd.agencyAddress.split(/\n+/).forEach(function (l) {
+        if (l.trim()) writeLines(l.trim());
+      });
     } else {
-      blankLine("Nom et prénom");
-      blankLine("Adresse");
-      blankLine("Téléphone");
-      blankLine("Email");
+      writeLines("71 rue de la Paroisse");
+      writeLines("78000 VERSAILLES");
     }
     y += GAP;
 
-    // 3. Conditions de l'offre
-    section("3. Conditions de l'offre");
-    field("Prix proposé", buyer.offerPrice || kpi.price);
-    field("Financement", buyer.financing || "Sous réserve d'obtention d'un prêt");
-    field("Conditions particulières", buyer.conditions);
-    field("Validité de l'offre", (buyer.validityDays || 10) + " jours");
-    y += GAP;
+    // Date (right aligned)
+    writeRight(letterDate);
+    y += GAP * 1.5;
 
-    // 4. Mentions légales
-    section("4. Mentions légales");
-    writeText(
-      "La présente offre est irrévocable jusqu'à la date de fin de validité indiquée ci-dessus. " +
-        "L'acheteur dispose d'un délai de rétractation de dix jours à compter de la réception de la " +
-        "promesse de vente, conformément à l'article L. 271-1 du Code de la construction et de " +
-        "l'habitation. Les présentes conditions s'entendent sous réserve de la signature " +
-        "d'un compromis ou d'une promesse de vente rédigé par un professionnel habilité."
-    );
-    y += GAP;
-    ensureSpace(40);
+    // Objet
     doc.setFont("helvetica", "bold");
     doc.setFontSize(11);
     doc.setTextColor(10);
-    doc.text("Signature de l'acheteur :", MARGIN, y);
-    y += 28;
-    doc.setDrawColor(120);
-    doc.setLineWidth(0.5);
-    doc.line(MARGIN, y, PAGE_W - MARGIN, y);
+    writeLines("Objet : Proposition d'offre d'achat pour " + (bd.propertyAddress || propRef || "[Adresse du bien]") + " à " + city);
+    y += GAP;
+
+    // Body
+    writeText("Madame, Monsieur,");
+    y += GAP;
+    writeText(
+      "nous, soussigné(e)s " +
+        buyerClause +
+        ", vous informons vouloir nous porter acquéreurs du bien sis à " +
+        city +
+        (propRef ? " (" + propRef + ")" : "") +
+        "."
+    );
+    writeText("Nous vous faisons donc une offre au prix de " + offerPrice + " frais d'agence inclus.");
+    writeText("Le financement de cet achat se fera de la façon suivante :");
+    writeText(financing);
+    y += GAP;
+    writeText("Cette offre est valable jusqu'au " + validityDate + ".");
+    y += GAP * 1.5;
+
+    // Signature block
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(10);
+    doc.setTextColor(80);
+    writeLines(
+      "(Date et signature de tous les acheteurs, précédées de la mention manuscrite"
+    );
+    writeLines("« Bon pour achat »)");
     doc.setFont("helvetica", "normal");
     doc.setTextColor(30);
+    y += GAP;
+
+    bd.buyers.forEach(function (b, i) {
+      const label =
+        (b.civilite || "Monsieur") +
+        " " +
+        ((b.prenom || "").trim() + " " + (b.nom || "").trim().toUpperCase()).trim();
+      ensureSpace(LINE * 3);
+      doc.setFontSize(11);
+      doc.text("À " + city + ", le ______________", MARGIN, y);
+      y += LINE;
+      doc.setFontSize(10);
+      doc.setTextColor(120);
+      doc.text("« Bon pour achat »", MARGIN, y);
+      y += LINE * 0.5;
+      doc.setDrawColor(120);
+      doc.setLineWidth(0.5);
+      doc.line(MARGIN, y, PAGE_W - MARGIN, y);
+      y += LINE * 0.4;
+      doc.setFontSize(10);
+      doc.setTextColor(60);
+      doc.text(label, MARGIN, y);
+      y += GAP * 1.5;
+    });
 
     return doc;
   }
@@ -193,9 +288,9 @@
 
     const CSS = [
       ".oa-modal[hidden]{display:none}",
-      ".oa-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem}",
+      ".oa-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:1rem;overflow:auto}",
       ".oa-modal__backdrop{position:absolute;inset:0;background:rgba(10,10,10,0.45)}",
-      ".oa-modal__dialog{position:relative;width:100%;max-width:420px;background:var(--paper,#fff);color:var(--ink,#0a0a0a);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,0.25);padding:1.5rem;font-family:inherit}",
+      ".oa-modal__dialog{position:relative;width:100%;max-width:520px;background:var(--paper,#fff);color:var(--ink,#0a0a0a);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,0.25);padding:1.5rem;font-family:inherit;margin:auto}",
       ".oa-modal__close{position:absolute;top:0.5rem;right:0.75rem;background:none;border:0;font-size:1.5rem;line-height:1;cursor:pointer;color:#555}",
       ".oa-modal__title{font-size:1.15rem;font-weight:700;margin:0 0 0.25rem}",
       ".oa-modal__sub{font-size:0.85rem;color:#555;margin:0 0 1rem}",
@@ -203,10 +298,16 @@
       ".oa-btn{appearance:none;border:0;border-radius:999px;padding:0.6rem 1rem;font-weight:600;font-size:0.9rem;cursor:pointer;text-align:center}",
       ".oa-btn--primary{background:var(--leafdeep,#15803d);color:#fff}",
       ".oa-btn--ghost{background:var(--leafsoft,#f0fdf4);color:var(--leafdeep,#15803d);border:1px solid var(--leaf,#16a34a)}",
-      ".oa-field{display:flex;flex-direction:column;gap:0.25rem;margin-bottom:0.75rem}",
+      ".oa-field{display:flex;flex-direction:column;gap:0.25rem;margin-bottom:0.6rem}",
       ".oa-field label{font-size:0.82rem;font-weight:600}",
-      ".oa-field input,.oa-field textarea{font:inherit;padding:0.5rem 0.6rem;border:1px solid #d4d4d4;border-radius:10px;background:#fff;color:inherit}",
-      ".oa-field input:focus-visible,.oa-field textarea:focus-visible,.oa-btn:focus-visible,.oa-modal__close:focus-visible,.oa-link:focus-visible{outline:2px solid var(--leaf,#16a34a);outline-offset:2px}",
+      ".oa-field input,.oa-field textarea,.oa-field select{font:inherit;padding:0.5rem 0.6rem;border:1px solid #d4d4d4;border-radius:10px;background:#fff;color:inherit}",
+      ".oa-fieldset{border:1px solid #e5e7eb;border-radius:12px;padding:0.75rem;margin:0 0 0.85rem}",
+      ".oa-fieldset>legend{font-size:0.82rem;font-weight:700;padding:0 0.4rem}",
+      ".oa-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 0.6rem}",
+      ".oa-row{display:flex;gap:0.5rem;align-items:center;margin-bottom:0.5rem}",
+      ".oa-input-inline{flex:1}",
+      ".oa-remove{background:none;border:1px solid #dc2626;color:#dc2626;border-radius:8px;padding:0.3rem 0.5rem;font-size:0.8rem;cursor:pointer}",
+      ".oa-field input:focus-visible,.oa-field textarea:focus-visible,.oa-field select:focus-visible,.oa-btn:focus-visible,.oa-modal__close:focus-visible,.oa-link:focus-visible,.oa-remove:focus-visible{outline:2px solid var(--leaf,#16a34a);outline-offset:2px}",
       ".oa-field input[aria-invalid='true'],.oa-field textarea[aria-invalid='true']{border-color:#dc2626}",
       ".oa-modal__error,.oa-error{color:#dc2626;font-size:0.8rem;margin:0 0 0.75rem}",
       ".oa-link{background:none;border:0;color:var(--leafdeep,#15803d);text-decoration:underline;cursor:pointer;font:inherit;padding:0.25rem 0;margin-top:0.5rem}",
@@ -256,16 +357,27 @@
       if (alertEl) alertEl.textContent = "";
     }
     function isValidEmail(v) {
-      // Pragmatic email check: one @, a local part and a dotted domain.
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
     }
     function isValidPhone(v) {
-      // Empty is allowed (optional field). Otherwise allow digits, spaces and
-      // + ( ) - . / — require at least 6 and at most 15 digits.
       if (!v) return true;
       if (!/^[0-9+()\-./\s]+$/.test(v)) return false;
       const digits = v.replace(/\D/g, "");
       return digits.length >= 6 && digits.length <= 15;
+    }
+    function fmtDateFr(d) {
+      const dd = String(d.getDate()).padStart(2, "0");
+      const mm = String(d.getMonth() + 1).padStart(2, "0");
+      return dd + "/" + mm + "/" + d.getFullYear();
+    }
+    function defaultValidity() {
+      const d = new Date();
+      d.setDate(d.getDate() + 10);
+      return fmtDateFr(d);
+    }
+    function guessCityTitle(title) {
+      const m = String(title || "").match(/—\s*([A-Za-zÉÈÀÇ0-9().\s-]+)$/);
+      return m ? m[1].trim() : "Versailles";
     }
 
     // --- Build modal DOM ---
@@ -318,82 +430,163 @@
       body.querySelector("#oa-fill").addEventListener("click", renderForm);
     }
 
+    function buyerFieldsetHtml(idx, defaults) {
+      defaults = defaults || {};
+      const civ = defaults.civilite || (idx === 0 ? "Monsieur" : "Madame");
+      const removable = idx > 0;
+      return (
+        '<fieldset class="oa-fieldset" data-buyer="' + idx + '">' +
+        "  <legend>Acheteur " + (idx + 1) + (removable ? "" : " (principal)") + "</legend>" +
+        '  <div class="oa-row">' +
+        '    <div class="oa-field oa-input-inline"><label>Civilité</label>' +
+        '      <select name="civilite">' +
+        '        <option value="Monsieur"' + (civ === "Monsieur" ? " selected" : "") + ">Monsieur</option>" +
+        '        <option value="Madame"' + (civ === "Madame" ? " selected" : "") + ">Madame</option>" +
+        "      </select></div>" +
+        (removable
+          ? '    <button type="button" class="oa-remove" data-remove-buyer="' + idx + '">Retirer</button>'
+          : "") +
+        "  </div>" +
+        '  <div class="oa-grid">' +
+        '    <div class="oa-field"><label>Prénom *</label><input name="prenom" type="text" value="' + htmlEncode(defaults.prenom || "") + '" required></div>' +
+        '    <div class="oa-field"><label>Nom *</label><input name="nom" type="text" value="' + htmlEncode(defaults.nom || "") + '" required></div>' +
+        "  </div>" +
+        '  <div class="oa-field"><label>Adresse</label><input name="adresse" type="text" value="' + htmlEncode(defaults.adresse || "") + '"></div>' +
+        '  <div class="oa-grid">' +
+        '    <div class="oa-field"><label>Date de naissance</label><input name="dateNaissance" type="text" placeholder="JJ/MM/AAAA" value="' + htmlEncode(defaults.dateNaissance || "") + '"></div>' +
+        '    <div class="oa-field"><label>Lieu de naissance</label><input name="lieuNaissance" type="text" value="' + htmlEncode(defaults.lieuNaissance || "") + '"></div>' +
+        "  </div>" +
+        "</fieldset>"
+      );
+    }
+
     function renderForm() {
       subEl.textContent = "Renseignez vos informations pour pré-remplir l'offre.";
-      const price = (DATA.kpi && DATA.kpi.price) || "";
+      const price = (DATA.price || (DATA.kpi && DATA.kpi.price) || "").toString();
+      const surface = DATA.surface || (DATA.kpi && DATA.kpi.surface) || "";
+      const type = DATA.type || (DATA.kpi && DATA.kpi.type) || "";
+      const designation = [surface, type].filter(Boolean).join(" — ");
+      const city = guessCityTitle(DATA.title);
+
       body.innerHTML = [
         '<form id="oa-form" novalidate>',
-        '  <div class="oa-field"><label for="oa-fullName">Nom et prénom *</label>',
-        '    <input id="oa-fullName" name="fullName" type="text" autocomplete="name" required aria-required="true" aria-describedby="oa-error"></div>',
-        '  <div class="oa-field"><label for="oa-address">Adresse</label>',
-        '    <input id="oa-address" name="address" type="text" autocomplete="street-address"></div>',
-        '  <div class="oa-field"><label for="oa-phone">Téléphone</label>',
-        '    <input id="oa-phone" name="phone" type="tel" autocomplete="tel"></div>',
-        '  <div class="oa-field"><label for="oa-email">Email</label>',
-        '    <input id="oa-email" name="email" type="email" autocomplete="email"></div>',
-        '  <div class="oa-field"><label for="oa-offerPrice">Prix proposé</label>',
-        '    <input id="oa-offerPrice" name="offerPrice" type="text" value="' +
-          htmlEncode(price) + '"></div>',
-        '  <div class="oa-field"><label for="oa-conditions">Conditions particulières</label>',
-        '    <textarea id="oa-conditions" name="conditions" rows="3"></textarea></div>',
-        '  <div class="oa-field"><label for="oa-validity">Validité de l\'offre en jours</label>',
-        '    <input id="oa-validity" name="validityDays" type="number" min="1" value="10"></div>',
+        '  <fieldset class="oa-fieldset"><legend>Vos coordonnées (expéditeur)</legend>',
+        '    <div class="oa-field"><label>Nom et prénom *</label><input name="senderName" type="text" required aria-describedby="oa-error"></div>',
+        '    <div class="oa-field"><label>Adresse</label><input name="senderAddress" type="text"></div>',
+        '    <div class="oa-field"><label>Code postal et ville</label><input name="senderCity" type="text" placeholder="78000 Versailles"></div>',
+        "  </fieldset>",
+        '  <fieldset class="oa-fieldset"><legend>Agence immobilière (destinataire)</legend>',
+        '    <div class="oa-field"><label>Nom de l\'agence</label><input name="agencyName" type="text" value="AGENCE IMMOBILIERE ROMY"></div>',
+        '    <div class="oa-field"><label>Adresse de l\'agence</label><textarea name="agencyAddress" rows="2">71 rue de la Paroisse\n78000 VERSAILLES</textarea></div>',
+        "  </fieldset>",
+        '  <fieldset class="oa-fieldset"><legend>Le bien</legend>',
+        '    <div class="oa-field"><label>Adresse du bien</label><input name="propertyAddress" type="text" placeholder="4 rue Philippe de Dangeau"></div>',
+        '    <div class="oa-field"><label>Ville</label><input name="propertyCity" type="text" value="' + htmlEncode(city) + '"></div>',
+        '    <div class="oa-field"><label>Désignation / surface</label><input name="propertyDesignation" type="text" value="' + htmlEncode(designation) + '" placeholder="42 m² — Appartement T2"></div>',
+        "  </fieldset>",
+        '  <fieldset class="oa-fieldset"><legend>Conditions de l\'offre</legend>',
+        '    <div class="oa-field"><label>Prix proposé (frais d\'agence inclus)</label><input name="offerPrice" type="text" value="' + htmlEncode(price) + '"></div>',
+        '    <div class="oa-field"><label>Financement</label><textarea name="financing" rows="2" placeholder="Apport + prêt bancaire">Sous réserve d\'obtention d\'un prêt bancaire</textarea></div>',
+        '    <div class="oa-field"><label>Offre valable jusqu\'au (JJ/MM/AAAA)</label><input name="validityDate" type="text" value="' + htmlEncode(defaultValidity()) + '"></div>',
+        "  </fieldset>",
+        '  <div id="oa-buyers">' + buyerFieldsetHtml(0) + "</div>",
+        '  <button type="button" class="oa-link" id="oa-add-buyer">+ Ajouter un co-acquéreur</button>',
         '  <div class="oa-modal__actions">',
         '    <button type="submit" class="oa-btn oa-btn--primary">Générer le PDF</button>',
         '    <button type="button" class="oa-link" id="oa-back">← Retour</button>',
         "  </div>",
         "</form>",
       ].join("");
+
       const form = body.querySelector("#oa-form");
-      const fullName = form.querySelector("#oa-fullName");
-      const phone = form.querySelector("#oa-phone");
-      const email = form.querySelector("#oa-email");
       form.querySelector("#oa-back").addEventListener("click", renderChoice);
-      // Clear a field's error as soon as the visitor edits it.
-      [fullName, phone, email].forEach(function (input) {
-        input.addEventListener("input", function () {
-          input.removeAttribute("aria-invalid");
-          if (!errorEl.textContent) return;
-          errorEl.textContent = "";
+
+      const buyersWrap = form.querySelector("#oa-buyers");
+      form.querySelector("#oa-add-buyer").addEventListener("click", function () {
+        const count = buyersWrap.querySelectorAll("fieldset[data-buyer]").length;
+        if (count >= 2) return;
+        const div = document.createElement("div");
+        div.innerHTML = buyerFieldsetHtml(count);
+        const fs = div.firstChild;
+        buyersWrap.appendChild(fs);
+        if (count + 1 >= 2) form.querySelector("#oa-add-buyer").setAttribute("hidden", "");
+        fs.querySelector("[data-remove-buyer]").addEventListener("click", function () {
+          fs.remove();
+          form.querySelector("#oa-add-buyer").removeAttribute("hidden");
         });
+        fs.querySelector("input[name='prenom']").focus();
       });
-      fullName.focus();
+
+      // Clear error as soon as any required field is edited.
+      form.addEventListener("input", function (e) {
+        if (e.target.matches("input[required], textarea[required]")) {
+          e.target.removeAttribute("aria-invalid");
+          if (errorEl.textContent) errorEl.textContent = "";
+        }
+      });
+
+      form.querySelector("input[name='senderName']").focus();
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         clearError(errorEl);
-        fullName.removeAttribute("aria-invalid");
-        phone.removeAttribute("aria-invalid");
-        email.removeAttribute("aria-invalid");
 
-        const fullNameVal = fullName.value.trim();
-        if (!fullNameVal) {
-          fullName.setAttribute("aria-invalid", "true");
-          showError(errorEl, "Le nom et prénom sont requis.");
-          fullName.focus();
+        const required = form.querySelectorAll("input[required]");
+        let firstInvalid = null;
+        required.forEach(function (inp) {
+          if (!inp.value.trim()) {
+            inp.setAttribute("aria-invalid", "true");
+            if (!firstInvalid) firstInvalid = inp;
+          } else {
+            inp.removeAttribute("aria-invalid");
+          }
+        });
+        if (firstInvalid) {
+          showError(errorEl, "Merci de renseigner les champs obligatoires (*).");
+          firstInvalid.focus();
           return;
         }
-        const phoneVal = phone.value.trim();
-        if (phoneVal && !isValidPhone(phoneVal)) {
-          phone.setAttribute("aria-invalid", "true");
-          showError(errorEl, "Le numéro de téléphone n'est pas valide.");
-          phone.focus();
+
+        const validityVal = form.querySelector("input[name='validityDate']").value.trim();
+        const buyerNodes = buyersWrap.querySelectorAll("fieldset[data-buyer]");
+        const buyers = [];
+        let buyerMissing = false;
+        buyerNodes.forEach(function (fs) {
+          const prenom = fs.querySelector("input[name='prenom']").value.trim();
+          const nom = fs.querySelector("input[name='nom']").value.trim();
+          if (!prenom || !nom) {
+            fs.querySelector("input[name='prenom']").setAttribute("aria-invalid", "true");
+            fs.querySelector("input[name='nom']").setAttribute("aria-invalid", "true");
+            buyerMissing = true;
+            return;
+          }
+          buyers.push({
+            civilite: fs.querySelector("select[name='civilite']").value,
+            prenom: prenom,
+            nom: nom,
+            adresse: fs.querySelector("input[name='adresse']").value.trim(),
+            dateNaissance: fs.querySelector("input[name='dateNaissance']").value.trim(),
+            lieuNaissance: fs.querySelector("input[name='lieuNaissance']").value.trim(),
+          });
+        });
+        if (buyerMissing) {
+          showError(errorEl, "Chaque acheteur doit avoir un prénom et un nom.");
           return;
         }
-        const emailVal = email.value.trim();
-        if (emailVal && !isValidEmail(emailVal)) {
-          email.setAttribute("aria-invalid", "true");
-          showError(errorEl, "L'adresse email n'est pas valide.");
-          email.focus();
-          return;
-        }
+
         const buyerData = {
-          fullName: value,
-          address: form.querySelector("#oa-address").value.trim(),
-          phone: form.querySelector("#oa-phone").value.trim(),
-          email: form.querySelector("#oa-email").value.trim(),
-          offerPrice: form.querySelector("#oa-offerPrice").value.trim(),
-          conditions: form.querySelector("#oa-conditions").value.trim(),
-          validityDays: parseInt(form.querySelector("#oa-validity").value, 10),
+          senderName: form.querySelector("input[name='senderName']").value.trim(),
+          senderAddress: form.querySelector("input[name='senderAddress']").value.trim(),
+          senderCity: form.querySelector("input[name='senderCity']").value.trim(),
+          agencyName: form.querySelector("input[name='agencyName']").value.trim(),
+          agencyAddress: form.querySelector("textarea[name='agencyAddress']").value.trim(),
+          propertyAddress: form.querySelector("input[name='propertyAddress']").value.trim(),
+          propertyCity: form.querySelector("input[name='propertyCity']").value.trim(),
+          propertyDesignation: form.querySelector("input[name='propertyDesignation']").value.trim(),
+          offerPrice: form.querySelector("input[name='offerPrice']").value.trim(),
+          financing: form.querySelector("textarea[name='financing']").value.trim(),
+          validityDate: validityVal,
+          buyers: buyers,
         };
         generate(buyerData);
       });
@@ -429,7 +622,7 @@
     dialog.addEventListener("keydown", function (e) {
       if (e.key !== "Tab") return;
       const focusable = dialog.querySelectorAll(
-        'button, [href], input, textarea, [tabindex]:not([tabindex="-1"])'
+        'button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])'
       );
       if (!focusable.length) return;
       const first = focusable[0];

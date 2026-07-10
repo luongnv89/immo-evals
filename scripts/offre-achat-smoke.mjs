@@ -12,17 +12,15 @@ const { buildOffreAchatPdf } = require(join(root, "assets/offre-achat.js"));
 
 const { jsPDF } = require("jspdf");
 
-const MIN_BYTES = 6 * 1024;
+const MIN_BYTES = 3 * 1024;
 
 const sampleReport = {
   title: "Appartement T2 — Versailles",
   date: "2026-06-18",
   url: "https://example.com/annonce",
-  kpi: {
-    price: "285 000 €",
-    surface: "42 m²",
-    type: "Appartement",
-  },
+  price: "285 000 €",
+  surface: "42 m²",
+  type: "Appartement",
 };
 
 function pdfByteLength(doc) {
@@ -38,13 +36,35 @@ if (blankSize <= MIN_BYTES) {
 }
 
 const filledDoc = buildOffreAchatPdf(jsPDF, sampleReport, {
-  fullName: "Jean Dupont",
-  address: "12 rue de la Paix, 78000 Versailles",
-  phone: "06 12 34 56 78",
-  email: "jean@example.com",
+  senderName: "Jean Dupont",
+  senderAddress: "12 rue de la Paix",
+  senderCity: "78000 Versailles",
+  agencyName: "AGENCE IMMOBILIERE ROMY",
+  agencyAddress: "71 rue de la Paroisse\n78000 VERSAILLES",
+  propertyAddress: "4 rue Philippe de Dangeau",
+  propertyCity: "Versailles",
+  propertyDesignation: "42 m² — Appartement T2",
   offerPrice: "280 000 €",
-  conditions: "Sous réserve de visite",
-  validityDays: 10,
+  financing: "Apport personnel + prêt bancaire",
+  validityDate: "20/07/2026",
+  buyers: [
+    {
+      civilite: "Monsieur",
+      prenom: "Jean",
+      nom: "Dupont",
+      adresse: "12 rue de la Paix, 78000 Versailles",
+      dateNaissance: "01/01/1980",
+      lieuNaissance: "Paris",
+    },
+    {
+      civilite: "Madame",
+      prenom: "Marie",
+      nom: "Dupont",
+      adresse: "12 rue de la Paix, 78000 Versailles",
+      dateNaissance: "02/02/1982",
+      lieuNaissance: "Lyon",
+    },
+  ],
 });
 const filledSize = pdfByteLength(filledDoc);
 if (filledSize <= MIN_BYTES) {
